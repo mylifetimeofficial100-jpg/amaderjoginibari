@@ -34,35 +34,188 @@
       color: var(--forest-deep);
     }
 
-    /* Header */
+    
+    /* ========== Enhanced Header ========== */
     header {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(31,74,50,.97);
-      backdrop-filter: blur(10px);
-      border-bottom: 3px solid var(--mud);
-      box-shadow: 0 4px 20px rgba(18,38,26,.25);
+      position: sticky; top: 0; z-index: 100;
+      background: linear-gradient(180deg, rgba(18,38,26,.98) 0%, rgba(31,74,50,.96) 100%);
+      backdrop-filter: blur(14px) saturate(1.2);
+      -webkit-backdrop-filter: blur(14px) saturate(1.2);
+      border-bottom: 1px solid rgba(196,149,74,.45);
+      box-shadow: 0 8px 32px rgba(18,38,26,.35), 0 1px 0 rgba(240,217,168,.08) inset;
     }
     .nav-wrap {
-      max-width: 1200px; margin: 0 auto; padding: 14px 20px;
+      max-width: 1200px; margin: 0 auto; padding: 12px 20px;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
     .brand {
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: center; gap: 12px;
       color: #fffef8; text-decoration: none;
-      font-family: 'Baloo Da 2', sans-serif; font-weight: 800; font-size: 1.25rem;
+      font-family: 'Baloo Da 2', sans-serif; font-weight: 800; font-size: 1.28rem;
+      transition: transform .3s ease;
+    }
+    .brand:hover { transform: translateY(-1px); }
+    .brand-logo {
+      width: 42px; height: 42px; flex-shrink: 0;
+      position: relative;
+      filter: drop-shadow(0 2px 8px rgba(240,217,168,.35));
+    }
+    .brand-logo svg {
+      width: 100%; height: 100%;
+      animation: logoFloat 4.5s ease-in-out infinite;
+    }
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-3px) rotate(2deg); }
+    }
+    .brand-text {
+      display: flex; flex-direction: column; line-height: 1.15;
+    }
+    .brand-text span {
+      letter-spacing: 0.3px;
     }
     .brand small {
-      display: block; font-size: .65rem; letter-spacing: 1.5px;
-      color: var(--mud-light); font-weight: 600; margin-top: 1px;
+      display: block; font-size: .62rem; letter-spacing: 1.8px;
+      color: var(--mud-light); font-weight: 600; margin-top: 3px;
+      opacity: .92;
     }
     .back-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--mud); color: #1a2f22;
-      padding: 9px 18px; border-radius: 6px;
-      text-decoration: none; font-weight: 600; font-size: .95rem;
-      transition: .25s;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--mud) 0%, #d4a85a 100%);
+      color: #1a2f22;
+      padding: 10px 20px; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: .92rem;
+      box-shadow: 0 4px 14px rgba(196,149,74,.35);
+      transition: all .3s cubic-bezier(.2,.8,.2,1);
+      border: 1px solid rgba(255,255,255,.15);
     }
-    .back-btn:hover { background: var(--mud-light); transform: translateY(-2px); }
+    .back-btn:hover {
+      background: linear-gradient(135deg, var(--mud-light) 0%, #f5e0b0 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(196,149,74,.45);
+    }
+    .back-btn svg {
+      width: 16px; height: 16px; transition: transform .3s;
+    }
+    .back-btn:hover svg { transform: translateX(-3px); }
+
+    /* ========== Enhanced Footer ========== */
+    footer {
+      background: linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%);
+      color: #d4c9a8;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+    footer::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(196,149,74,.5), transparent);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 42px 24px 28px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 36px;
+      position: relative; z-index: 1;
+    }
+    .footer-brand {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .footer-logo-row {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .footer-logo {
+      width: 48px; height: 48px;
+      filter: drop-shadow(0 2px 10px rgba(240,217,168,.3));
+    }
+    .footer-logo svg {
+      width: 100%; height: 100%;
+      animation: logoFloat 5s ease-in-out infinite;
+    }
+    .footer-brand h3 {
+      font-family: 'Baloo Da 2', sans-serif;
+      font-size: 1.35rem; color: #faf8f2; margin: 0;
+      font-weight: 800;
+    }
+    .footer-brand p {
+      font-size: .9rem; line-height: 1.65; color: #c9bfa0;
+      max-width: 320px; margin: 0;
+    }
+    .footer-col h4 {
+      font-family: 'Baloo Da 2', sans-serif;
+      font-size: 1.05rem; color: var(--mud-light);
+      margin: 0 0 14px; font-weight: 700;
+      letter-spacing: .5px;
+    }
+    .footer-col ul {
+      list-style: none; padding: 0; margin: 0;
+    }
+    .footer-col li {
+      margin-bottom: 9px;
+    }
+    .footer-col a {
+      color: #d4c9a8; text-decoration: none;
+      font-size: .92rem; transition: color .25s, padding-left .25s;
+      display: inline-block;
+    }
+    .footer-col a:hover {
+      color: var(--mud-light);
+      padding-left: 4px;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(196,149,74,.2);
+      padding: 18px 24px;
+      text-align: center;
+      font-size: .85rem;
+      color: #a89b7a;
+      position: relative; z-index: 1;
+    }
+    .footer-bottom a {
+      color: var(--mud-light); text-decoration: none; font-weight: 600;
+    }
+    .footer-bottom a:hover { text-decoration: underline; }
+    .footer-heart {
+      display: inline-block;
+      animation: heartbeat 1.8s ease-in-out infinite;
+      color: #e07a6a;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.2); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.15); }
+      60% { transform: scale(1); }
+    }
+
+    /* soft decorative circles in footer */
+    .footer-deco {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,149,74,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .footer-deco.d1 { width: 280px; height: 280px; top: -80px; right: -60px; }
+    .footer-deco.d2 { width: 180px; height: 180px; bottom: -40px; left: 10%; }
+
+    @media (max-width: 800px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 36px 20px 24px;
+        text-align: center;
+      }
+      .footer-brand { align-items: center; }
+      .footer-brand p { max-width: 100%; }
+      .footer-logo-row { justify-content: center; }
+      .footer-col ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; }
+      .footer-col li { margin: 0; }
+    }
+    @media (max-width: 600px) {
+      .brand { font-size: 1.1rem; }
+      .brand-logo { width: 36px; height: 36px; }
+      .back-btn { padding: 8px 14px; font-size: .85rem; }
+    }
 
     /* Hero of gallery */
     .gallery-hero {
@@ -141,13 +294,7 @@
       margin: 0; color: var(--ink-soft); font-size: .92rem; line-height: 1.55;
     }
 
-    /* Footer */
-    footer {
-      background: linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%);
-      color: #d4c9a8; text-align: center; padding: 28px 20px;
-      font-size: .9rem;
-    }
-    footer a { color: var(--mud-light); text-decoration: none; font-weight: 600; }
+    /* Footer styles moved to Enhanced Footer section above */
 
     @media (max-width: 600px) {
       .gallery-grid { grid-template-columns: 1fr; gap: 18px; }
@@ -155,17 +302,35 @@
       .card-3d:hover .card-inner {
         transform: translateY(-6px) scale(1.02);
       }
-    }
   </style>
 </head>
 <body>
   <header>
     <div class="nav-wrap">
       <a class="brand" href="https://amaderjoginibari.vercel.app/">
-        আমাদের যোগিনী বাড়ী
-        <small>গ্রামের ছবিঘর</small>
+        <div class="brand-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="32" cy="32" r="30" fill="url(#g1)" opacity=".9"/>
+  <path d="M32 14c-2 6-8 10-8 18 0 6 3.5 10 8 12 4.5-2 8-6 8-12 0-8-6-12-8-18z" fill="#f0d9a8"/>
+  <path d="M32 18c1.5 4 5 7 5 13 0 4-2 7-5 8.5-3-1.5-5-4.5-5-8.5 0-6 3.5-9 5-13z" fill="#c4954a"/>
+  <path d="M26 28c-3 2-5 5-5 9 0 3 1.5 5 4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+  <path d="M38 28c3 2 5 5 5 9 0 3-1.5 5-4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+  <circle cx="32" cy="42" r="2.5" fill="#1f4a32"/>
+  <defs>
+    <linearGradient id="g1" x1="8" y1="8" x2="56" y2="56">
+      <stop stop-color="#2d6a45"/>
+      <stop offset="1" stop-color="#1a3d28"/>
+    </linearGradient>
+  </defs>
+</svg></div>
+        <div class="brand-text">
+          <span>আমাদের যোগিনী বাড়ী</span>
+          <small>গ্রামের ছবিঘর</small>
+        </div>
       </a>
-      <a class="back-btn" href="https://amaderjoginibari.vercel.app/">← মূল পেজে ফিরে যান</a>
+      <a class="back-btn" href="https://amaderjoginibari.vercel.app/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        মূল পেজে ফিরে যান
+      </a>
     </div>
   </header>
 
@@ -177,8 +342,7 @@
   </section>
 
   <div class="gallery-wrap">
-    <div class="gallery-grid">
-    <div class="card-3d">
+        <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_001.jpg" alt="মসজিদে ইফতারির আয়োজন" loading="lazy">
@@ -661,24 +825,24 @@
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_041.jpg" alt="আর্জেন্টিনা ও ব্রাজিল" loading="lazy">
+          <img src="photo_041.jpg" alt="জার্সি পরে বন্ধুরা" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">বন্ধুত্ব</span>
-          <h3>আর্জেন্টিনা ও ব্রাজিল</h3>
-          <p>প্রিয় দলের জার্সি পরে দুই বন্ধুর ছবি।</p>
+          <h3>জার্সি পরে বন্ধুরা</h3>
+          <p>আর্জেন্টিনা ও ব্রাজিলের জার্সি পরে দুই কিশোর।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_042.jpg" alt="মশলার দোকান" loading="lazy">
+          <img src="photo_042.jpg" alt="কবিরাজের দোকান" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">হাটবাজার</span>
-          <h3>মশলার দোকান</h3>
-          <p>রাতের হাটে মশলা, ওষুধ ও জড়িবুটির দোকান।</p>
+          <h3>কবিরাজের দোকান</h3>
+          <p>রাতের আলোয় কবিরাজের ওষুধ ও মশলার পসরা।</p>
         </div>
       </div>
     </div>
@@ -688,68 +852,68 @@
           <img src="photo_043.jpg" alt="কবিরাজের আবির্ভাব" loading="lazy">
         </div>
         <div class="card-body">
-          <span class="tag">দৈনন্দিন</span>
+          <span class="tag">হাটবাজার</span>
           <h3>কবিরাজের আবির্ভাব</h3>
-          <p>কালীবাড়িতে কবিরাজ এসে চিকিৎসা দিচ্ছেন।</p>
+          <p>কালীবাড়িতে কবিরাজের আবির্ভাব হয়েছিল।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_044.jpg" alt="মাটির খেলনা ও বাসন" loading="lazy">
+          <img src="photo_044.jpg" alt="মাটির খেলনার পসরা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">মেলা</span>
+          <h3>মাটির খেলনার পসরা</h3>
+          <p>রঙিন মাটির খেলনা ও হাঁড়ি-পাতিলের দোকান।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_045.jpg" alt="মাটির জিনিসের দোকান" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">মেলা</span>
+          <h3>মাটির জিনিসের দোকান</h3>
+          <p>গাছের ছায়ায় মাটির তৈরি জিনিসপত্রের পসরা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_046.jpg" alt="হাটে বেচাকেনা" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">হাটবাজার</span>
-          <h3>মাটির খেলনা ও বাসন</h3>
-          <p>মাটির তৈরি রঙিন খেলনা ও বাসন বিক্রি হচ্ছে।</p>
+          <h3>হাটে বেচাকেনা</h3>
+          <p>ছোটখাটো জিনিসপত্র নিয়ে হাটে বেচাকেনা চলছে।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_045.jpg" alt="মাটির পাত্রের পসরা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">হাটবাজার</span>
-          <h3>মাটির পাত্রের পসরা</h3>
-          <p>রঙিন মাটির পাত্র ও পাখির মূর্তি সাজিয়ে বিক্রি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_046.jpg" alt="চুড়ি ও সাজসজ্জার দোকান" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">হাটবাজার</span>
-          <h3>চুড়ি ও সাজসজ্জার দোকান</h3>
-          <p>হাটে চুড়ি, গয়না ও ছোটখাটো জিনিস বিক্রি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_047.jpg" alt="ফুচকা বিক্রি" loading="lazy">
+          <img src="photo_047.jpg" alt="মিষ্টির দোকান" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">খাবারদাবার</span>
-          <h3>ফুচকা বিক্রি</h3>
-          <p>তাজা ফুচকা তৈরি করে বিক্রি করা হচ্ছে।</p>
+          <h3>মিষ্টির দোকান</h3>
+          <p>গোলাপজাম ও মিষ্টি বিক্রির ব্যস্ততা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_048.jpg" alt="শিশুদের খেলনা বিক্রি" loading="lazy">
+          <img src="photo_048.jpg" alt="খেলনার মেলা" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">ঈদ</span>
-          <h3>শিশুদের খেলনা বিক্রি</h3>
+          <h3>খেলনার মেলা</h3>
           <p>ঈদগাহ মাঠে শিশুদের স্মৃতির খেলনা বিক্রি।</p>
         </div>
       </div>
@@ -757,12 +921,12 @@
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_049.jpg" alt="ঈদের খেলনা" loading="lazy">
+          <img src="photo_049.jpg" alt="খেলনার পসরা" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">ঈদ</span>
-          <h3>ঈদের খেলনা</h3>
-          <p>ঈদের দিন ছোটদের খেলনা বিক্রি — গভীর স্মৃতির ছবি।</p>
+          <h3>খেলনার পসরা</h3>
+          <p>ঈদের দিন ছোটদের খেলনা বিক্রির দৃশ্য।</p>
         </div>
       </div>
     </div>
@@ -1441,9 +1605,50 @@
     </div>
   </div>
 
-  <footer>
-    <p>© যোগিনীপুর গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি</p>
-    <p style="margin-top:8px;"><a href="https://amaderjoginibari.vercel.app/">মূল ওয়েবসাইটে ফিরে যান</a></p>
+    <footer>
+    <div class="footer-deco d1"></div>
+    <div class="footer-deco d2"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <div class="footer-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="32" cy="32" r="30" fill="url(#g1)" opacity=".9"/>
+  <path d="M32 14c-2 6-8 10-8 18 0 6 3.5 10 8 12 4.5-2 8-6 8-12 0-8-6-12-8-18z" fill="#f0d9a8"/>
+  <path d="M32 18c1.5 4 5 7 5 13 0 4-2 7-5 8.5-3-1.5-5-4.5-5-8.5 0-6 3.5-9 5-13z" fill="#c4954a"/>
+  <path d="M26 28c-3 2-5 5-5 9 0 3 1.5 5 4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+  <path d="M38 28c3 2 5 5 5 9 0 3-1.5 5-4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+  <circle cx="32" cy="42" r="2.5" fill="#1f4a32"/>
+  <defs>
+    <linearGradient id="g1" x1="8" y1="8" x2="56" y2="56">
+      <stop stop-color="#2d6a45"/>
+      <stop offset="1" stop-color="#1a3d28"/>
+    </linearGradient>
+  </defs>
+</svg></div>
+          <h3>আমাদের যোগিনী বাড়ী</h3>
+        </div>
+        <p>সবুজ ছায়া, মাটির গন্ধ আর শতবর্ষী বটের ছায়াতলে গড়ে ওঠা একটি জীবন্ত গ্রাম। এখানেই আমাদের শিকড়, এখানেই আমাদের পরিচয়।</p>
+      </div>
+      <div class="footer-col">
+        <h4>দ্রুত লিংক</h4>
+        <ul>
+          <li><a href="https://amaderjoginibari.vercel.app/">মূল পৃষ্ঠা</a></li>
+          <li><a href="https://amaderjoginibari.vercel.app/gallery.html">গ্রামের ছবিঘর</a></li>
+          <li><a href="https://facebook.com/groups/717295329059799/" target="_blank" rel="noopener">ফেসবুক গ্রুপ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>যোগাযোগ</h4>
+        <ul>
+          <li><a href="https://facebook.com/groups/717295329059799/" target="_blank" rel="noopener">গ্রামের গ্রুপে যোগ দিন</a></li>
+          <li style="color:#c9bfa0;font-size:.9rem;">দুর্গানগর · উল্লাপাড়া · সিরাজগঞ্জ</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© যোগিনীবাড়ী গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি <span class="footer-heart">♥</span></p>
+      <p style="margin-top:6px;"><a href="https://amaderjoginibari.vercel.app/">মূল ওয়েবসাইটে ফিরে যান</a></p>
+    </div>
   </footer>
 </body>
 </html>
