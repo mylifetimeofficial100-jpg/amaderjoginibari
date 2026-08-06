@@ -345,6 +345,60 @@
       .card-3d:hover .card-inner {
         transform: translateY(-6px) scale(1.02);
       }
+  
+    /* ========== Gallery Filter ========== */
+    .filter-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .filter-btn {
+      font-family: 'Noto Sans Bengali', sans-serif;
+      font-size: .9rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(31,74,50,.25);
+      background: rgba(255,255,255,.7);
+      color: var(--forest-deep);
+      cursor: pointer;
+      transition: all .25s ease;
+      backdrop-filter: blur(4px);
+    }
+    .filter-btn:hover {
+      background: rgba(31,74,50,.1);
+      border-color: var(--forest);
+      transform: translateY(-1px);
+    }
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--forest) 0%, #2a5c3a 100%);
+      color: #faf8f2;
+      border-color: transparent;
+      box-shadow: 0 4px 14px rgba(31,74,50,.3);
+    }
+    .filter-count {
+      display: inline-block;
+      margin-left: 4px;
+      font-size: .75rem;
+      opacity: .75;
+    }
+    .card-3d.hidden {
+      display: none;
+    }
+    .no-result {
+      display: none;
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--ink-soft);
+      font-size: 1.1rem;
+      grid-column: 1 / -1;
+    }
+    .no-result.show { display: block; }
+
   </style>
 </head>
 <body>
@@ -384,8 +438,22 @@
     <div class="photo-count">📸 105টি নির্বাচিত ছবি</div>
   </section>
 
+  
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" data-filter="all">সব <span class="filter-count" id="count-all"></span></button>
+    <button class="filter-btn" data-filter="ফুটবল">ফুটবল</button>
+    <button class="filter-btn" data-filter="ঈদ">ঈদ</button>
+    <button class="filter-btn" data-filter="জালসা">জালসা / মাহফিল</button>
+    <button class="filter-btn" data-filter="মসজিদ">মসজিদ</button>
+    <button class="filter-btn" data-filter="মেলা">মেলা / হাট</button>
+    <button class="filter-btn" data-filter="বন্ধুত্ব">বন্ধুত্ব</button>
+    <button class="filter-btn" data-filter="রান্না">রান্না / খাবার</button>
+    <button class="filter-btn" data-filter="অনুষ্ঠান">অনুষ্ঠান</button>
+    <button class="filter-btn" data-filter="দৈনন্দিন">দৈনন্দিন</button>
+  </div>
+
   <div class="gallery-wrap">
-        <div class="card-3d">
+        <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_001.jpg" alt="মসজিদে ইফতারির আয়োজন" loading="lazy">
@@ -397,7 +465,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_002.jpg" alt="ইফতারের আয়োজন" loading="lazy">
@@ -409,7 +477,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="রান্না">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_003.jpg" alt="ইফতারের প্লেট" loading="lazy">
@@ -421,7 +489,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_004.jpg" alt="প্রসাবখানা তৈরি" loading="lazy">
@@ -433,7 +501,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="বন্ধুত্ব">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_005.jpg" alt="বন্ধুদের গ্রুপ ছবি" loading="lazy">
@@ -445,7 +513,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_006.jpg" alt="গ্রামের ফুটবল টিম" loading="lazy">
@@ -457,7 +525,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_007.jpg" alt="যোগিনীবাড়ী প্রিমিয়ার লিগ" loading="lazy">
@@ -469,7 +537,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_008.jpg" alt="মাঠে ফুটবল খেলা" loading="lazy">
@@ -481,7 +549,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_009.jpg" alt="ছোট-বড়দের খেলা" loading="lazy">
@@ -493,7 +561,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_010.jpg" alt="ফুটবল খেলা উপলক্ষে" loading="lazy">
@@ -505,7 +573,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_011.jpg" alt="ফুটবল ম্যাচের মুহূর্ত" loading="lazy">
@@ -517,7 +585,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_012.jpg" alt="টুর্নামেন্ট সিজন ২" loading="lazy">
@@ -529,7 +597,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="অনুষ্ঠান">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_013.jpg" alt="পুরস্কার বিতরণী" loading="lazy">
@@ -541,7 +609,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_014.jpg" alt="মসজিদে ইফতার" loading="lazy">
@@ -553,7 +621,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="জালসা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_015.jpg" alt="সবজির ওরস জালসা" loading="lazy">
@@ -565,7 +633,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="জালসা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_016.jpg" alt="সবজি কাটার কাজ" loading="lazy">
@@ -577,7 +645,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="জালসা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_017.jpg" alt="জালসা উপলক্ষে মেলা" loading="lazy">
@@ -589,7 +657,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_018.jpg" alt="শসার আড়ত" loading="lazy">
@@ -601,7 +669,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_019.jpg" alt="শসার আড়ত" loading="lazy">
@@ -613,7 +681,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_020.jpg" alt="শসার আড়ত" loading="lazy">
@@ -625,7 +693,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="দৈনন্দিন">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_021.jpg" alt="বিকালে কালীবাড়ি" loading="lazy">
@@ -637,7 +705,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="দৈনন্দিন">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_022.jpg" alt="দাঁড়িপাল্লা নির্বাচন" loading="lazy">
@@ -649,7 +717,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="অনুষ্ঠান">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_023.jpg" alt="ট্রফি হাতে বিজয়ী" loading="lazy">
@@ -661,7 +729,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_024.jpg" alt="ফুটবল খেলা" loading="lazy">
@@ -673,7 +741,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_025.jpg" alt="ছোট-বড়দের খেলা" loading="lazy">
@@ -685,7 +753,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_026.jpg" alt="ফুটবল খেলার আয়োজন" loading="lazy">
@@ -697,7 +765,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_027.jpg" alt="ফুটবল খেলার আয়োজন" loading="lazy">
@@ -709,7 +777,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_028.jpg" alt="বিকেলের ফুটবল" loading="lazy">
@@ -721,7 +789,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_029.jpg" alt="ছোটদের ফুটবল" loading="lazy">
@@ -733,7 +801,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_030.jpg" alt="ফুটবল ম্যাচ" loading="lazy">
@@ -745,7 +813,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_031.jpg" alt="টিম নিয়ে খেলা" loading="lazy">
@@ -757,7 +825,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_032.jpg" alt="গ্রামের ফুটবল টিম" loading="lazy">
@@ -769,7 +837,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_033.jpg" alt="ফুটবল খেলা" loading="lazy">
@@ -781,7 +849,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_034.jpg" alt="ছোট-বড়দের খেলা" loading="lazy">
@@ -793,7 +861,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_035.jpg" alt="মাঠের খেলা" loading="lazy">
@@ -805,7 +873,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="অনুষ্ঠান">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_036.jpg" alt="বিজয়ী দলের ছবি" loading="lazy">
@@ -817,7 +885,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="জালসা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_037.jpg" alt="জালসা উপলক্ষে দোকানপাট" loading="lazy">
@@ -829,7 +897,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_038.jpg" alt="চানমিয়ার সিঙ্গারা" loading="lazy">
@@ -841,7 +909,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ঈদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_039.jpg" alt="ঈদগাহ মাঠ" loading="lazy">
@@ -853,7 +921,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="রান্না">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_040.jpg" alt="রমজানের ইফতারি" loading="lazy">
@@ -865,7 +933,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_041.jpg" alt="জার্সি পরে বন্ধুরা" loading="lazy">
@@ -877,7 +945,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_042.jpg" alt="কবিরাজের দোকান" loading="lazy">
@@ -889,7 +957,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_043.jpg" alt="কবিরাজের আবির্ভাব" loading="lazy">
@@ -901,7 +969,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_044.jpg" alt="মাটির খেলনার পসরা" loading="lazy">
@@ -913,7 +981,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_045.jpg" alt="মাটির জিনিসের দোকান" loading="lazy">
@@ -925,7 +993,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_046.jpg" alt="হাটে বেচাকেনা" loading="lazy">
@@ -937,7 +1005,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_047.jpg" alt="মিষ্টির দোকান" loading="lazy">
@@ -949,7 +1017,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ঈদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_048.jpg" alt="খেলনার মেলা" loading="lazy">
@@ -961,7 +1029,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ঈদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_049.jpg" alt="খেলনার পসরা" loading="lazy">
@@ -973,7 +1041,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ঈদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_050.jpg" alt="খেলনার মেলা" loading="lazy">
@@ -985,7 +1053,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ঈদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_051.jpg" alt="ঈদের সকাল" loading="lazy">
@@ -997,7 +1065,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_052.jpg" alt="ফুটবল খেলা উপলক্ষে" loading="lazy">
@@ -1009,7 +1077,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ঈদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_053.jpg" alt="ঈদের পোশাকে বন্ধুরা" loading="lazy">
@@ -1021,7 +1089,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_054.jpg" alt="আমাদের মসজিদ" loading="lazy">
@@ -1033,7 +1101,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_055.jpg" alt="আশিকের দোকান" loading="lazy">
@@ -1045,7 +1113,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="রান্না">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_056.jpg" alt="ইফতার বিক্রি" loading="lazy">
@@ -1057,7 +1125,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_057.jpg" alt="সবজি বিক্রি" loading="lazy">
@@ -1069,7 +1137,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="রান্না">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_058.jpg" alt="ইফতারি বিক্রি" loading="lazy">
@@ -1081,7 +1149,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_059.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
@@ -1093,7 +1161,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_060.jpg" alt="মসজিদের অজুখানা" loading="lazy">
@@ -1105,7 +1173,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_061.jpg" alt="মসজিদে ইফতার" loading="lazy">
@@ -1117,7 +1185,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_062.jpg" alt="জামে মসজিদ" loading="lazy">
@@ -1129,7 +1197,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="রান্না">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_063.jpg" alt="ইফতারি শেষে নামাজ" loading="lazy">
@@ -1141,7 +1209,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="দৈনন্দিন">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_064.jpg" alt="আমাদের কালীবাড়ি" loading="lazy">
@@ -1153,7 +1221,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="বন্ধুত্ব">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_065.jpg" alt="মাঠে বন্ধুদের সাথে" loading="lazy">
@@ -1165,7 +1233,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="অনুষ্ঠান">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_066.jpg" alt="ফ্রি ফায়ার খেলার আয়োজন" loading="lazy">
@@ -1177,7 +1245,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="দৈনন্দিন">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_067.jpg" alt="গোস্ত কাটা" loading="lazy">
@@ -1189,7 +1257,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="জালসা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_068.jpg" alt="সবজির ওরস জালসা" loading="lazy">
@@ -1201,7 +1269,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="বন্ধুত্ব">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_069.jpg" alt="গাছের নিচে বন্ধুরা" loading="lazy">
@@ -1213,7 +1281,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_070.jpg" alt="যোগিনীবাড়ী মসজিদ" loading="lazy">
@@ -1225,7 +1293,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_071.jpg" alt="আমাদের মসজিদ" loading="lazy">
@@ -1237,7 +1305,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_072.jpg" alt="আমাদের মসজিদ" loading="lazy">
@@ -1249,7 +1317,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_073.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
@@ -1261,7 +1329,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_074.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
@@ -1273,7 +1341,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="বন্ধুত্ব">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_075.jpg" alt="তিন বন্ধুর ছবি" loading="lazy">
@@ -1285,7 +1353,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="বন্ধুত্ব">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_076.jpg" alt="অনুষ্ঠানে বন্ধুরা" loading="lazy">
@@ -1297,7 +1365,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="অনুষ্ঠান">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_077.jpg" alt="অনুষ্ঠানের মুহূর্ত" loading="lazy">
@@ -1309,7 +1377,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ঈদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_078.jpg" alt="ঈদের পোশাকে তিনজন" loading="lazy">
@@ -1321,7 +1389,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ঈদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_079.jpg" alt="পাঞ্জাবি পরে বন্ধুরা" loading="lazy">
@@ -1333,7 +1401,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ঈদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_080.jpg" alt="ঈদের দিনের ছবি" loading="lazy">
@@ -1345,7 +1413,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="বন্ধুত্ব">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_081.jpg" alt="নৌকায় বন্ধুরা" loading="lazy">
@@ -1357,7 +1425,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="বন্ধুত্ব">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_082.jpg" alt="তরমুজ খেয়ে আড্ডা" loading="lazy">
@@ -1369,7 +1437,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="দৈনন্দিন">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_083.jpg" alt="কালীবাড়ি বটতলা" loading="lazy">
@@ -1381,7 +1449,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_084.jpg" alt="যোগিনীবাড়ী মসজিদ" loading="lazy">
@@ -1393,7 +1461,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_085.jpg" alt="আমাদের মসজিদ" loading="lazy">
@@ -1405,7 +1473,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_086.jpg" alt="জামে মসজিদ" loading="lazy">
@@ -1417,7 +1485,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_087.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
@@ -1429,7 +1497,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="দৈনন্দিন">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_088.jpg" alt="আগামীর ভবিষ্যৎ" loading="lazy">
@@ -1441,7 +1509,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="দৈনন্দিন">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_089.jpg" alt="তিন ভাইবোন" loading="lazy">
@@ -1453,7 +1521,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="জালসা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_090.jpg" alt="মাওলানা আব্দুল্লাহ আল আমিন" loading="lazy">
@@ -1465,7 +1533,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="জালসা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_091.jpg" alt="মসজিদে জালসার আয়োজন" loading="lazy">
@@ -1477,7 +1545,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="জালসা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_092.jpg" alt="জালসার আয়োজন" loading="lazy">
@@ -1489,7 +1557,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="জালসা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_093.jpg" alt="জালসার আয়োজন" loading="lazy">
@@ -1501,7 +1569,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="দৈনন্দিন">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_094.jpg" alt="রাতের কালীবাড়ি বটতলা" loading="lazy">
@@ -1513,7 +1581,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="ফুটবল">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_095.jpg" alt="ফুটবল ও স্মৃতি" loading="lazy">
@@ -1525,7 +1593,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মেলা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_096.jpg" alt="বিকেলের হইচই" loading="lazy">
@@ -1537,7 +1605,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_097.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
@@ -1549,7 +1617,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_098.jpg" alt="মসজিদের অজুখানা" loading="lazy">
@@ -1561,7 +1629,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_099.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
@@ -1573,7 +1641,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="জালসা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_100.jpg" alt="জালসার গেট" loading="lazy">
@@ -1585,7 +1653,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_101.jpg" alt="মসজিদে ইফতার" loading="lazy">
@@ -1597,7 +1665,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="রান্না">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_102.jpg" alt="ইফতারির প্লেট" loading="lazy">
@@ -1609,7 +1677,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="অনুষ্ঠান">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_103.jpg" alt="পুরস্কার বিতরণ" loading="lazy">
@@ -1621,7 +1689,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="জালসা">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_104.jpg" alt="জালসা ওরস শরীফ" loading="lazy">
@@ -1633,7 +1701,7 @@
         </div>
       </div>
     </div>
-    <div class="card-3d">
+    <div class="card-3d" data-category="মসজিদ">
       <div class="card-inner">
         <div class="card-img">
           <img src="photo_105.jpg" alt="মসজিদের পাশে মেলা" loading="lazy">
@@ -1693,5 +1761,41 @@
       <p style="margin-top:6px;"><a href="https://amaderjoginibari.vercel.app/">মূল ওয়েবসাইটে ফিরে যান</a></p>
     </div>
   </footer>
+
+<script>
+(function() {
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.card-3d');
+  const noResult = document.getElementById('noResult');
+  const countAll = document.getElementById('count-all');
+
+  if (countAll) countAll.textContent = '(' + cards.length + ')';
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      buttons.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const filter = this.getAttribute('data-filter');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category') || 'দৈনন্দিন';
+        if (filter === 'all' || cat === filter) {
+          card.classList.remove('hidden');
+          visible++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (noResult) {
+        if (visible === 0) noResult.classList.add('show');
+        else noResult.classList.remove('show');
+      }
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

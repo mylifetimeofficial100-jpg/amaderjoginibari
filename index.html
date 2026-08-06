@@ -412,6 +412,74 @@
   .maker-text p{margin:0; color:var(--ink-soft); font-size:1rem;}
 
   
+  
+  /* ---------- LOCATION / MAP ---------- */
+  .location-section{
+    background:linear-gradient(180deg, #e8e0cc 0%, var(--paper) 100%);
+    padding:70px 24px 80px;
+  }
+  .location-inner{
+    max-width:1000px; margin:0 auto;
+  }
+  .location-header{
+    text-align:center; margin-bottom:36px;
+  }
+  .location-header .eyebrow{
+    display:inline-block; font-size:.8rem; letter-spacing:3px;
+    text-transform:uppercase; color:var(--forest); margin-bottom:10px;
+    opacity:.8;
+  }
+  .location-header h2{
+    font-size:clamp(1.6rem, 4vw, 2.2rem); margin:0 0 12px;
+  }
+  .location-header p{
+    max-width:520px; margin:0 auto; color:var(--ink-soft); font-size:1.05rem;
+  }
+  .location-grid{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:28px;
+    align-items:stretch;
+  }
+  .location-info{
+    background:#fff;
+    border-radius:16px;
+    padding:32px 28px;
+    box-shadow:0 12px 32px -14px rgba(30,61,42,.15);
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .location-info h3{
+    font-size:1.25rem; margin:0 0 4px; color:var(--forest-deep);
+  }
+  .address-block{
+    display:flex; gap:12px; align-items:flex-start;
+  }
+  .address-icon{
+    width:40px; height:40px; flex-shrink:0;
+    background:rgba(31,74,50,.1); border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem;
+  }
+  .address-text{
+    font-size:.98rem; line-height:1.7; color:var(--ink-soft);
+  }
+  .address-text strong{
+    color:var(--forest-deep); font-weight:700;
+  }
+  .map-wrap{
+    border-radius:16px; overflow:hidden;
+    box-shadow:0 12px 32px -14px rgba(30,61,42,.18);
+    min-height:320px;
+    background:#d6cdb2;
+  }
+  .map-wrap iframe{
+    width:100%; height:100%; min-height:320px; border:0; display:block;
+  }
+  @media (max-width:720px){
+    .location-grid{grid-template-columns:1fr;}
+    .map-wrap, .map-wrap iframe{min-height:280px;}
+  }
+
   /* ---------- ENHANCED FOOTER ---------- */
   footer{
     background:linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%);
@@ -575,6 +643,7 @@
 <a href="gallery.html">ছবিঘর</a>
 <a href="#notice">খবরাখবর</a>
 <a href="#opinion">মতামত</a>
+<a href="#location">ঠিকানা</a>
 <a href="#join">ফেসবুক গ্রুপ</a>
 </nav>
 </div>
@@ -866,6 +935,59 @@
 </div>
 </div>
 </section>
+
+<section class="location-section" id="location">
+  <div class="location-inner">
+    <div class="location-header">
+      <span class="eyebrow">আমাদের ঠিকানা</span>
+      <h2>যোগিনীবাড়ী কোথায়?</h2>
+      <p>সিরাজগঞ্জের উল্লাপাড়া উপজেলার দুর্গানগর ইউনিয়নে — এখানেই আমাদের শিকড়।</p>
+    </div>
+    <div class="location-grid">
+      <div class="location-info">
+        <h3>পূর্ণ ঠিকানা</h3>
+        <div class="address-block">
+          <div class="address-icon">📍</div>
+          <div class="address-text">
+            <strong>যোগিনীবাড়ী</strong><br>
+            ৬ নং ওয়ার্ড, দুর্গানগর ইউনিয়ন<br>
+            উল্লাপাড়া উপজেলা, সিরাজগঞ্জ − ৬৭৬০<br>
+            রাজশাহী বিভাগ, বাংলাদেশ
+          </div>
+        </div>
+        <div class="address-block">
+          <div class="address-icon">🌳</div>
+          <div class="address-text">
+            গ্রামের প্রাণকেন্দ্র — <strong>কালীবাড়ী বটতলা</strong><br>
+            এখানেই চা-আড্ডা, হাট ও মানুষের জীবন জমে ওঠে।
+          </div>
+        </div>
+        <div class="address-block">
+          <div class="address-icon">🕌</div>
+          <div class="address-text">
+            গ্রামের প্রধান <strong>মসজিদ</strong> কালীবাড়ী থেকে কিছুটা দূরে অবস্থিত।
+          </div>
+        </div>
+        <div class="address-block">
+          <div class="address-icon">📧</div>
+          <div class="address-text">
+            <a href="mailto:mylifetimeofficial100@gmail.com" style="color:var(--forest); font-weight:600; text-decoration:none;">mylifetimeofficial100@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://maps.google.com/maps?q=Durganagar+Union,+Ullapara,+Sirajganj,+Bangladesh&hl=bn&z=14&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="যোগিনীবাড়ী, দুর্গানগর ইউনিয়ন, উল্লাপাড়া, সিরাজগঞ্জ">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
 <div class="footer-deco d1"></div>
 <div class="footer-deco d2"></div>
@@ -882,6 +1004,8 @@
 <a href="gallery.html">ছবিঘর</a>
 <a href="#notice">খবরাখবর</a>
 <a href="#opinion">মতামত</a>
+<a href="#location">ঠিকানা</a>
+<a href="#location">ঠিকানা</a>
 <a href="#join">ফেসবুক গ্রুপ</a>
 </div>
 </div>
