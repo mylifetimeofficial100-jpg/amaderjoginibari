@@ -2,29 +2,32 @@
 
 <html lang="bn">
 <head>
+  <meta name="google-site-verification" content="Q4CcFEEm7v_hFaNwXjj_S0OJnyuAe7M9p0mZYrE-pMU" />
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>আমাদের যোগিনী বাড়ী</title>
+<link rel="icon" href="favicon.png" type="image/png"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;family=Tiro+Bangla&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --forest:#2d5a3f;
-    --forest-deep:#1e3d2a;
+    --forest:#1f4a32;
+    --forest-deep:#12261a;
     --mud:#c4954a;
-    --mud-light:#e8d0a0;
+    --mud-light:#f0d9a8;
     --tin:#8a929a;
     --sindoor:#b84a42;
-    --paper:#faf8f2;
-    --paper-dim:#f3efe6;
-    --ink:#1c1812;
-    --ink-soft:#4f4638;
+    --paper:#d6cdb2;
+    --paper-dim:#c9bfa0;
+    --ink:#1a1610;
+    --ink-soft:#3f382c;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:var(--paper);
+    background:linear-gradient(165deg, #d2c8ab 0%, #c9bf9c 45%, #c2b893 100%);
     color:var(--ink);
     font-family:'Noto Sans Bengali','Tiro Bangla',sans-serif;
     line-height:1.8;
@@ -49,27 +52,28 @@
   /* ---------- NAV ---------- */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(45,90,63,.97);
-    backdrop-filter:blur(8px);
+    background:rgba(31,74,50,.98);
+    backdrop-filter:blur(10px);
     border-bottom:3px solid var(--mud);
+    box-shadow:0 4px 20px rgba(18,38,26,.25);
   }
   .nav-wrap{
     max-width:1180px; margin:0 auto; padding:14px 24px;
     display:flex; align-items:center; justify-content:space-between; gap:16px;
   }
   .brand{
-    display:flex; align-items:center; gap:10px;
+    display:flex; align-items:center; gap:12px;
     color:var(--mud-light); text-decoration:none;
   }
-  .brand svg{width:34px;height:34px;flex-shrink:0;}
-  .brand-text{font-family:'Baloo Da 2',sans-serif; font-weight:700; font-size:1.28rem; color:#faf8f2;}
-  .brand-text small{display:block; font-family:'Noto Sans Bengali',sans-serif; font-weight:400; font-size:.62rem; letter-spacing:2px; color:var(--mud-light); text-transform:uppercase;}
+  .brand svg{width:42px;height:42px;flex-shrink:0; filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));}
+  .brand-text{font-family:'Baloo Da 2',sans-serif; font-weight:800; font-size:1.38rem; color:#fffef8; text-shadow:0 1px 3px rgba(0,0,0,.35); letter-spacing:.3px;}
+  .brand-text small{display:block; font-family:'Noto Sans Bengali',sans-serif; font-weight:600; font-size:.68rem; letter-spacing:2.2px; color:#f0d9a8; text-transform:uppercase; text-shadow:0 1px 2px rgba(0,0,0,.25); margin-top:2px;}
   nav{display:flex; gap:2px;}
   nav a{
-    font-size:.95rem; padding:8px 14px; border-radius:20px; text-decoration:none;
-    color:#f0ebe0; transition:.25s;
+    font-size:1rem; padding:9px 16px; border-radius:20px; text-decoration:none;
+    color:#faf6eb; font-weight:600; transition:.25s; letter-spacing:.2px;
   }
-  nav a:hover, nav a:focus-visible{background:rgba(250,248,242,.18); color:#fff;}
+  nav a:hover, nav a:focus-visible{background:rgba(250,248,242,.22); color:#fff; text-shadow:0 0 8px rgba(240,217,168,.4);}
   .nav-toggle{display:none; background:none; border:0; color:#faf8f2; font-size:1.6rem; cursor:pointer;}
 
   @media (max-width:760px){
@@ -86,7 +90,7 @@
 
   /* ---------- HERO ---------- */
   .hero{
-    background:linear-gradient(180deg, var(--forest) 0%, #254a35 100%);
+    background:linear-gradient(180deg, var(--forest) 0%, #163326 100%);
     padding:34px 24px 0;
   }
   .hero-top{
@@ -159,7 +163,7 @@
   .about-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
   @media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
   .about-text p{color:var(--ink-soft); font-size:1.06rem; margin:0 0 18px;}
-  .about-text strong{color:var(--forest-deep);}
+  .about-text strong{color:var(--forest-deep); font-weight:normal;}
   .stat-row{display:flex; gap:0; margin-top:36px; border-top:2px solid rgba(45,90,63,.12); padding-top:28px;}
   .stat{flex:1; padding-right:20px;}
   .stat b{display:block; font-family:'Baloo Da 2',sans-serif; font-size:2.1rem; color:var(--sindoor);}
@@ -180,7 +184,7 @@
 
   /* ---------- TREE STORY BAND ---------- */
   .tree-band{
-    background:linear-gradient(165deg, #2d5a3f 0%, #254a35 100%); color:#f5f0e4; position:relative;
+    background:linear-gradient(165deg, var(--forest) 0%, #163326 100%); color:#f5f0e4; position:relative;
     padding:96px 24px;
   }
   .tree-band::before{
@@ -277,7 +281,7 @@
 
   /* ---------- FACEBOOK / JOIN ---------- */
   .join{
-    background:linear-gradient(165deg, #2d5a3f 0%, #254a35 100%); color:#f5f0e4; text-align:center;
+    background:linear-gradient(165deg, var(--forest) 0%, #163326 100%); color:#f5f0e4; text-align:center;
     padding:96px 24px; position:relative; overflow:hidden;
   }
   .join::before{
@@ -316,7 +320,7 @@
   .maker-text h3{margin:0 0 10px; font-size:1.5rem; color:var(--forest-deep);}
   .maker-text p{margin:0; color:var(--ink-soft); font-size:1rem;}
 
-  footer{background:var(--forest); color:#d4c9a8; padding:50px 24px 30px; border-top:1px solid rgba(250,248,242,.12);}
+  footer{background:linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%); color:#d4c9a8; padding:50px 24px 30px; border-top:1px solid rgba(250,248,242,.12);}
   .footer-inner{max-width:1180px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px;}
   .footer-brand{font-family:'Baloo Da 2',sans-serif; color:#faf8f2; font-size:1.2rem;}
   .footer-inner p{margin:8px 0 0; font-size:.9rem; max-width:340px; color:#b5a98a;}
@@ -406,15 +410,24 @@
 <header>
 <div class="nav-wrap">
 <a class="brand" href="#top">
-<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M24 4C24 4 24 14 24 18" stroke="#e4c391" stroke-linecap="round" stroke-width="2"></path>
-<path d="M24 18C18 18 12 22 10 30" stroke="#e4c391" stroke-linecap="round" stroke-width="2"></path>
-<path d="M24 18C30 18 36 22 38 30" stroke="#e4c391" stroke-linecap="round" stroke-width="2"></path>
-<path d="M24 18C21 20 18 26 18 34" stroke="#e4c391" stroke-linecap="round" stroke-width="1.6"></path>
-<path d="M24 18C27 20 30 26 30 34" stroke="#e4c391" stroke-linecap="round" stroke-width="1.6"></path>
-<circle cx="24" cy="14" fill="#3a5f42" r="10"></circle>
-<circle cx="15" cy="16" fill="#2f4f35" r="6"></circle>
-<circle cx="33" cy="16" fill="#2f4f35" r="6"></circle>
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <!-- elegant banyan canopy -->
+  <ellipse cx="24" cy="16" rx="18" ry="12" fill="#2a5c3a"/>
+  <ellipse cx="14" cy="18" rx="9" ry="8" fill="#1e4a2e"/>
+  <ellipse cx="34" cy="18" rx="9" ry="8" fill="#1e4a2e"/>
+  <ellipse cx="24" cy="12" rx="11" ry="8" fill="#357048"/>
+  <!-- trunk -->
+  <path d="M22 24 L22 38 Q24 40 26 38 L26 24" fill="#8b5e2b"/>
+  <path d="M23 24 L23 37 Q24 38.5 25 37 L25 24" fill="#a67c3d"/>
+  <!-- hanging roots / aerial roots -->
+  <path d="M16 22 Q14 28 13 36" stroke="#c4954a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  <path d="M20 23 Q19 30 18 37" stroke="#d4a85a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M28 23 Q29 30 30 37" stroke="#d4a85a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M32 22 Q34 28 35 36" stroke="#c4954a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  <!-- base soil mound -->
+  <ellipse cx="24" cy="40" rx="14" ry="4" fill="#6b4a28" opacity=".85"/>
+  <!-- small golden glow accent -->
+  <circle cx="24" cy="14" r="3" fill="#e8d0a0" opacity=".35"/>
 </svg>
 <span class="brand-text">আমাদের যোগিনী বাড়ী<small>Amader Joginibari · গ্রামের পাতা</small></span>
 </a>
@@ -687,6 +700,7 @@
 <b>ধন্যবাদ!</b>
 আপনার মতামত গ্রহণ করা হয়েছে। গ্রামের এই পরিবারের অংশ হওয়ার জন্য আন্তরিক ধন্যবাদ।
 </div>
+<div id="commentsList" class="comments-list" style="margin-top:32px;"></div>
 </div>
 </div>
 </section>
@@ -719,6 +733,7 @@
 <div>
 <div class="footer-brand">আমাদের যোগিনী বাড়ী</div>
 <p>যোগিনীপুর গ্রাম, দুর্গানগর ইউনিয়ন, উল্লাপাড়া, সিরাজগঞ্জ — আমাদের সবার প্রিয় জন্মভূমি।</p>
+<p class="footer-email" style="margin-top:14px;"><a href="mailto:mylifetimeofficial100@gmail.com" style="color:#f0d9a8; text-decoration:none; font-weight:600; font-size:.95rem;">📧 mylifetimeofficial100@gmail.com</a></p>
 </div>
 <div class="footer-links">
 <a href="#about">গ্রামের কথা</a>
@@ -732,14 +747,56 @@
 <div class="footer-bottom">© যোগিনীপুর গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি</div>
 </footer>
 <script>
-function submitOpinion(e){
+function escapeHtml(text) {
+  var div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+function renderComments() {
+  var comments = JSON.parse(localStorage.getItem('joginiComments') || '[]');
+  var list = document.getElementById('commentsList');
+  if (!list) return;
+  if (comments.length === 0) {
+    list.innerHTML = '<p style="color:var(--ink-soft);text-align:center;font-size:.95rem;">এখনো কোনো মতামত নেই। আপনিই প্রথম লিখুন!</p>';
+    return;
+  }
+  var html = '<h3 style="margin:0 0 18px;font-size:1.2rem;color:var(--forest-deep);">সবার মতামত</h3>';
+  comments.forEach(function(c) {
+    html += '<div style="background:#faf8f2;border-radius:10px;padding:16px 18px;margin-bottom:12px;border-left:4px solid var(--mud);box-shadow:0 2px 8px rgba(0,0,0,.04);">' +
+      '<b style="color:var(--forest-deep);">' + escapeHtml(c.name) + '</b>' +
+      '<span style="font-size:.78rem;color:var(--ink-soft);margin-left:10px;">' + escapeHtml(c.date) + '</span>' +
+      '<p style="margin:8px 0 0;color:var(--ink-soft);line-height:1.6;">' + escapeHtml(c.message) + '</p></div>';
+  });
+  list.innerHTML = html;
+}
+function submitOpinion(e) {
   e.preventDefault();
-  var form = document.getElementById('opinionForm');
-  var thanks = document.getElementById('opinionThanks');
-  form.style.display = 'none';
-  thanks.classList.add('show');
+  var nameEl = document.getElementById('op-name');
+  var msgEl = document.getElementById('op-msg');
+  var name = nameEl.value.trim();
+  var msg = msgEl.value.trim();
+  if (!name || !msg) return false;
+
+  var comments = JSON.parse(localStorage.getItem('joginiComments') || '[]');
+  comments.unshift({
+    name: name,
+    message: msg,
+    date: new Date().toLocaleString('bn-BD', { dateStyle: 'medium', timeStyle: 'short' })
+  });
+  localStorage.setItem('joginiComments', JSON.stringify(comments));
+  renderComments();
+
+  document.getElementById('opinionForm').style.display = 'none';
+  document.getElementById('opinionThanks').classList.add('show');
+
+  // ইমেইলেও পাঠানোর চেষ্টা (ইউজারের মেইল ক্লায়েন্ট খুলবে)
+  var subject = encodeURIComponent('যোগিনী বাড়ী — মতামত: ' + name);
+  var body = encodeURIComponent(msg + '\n\n— ' + name);
+  window.location.href = 'mailto:mylifetimeofficial100@gmail.com?subject=' + subject + '&body=' + body;
+
   return false;
 }
+document.addEventListener('DOMContentLoaded', renderComments);
 </script>
 </body>
 </html>
