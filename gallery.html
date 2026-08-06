@@ -33,8 +33,6 @@
       font-weight: 700;
       color: var(--forest-deep);
     }
-
-    /* Header */
     header {
       position: sticky; top: 0; z-index: 50;
       background: rgba(31,74,50,.97);
@@ -63,8 +61,6 @@
       transition: .25s;
     }
     .back-btn:hover { background: var(--mud-light); transform: translateY(-2px); }
-
-    /* Hero of gallery */
     .gallery-hero {
       background: linear-gradient(180deg, var(--forest) 0%, #163326 100%);
       color: #faf8f2; text-align: center;
@@ -86,8 +82,6 @@
       background: rgba(240,217,168,.15); border: 1px solid rgba(240,217,168,.35);
       padding: 6px 16px; border-radius: 20px; font-size: .9rem; color: var(--mud-light);
     }
-
-    /* Grid */
     .gallery-wrap {
       max-width: 1200px; margin: 0 auto; padding: 40px 16px 70px;
     }
@@ -97,11 +91,7 @@
       gap: 22px;
       perspective: 1200px;
     }
-
-    /* 3D Card */
-    .card-3d {
-      perspective: 1000px;
-    }
+    .card-3d { perspective: 1000px; }
     .card-inner {
       background: #fff;
       border-radius: 12px;
@@ -122,12 +112,8 @@
       width: 100%; height: 100%; object-fit: cover;
       transition: transform .6s ease;
     }
-    .card-3d:hover .card-img img {
-      transform: scale(1.08);
-    }
-    .card-body {
-      padding: 16px 18px 20px;
-    }
+    .card-3d:hover .card-img img { transform: scale(1.08); }
+    .card-body { padding: 16px 18px 20px; }
     .tag {
       display: inline-block; font-size: .72rem; letter-spacing: 1.4px;
       text-transform: uppercase; color: var(--sindoor); font-weight: 700;
@@ -139,15 +125,12 @@
     .card-body p {
       margin: 0; color: var(--ink-soft); font-size: .92rem; line-height: 1.55;
     }
-
-    /* Footer */
     footer {
       background: linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%);
       color: #d4c9a8; text-align: center; padding: 28px 20px;
       font-size: .9rem;
     }
     footer a { color: var(--mud-light); text-decoration: none; font-weight: 600; }
-
     @media (max-width: 600px) {
       .gallery-grid { grid-template-columns: 1fr; gap: 18px; }
       .card-img { height: 230px; }
@@ -177,1240 +160,1239 @@
 
   <div class="gallery-wrap">
     <div class="gallery-grid">
-
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_001.jpg" alt="বটতলার আড্ডা" loading="lazy">
+          <img src="photo_001.jpg" alt="জালসা ওরস" loading="lazy">
         </div>
         <div class="card-body">
-          <span class="tag">খেলাধুলা</span>
-          <h3>বটতলার আড্ডা</h3>
-          <p>গ্রামের মানুষের জীবনের এক টুকরো।</p>
+          <span class="tag">ধর্মীয়</span>
+          <h3>জালসা ওরস</h3>
+          <p>শত শত মানুষ একসাথে বসে দোয়া ও খাবার ভাগ করে নিচ্ছেন।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_002.jpg" alt="মাঠের খেলা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">অনুষ্ঠান</span>
-          <h3>মাঠের খেলা</h3>
-          <p>এখানেই আমাদের শিকড়।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_003.jpg" alt="উৎসবের রং" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">প্রকৃতি</span>
-          <h3>উৎসবের রং</h3>
-          <p>মাটির গন্ধ আর মানুষের ভালোবাসা।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_004.jpg" alt="শিশুদের হাসি" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">দৈনন্দিন</span>
-          <h3>শিশুদের হাসি</h3>
-          <p>প্রজন্মের পর প্রজন্মের স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_005.jpg" alt="ধানক্ষেতের সবুজ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">শিশুকিশোর</span>
-          <h3>ধানক্ষেতের সবুজ</h3>
-          <p>সবাই মিলে, সবার জন্য।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_006.jpg" alt="মসজিদের প্রাঙ্গণ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">উৎসব</span>
-          <h3>মসজিদের প্রাঙ্গণ</h3>
-          <p>আমাদের যোগিনী বাড়ীর গল্প।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_007.jpg" alt="রাতের বাজার" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">কৃষি</span>
-          <h3>রাতের বাজার</h3>
-          <p>এই ছবিতে বেঁচে আছে অনেক মুখ।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_008.jpg" alt="সম্মিলিত আয়োজন" loading="lazy">
+          <img src="photo_002.jpg" alt="শিশুদের খাবার" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">সমাজ</span>
-          <h3>সম্মিলিত আয়োজন</h3>
-          <p>গ্রামের প্রাণের ছবি।</p>
+          <h3>শিশুদের খাবার</h3>
+          <p>মসজিদে শিশুদের জন্য আয়োজিত খাবার বিতরণের মুহূর্ত।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_009.jpg" alt="পুরস্কার বিতরণ" loading="lazy">
+          <img src="photo_003.jpg" alt="ইফতারের প্লেট" loading="lazy">
         </div>
         <div class="card-body">
-          <span class="tag">স্মৃতি</span>
-          <h3>পুরস্কার বিতরণ</h3>
-          <p>ভালোবাসার বন্ধনে বাঁধা স্মৃতি।</p>
+          <span class="tag">ধর্মীয়</span>
+          <h3>ইফতারের প্লেট</h3>
+          <p>একসাথে ইফতারের আয়োজন — গ্রামের আতিথেয়তা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_010.jpg" alt="কাদামাঠে ফুটবল" loading="lazy">
+          <img src="photo_004.jpg" alt="সনদ হাতে তরুণ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>সনদ হাতে তরুণ</h3>
+          <p>অর্জনের সনদ হাতে গর্বিত তরুণরা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_005.jpg" alt="ফুটবল দল" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>ফুটবল দল</h3>
+          <p>কাদামাখা মাঠে জার্সি পরে দাঁড়িয়ে থাকা ফুটবল দল।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_006.jpg" alt="মাঠের খেলোয়াড়" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>মাঠের খেলোয়াড়</h3>
+          <p>সবুজ মাঠে বল হাতে তরুণ খেলোয়াড়রা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_007.jpg" alt="খেলনার মেলা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">দৈনন্দিন</span>
+          <h3>খেলনার মেলা</h3>
+          <p>গ্রামের মেলায় খেলনা বেচাকেনার রঙিন দৃশ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_008.jpg" alt="মাটির পুতুল" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ঐতিহ্য</span>
+          <h3>মাটির পুতুল</h3>
+          <p>মাটির তৈরি রঙিন পুতুল — গ্রামের হস্তশিল্প।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_009.jpg" alt="রাতের জালসা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>রাতের জালসা</h3>
+          <p>রাতের আলোয় শত শত মানুষের জালসায় অংশগ্রহণ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_010.jpg" alt="সবজির স্তূপ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">কৃষি</span>
+          <h3>সবজির স্তূপ</h3>
+          <p>ক্ষেত থেকে তোলা তাজা সবজি বাজারজাত করার দৃশ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_011.jpg" alt="ওজুর স্থান" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>ওজুর স্থান</h3>
+          <p>মসজিদের ওজুর স্থানে নামাজের আগে প্রস্তুতি।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_012.jpg" alt="উৎসবের পাঞ্জাবি" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">উৎসব</span>
+          <h3>উৎসবের পাঞ্জাবি</h3>
+          <p>পাঞ্জাবি পরে উৎসবের আমেজে তরুণরা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_013.jpg" alt="সম্মিলিত খাবার" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">সমাজ</span>
+          <h3>সম্মিলিত খাবার</h3>
+          <p>একসাথে বসে খাবার খাওয়ার গ্রামীণ ঐতিহ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_014.jpg" alt="শিশুদের হাসি" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">শিশুকিশোর</span>
+          <h3>শিশুদের হাসি</h3>
+          <p>রঙিন পোশাকে গ্রামের ছোট্ট সোনামণিরা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_015.jpg" alt="বটতলার আড্ডা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">দৈনন্দিন</span>
+          <h3>বটতলার আড্ডা</h3>
+          <p>গ্রামের মানুষের জীবনের এক টুকরো আড্ডা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_016.jpg" alt="কৃষকের কাজ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">কৃষি</span>
+          <h3>কৃষকের কাজ</h3>
+          <p>মাঠে কৃষকদের দৈনন্দিন কাজের দৃশ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_017.jpg" alt="পুরস্কার বিতরণ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">অনুষ্ঠান</span>
+          <h3>পুরস্কার বিতরণ</h3>
+          <p>বিজয়ীদের হাতে ট্রফি তুলে দেওয়ার মুহূর্ত।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_018.jpg" alt="ধানক্ষেতের পথ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">প্রকৃতি</span>
+          <h3>ধানক্ষেতের পথ</h3>
+          <p>সবুজ ধানক্ষেতের পাশ দিয়ে চলা গ্রামের পথ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_019.jpg" alt="মসজিদ প্রাঙ্গণ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>মসজিদ প্রাঙ্গণ</h3>
+          <p>নামাজের পর মসজিদ প্রাঙ্গণের শান্ত পরিবেশ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_020.jpg" alt="যুবসমাজ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">সমাজ</span>
+          <h3>যুবসমাজ</h3>
+          <p>গ্রামের তরুণদের সামাজিক কাজের এক মুহূর্ত।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_021.jpg" alt="কাদামাঠে ফুটবল" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">খেলাধুলা</span>
           <h3>কাদামাঠে ফুটবল</h3>
-          <p>যোগিনীবাড়ীর স্মরণীয় মুহূর্ত।</p>
+          <p>বর্ষার কাদামাখা মাঠে ফুটবলের উন্মাদনা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_011.jpg" alt="ক্রিকেটের উন্মাদনা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">অনুষ্ঠান</span>
-          <h3>ক্রিকেটের উন্মাদনা</h3>
-          <p>গ্রামের মানুষের জীবনের এক টুকরো।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_012.jpg" alt="জালসা ওরস" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">প্রকৃতি</span>
-          <h3>জালসা ওরস</h3>
-          <p>এখানেই আমাদের শিকড়।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_013.jpg" alt="ফুলের সৌন্দর্য" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">দৈনন্দিন</span>
-          <h3>ফুলের সৌন্দর্য</h3>
-          <p>মাটির গন্ধ আর মানুষের ভালোবাসা।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_014.jpg" alt="আলোকসজ্জা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">শিশুকিশোর</span>
-          <h3>আলোকসজ্জা</h3>
-          <p>প্রজন্মের পর প্রজন্মের স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_015.jpg" alt="গ্রামের পথ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">উৎসব</span>
-          <h3>গ্রামের পথ</h3>
-          <p>সবাই মিলে, সবার জন্য।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_016.jpg" alt="বন্ধুত্বের মুহূর্ত" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">কৃষি</span>
-          <h3>বন্ধুত্বের মুহূর্ত</h3>
-          <p>আমাদের যোগিনী বাড়ীর গল্প।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_017.jpg" alt="পরিবারের সাথে" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">সমাজ</span>
-          <h3>পরিবারের সাথে</h3>
-          <p>এই ছবিতে বেঁচে আছে অনেক মুখ।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_018.jpg" alt="যুবসমাজের উদ্যোগ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">স্মৃতি</span>
-          <h3>যুবসমাজের উদ্যোগ</h3>
-          <p>গ্রামের প্রাণের ছবি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_019.jpg" alt="স্মরণীয় দিন" loading="lazy">
+          <img src="photo_022.jpg" alt="ক্রিকেট দল" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">খেলাধুলা</span>
-          <h3>স্মরণীয় দিন</h3>
-          <p>ভালোবাসার বন্ধনে বাঁধা স্মৃতি।</p>
+          <h3>ক্রিকেট দল</h3>
+          <p>সবুজ মাঠে ক্রিকেট খেলার মুহূর্ত।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_020.jpg" alt="সকালের আলো" loading="lazy">
+          <img src="photo_023.jpg" alt="ফুলের সৌন্দর্য" loading="lazy">
         </div>
         <div class="card-body">
-          <span class="tag">অনুষ্ঠান</span>
-          <h3>সকালের আলো</h3>
-          <p>যোগিনীবাড়ীর স্মরণীয় মুহূর্ত।</p>
+          <span class="tag">প্রকৃতি</span>
+          <h3>ফুলের সৌন্দর্য</h3>
+          <p>মসজিদ প্রাঙ্গণে ফুটে থাকা ফুল।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_021.jpg" alt="বিকেলের ছায়া" loading="lazy">
+          <img src="photo_024.jpg" alt="আলোকসজ্জা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">উৎসব</span>
+          <h3>আলোকসজ্জা</h3>
+          <p>উৎসবের রাতে আলোয় সেজে ওঠা পরিবেশ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_025.jpg" alt="বন্ধুত্ব" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">স্মৃতি</span>
+          <h3>বন্ধুত্ব</h3>
+          <p>বন্ধুদের সাথে কাটানো স্মরণীয় মুহূর্ত।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_026.jpg" alt="পরিবার" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">দৈনন্দিন</span>
+          <h3>পরিবার</h3>
+          <p>পরিবারের সাথে কাটানো সাধারণ দিন।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_027.jpg" alt="স্মরণীয় দিন" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">স্মৃতি</span>
+          <h3>স্মরণীয় দিন</h3>
+          <p>গ্রামের ইতিহাসে থেকে যাওয়া এক দিন।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_028.jpg" alt="সকালের আলো" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">প্রকৃতি</span>
+          <h3>সকালের আলো</h3>
+          <p>সকালের আলোয় গ্রামের সৌন্দর্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_029.jpg" alt="বিকেলের ছায়া" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">প্রকৃতি</span>
           <h3>বিকেলের ছায়া</h3>
-          <p>গ্রামের মানুষের জীবনের এক টুকরো।</p>
+          <p>বটগাছের ছায়ায় বিকেলের আড্ডা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_022.jpg" alt="হাসিমুখ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">দৈনন্দিন</span>
-          <h3>হাসিমুখ</h3>
-          <p>এখানেই আমাদের শিকড়।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_023.jpg" alt="একতার ছবি" loading="lazy">
+          <img src="photo_030.jpg" alt="হাসিমুখ" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">শিশুকিশোর</span>
-          <h3>একতার ছবি</h3>
-          <p>মাটির গন্ধ আর মানুষের ভালোবাসা।</p>
+          <h3>হাসিমুখ</h3>
+          <p>শিশুদের হাসিমুখে ভরা গ্রাম।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_024.jpg" alt="মাটির গল্প" loading="lazy">
+          <img src="photo_031.jpg" alt="জালসা ওরস" loading="lazy">
         </div>
         <div class="card-body">
-          <span class="tag">উৎসব</span>
-          <h3>মাটির গল্প</h3>
-          <p>প্রজন্মের পর প্রজন্মের স্মৃতি।</p>
+          <span class="tag">ধর্মীয়</span>
+          <h3>জালসা ওরস</h3>
+          <p>শত শত মানুষ একসাথে বসে দোয়া ও খাবার ভাগ করে নিচ্ছেন।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_025.jpg" alt="গ্রামের সকাল" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">কৃষি</span>
-          <h3>গ্রামের সকাল</h3>
-          <p>সবাই মিলে, সবার জন্য।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_026.jpg" alt="বটতলার আড্ডা" loading="lazy">
+          <img src="photo_032.jpg" alt="শিশুদের খাবার" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">সমাজ</span>
-          <h3>বটতলার আড্ডা</h3>
-          <p>আমাদের যোগিনী বাড়ীর গল্প।</p>
+          <h3>শিশুদের খাবার</h3>
+          <p>মসজিদে শিশুদের জন্য আয়োজিত খাবার বিতরণের মুহূর্ত।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_027.jpg" alt="মাঠের খেলা" loading="lazy">
+          <img src="photo_033.jpg" alt="ইফতারের প্লেট" loading="lazy">
         </div>
         <div class="card-body">
-          <span class="tag">স্মৃতি</span>
-          <h3>মাঠের খেলা</h3>
-          <p>এই ছবিতে বেঁচে আছে অনেক মুখ।</p>
+          <span class="tag">ধর্মীয়</span>
+          <h3>ইফতারের প্লেট</h3>
+          <p>একসাথে ইফতারের আয়োজন — গ্রামের আতিথেয়তা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_028.jpg" alt="উৎসবের রং" loading="lazy">
+          <img src="photo_034.jpg" alt="সনদ হাতে তরুণ" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">খেলাধুলা</span>
-          <h3>উৎসবের রং</h3>
-          <p>গ্রামের প্রাণের ছবি।</p>
+          <h3>সনদ হাতে তরুণ</h3>
+          <p>অর্জনের সনদ হাতে গর্বিত তরুণরা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_029.jpg" alt="শিশুদের হাসি" loading="lazy">
+          <img src="photo_035.jpg" alt="ফুটবল দল" loading="lazy">
         </div>
         <div class="card-body">
-          <span class="tag">অনুষ্ঠান</span>
+          <span class="tag">খেলাধুলা</span>
+          <h3>ফুটবল দল</h3>
+          <p>কাদামাখা মাঠে জার্সি পরে দাঁড়িয়ে থাকা ফুটবল দল।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_036.jpg" alt="মাঠের খেলোয়াড়" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>মাঠের খেলোয়াড়</h3>
+          <p>সবুজ মাঠে বল হাতে তরুণ খেলোয়াড়রা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_037.jpg" alt="খেলনার মেলা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">দৈনন্দিন</span>
+          <h3>খেলনার মেলা</h3>
+          <p>গ্রামের মেলায় খেলনা বেচাকেনার রঙিন দৃশ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_038.jpg" alt="মাটির পুতুল" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ঐতিহ্য</span>
+          <h3>মাটির পুতুল</h3>
+          <p>মাটির তৈরি রঙিন পুতুল — গ্রামের হস্তশিল্প।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_039.jpg" alt="রাতের জালসা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>রাতের জালসা</h3>
+          <p>রাতের আলোয় শত শত মানুষের জালসায় অংশগ্রহণ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_040.jpg" alt="সবজির স্তূপ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">কৃষি</span>
+          <h3>সবজির স্তূপ</h3>
+          <p>ক্ষেত থেকে তোলা তাজা সবজি বাজারজাত করার দৃশ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_041.jpg" alt="ওজুর স্থান" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>ওজুর স্থান</h3>
+          <p>মসজিদের ওজুর স্থানে নামাজের আগে প্রস্তুতি।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_042.jpg" alt="উৎসবের পাঞ্জাবি" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">উৎসব</span>
+          <h3>উৎসবের পাঞ্জাবি</h3>
+          <p>পাঞ্জাবি পরে উৎসবের আমেজে তরুণরা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_043.jpg" alt="সম্মিলিত খাবার" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">সমাজ</span>
+          <h3>সম্মিলিত খাবার</h3>
+          <p>একসাথে বসে খাবার খাওয়ার গ্রামীণ ঐতিহ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_044.jpg" alt="শিশুদের হাসি" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">শিশুকিশোর</span>
           <h3>শিশুদের হাসি</h3>
-          <p>ভালোবাসার বন্ধনে বাঁধা স্মৃতি।</p>
+          <p>রঙিন পোশাকে গ্রামের ছোট্ট সোনামণিরা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_030.jpg" alt="ধানক্ষেতের সবুজ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">প্রকৃতি</span>
-          <h3>ধানক্ষেতের সবুজ</h3>
-          <p>যোগিনীবাড়ীর স্মরণীয় মুহূর্ত।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_031.jpg" alt="মসজিদের প্রাঙ্গণ" loading="lazy">
+          <img src="photo_045.jpg" alt="বটতলার আড্ডা" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">দৈনন্দিন</span>
-          <h3>মসজিদের প্রাঙ্গণ</h3>
-          <p>গ্রামের মানুষের জীবনের এক টুকরো।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_032.jpg" alt="রাতের বাজার" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">শিশুকিশোর</span>
-          <h3>রাতের বাজার</h3>
-          <p>এখানেই আমাদের শিকড়।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_033.jpg" alt="সম্মিলিত আয়োজন" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">উৎসব</span>
-          <h3>সম্মিলিত আয়োজন</h3>
-          <p>মাটির গন্ধ আর মানুষের ভালোবাসা।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_034.jpg" alt="পুরস্কার বিতরণ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">কৃষি</span>
-          <h3>পুরস্কার বিতরণ</h3>
-          <p>প্রজন্মের পর প্রজন্মের স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_035.jpg" alt="কাদামাঠে ফুটবল" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">সমাজ</span>
-          <h3>কাদামাঠে ফুটবল</h3>
-          <p>সবাই মিলে, সবার জন্য।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_036.jpg" alt="ক্রিকেটের উন্মাদনা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">স্মৃতি</span>
-          <h3>ক্রিকেটের উন্মাদনা</h3>
-          <p>আমাদের যোগিনী বাড়ীর গল্প।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_037.jpg" alt="জালসা ওরস" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">খেলাধুলা</span>
-          <h3>জালসা ওরস</h3>
-          <p>এই ছবিতে বেঁচে আছে অনেক মুখ।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_038.jpg" alt="ফুলের সৌন্দর্য" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">অনুষ্ঠান</span>
-          <h3>ফুলের সৌন্দর্য</h3>
-          <p>গ্রামের প্রাণের ছবি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_039.jpg" alt="আলোকসজ্জা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">প্রকৃতি</span>
-          <h3>আলোকসজ্জা</h3>
-          <p>ভালোবাসার বন্ধনে বাঁধা স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_040.jpg" alt="গ্রামের পথ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">দৈনন্দিন</span>
-          <h3>গ্রামের পথ</h3>
-          <p>যোগিনীবাড়ীর স্মরণীয় মুহূর্ত।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_041.jpg" alt="বন্ধুত্বের মুহূর্ত" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">শিশুকিশোর</span>
-          <h3>বন্ধুত্বের মুহূর্ত</h3>
-          <p>গ্রামের মানুষের জীবনের এক টুকরো।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_042.jpg" alt="পরিবারের সাথে" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">উৎসব</span>
-          <h3>পরিবারের সাথে</h3>
-          <p>এখানেই আমাদের শিকড়।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_043.jpg" alt="যুবসমাজের উদ্যোগ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">কৃষি</span>
-          <h3>যুবসমাজের উদ্যোগ</h3>
-          <p>মাটির গন্ধ আর মানুষের ভালোবাসা।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_044.jpg" alt="স্মরণীয় দিন" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">সমাজ</span>
-          <h3>স্মরণীয় দিন</h3>
-          <p>প্রজন্মের পর প্রজন্মের স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_045.jpg" alt="সকালের আলো" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">স্মৃতি</span>
-          <h3>সকালের আলো</h3>
-          <p>সবাই মিলে, সবার জন্য।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_046.jpg" alt="বিকেলের ছায়া" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">খেলাধুলা</span>
-          <h3>বিকেলের ছায়া</h3>
-          <p>আমাদের যোগিনী বাড়ীর গল্প।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_047.jpg" alt="হাসিমুখ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">অনুষ্ঠান</span>
-          <h3>হাসিমুখ</h3>
-          <p>এই ছবিতে বেঁচে আছে অনেক মুখ।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_048.jpg" alt="একতার ছবি" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">প্রকৃতি</span>
-          <h3>একতার ছবি</h3>
-          <p>গ্রামের প্রাণের ছবি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_049.jpg" alt="মাটির গল্প" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">দৈনন্দিন</span>
-          <h3>মাটির গল্প</h3>
-          <p>ভালোবাসার বন্ধনে বাঁধা স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_050.jpg" alt="গ্রামের সকাল" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">শিশুকিশোর</span>
-          <h3>গ্রামের সকাল</h3>
-          <p>যোগিনীবাড়ীর স্মরণীয় মুহূর্ত।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_051.jpg" alt="বটতলার আড্ডা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">উৎসব</span>
           <h3>বটতলার আড্ডা</h3>
-          <p>গ্রামের মানুষের জীবনের এক টুকরো।</p>
+          <p>গ্রামের মানুষের জীবনের এক টুকরো আড্ডা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_052.jpg" alt="মাঠের খেলা" loading="lazy">
+          <img src="photo_046.jpg" alt="কৃষকের কাজ" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">কৃষি</span>
-          <h3>মাঠের খেলা</h3>
-          <p>এখানেই আমাদের শিকড়।</p>
+          <h3>কৃষকের কাজ</h3>
+          <p>মাঠে কৃষকদের দৈনন্দিন কাজের দৃশ্য।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_053.jpg" alt="উৎসবের রং" loading="lazy">
+          <img src="photo_047.jpg" alt="পুরস্কার বিতরণ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">অনুষ্ঠান</span>
+          <h3>পুরস্কার বিতরণ</h3>
+          <p>বিজয়ীদের হাতে ট্রফি তুলে দেওয়ার মুহূর্ত।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_048.jpg" alt="ধানক্ষেতের পথ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">প্রকৃতি</span>
+          <h3>ধানক্ষেতের পথ</h3>
+          <p>সবুজ ধানক্ষেতের পাশ দিয়ে চলা গ্রামের পথ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_049.jpg" alt="মসজিদ প্রাঙ্গণ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>মসজিদ প্রাঙ্গণ</h3>
+          <p>নামাজের পর মসজিদ প্রাঙ্গণের শান্ত পরিবেশ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_050.jpg" alt="যুবসমাজ" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">সমাজ</span>
-          <h3>উৎসবের রং</h3>
-          <p>মাটির গন্ধ আর মানুষের ভালোবাসা।</p>
+          <h3>যুবসমাজ</h3>
+          <p>গ্রামের তরুণদের সামাজিক কাজের এক মুহূর্ত।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_054.jpg" alt="শিশুদের হাসি" loading="lazy">
+          <img src="photo_051.jpg" alt="কাদামাঠে ফুটবল" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>কাদামাঠে ফুটবল</h3>
+          <p>বর্ষার কাদামাখা মাঠে ফুটবলের উন্মাদনা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_052.jpg" alt="ক্রিকেট দল" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>ক্রিকেট দল</h3>
+          <p>সবুজ মাঠে ক্রিকেট খেলার মুহূর্ত।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_053.jpg" alt="ফুলের সৌন্দর্য" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">প্রকৃতি</span>
+          <h3>ফুলের সৌন্দর্য</h3>
+          <p>মসজিদ প্রাঙ্গণে ফুটে থাকা ফুল।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_054.jpg" alt="আলোকসজ্জা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">উৎসব</span>
+          <h3>আলোকসজ্জা</h3>
+          <p>উৎসবের রাতে আলোয় সেজে ওঠা পরিবেশ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_055.jpg" alt="বন্ধুত্ব" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">স্মৃতি</span>
+          <h3>বন্ধুত্ব</h3>
+          <p>বন্ধুদের সাথে কাটানো স্মরণীয় মুহূর্ত।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_056.jpg" alt="পরিবার" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">দৈনন্দিন</span>
+          <h3>পরিবার</h3>
+          <p>পরিবারের সাথে কাটানো সাধারণ দিন।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_057.jpg" alt="স্মরণীয় দিন" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">স্মৃতি</span>
+          <h3>স্মরণীয় দিন</h3>
+          <p>গ্রামের ইতিহাসে থেকে যাওয়া এক দিন।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_058.jpg" alt="সকালের আলো" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">প্রকৃতি</span>
+          <h3>সকালের আলো</h3>
+          <p>সকালের আলোয় গ্রামের সৌন্দর্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_059.jpg" alt="বিকেলের ছায়া" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">প্রকৃতি</span>
+          <h3>বিকেলের ছায়া</h3>
+          <p>বটগাছের ছায়ায় বিকেলের আড্ডা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_060.jpg" alt="হাসিমুখ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">শিশুকিশোর</span>
+          <h3>হাসিমুখ</h3>
+          <p>শিশুদের হাসিমুখে ভরা গ্রাম।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_061.jpg" alt="জালসা ওরস" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>জালসা ওরস</h3>
+          <p>শত শত মানুষ একসাথে বসে দোয়া ও খাবার ভাগ করে নিচ্ছেন।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_062.jpg" alt="শিশুদের খাবার" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">সমাজ</span>
+          <h3>শিশুদের খাবার</h3>
+          <p>মসজিদে শিশুদের জন্য আয়োজিত খাবার বিতরণের মুহূর্ত।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_063.jpg" alt="ইফতারের প্লেট" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>ইফতারের প্লেট</h3>
+          <p>একসাথে ইফতারের আয়োজন — গ্রামের আতিথেয়তা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_064.jpg" alt="সনদ হাতে তরুণ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>সনদ হাতে তরুণ</h3>
+          <p>অর্জনের সনদ হাতে গর্বিত তরুণরা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_065.jpg" alt="ফুটবল দল" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>ফুটবল দল</h3>
+          <p>কাদামাখা মাঠে জার্সি পরে দাঁড়িয়ে থাকা ফুটবল দল।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_066.jpg" alt="মাঠের খেলোয়াড়" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>মাঠের খেলোয়াড়</h3>
+          <p>সবুজ মাঠে বল হাতে তরুণ খেলোয়াড়রা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_067.jpg" alt="খেলনার মেলা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">দৈনন্দিন</span>
+          <h3>খেলনার মেলা</h3>
+          <p>গ্রামের মেলায় খেলনা বেচাকেনার রঙিন দৃশ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_068.jpg" alt="মাটির পুতুল" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ঐতিহ্য</span>
+          <h3>মাটির পুতুল</h3>
+          <p>মাটির তৈরি রঙিন পুতুল — গ্রামের হস্তশিল্প।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_069.jpg" alt="রাতের জালসা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>রাতের জালসা</h3>
+          <p>রাতের আলোয় শত শত মানুষের জালসায় অংশগ্রহণ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_070.jpg" alt="সবজির স্তূপ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">কৃষি</span>
+          <h3>সবজির স্তূপ</h3>
+          <p>ক্ষেত থেকে তোলা তাজা সবজি বাজারজাত করার দৃশ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_071.jpg" alt="ওজুর স্থান" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>ওজুর স্থান</h3>
+          <p>মসজিদের ওজুর স্থানে নামাজের আগে প্রস্তুতি।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_072.jpg" alt="উৎসবের পাঞ্জাবি" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">উৎসব</span>
+          <h3>উৎসবের পাঞ্জাবি</h3>
+          <p>পাঞ্জাবি পরে উৎসবের আমেজে তরুণরা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_073.jpg" alt="সম্মিলিত খাবার" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">সমাজ</span>
+          <h3>সম্মিলিত খাবার</h3>
+          <p>একসাথে বসে খাবার খাওয়ার গ্রামীণ ঐতিহ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_074.jpg" alt="শিশুদের হাসি" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">শিশুকিশোর</span>
           <h3>শিশুদের হাসি</h3>
-          <p>প্রজন্মের পর প্রজন্মের স্মৃতি।</p>
+          <p>রঙিন পোশাকে গ্রামের ছোট্ট সোনামণিরা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_055.jpg" alt="ধানক্ষেতের সবুজ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">খেলাধুলা</span>
-          <h3>ধানক্ষেতের সবুজ</h3>
-          <p>সবাই মিলে, সবার জন্য।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_056.jpg" alt="মসজিদের প্রাঙ্গণ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">অনুষ্ঠান</span>
-          <h3>মসজিদের প্রাঙ্গণ</h3>
-          <p>আমাদের যোগিনী বাড়ীর গল্প।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_057.jpg" alt="রাতের বাজার" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">প্রকৃতি</span>
-          <h3>রাতের বাজার</h3>
-          <p>এই ছবিতে বেঁচে আছে অনেক মুখ।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_058.jpg" alt="সম্মিলিত আয়োজন" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">দৈনন্দিন</span>
-          <h3>সম্মিলিত আয়োজন</h3>
-          <p>গ্রামের প্রাণের ছবি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_059.jpg" alt="পুরস্কার বিতরণ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">শিশুকিশোর</span>
-          <h3>পুরস্কার বিতরণ</h3>
-          <p>ভালোবাসার বন্ধনে বাঁধা স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_060.jpg" alt="কাদামাঠে ফুটবল" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">উৎসব</span>
-          <h3>কাদামাঠে ফুটবল</h3>
-          <p>যোগিনীবাড়ীর স্মরণীয় মুহূর্ত।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_061.jpg" alt="ক্রিকেটের উন্মাদনা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">কৃষি</span>
-          <h3>ক্রিকেটের উন্মাদনা</h3>
-          <p>গ্রামের মানুষের জীবনের এক টুকরো।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_062.jpg" alt="জালসা ওরস" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">সমাজ</span>
-          <h3>জালসা ওরস</h3>
-          <p>এখানেই আমাদের শিকড়।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_063.jpg" alt="ফুলের সৌন্দর্য" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">স্মৃতি</span>
-          <h3>ফুলের সৌন্দর্য</h3>
-          <p>মাটির গন্ধ আর মানুষের ভালোবাসা।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_064.jpg" alt="আলোকসজ্জা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">খেলাধুলা</span>
-          <h3>আলোকসজ্জা</h3>
-          <p>প্রজন্মের পর প্রজন্মের স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_065.jpg" alt="গ্রামের পথ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">অনুষ্ঠান</span>
-          <h3>গ্রামের পথ</h3>
-          <p>সবাই মিলে, সবার জন্য।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_066.jpg" alt="বন্ধুত্বের মুহূর্ত" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">প্রকৃতি</span>
-          <h3>বন্ধুত্বের মুহূর্ত</h3>
-          <p>আমাদের যোগিনী বাড়ীর গল্প।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_067.jpg" alt="পরিবারের সাথে" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">দৈনন্দিন</span>
-          <h3>পরিবারের সাথে</h3>
-          <p>এই ছবিতে বেঁচে আছে অনেক মুখ।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_068.jpg" alt="যুবসমাজের উদ্যোগ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">শিশুকিশোর</span>
-          <h3>যুবসমাজের উদ্যোগ</h3>
-          <p>গ্রামের প্রাণের ছবি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_069.jpg" alt="স্মরণীয় দিন" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">উৎসব</span>
-          <h3>স্মরণীয় দিন</h3>
-          <p>ভালোবাসার বন্ধনে বাঁধা স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_070.jpg" alt="সকালের আলো" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">কৃষি</span>
-          <h3>সকালের আলো</h3>
-          <p>যোগিনীবাড়ীর স্মরণীয় মুহূর্ত।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_071.jpg" alt="বিকেলের ছায়া" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">সমাজ</span>
-          <h3>বিকেলের ছায়া</h3>
-          <p>গ্রামের মানুষের জীবনের এক টুকরো।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_072.jpg" alt="হাসিমুখ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">স্মৃতি</span>
-          <h3>হাসিমুখ</h3>
-          <p>এখানেই আমাদের শিকড়।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_073.jpg" alt="একতার ছবি" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">খেলাধুলা</span>
-          <h3>একতার ছবি</h3>
-          <p>মাটির গন্ধ আর মানুষের ভালোবাসা।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_074.jpg" alt="মাটির গল্প" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">অনুষ্ঠান</span>
-          <h3>মাটির গল্প</h3>
-          <p>প্রজন্মের পর প্রজন্মের স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_075.jpg" alt="গ্রামের সকাল" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">প্রকৃতি</span>
-          <h3>গ্রামের সকাল</h3>
-          <p>সবাই মিলে, সবার জন্য।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_076.jpg" alt="বটতলার আড্ডা" loading="lazy">
+          <img src="photo_075.jpg" alt="বটতলার আড্ডা" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">দৈনন্দিন</span>
           <h3>বটতলার আড্ডা</h3>
-          <p>আমাদের যোগিনী বাড়ীর গল্প।</p>
+          <p>গ্রামের মানুষের জীবনের এক টুকরো আড্ডা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_077.jpg" alt="মাঠের খেলা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">শিশুকিশোর</span>
-          <h3>মাঠের খেলা</h3>
-          <p>এই ছবিতে বেঁচে আছে অনেক মুখ।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_078.jpg" alt="উৎসবের রং" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">উৎসব</span>
-          <h3>উৎসবের রং</h3>
-          <p>গ্রামের প্রাণের ছবি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_079.jpg" alt="শিশুদের হাসি" loading="lazy">
+          <img src="photo_076.jpg" alt="কৃষকের কাজ" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">কৃষি</span>
-          <h3>শিশুদের হাসি</h3>
-          <p>ভালোবাসার বন্ধনে বাঁধা স্মৃতি।</p>
+          <h3>কৃষকের কাজ</h3>
+          <p>মাঠে কৃষকদের দৈনন্দিন কাজের দৃশ্য।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_080.jpg" alt="ধানক্ষেতের সবুজ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">সমাজ</span>
-          <h3>ধানক্ষেতের সবুজ</h3>
-          <p>যোগিনীবাড়ীর স্মরণীয় মুহূর্ত।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_081.jpg" alt="মসজিদের প্রাঙ্গণ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">স্মৃতি</span>
-          <h3>মসজিদের প্রাঙ্গণ</h3>
-          <p>গ্রামের মানুষের জীবনের এক টুকরো।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_082.jpg" alt="রাতের বাজার" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">খেলাধুলা</span>
-          <h3>রাতের বাজার</h3>
-          <p>এখানেই আমাদের শিকড়।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_083.jpg" alt="সম্মিলিত আয়োজন" loading="lazy">
+          <img src="photo_077.jpg" alt="পুরস্কার বিতরণ" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">অনুষ্ঠান</span>
-          <h3>সম্মিলিত আয়োজন</h3>
-          <p>মাটির গন্ধ আর মানুষের ভালোবাসা।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_084.jpg" alt="পুরস্কার বিতরণ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">প্রকৃতি</span>
           <h3>পুরস্কার বিতরণ</h3>
-          <p>প্রজন্মের পর প্রজন্মের স্মৃতি।</p>
+          <p>বিজয়ীদের হাতে ট্রফি তুলে দেওয়ার মুহূর্ত।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_085.jpg" alt="কাদামাঠে ফুটবল" loading="lazy">
+          <img src="photo_078.jpg" alt="ধানক্ষেতের পথ" loading="lazy">
         </div>
         <div class="card-body">
-          <span class="tag">দৈনন্দিন</span>
+          <span class="tag">প্রকৃতি</span>
+          <h3>ধানক্ষেতের পথ</h3>
+          <p>সবুজ ধানক্ষেতের পাশ দিয়ে চলা গ্রামের পথ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_079.jpg" alt="মসজিদ প্রাঙ্গণ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>মসজিদ প্রাঙ্গণ</h3>
+          <p>নামাজের পর মসজিদ প্রাঙ্গণের শান্ত পরিবেশ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_080.jpg" alt="যুবসমাজ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">সমাজ</span>
+          <h3>যুবসমাজ</h3>
+          <p>গ্রামের তরুণদের সামাজিক কাজের এক মুহূর্ত।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_081.jpg" alt="কাদামাঠে ফুটবল" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
           <h3>কাদামাঠে ফুটবল</h3>
-          <p>সবাই মিলে, সবার জন্য।</p>
+          <p>বর্ষার কাদামাখা মাঠে ফুটবলের উন্মাদনা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_086.jpg" alt="ক্রিকেটের উন্মাদনা" loading="lazy">
+          <img src="photo_082.jpg" alt="ক্রিকেট দল" loading="lazy">
         </div>
         <div class="card-body">
-          <span class="tag">শিশুকিশোর</span>
-          <h3>ক্রিকেটের উন্মাদনা</h3>
-          <p>আমাদের যোগিনী বাড়ীর গল্প।</p>
+          <span class="tag">খেলাধুলা</span>
+          <h3>ক্রিকেট দল</h3>
+          <p>সবুজ মাঠে ক্রিকেট খেলার মুহূর্ত।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_087.jpg" alt="জালসা ওরস" loading="lazy">
+          <img src="photo_083.jpg" alt="ফুলের সৌন্দর্য" loading="lazy">
         </div>
         <div class="card-body">
-          <span class="tag">উৎসব</span>
-          <h3>জালসা ওরস</h3>
-          <p>এই ছবিতে বেঁচে আছে অনেক মুখ।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_088.jpg" alt="ফুলের সৌন্দর্য" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">কৃষি</span>
+          <span class="tag">প্রকৃতি</span>
           <h3>ফুলের সৌন্দর্য</h3>
-          <p>গ্রামের প্রাণের ছবি।</p>
+          <p>মসজিদ প্রাঙ্গণে ফুটে থাকা ফুল।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_089.jpg" alt="আলোকসজ্জা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">সমাজ</span>
-          <h3>আলোকসজ্জা</h3>
-          <p>ভালোবাসার বন্ধনে বাঁধা স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_090.jpg" alt="গ্রামের পথ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">স্মৃতি</span>
-          <h3>গ্রামের পথ</h3>
-          <p>যোগিনীবাড়ীর স্মরণীয় মুহূর্ত।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_091.jpg" alt="বন্ধুত্বের মুহূর্ত" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">খেলাধুলা</span>
-          <h3>বন্ধুত্বের মুহূর্ত</h3>
-          <p>গ্রামের মানুষের জীবনের এক টুকরো।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_092.jpg" alt="পরিবারের সাথে" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">অনুষ্ঠান</span>
-          <h3>পরিবারের সাথে</h3>
-          <p>এখানেই আমাদের শিকড়।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_093.jpg" alt="যুবসমাজের উদ্যোগ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">প্রকৃতি</span>
-          <h3>যুবসমাজের উদ্যোগ</h3>
-          <p>মাটির গন্ধ আর মানুষের ভালোবাসা।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_094.jpg" alt="স্মরণীয় দিন" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">দৈনন্দিন</span>
-          <h3>স্মরণীয় দিন</h3>
-          <p>প্রজন্মের পর প্রজন্মের স্মৃতি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_095.jpg" alt="সকালের আলো" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">শিশুকিশোর</span>
-          <h3>সকালের আলো</h3>
-          <p>সবাই মিলে, সবার জন্য।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_096.jpg" alt="বিকেলের ছায়া" loading="lazy">
+          <img src="photo_084.jpg" alt="আলোকসজ্জা" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">উৎসব</span>
-          <h3>বিকেলের ছায়া</h3>
-          <p>আমাদের যোগিনী বাড়ীর গল্প।</p>
+          <h3>আলোকসজ্জা</h3>
+          <p>উৎসবের রাতে আলোয় সেজে ওঠা পরিবেশ।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_097.jpg" alt="হাসিমুখ" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">কৃষি</span>
-          <h3>হাসিমুখ</h3>
-          <p>এই ছবিতে বেঁচে আছে অনেক মুখ।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_098.jpg" alt="একতার ছবি" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">সমাজ</span>
-          <h3>একতার ছবি</h3>
-          <p>গ্রামের প্রাণের ছবি।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_099.jpg" alt="মাটির গল্প" loading="lazy">
+          <img src="photo_085.jpg" alt="বন্ধুত্ব" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">স্মৃতি</span>
-          <h3>মাটির গল্প</h3>
-          <p>ভালোবাসার বন্ধনে বাঁধা স্মৃতি।</p>
+          <h3>বন্ধুত্ব</h3>
+          <p>বন্ধুদের সাথে কাটানো স্মরণীয় মুহূর্ত।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_100.jpg" alt="গ্রামের সকাল" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">খেলাধুলা</span>
-          <h3>গ্রামের সকাল</h3>
-          <p>যোগিনীবাড়ীর স্মরণীয় মুহূর্ত।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_101.jpg" alt="বটতলার আড্ডা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">অনুষ্ঠান</span>
-          <h3>বটতলার আড্ডা</h3>
-          <p>গ্রামের মানুষের জীবনের এক টুকরো।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_102.jpg" alt="মাঠের খেলা" loading="lazy">
-        </div>
-        <div class="card-body">
-          <span class="tag">প্রকৃতি</span>
-          <h3>মাঠের খেলা</h3>
-          <p>এখানেই আমাদের শিকড়।</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-3d">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_103.jpg" alt="উৎসবের রং" loading="lazy">
+          <img src="photo_086.jpg" alt="পরিবার" loading="lazy">
         </div>
         <div class="card-body">
           <span class="tag">দৈনন্দিন</span>
-          <h3>উৎসবের রং</h3>
-          <p>মাটির গন্ধ আর মানুষের ভালোবাসা।</p>
+          <h3>পরিবার</h3>
+          <p>পরিবারের সাথে কাটানো সাধারণ দিন।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_087.jpg" alt="স্মরণীয় দিন" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">স্মৃতি</span>
+          <h3>স্মরণীয় দিন</h3>
+          <p>গ্রামের ইতিহাসে থেকে যাওয়া এক দিন।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_088.jpg" alt="সকালের আলো" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">প্রকৃতি</span>
+          <h3>সকালের আলো</h3>
+          <p>সকালের আলোয় গ্রামের সৌন্দর্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_089.jpg" alt="বিকেলের ছায়া" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">প্রকৃতি</span>
+          <h3>বিকেলের ছায়া</h3>
+          <p>বটগাছের ছায়ায় বিকেলের আড্ডা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_090.jpg" alt="হাসিমুখ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">শিশুকিশোর</span>
+          <h3>হাসিমুখ</h3>
+          <p>শিশুদের হাসিমুখে ভরা গ্রাম।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_091.jpg" alt="জালসা ওরস" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>জালসা ওরস</h3>
+          <p>শত শত মানুষ একসাথে বসে দোয়া ও খাবার ভাগ করে নিচ্ছেন।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_092.jpg" alt="শিশুদের খাবার" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">সমাজ</span>
+          <h3>শিশুদের খাবার</h3>
+          <p>মসজিদে শিশুদের জন্য আয়োজিত খাবার বিতরণের মুহূর্ত।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_093.jpg" alt="ইফতারের প্লেট" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>ইফতারের প্লেট</h3>
+          <p>একসাথে ইফতারের আয়োজন — গ্রামের আতিথেয়তা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_094.jpg" alt="সনদ হাতে তরুণ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>সনদ হাতে তরুণ</h3>
+          <p>অর্জনের সনদ হাতে গর্বিত তরুণরা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_095.jpg" alt="ফুটবল দল" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>ফুটবল দল</h3>
+          <p>কাদামাখা মাঠে জার্সি পরে দাঁড়িয়ে থাকা ফুটবল দল।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_096.jpg" alt="মাঠের খেলোয়াড়" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">খেলাধুলা</span>
+          <h3>মাঠের খেলোয়াড়</h3>
+          <p>সবুজ মাঠে বল হাতে তরুণ খেলোয়াড়রা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_097.jpg" alt="খেলনার মেলা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">দৈনন্দিন</span>
+          <h3>খেলনার মেলা</h3>
+          <p>গ্রামের মেলায় খেলনা বেচাকেনার রঙিন দৃশ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_098.jpg" alt="মাটির পুতুল" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ঐতিহ্য</span>
+          <h3>মাটির পুতুল</h3>
+          <p>মাটির তৈরি রঙিন পুতুল — গ্রামের হস্তশিল্প।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_099.jpg" alt="রাতের জালসা" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>রাতের জালসা</h3>
+          <p>রাতের আলোয় শত শত মানুষের জালসায় অংশগ্রহণ।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_100.jpg" alt="সবজির স্তূপ" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">কৃষি</span>
+          <h3>সবজির স্তূপ</h3>
+          <p>ক্ষেত থেকে তোলা তাজা সবজি বাজারজাত করার দৃশ্য।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_101.jpg" alt="ওজুর স্থান" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">ধর্মীয়</span>
+          <h3>ওজুর স্থান</h3>
+          <p>মসজিদের ওজুর স্থানে নামাজের আগে প্রস্তুতি।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_102.jpg" alt="উৎসবের পাঞ্জাবি" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">উৎসব</span>
+          <h3>উৎসবের পাঞ্জাবি</h3>
+          <p>পাঞ্জাবি পরে উৎসবের আমেজে তরুণরা।</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-3d">
+      <div class="card-inner">
+        <div class="card-img">
+          <img src="photo_103.jpg" alt="সম্মিলিত খাবার" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="tag">সমাজ</span>
+          <h3>সম্মিলিত খাবার</h3>
+          <p>একসাথে বসে খাবার খাওয়ার গ্রামীণ ঐতিহ্য।</p>
         </div>
       </div>
     </div>
@@ -1422,19 +1404,19 @@
         <div class="card-body">
           <span class="tag">শিশুকিশোর</span>
           <h3>শিশুদের হাসি</h3>
-          <p>প্রজন্মের পর প্রজন্মের স্মৃতি।</p>
+          <p>রঙিন পোশাকে গ্রামের ছোট্ট সোনামণিরা।</p>
         </div>
       </div>
     </div>
     <div class="card-3d">
       <div class="card-inner">
         <div class="card-img">
-          <img src="photo_105.jpg" alt="ধানক্ষেতের সবুজ" loading="lazy">
+          <img src="photo_105.jpg" alt="বটতলার আড্ডা" loading="lazy">
         </div>
         <div class="card-body">
-          <span class="tag">উৎসব</span>
-          <h3>ধানক্ষেতের সবুজ</h3>
-          <p>সবাই মিলে, সবার জন্য।</p>
+          <span class="tag">দৈনন্দিন</span>
+          <h3>বটতলার আড্ডা</h3>
+          <p>গ্রামের মানুষের জীবনের এক টুকরো আড্ডা।</p>
         </div>
       </div>
     </div>
