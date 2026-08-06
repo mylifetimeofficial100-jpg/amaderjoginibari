@@ -49,31 +49,53 @@
     background-size:3px 3px;
   }
 
-  /* ---------- NAV ---------- */
+  
+  /* ---------- ENHANCED NAV ---------- */
   header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(31,74,50,.98);
-    backdrop-filter:blur(10px);
-    border-bottom:3px solid var(--mud);
-    box-shadow:0 4px 20px rgba(18,38,26,.25);
+    position:sticky; top:0; z-index:100;
+    background:linear-gradient(180deg, rgba(18,38,26,.98) 0%, rgba(31,74,50,.96) 100%);
+    backdrop-filter:blur(14px) saturate(1.2);
+    -webkit-backdrop-filter:blur(14px) saturate(1.2);
+    border-bottom:1px solid rgba(196,149,74,.45);
+    box-shadow:0 8px 32px rgba(18,38,26,.35), 0 1px 0 rgba(240,217,168,.08) inset;
   }
   .nav-wrap{
-    max-width:1180px; margin:0 auto; padding:14px 24px;
+    max-width:1180px; margin:0 auto; padding:12px 24px;
     display:flex; align-items:center; justify-content:space-between; gap:16px;
   }
   .brand{
     display:flex; align-items:center; gap:12px;
     color:var(--mud-light); text-decoration:none;
+    transition:transform .3s ease;
   }
-  .brand svg{width:42px;height:42px;flex-shrink:0; filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));}
-  .brand-text{font-family:'Baloo Da 2',sans-serif; font-weight:800; font-size:1.38rem; color:#fffef8; text-shadow:0 1px 3px rgba(0,0,0,.35); letter-spacing:.3px;}
-  .brand-text small{display:block; font-family:'Noto Sans Bengali',sans-serif; font-weight:600; font-size:.68rem; letter-spacing:2.2px; color:#f0d9a8; text-transform:uppercase; text-shadow:0 1px 2px rgba(0,0,0,.25); margin-top:2px;}
+  .brand:hover{transform:translateY(-1px);}
+  .brand svg{
+    width:44px;height:44px;flex-shrink:0;
+    filter:drop-shadow(0 2px 8px rgba(240,217,168,.35));
+    animation:logoFloat 4.5s ease-in-out infinite;
+  }
+  @keyframes logoFloat{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-3px) rotate(1.5deg);}
+  }
+  .brand-text{
+    font-family:'Baloo Da 2',sans-serif; font-weight:800; font-size:1.38rem;
+    color:#fffef8; text-shadow:0 1px 3px rgba(0,0,0,.35); letter-spacing:.3px;
+  }
+  .brand-text small{
+    display:block; font-family:'Noto Sans Bengali',sans-serif; font-weight:600;
+    font-size:.68rem; letter-spacing:2.2px; color:#f0d9a8; text-transform:uppercase;
+    text-shadow:0 1px 2px rgba(0,0,0,.25); margin-top:2px;
+  }
   nav{display:flex; gap:2px;}
   nav a{
     font-size:1rem; padding:9px 16px; border-radius:20px; text-decoration:none;
     color:#faf6eb; font-weight:600; transition:.25s; letter-spacing:.2px;
   }
-  nav a:hover, nav a:focus-visible{background:rgba(250,248,242,.22); color:#fff; text-shadow:0 0 8px rgba(240,217,168,.4);}
+  nav a:hover, nav a:focus-visible{
+    background:rgba(250,248,242,.22); color:#fff;
+    text-shadow:0 0 8px rgba(240,217,168,.4);
+  }
   .nav-toggle{display:none; background:none; border:0; color:#faf8f2; font-size:1.6rem; cursor:pointer;}
 
   @media (max-width:760px){
@@ -320,17 +342,62 @@
   .maker-text h3{margin:0 0 10px; font-size:1.5rem; color:var(--forest-deep);}
   .maker-text p{margin:0; color:var(--ink-soft); font-size:1rem;}
 
-  footer{background:linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%); color:#d4c9a8; padding:50px 24px 30px; border-top:1px solid rgba(250,248,242,.12);}
-  .footer-inner{max-width:1180px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px;}
-  .footer-brand{font-family:'Baloo Da 2',sans-serif; color:#faf8f2; font-size:1.2rem;}
-  .footer-inner p{margin:8px 0 0; font-size:.9rem; max-width:340px; color:#b5a98a;}
-  .footer-links{display:flex; gap:28px; flex-wrap:wrap;}
-  .footer-links a{text-decoration:none; color:#d4c9a8; font-size:.92rem;}
-  .footer-links a:hover{color:#faf8f2;}
-  .footer-bottom{
-    max-width:1180px; margin:36px auto 0; padding-top:22px; border-top:1px solid rgba(250,248,242,.1);
-    font-size:.8rem; color:#9a8f72; text-align:center;
+  
+  /* ---------- ENHANCED FOOTER ---------- */
+  footer{
+    background:linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%);
+    color:#d4c9a8; position:relative; overflow:hidden; padding:0;
   }
+  footer::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:1px;
+    background:linear-gradient(90deg, transparent, rgba(196,149,74,.5), transparent);
+  }
+  .footer-inner{
+    max-width:1180px; margin:0 auto; padding:42px 24px 28px;
+    display:grid; grid-template-columns:1.5fr 1fr; gap:36px;
+    position:relative; z-index:1;
+  }
+  .footer-brand{
+    font-family:'Baloo Da 2',sans-serif; color:#faf8f2; font-size:1.35rem; font-weight:800;
+  }
+  .footer-inner p{margin:10px 0 0; font-size:.92rem; max-width:360px; color:#c9bfa0; line-height:1.65;}
+  .footer-email a{color:#f0d9a8 !important; text-decoration:none; font-weight:600; font-size:.95rem;}
+  .footer-email a:hover{text-decoration:underline;}
+  .footer-links{display:flex; flex-wrap:wrap; gap:12px 22px; align-content:flex-start; padding-top:6px;}
+  .footer-links a{
+    text-decoration:none; color:#d4c9a8; font-size:.92rem;
+    transition:color .25s, padding-left .25s;
+  }
+  .footer-links a:hover{color:var(--mud-light); padding-left:3px;}
+  .footer-bottom{
+    max-width:1180px; margin:0 auto; padding:18px 24px;
+    border-top:1px solid rgba(196,149,74,.2);
+    font-size:.85rem; color:#a89b7a; text-align:center; position:relative; z-index:1;
+  }
+  .footer-heart{
+    display:inline-block; animation:heartbeat 1.8s ease-in-out infinite; color:#e07a6a;
+  }
+  @keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    15%{transform:scale(1.2);}
+    30%{transform:scale(1);}
+    45%{transform:scale(1.15);}
+    60%{transform:scale(1);}
+  }
+  .footer-deco{
+    position:absolute; border-radius:50%;
+    background:radial-gradient(circle, rgba(196,149,74,.08) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .footer-deco.d1{width:280px; height:280px; top:-80px; right:-60px;}
+  .footer-deco.d2{width:180px; height:180px; bottom:-40px; left:8%;}
+
+  @media (max-width:700px){
+    .footer-inner{grid-template-columns:1fr; gap:24px; text-align:center; padding:36px 20px 24px;}
+    .footer-inner p{max-width:100%; margin-left:auto; margin-right:auto;}
+    .footer-links{justify-content:center;}
+  }
+
 
   /* ---------- OPINION / FEEDBACK BOX ---------- */
   .opinion{background:var(--paper); padding:88px 24px;}
@@ -731,11 +798,13 @@
 </div>
 </section>
 <footer>
+<div class="footer-deco d1"></div>
+<div class="footer-deco d2"></div>
 <div class="footer-inner">
 <div>
 <div class="footer-brand">আমাদের যোগিনী বাড়ী</div>
-<p>যোগিনীপুর গ্রাম, দুর্গানগর ইউনিয়ন, উল্লাপাড়া, সিরাজগঞ্জ — আমাদের সবার প্রিয় জন্মভূমি।</p>
-<p class="footer-email" style="margin-top:14px;"><a href="mailto:mylifetimeofficial100@gmail.com" style="color:#f0d9a8; text-decoration:none; font-weight:600; font-size:.95rem;">📧 mylifetimeofficial100@gmail.com</a></p>
+<p>যোগিনীপুর গ্রাম, দুর্গানগর ইউনিয়ন, উল্লাপাড়া, সিরাজগঞ্জ — আমাদের সবার প্রিয় জন্মভূমি। সবুজ ছায়া, মাটির গন্ধ আর শতবর্ষী বটের ছায়াতলে গড়ে ওঠা একটি জীবন্ত গ্রাম।</p>
+<p class="footer-email" style="margin-top:14px;"><a href="mailto:mylifetimeofficial100@gmail.com">📧 mylifetimeofficial100@gmail.com</a></p>
 </div>
 <div class="footer-links">
 <a href="#about">গ্রামের কথা</a>
@@ -747,7 +816,7 @@
 <a href="#join">ফেসবুক গ্রুপ</a>
 </div>
 </div>
-<div class="footer-bottom">© যোগিনীপুর গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি</div>
+<div class="footer-bottom">© যোগিনীপুর গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি <span class="footer-heart">♥</span></div>
 </footer>
 <script>
 function escapeHtml(text) {
