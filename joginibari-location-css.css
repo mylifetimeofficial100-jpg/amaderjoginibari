@@ -1,0 +1,69 @@
+/* ---------- LOCATION / MAP (compact + correct map) ---------- */
+/* পুরনো location CSS মুছে এই পুরো অংশ বসিয়ে দিন */
+
+.location-section{
+  background:var(--paper);
+  padding:36px 20px 42px;
+}
+.location-inner{
+  max-width:780px; margin:0 auto;
+}
+.location-header{
+  text-align:center; margin-bottom:18px;
+}
+.location-header .eyebrow{
+  display:inline-block; font-size:.72rem; letter-spacing:2px;
+  text-transform:uppercase; color:var(--forest); margin-bottom:4px;
+  opacity:.75;
+}
+.location-header h2{
+  font-size:clamp(1.25rem, 3.2vw, 1.55rem); margin:0 0 6px;
+}
+.location-header p{
+  max-width:420px; margin:0 auto; color:var(--ink-soft); font-size:.92rem;
+}
+.location-grid{
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:16px;
+  align-items:stretch;
+}
+.location-info{
+  background:#faf8f2;
+  border-radius:10px;
+  padding:16px 16px 14px;
+  border:1px solid rgba(31,74,50,.08);
+  display:flex; flex-direction:column; gap:10px;
+}
+.location-info h3{
+  font-size:1.05rem; margin:0 0 2px; color:var(--forest-deep);
+}
+.address-block{
+  display:flex; gap:9px; align-items:flex-start;
+}
+.address-icon{
+  width:28px; height:28px; flex-shrink:0;
+  background:rgba(31,74,50,.07); border-radius:7px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.95rem;
+}
+.address-text{
+  font-size:.88rem; line-height:1.55; color:var(--ink-soft);
+}
+.address-text strong{
+  color:var(--forest-deep); font-weight:600;
+}
+.map-wrap{
+  border-radius:10px; overflow:hidden;
+  border:1px solid rgba(31,74,50,.08);
+  min-height:210px;
+  background:#d6cdb2;
+}
+.map-wrap iframe{
+  width:100%; height:100%; min-height:210px; border:0; display:block;
+}
+@media (max-width:680px){
+  .location-grid{grid-template-columns:1fr;}
+  .map-wrap, .map-wrap iframe{min-height:200px;}
+  .location-section{padding:28px 16px 34px;}
+}
