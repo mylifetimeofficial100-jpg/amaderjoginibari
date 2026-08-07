@@ -3,1044 +3,441 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>অ্যাডমিন প্যানেল — আমাদের যোগিনী বাড়ী</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>অ্যাডমিন — আমাদের যোগিনী বাড়ী</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0f1419;
-      --surface: #1a2332;
-      --surface2: #243044;
-      --border: #2d3a4f;
-      --primary: #3dd68c;
-      --primary-dim: #2bb673;
-      --primary-bg: rgba(61, 214, 140, 0.12);
-      --danger: #ff6b6b;
-      --danger-bg: rgba(255, 107, 107, 0.12);
-      --text: #e8eef7;
-      --muted: #8b9bb4;
-      --radius: 14px;
-      --shadow: 0 8px 32px rgba(0,0,0,0.35);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Noto Sans Bengali', 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.55;
-      background-image:
-        radial-gradient(ellipse 80% 50% at 20% -20%, rgba(61,214,140,0.08), transparent),
-        radial-gradient(ellipse 60% 40% at 90% 10%, rgba(61,140,214,0.06), transparent);
-    }
-
-    .wrap {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 20px 16px 40px;
-    }
-
-    /* ===== Header ===== */
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 28px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--border);
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .brand-icon {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--primary), #2a9d6a);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      box-shadow: 0 4px 16px rgba(61,214,140,0.3);
-    }
-    .brand h1 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .brand p {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 1px;
-    }
-
-    /* ===== Cards ===== */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      margin-bottom: 18px;
-      box-shadow: var(--shadow);
-    }
-    .card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text);
-    }
-    .card-title span.badge {
-      font-size: 0.7rem;
-      background: var(--primary-bg);
-      color: var(--primary);
-      padding: 3px 8px;
-      border-radius: 20px;
-      font-weight: 600;
-    }
-
-    /* ===== Form ===== */
-    .field { margin-bottom: 16px; }
-    .field label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--muted);
-      margin-bottom: 7px;
-      letter-spacing: 0.02em;
-    }
-    .field input,
-    .field textarea,
-    .field select {
-      width: 100%;
-      padding: 12px 14px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--text);
-      font-size: 15px;
-      font-family: inherit;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .field input:focus,
-    .field textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(61,214,140,0.15);
-    }
-    .field textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-    .field input::placeholder,
-    .field textarea::placeholder { color: #5a6a82; }
-
-    /* ===== Buttons ===== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 13px 20px;
-      border: none;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.2s;
-      width: 100%;
-    }
-    .btn:active { transform: scale(0.98); }
-    .btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dim));
-      color: #0a1a12;
-      box-shadow: 0 4px 16px rgba(61,214,140,0.25);
-    }
-    .btn-primary:hover:not(:disabled) {
-      box-shadow: 0 6px 24px rgba(61,214,140,0.4);
-      filter: brightness(1.05);
-    }
-    .btn-danger {
-      background: var(--danger-bg);
-      color: var(--danger);
-      border: 1px solid rgba(255,107,107,0.3);
-      width: auto;
-      padding: 8px 14px;
-      font-size: 13px;
-    }
-    .btn-danger:hover { background: rgba(255,107,107,0.2); }
-    .btn-ghost {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      width: auto;
-      padding: 8px 14px;
-      font-size: 13px;
-    }
-    .btn-ghost:hover { border-color: var(--muted); color: var(--text); }
-
-    /* ===== Media Type Pills ===== */
-    .type-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-    .pill {
-      padding: 9px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-weight: 500;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.15s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .pill:hover { border-color: var(--primary); color: var(--primary); }
-    .pill.active {
-      background: var(--primary-bg);
-      border-color: var(--primary);
-      color: var(--primary);
-      box-shadow: 0 0 0 1px var(--primary);
-    }
-
-    /* ===== Drop Zone ===== */
-    .drop {
-      border: 2px dashed var(--border);
-      border-radius: 12px;
-      padding: 32px 16px;
-      text-align: center;
-      background: var(--surface2);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .drop:hover, .drop.over {
-      border-color: var(--primary);
-      background: var(--primary-bg);
-    }
-    .drop .big-icon { font-size: 2.4rem; margin-bottom: 10px; opacity: 0.9; }
-    .drop p { font-size: 0.9rem; color: var(--muted); }
-    .drop .sub { font-size: 0.75rem; color: #5a6a82; margin-top: 6px; }
-    .drop input { display: none; }
-
-    /* ===== Quality ===== */
-    .quality-box {
-      display: none;
-      margin-top: 12px;
-      padding: 12px 14px;
-      background: var(--surface2);
-      border-radius: 10px;
-      border: 1px solid var(--border);
-    }
-    .quality-box.show { display: block; }
-    .quality-box label {
-      font-size: 0.78rem;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .quality-box input[type="range"] {
-      width: 100%;
-      accent-color: var(--primary);
-      height: 6px;
-    }
-
-    /* ===== Preview ===== */
-    .previews { margin-top: 14px; }
-    .preview-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 10px;
-      position: relative;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .preview-card img,
-    .preview-card video {
-      width: 72px;
-      height: 72px;
-      object-fit: cover;
-      border-radius: 8px;
-      flex-shrink: 0;
-      background: #111;
-    }
-    .preview-card .info { flex: 1; min-width: 0; }
-    .preview-card .info .name {
-      font-size: 0.85rem;
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .preview-card .info .meta {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-    .preview-card .info .saved {
-      color: var(--primary);
-      font-weight: 600;
-    }
-    .preview-card .x {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      border: none;
-      background: var(--danger-bg);
-      color: var(--danger);
-      font-size: 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* ===== Progress ===== */
-    .progress-box {
-      display: none;
-      margin: 14px 0;
-    }
-    .progress-box.show { display: block; }
-    .progress-track {
-      height: 6px;
-      background: var(--surface2);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary-dim), var(--primary));
-      width: 0%;
-      transition: width 0.3s;
-      border-radius: 3px;
-    }
-    .progress-label {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 6px;
-      text-align: center;
-    }
-
-    /* ===== Messages ===== */
-    .msg {
-      margin-top: 12px;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 500;
-      text-align: center;
-      display: none;
-    }
-    .msg.show { display: block; }
-    .msg.ok { background: var(--primary-bg); color: var(--primary); }
-    .msg.err { background: var(--danger-bg); color: var(--danger); }
-    .msg.info { background: rgba(100,140,200,0.12); color: #7ab0ff; }
-
-    /* ===== Login ===== */
-    .login-wrap {
-      max-width: 400px;
-      margin: 60px auto 0;
-    }
-    .login-wrap .card { text-align: center; }
-    .login-wrap .brand { justify-content: center; margin-bottom: 24px; }
-    .login-wrap .field { text-align: left; }
-
-    /* ===== User bar ===== */
-    .user-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-    .user-row strong { color: var(--text); }
-
-    /* ===== Post list ===== */
-    .post {
-      border-bottom: 1px solid var(--border);
-      padding: 16px 0;
-    }
-    .post:last-child { border-bottom: none; }
-    .post-date {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-    .post-title {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .post-text {
-      font-size: 0.9rem;
-      color: #c5d0e0;
-      white-space: pre-wrap;
-      word-break: break-word;
-      margin-bottom: 10px;
-    }
-    .post-media img {
-      max-width: 100%;
-      max-height: 160px;
-      border-radius: 8px;
-      margin-bottom: 8px;
-      object-fit: cover;
-    }
-    .file-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      color: var(--primary);
-      text-decoration: none;
-      margin-right: 6px;
-      margin-bottom: 6px;
-    }
-    .file-chip:hover { border-color: var(--primary); }
-    .empty {
-      text-align: center;
-      color: var(--muted);
-      padding: 30px 0;
-      font-size: 0.9rem;
-    }
-
-    /* ===== Spinner ===== */
-    .spin {
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(10,26,18,0.25);
-      border-top-color: #0a1a12;
-      border-radius: 50%;
-      animation: s 0.6s linear infinite;
-      display: inline-block;
-    }
-    @keyframes s { to { transform: rotate(360deg); } }
-
-    /* ===== Link section ===== */
-    .link-box { display: none; }
-    .link-box.show { display: block; }
-
-    @media (max-width: 480px) {
-      .wrap { padding: 12px 10px 30px; }
-      .card { padding: 18px; }
-      .pill { padding: 8px 10px; font-size: 0.78rem; }
-      .topbar { flex-direction: column; align-items: flex-start; gap: 12px; }
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Noto Sans Bengali',system-ui,sans-serif;background:#f3efe6;color:#1a1610;min-height:100vh;padding:16px;line-height:1.5}
+    .box{max-width:520px;margin:0 auto 18px;background:#fff;border-radius:14px;padding:22px;box-shadow:0 4px 18px rgba(0,0,0,.08);border:1px solid #e5e0d5}
+    h1{text-align:center;font-size:1.25rem;color:#1f4a32;margin-bottom:6px}
+    .sub{text-align:center;font-size:.82rem;color:#6b6358;margin-bottom:18px}
+    label{display:block;font-size:.82rem;font-weight:600;color:#5c5346;margin:14px 0 6px}
+    input,textarea,select,button{font-family:inherit;font-size:15px}
+    input,textarea{width:100%;padding:12px 14px;border:1.5px solid #d0c8b4;border-radius:10px;background:#faf8f2}
+    input:focus,textarea:focus{outline:none;border-color:#1f4a32;background:#fff}
+    textarea{min-height:90px;resize:vertical}
+    .btn{width:100%;padding:13px;border:none;border-radius:10px;font-weight:700;cursor:pointer;margin-top:12px}
+    .btn-green{background:#1f4a32;color:#fff}
+    .btn-green:hover{background:#163326}
+    .btn-green:disabled{opacity:.6;cursor:not-allowed}
+    .btn-red{background:#b84a42;color:#fff;margin-top:10px}
+    .btn-sm{width:auto;padding:7px 14px;font-size:13px}
+    .msg{text-align:center;font-weight:600;font-size:.9rem;margin-top:12px;min-height:22px}
+    .ok{color:#1f4a32}.err{color:#b84a42}.info{color:#5c5346}
+    .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+    .tab{flex:1;min-width:70px;padding:9px 6px;border:1.5px solid #d0c8b4;border-radius:8px;background:#faf8f2;font-size:.8rem;font-weight:600;cursor:pointer;text-align:center;color:#5c5346}
+    .tab.on{background:#1f4a32;border-color:#1f4a32;color:#fff}
+    .drop{border:2px dashed #d0c8b4;border-radius:12px;padding:24px 12px;text-align:center;background:#faf8f2;cursor:pointer}
+    .drop:hover,.drop.over{border-color:#1f4a32;background:#eef5f0}
+    .drop input{display:none}
+    .hint{font-size:.75rem;color:#8a8070;margin-top:6px}
+    .preview{margin-top:12px}
+    .preview img{max-width:100%;max-height:200px;border-radius:10px;display:block;margin:0 auto}
+    .preview .name{font-size:.8rem;color:#5c5346;text-align:center;margin-top:6px}
+    .bar{height:6px;background:#e5e0d5;border-radius:3px;margin-top:12px;overflow:hidden;display:none}
+    .bar.show{display:block}
+    .bar>i{display:block;height:100%;background:#1f4a32;width:0%;transition:width .25s}
+    .post{border-bottom:1px solid #eee;padding:14px 0}
+    .post:last-child{border-bottom:none}
+    .post .d{font-size:.75rem;color:#b84a42;margin-bottom:4px}
+    .post .t{font-size:.92rem;white-space:pre-wrap;word-break:break-word;margin-bottom:8px}
+    .post img{max-width:100%;max-height:140px;border-radius:8px;margin-bottom:8px}
+    .empty{text-align:center;color:#8a8070;padding:20px 0}
+    .user{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:#6b6358;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #eee}
+    .hidden{display:none!important}
   </style>
 </head>
 <body>
 
-  <!-- ==================== LOGIN ==================== -->
-  <div class="wrap login-wrap" id="loginView">
-    <div class="card">
-      <div class="brand">
-        <div class="brand-icon">🔐</div>
-        <div>
-          <h1>অ্যাডমিন লগইন</h1>
-          <p>আমাদের যোগিনী বাড়ী</p>
-        </div>
-      </div>
-      <div class="field">
-        <label>ইমেইল</label>
-        <input type="email" id="email" placeholder="admin@example.com" autocomplete="email">
-      </div>
-      <div class="field">
-        <label>পাসওয়ার্ড</label>
-        <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
-      </div>
-      <button class="btn btn-primary" id="loginBtn" onclick="login()">লগইন করুন</button>
-      <div class="msg" id="loginMsg"></div>
+<div class="box" id="loginBox">
+  <h1>🔐 অ্যাডমিন লগইন</h1>
+  <p class="sub">আমাদের যোগিনী বাড়ী</p>
+  <label>ইমেইল</label>
+  <input type="email" id="email" placeholder="ইমেইল" autocomplete="email">
+  <label>পাসওয়ার্ড</label>
+  <input type="password" id="password" placeholder="পাসওয়ার্ড" autocomplete="current-password">
+  <button class="btn btn-green" id="loginBtn" onclick="doLogin()">লগইন করুন</button>
+  <div class="msg" id="loginMsg"></div>
+</div>
+
+<div id="mainBox" class="hidden">
+  <div class="box">
+    <div class="user">
+      <span id="userEmail">—</span>
+      <button class="btn btn-red btn-sm" onclick="doLogout()">লগআউট</button>
     </div>
+    <h1 style="text-align:left;font-size:1.1rem;margin-bottom:4px">নতুন আপডেট</h1>
+
+    <label>শিরোনাম (ঐচ্ছিক)</label>
+    <input type="text" id="title" placeholder="শিরোনাম লিখুন">
+
+    <label>টেক্সট / নোটিশ</label>
+    <textarea id="text" placeholder="নোটিশ লিখুন..."></textarea>
+
+    <label>কী যোগ করবেন?</label>
+    <div class="tabs">
+      <button type="button" class="tab on" data-t="none" onclick="setTab('none')">শুধু টেক্সট</button>
+      <button type="button" class="tab" data-t="image" onclick="setTab('image')">ছবি</button>
+      <button type="button" class="tab" data-t="video" onclick="setTab('video')">ভিডিও</button>
+      <button type="button" class="tab" data-t="link" onclick="setTab('link')">লিংক</button>
+      <button type="button" class="tab" data-t="file" onclick="setTab('file')">ফাইল/PDF</button>
+    </div>
+
+    <div id="panel-image" class="hidden">
+      <div class="drop" id="dropImg" onclick="document.getElementById('fileImg').click()">
+        <div style="font-size:1.8rem">🖼️</div>
+        <div>ছবি সিলেক্ট করুন</div>
+        <div class="hint">অটো কম্প্রেস হবে · অথবা নিচে URL দিন</div>
+        <input type="file" id="fileImg" accept="image/*">
+      </div>
+      <div class="preview" id="prevImg"></div>
+      <label>অথবা ছবির লিংক (URL)</label>
+      <input type="url" id="imgUrl" placeholder="https://...">
+    </div>
+
+    <div id="panel-video" class="hidden">
+      <div class="drop" id="dropVid" onclick="document.getElementById('fileVid').click()">
+        <div style="font-size:1.8rem">🎬</div>
+        <div>ভিডিও ফাইল সিলেক্ট</div>
+        <div class="hint">MP4 ইত্যাদি · অথবা নিচে ইউটিউব লিংক</div>
+        <input type="file" id="fileVid" accept="video/*">
+      </div>
+      <div class="preview" id="prevVid"></div>
+      <label>অথবা ইউটিউব / ভিডিও লিংক</label>
+      <input type="url" id="vidUrl" placeholder="https://youtube.com/...">
+    </div>
+
+    <div id="panel-link" class="hidden">
+      <label>যেকোনো লিংক</label>
+      <input type="url" id="extLink" placeholder="https://...">
+    </div>
+
+    <div id="panel-file" class="hidden">
+      <div class="drop" id="dropFile" onclick="document.getElementById('fileAny').click()">
+        <div style="font-size:1.8rem">📎</div>
+        <div>PDF / ফাইল সিলেক্ট</div>
+        <div class="hint">PDF, DOC, ZIP ইত্যাদি</div>
+        <input type="file" id="fileAny" accept="*/*">
+      </div>
+      <div class="preview" id="prevFile"></div>
+    </div>
+
+    <div class="bar" id="bar"><i id="barFill"></i></div>
+    <div class="msg info" id="progText"></div>
+
+    <button class="btn btn-green" id="submitBtn" onclick="doSubmit()">সাবমিট করুন</button>
+    <div class="msg" id="submitMsg"></div>
   </div>
 
-  <!-- ==================== MAIN PANEL ==================== -->
-  <div class="wrap" id="mainView" style="display:none;">
-
-    <div class="topbar">
-      <div class="brand">
-        <div class="brand-icon">🌿</div>
-        <div>
-          <h1>কন্টেন্ট ম্যানেজার</h1>
-          <p>লেটেস্ট আপডেট নিয়ন্ত্রণ</p>
-        </div>
-      </div>
-      <button class="btn btn-ghost" onclick="logout()">লগআউট</button>
-    </div>
-
-    <!-- New Post -->
-    <div class="card">
-      <div class="user-row">
-        <div>লগইন আছেন: <strong id="userLabel">—</strong></div>
-      </div>
-
-      <div class="card-title">নতুন আপডেট যোগ করুন <span class="badge">NEW</span></div>
-
-      <div class="field">
-        <label>শিরোনাম (ঐচ্ছিক)</label>
-        <input type="text" id="title" placeholder="উদাহরণ: নৌকা ভ্রমণ-২৬">
-      </div>
-
-      <div class="field">
-        <label>বিস্তারিত টেক্সট / নোটিশ</label>
-        <textarea id="text" placeholder="এখানে নোটিশ বা বিস্তারিত লিখুন..."></textarea>
-      </div>
-
-      <div class="field">
-        <label>মিডিয়া টাইপ বেছে নিন</label>
-        <div class="type-pills">
-          <button type="button" class="pill active" data-t="image" onclick="setType('image')">🖼️ ছবি</button>
-          <button type="button" class="pill" data-t="video" onclick="setType('video')">🎬 ভিডিও</button>
-          <button type="button" class="pill" data-t="audio" onclick="setType('audio')">🎵 অডিও</button>
-          <button type="button" class="pill" data-t="pdf" onclick="setType('pdf')">📄 PDF</button>
-          <button type="button" class="pill" data-t="file" onclick="setType('file')">📎 ফাইল</button>
-          <button type="button" class="pill" data-t="link" onclick="setType('link')">🔗 লিংক</button>
-        </div>
-      </div>
-
-      <!-- File drop -->
-      <div id="fileSection">
-        <div class="drop" id="dropZone">
-          <div class="big-icon" id="dropIcon">📁</div>
-          <p>ফাইল ড্রপ করুন বা ক্লিক করে বেছে নিন</p>
-          <p class="sub" id="dropSub">ছবি অটো কম্প্রেস হবে · সব ধরনের ফাইল সাপোর্ট</p>
-          <input type="file" id="fileInput">
-        </div>
-
-        <div class="quality-box" id="qualityBox">
-          <label>
-            <span>ইমেজ কোয়ালিটি</span>
-            <span id="qVal">75%</span>
-          </label>
-          <input type="range" id="qSlider" min="40" max="95" value="75" step="5">
-        </div>
-
-        <div class="previews" id="previews"></div>
-      </div>
-
-      <!-- Link -->
-      <div class="link-box" id="linkSection">
-        <div class="field">
-          <label>ইউটিউব বা যেকোনো লিংক</label>
-          <input type="url" id="linkInput" placeholder="https://youtube.com/watch?v=... অথবা অন্য লিংক">
-        </div>
-      </div>
-
-      <div class="progress-box" id="progressBox">
-        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
-        <div class="progress-label" id="progressLabel">প্রস্তুত...</div>
-      </div>
-
-      <button class="btn btn-primary" id="submitBtn" onclick="submit()" style="margin-top:8px;">
-        সাবমিট করুন
-      </button>
-      <div class="msg" id="submitMsg"></div>
-    </div>
-
-    <!-- Old posts -->
-    <div class="card">
-      <div class="card-title">পুরনো আপডেটসমূহ</div>
-      <div id="postList"><div class="empty">লোড হচ্ছে...</div></div>
-    </div>
+  <div class="box">
+    <h1 style="text-align:left;font-size:1.1rem;margin-bottom:12px">পুরনো আপডেট</h1>
+    <div id="list"><div class="empty">লোড হচ্ছে...</div></div>
   </div>
+</div>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script>
+(function(){
+  var cfg = {
+    apiKey: "AIzaSyBqiOcn85zgvzDXt_Y60e3CQDEpdlYRBQ0",
+    authDomain: "amader-joginibari.firebaseapp.com",
+    projectId: "amader-joginibari",
+    storageBucket: "amader-joginibari.firebasestorage.app",
+    messagingSenderId: "917158468104",
+    appId: "1:917158468104:web:039539cca785319febcfbd",
+    measurementId: "G-SK4FHVPSTE"
+  };
 
-  <script>
-    // ========== CONFIG ==========
-    const firebaseConfig = {
-      apiKey: "AIzaSyBqiOcn85zgvzDXt_Y60e3CQDEpdlYRBQ0",
-      authDomain: "amader-joginibari.firebaseapp.com",
-      projectId: "amader-joginibari",
-      storageBucket: "amader-joginibari.firebasestorage.app",
-      messagingSenderId: "917158468104",
-      appId: "1:917158468104:web:039539cca785319febcfbd",
-      measurementId: "G-SK4FHVPSTE"
-    };
+  firebase.initializeApp(cfg);
+  var auth = firebase.auth();
+  var db = firebase.firestore();
+  var storage = firebase.storage();
 
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-    const storage = firebase.storage();
+  var tab = 'none';
+  var pickedFile = null;
+  var busy = false;
 
-    // ========== STATE ==========
-    let mediaType = 'image';
-    let files = []; // { file, name, size, origSize, preview, type }
-    let busy = false;
-
-    // ========== AUTH ==========
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        document.getElementById('loginView').style.display = 'none';
-        document.getElementById('mainView').style.display = 'block';
-        document.getElementById('userLabel').textContent = user.email || 'Admin';
-        loadPosts();
-      } else {
-        document.getElementById('loginView').style.display = 'block';
-        document.getElementById('mainView').style.display = 'none';
-      }
-    });
-
-    function login() {
-      const email = document.getElementById('email').value.trim();
-      const pass = document.getElementById('password').value;
-      const msg = document.getElementById('loginMsg');
-      const btn = document.getElementById('loginBtn');
-      if (!email || !pass) {
-        showMsg(msg, 'ইমেইল ও পাসওয়ার্ড দিন', 'err');
-        return;
-      }
-      btn.disabled = true;
-      btn.innerHTML = '<span class="spin"></span> লগইন হচ্ছে...';
-      hideMsg(msg);
-      auth.signInWithEmailAndPassword(email, pass)
-        .catch(e => {
-          console.error(e);
-          showMsg(msg, 'ভুল ইমেইল বা পাসওয়ার্ড', 'err');
-        })
-        .finally(() => {
-          btn.disabled = false;
-          btn.textContent = 'লগইন করুন';
-        });
+  auth.onAuthStateChanged(function(u){
+    if(u){
+      document.getElementById('loginBox').classList.add('hidden');
+      document.getElementById('mainBox').classList.remove('hidden');
+      document.getElementById('userEmail').textContent = u.email || 'Admin';
+      loadList();
+    } else {
+      document.getElementById('loginBox').classList.remove('hidden');
+      document.getElementById('mainBox').classList.add('hidden');
     }
+  });
 
-    function logout() { auth.signOut(); }
+  window.doLogin = function(){
+    var e = document.getElementById('email').value.trim();
+    var p = document.getElementById('password').value;
+    var m = document.getElementById('loginMsg');
+    var b = document.getElementById('loginBtn');
+    if(!e||!p){ m.className='msg err'; m.textContent='ইমেইল ও পাসওয়ার্ড দিন'; return; }
+    b.disabled = true; b.textContent = 'লগইন হচ্ছে...'; m.textContent='';
+    auth.signInWithEmailAndPassword(e,p).catch(function(err){
+      m.className='msg err'; m.textContent='ভুল ইমেইল বা পাসওয়ার্ড';
+      console.error(err);
+    }).finally(function(){ b.disabled=false; b.textContent='লগইন করুন'; });
+  };
 
-    document.getElementById('password').addEventListener('keydown', e => {
-      if (e.key === 'Enter') login();
+  window.doLogout = function(){ auth.signOut(); };
+
+  document.getElementById('password').addEventListener('keydown', function(ev){
+    if(ev.key==='Enter') doLogin();
+  });
+
+  window.setTab = function(t){
+    tab = t;
+    document.querySelectorAll('.tab').forEach(function(el){
+      el.classList.toggle('on', el.getAttribute('data-t')===t);
     });
+    ['image','video','link','file'].forEach(function(x){
+      document.getElementById('panel-'+x).classList.toggle('hidden', x!==t);
+    });
+    pickedFile = null;
+    ['prevImg','prevVid','prevFile'].forEach(function(id){
+      var el=document.getElementById(id); if(el) el.innerHTML='';
+    });
+  };
 
-    // ========== MEDIA TYPE ==========
-    function setType(t) {
-      mediaType = t;
-      document.querySelectorAll('.pill').forEach(p => {
-        p.classList.toggle('active', p.dataset.t === t);
+  function bindFile(inputId, prevId, dropId){
+    var inp = document.getElementById(inputId);
+    var drop = document.getElementById(dropId);
+    inp.addEventListener('change', function(){
+      if(inp.files && inp.files[0]) handlePick(inp.files[0], prevId);
+      inp.value='';
+    });
+    if(drop){
+      drop.addEventListener('dragover', function(e){ e.preventDefault(); drop.classList.add('over'); });
+      drop.addEventListener('dragleave', function(){ drop.classList.remove('over'); });
+      drop.addEventListener('drop', function(e){
+        e.preventDefault(); drop.classList.remove('over');
+        if(e.dataTransfer.files[0]) handlePick(e.dataTransfer.files[0], prevId);
       });
+    }
+  }
+  bindFile('fileImg','prevImg','dropImg');
+  bindFile('fileVid','prevVid','dropVid');
+  bindFile('fileAny','prevFile','dropFile');
 
-      const fileSec = document.getElementById('fileSection');
-      const linkSec = document.getElementById('linkSection');
-      const qBox = document.getElementById('qualityBox');
-      const input = document.getElementById('fileInput');
-      const icon = document.getElementById('dropIcon');
-      const sub = document.getElementById('dropSub');
+  function handlePick(file, prevId){
+    pickedFile = file;
+    var prev = document.getElementById(prevId);
+    var size = (file.size/1024).toFixed(0) + ' KB';
+    if(file.type.indexOf('image/')===0){
+      var url = URL.createObjectURL(file);
+      prev.innerHTML = '<img src="'+url+'"><div class="name">'+esc(file.name)+' · '+size+'</div>';
+    } else {
+      prev.innerHTML = '<div class="name">📎 '+esc(file.name)+' · '+size+'</div>';
+    }
+  }
 
-      if (t === 'link') {
-        fileSec.style.display = 'none';
-        linkSec.classList.add('show');
-        clearFiles();
-      } else {
-        fileSec.style.display = 'block';
-        linkSec.classList.remove('show');
-        document.getElementById('linkInput').value = '';
+  function compressImage(file){
+    return new Promise(function(resolve){
+      if(!file.type || file.type.indexOf('image/')!==0){ resolve(file); return; }
+      var img = new Image();
+      var url = URL.createObjectURL(file);
+      img.onload = function(){
+        URL.revokeObjectURL(url);
+        var w=img.width, h=img.height, max=1600;
+        if(w>max || h>max){
+          if(w>h){ h=Math.round(h*max/w); w=max; }
+          else { w=Math.round(w*max/h); h=max; }
+        }
+        var c=document.createElement('canvas');
+        c.width=w; c.height=h;
+        c.getContext('2d').drawImage(img,0,0,w,h);
+        c.toBlob(function(blob){
+          if(!blob){ resolve(file); return; }
+          resolve(new File([blob], file.name.replace(/\.\w+$/,'.jpg'), {type:'image/jpeg'}));
+        }, 'image/jpeg', 0.72);
+      };
+      img.onerror = function(){ URL.revokeObjectURL(url); resolve(file); };
+      img.src = url;
+    });
+  }
 
-        const map = {
-          image: { accept: 'image/*', icon: '🖼️', sub: 'JPG/PNG/WEBP — অটো কম্প্রেস · কোয়ালিটি ক্লিয়ার থাকবে' },
-          video: { accept: 'video/*', icon: '🎬', sub: 'MP4, MOV, WEBM ইত্যাদি' },
-          audio: { accept: 'audio/*', icon: '🎵', sub: 'MP3, WAV, M4A ইত্যাদি' },
-          pdf:   { accept: '.pdf,application/pdf', icon: '📄', sub: 'শুধুমাত্র PDF ফাইল' },
-          file:  { accept: '*/*', icon: '📎', sub: 'যেকোনো ফাইল — ZIP, DOC, XLS...' }
-        };
-        const m = map[t] || map.file;
-        input.accept = m.accept;
-        input.multiple = (t === 'image' || t === 'file');
-        icon.textContent = m.icon;
-        sub.textContent = m.sub;
-        qBox.classList.toggle('show', t === 'image');
-      }
+  function uploadFile(file){
+    return new Promise(function(resolve, reject){
+      var ext = (file.name.split('.').pop() || 'bin').toLowerCase();
+      var path = 'posts/' + Date.now() + '_' + Math.random().toString(36).slice(2,7) + '.' + ext;
+      var ref = storage.ref(path);
+      var task = ref.put(file, { contentType: file.type || 'application/octet-stream' });
+      task.on('state_changed',
+        function(s){
+          var pct = Math.round((s.bytesTransferred / s.totalBytes) * 100);
+          document.getElementById('barFill').style.width = pct + '%';
+          document.getElementById('progText').textContent = 'আপলোড ' + pct + '%';
+        },
+        function(err){ reject(err); },
+        function(){
+          task.snapshot.ref.getDownloadURL().then(resolve).catch(reject);
+        }
+      );
+    });
+  }
+
+  window.doSubmit = async function(){
+    if(busy) return;
+    var title = document.getElementById('title').value.trim();
+    var text = document.getElementById('text').value.trim();
+    var msg = document.getElementById('submitMsg');
+    var btn = document.getElementById('submitBtn');
+    var bar = document.getElementById('bar');
+    var prog = document.getElementById('progText');
+
+    var imgUrl = document.getElementById('imgUrl').value.trim();
+    var vidUrl = document.getElementById('vidUrl').value.trim();
+    var extLink = document.getElementById('extLink').value.trim();
+
+    var hasSomething = title || text || pickedFile || imgUrl || vidUrl || extLink;
+    if(!hasSomething){
+      msg.className='msg err'; msg.textContent='কমপক্ষে কিছু লিখুন বা ফাইল/লিংক দিন';
+      return;
     }
 
-    document.getElementById('qSlider').addEventListener('input', function() {
-      document.getElementById('qVal').textContent = this.value + '%';
-    });
+    busy = true;
+    btn.disabled = true;
+    btn.textContent = 'সেভ হচ্ছে...';
+    msg.textContent = '';
+    bar.classList.add('show');
+    document.getElementById('barFill').style.width = '5%';
+    prog.textContent = 'প্রস্তুত...';
 
-    // ========== DROP ZONE ==========
-    const zone = document.getElementById('dropZone');
-    const fileInput = document.getElementById('fileInput');
+    try {
+      var media = [];
 
-    zone.addEventListener('click', () => fileInput.click());
-    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
-    zone.addEventListener('dragleave', () => zone.classList.remove('over'));
-    zone.addEventListener('drop', e => {
-      e.preventDefault();
-      zone.classList.remove('over');
-      handleFiles(e.dataTransfer.files);
-    });
-    fileInput.addEventListener('change', () => {
-      handleFiles(fileInput.files);
-      fileInput.value = '';
-    });
+      if(pickedFile){
+        prog.textContent = 'ফাইল প্রসেস হচ্ছে...';
+        var fileToUp = pickedFile;
+        if(tab==='image' || (pickedFile.type && pickedFile.type.indexOf('image/')===0)){
+          prog.textContent = 'ছবি কম্প্রেস হচ্ছে...';
+          fileToUp = await compressImage(pickedFile);
+          prog.textContent = 'কম্প্রেস: ' + (pickedFile.size/1024).toFixed(0) + 'KB → ' + (fileToUp.size/1024).toFixed(0) + 'KB';
+        }
+        prog.textContent = 'আপলোড শুরু...';
+        var url = await uploadFile(fileToUp);
+        var mtype = 'file';
+        if(tab==='image' || (pickedFile.type||'').indexOf('image/')===0) mtype = 'image';
+        else if(tab==='video' || (pickedFile.type||'').indexOf('video/')===0) mtype = 'video';
+        else if(tab==='file' && (pickedFile.type==='application/pdf' || /\.pdf$/i.test(pickedFile.name))) mtype = 'pdf';
+        media.push({ type: mtype, url: url, name: pickedFile.name, size: fileToUp.size });
+      }
 
-    // ========== PURE JS IMAGE COMPRESS (no external lib) ==========
-    function compressImage(file, qualityPercent) {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        const url = URL.createObjectURL(file);
-        img.onload = () => {
-          URL.revokeObjectURL(url);
-          let w = img.width;
-          let h = img.height;
-          const max = 1920;
-          if (w > max || h > max) {
-            if (w > h) { h = Math.round(h * max / w); w = max; }
-            else { w = Math.round(w * max / h); h = max; }
+      if(tab==='image' && imgUrl && !pickedFile){
+        media.push({ type: 'image', url: imgUrl, name: 'Image URL' });
+      }
+      if(tab==='video' && vidUrl && !pickedFile){
+        var isYt = /youtu\.?be|youtube\.com/i.test(vidUrl);
+        media.push({ type: isYt ? 'youtube' : 'link', url: vidUrl, name: isYt ? 'YouTube' : 'Video Link' });
+      }
+      if(tab==='link' && extLink){
+        var isYt2 = /youtu\.?be|youtube\.com/i.test(extLink);
+        media.push({ type: isYt2 ? 'youtube' : 'link', url: extLink, name: isYt2 ? 'YouTube' : 'Link' });
+      }
+
+      document.getElementById('barFill').style.width = '90%';
+      prog.textContent = 'ডেটাবেসে সেভ হচ্ছে...';
+
+      var data = {
+        title: title || '',
+        text: text || '',
+        media: media,
+        imageLink: (media.find(function(m){return m.type==='image';}) || {}).url || '',
+        videoLink: (media.find(function(m){return m.type==='youtube'||m.type==='video';}) || {}).url || '',
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+
+      await db.collection('posts').add(data);
+
+      document.getElementById('barFill').style.width = '100%';
+      prog.textContent = '';
+      msg.className = 'msg ok';
+      msg.textContent = '✅ সফলভাবে যোগ হয়েছে!';
+
+      document.getElementById('title').value = '';
+      document.getElementById('text').value = '';
+      document.getElementById('imgUrl').value = '';
+      document.getElementById('vidUrl').value = '';
+      document.getElementById('extLink').value = '';
+      pickedFile = null;
+      ['prevImg','prevVid','prevFile'].forEach(function(id){ document.getElementById(id).innerHTML=''; });
+      setTab('none');
+
+      setTimeout(function(){ bar.classList.remove('show'); loadList(); }, 800);
+
+    } catch(err) {
+      console.error(err);
+      var t = (err && err.message) ? err.message : 'অজানা সমস্যা';
+      var code = (err && err.code) ? err.code : '';
+      if(/unauthorized|permission/i.test(t) || code==='storage/unauthorized'){
+        t = 'Storage অনুমতি নেই। Firebase Console → Storage → Rules এ allow write: if request.auth != null; দিয়ে Publish করুন।';
+      } else if(/quota|retry-limit|network/i.test(t)){
+        t = 'নেটওয়ার্ক সমস্যা। আবার চেষ্টা করুন। অথবা ছবির URL ব্যবহার করুন।';
+      } else if(code==='storage/unknown' || /bucket/i.test(t)){
+        t = 'Storage চালু নেই। Firebase Console → Storage → Get started করুন।';
+      }
+      msg.className = 'msg err';
+      msg.textContent = '❌ ' + t;
+      bar.classList.remove('show');
+      prog.textContent = '';
+    } finally {
+      busy = false;
+      btn.disabled = false;
+      btn.textContent = 'সাবমিট করুন';
+    }
+  };
+
+  function loadList(){
+    var list = document.getElementById('list');
+    list.innerHTML = '<div class="empty">লোড হচ্ছে...</div>';
+    db.collection('posts').orderBy('createdAt','desc').limit(40).get()
+      .then(function(snap){
+        if(snap.empty){ list.innerHTML='<div class="empty">কোনো পোস্ট নেই</div>'; return; }
+        list.innerHTML = '';
+        snap.forEach(function(doc){
+          var d = doc.data();
+          var div = document.createElement('div');
+          div.className = 'post';
+          var h = '';
+          if(d.createdAt && d.createdAt.toDate){
+            h += '<div class="d">'+d.createdAt.toDate().toLocaleString('bn-BD')+'</div>';
           }
-          const canvas = document.createElement('canvas');
-          canvas.width = w;
-          canvas.height = h;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, w, h);
-          canvas.toBlob(blob => {
-            if (!blob) { resolve(file); return; }
-            const out = new File([blob], file.name.replace(/\.\w+$/, '.jpg'), {
-              type: 'image/jpeg',
-              lastModified: Date.now()
+          if(d.title) h += '<div style="font-weight:700;margin-bottom:4px">'+esc(d.title)+'</div>';
+          if(d.text) h += '<div class="t">'+esc(d.text)+'</div>';
+          if(d.media && d.media.length){
+            d.media.forEach(function(m){
+              if(m.type==='image') h += '<img src="'+esc(m.url)+'" onerror="this.style.display=\'none\'">';
+              else h += '<div class="hint">'+esc(m.type)+': '+esc(m.name||m.url)+'</div>';
             });
-            resolve(out);
-          }, 'image/jpeg', qualityPercent / 100);
-        };
-        img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
-        img.src = url;
-      });
-    }
-
-    async function handleFiles(list) {
-      if (!list || !list.length || busy) return;
-      const msg = document.getElementById('submitMsg');
-
-      for (const raw of Array.from(list)) {
-        // type check
-        if (mediaType === 'image' && !raw.type.startsWith('image/')) {
-          showMsg(msg, 'শুধু ছবি সিলেক্ট করুন', 'err'); continue;
-        }
-        if (mediaType === 'video' && !raw.type.startsWith('video/')) {
-          showMsg(msg, 'শুধু ভিডিও সিলেক্ট করুন', 'err'); continue;
-        }
-        if (mediaType === 'audio' && !raw.type.startsWith('audio/')) {
-          showMsg(msg, 'শুধু অডিও সিলেক্ট করুন', 'err'); continue;
-        }
-        if (mediaType === 'pdf' && raw.type !== 'application/pdf' && !raw.name.toLowerCase().endsWith('.pdf')) {
-          showMsg(msg, 'শুধু PDF সিলেক্ট করুন', 'err'); continue;
-        }
-
-        let finalFile = raw;
-        let origSize = raw.size;
-        let compressedSize = null;
-
-        if (mediaType === 'image' && raw.type.startsWith('image/')) {
-          showMsg(msg, 'ছবি কম্প্রেস হচ্ছে...', 'info');
-          const q = parseInt(document.getElementById('qSlider').value, 10);
-          try {
-            finalFile = await compressImage(raw, q);
-            compressedSize = finalFile.size;
-          } catch (e) {
-            console.warn('compress fail', e);
-            finalFile = raw;
+          } else if(d.imageLink){
+            h += '<img src="'+esc(d.imageLink)+'" onerror="this.style.display=\'none\'">';
           }
-          hideMsg(msg);
-        }
-
-        const preview = URL.createObjectURL(finalFile);
-        files.push({
-          file: finalFile,
-          name: raw.name,
-          size: finalFile.size,
-          origSize,
-          compressedSize,
-          preview,
-          type: mediaType
+          h += '<button class="btn btn-red btn-sm" onclick="delPost(\''+doc.id+'\')">ডিলিট</button>';
+          div.innerHTML = h;
+          list.appendChild(div);
         });
-      }
-      renderPreviews();
-    }
-
-    function renderPreviews() {
-      const box = document.getElementById('previews');
-      box.innerHTML = '';
-      files.forEach((f, i) => {
-        const div = document.createElement('div');
-        div.className = 'preview-card';
-        let thumb = '';
-        if (f.type === 'image') thumb = `<img src="${f.preview}" alt="">`;
-        else if (f.type === 'video') thumb = `<video src="${f.preview}" style="width:72px;height:72px;object-fit:cover;border-radius:8px;"></video>`;
-        else thumb = `<div style="width:72px;height:72px;background:#111;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;">📄</div>`;
-
-        const sizeLine = f.compressedSize
-          ? `<span class="saved">${fmt(f.origSize)} → ${fmt(f.compressedSize)}</span>`
-          : fmt(f.size);
-
-        div.innerHTML = `
-          ${thumb}
-          <div class="info">
-            <div class="name">${esc(f.name)}</div>
-            <div class="meta">${sizeLine}</div>
-          </div>
-          <button class="x" onclick="removeFile(${i})">✕</button>
-        `;
-        box.appendChild(div);
+      })
+      .catch(function(e){
+        console.error(e);
+        list.innerHTML = '<div class="empty" style="color:#b84a42">লোড ব্যর্থ</div>';
       });
-    }
+  }
 
-    function removeFile(i) {
-      if (files[i]?.preview) URL.revokeObjectURL(files[i].preview);
-      files.splice(i, 1);
-      renderPreviews();
-    }
+  window.delPost = function(id){
+    if(!confirm('ডিলিট করবেন?')) return;
+    db.collection('posts').doc(id).delete().then(loadList);
+  };
 
-    function clearFiles() {
-      files.forEach(f => { if (f.preview) URL.revokeObjectURL(f.preview); });
-      files = [];
-      renderPreviews();
-    }
-
-    // ========== SUBMIT ==========
-    async function submit() {
-      if (busy) return;
-      const title = document.getElementById('title').value.trim();
-      const text = document.getElementById('text').value.trim();
-      const link = document.getElementById('linkInput').value.trim();
-      const msg = document.getElementById('submitMsg');
-      const btn = document.getElementById('submitBtn');
-      const pBox = document.getElementById('progressBox');
-      const pBar = document.getElementById('progressBar');
-      const pLbl = document.getElementById('progressLabel');
-
-      const hasFile = files.length > 0;
-      const hasLink = mediaType === 'link' && link;
-
-      if (!title && !text && !hasFile && !hasLink) {
-        showMsg(msg, 'কমপক্ষে টেক্সট, ফাইল বা লিংক দিন', 'err');
-        return;
-      }
-
-      busy = true;
-      btn.disabled = true;
-      btn.innerHTML = '<span class="spin"></span> আপলোড হচ্ছে...';
-      hideMsg(msg);
-      pBox.classList.add('show');
-      pBar.style.width = '5%';
-      pLbl.textContent = 'শুরু হচ্ছে...';
-
-      try {
-        const media = [];
-
-        // Upload files to Storage
-        if (hasFile) {
-          for (let i = 0; i < files.length; i++) {
-            const f = files[i];
-            pLbl.textContent = `আপলোড ${i + 1}/${files.length}: ${f.name}`;
-            const ext = (f.name.split('.').pop() || 'bin').toLowerCase();
-            const path = `posts/${Date.now()}_${Math.random().toString(36).slice(2, 7)}.${ext}`;
-            const ref = storage.ref(path);
-
-            await new Promise((resolve, reject) => {
-              const task = ref.put(f.file, {
-                contentType: f.file.type || 'application/octet-stream'
-              });
-              task.on('state_changed',
-                snap => {
-                  const pct = 5 + ((i + snap.bytesTransferred / snap.totalBytes) / files.length) * 85;
-                  pBar.style.width = Math.min(90, pct) + '%';
-                },
-                err => reject(err),
-                async () => {
-                  const url = await task.snapshot.ref.getDownloadURL();
-                  media.push({
-                    type: f.type,
-                    url,
-                    name: f.name,
-                    size: f.size,
-                    originalSize: f.origSize
-                  });
-                  resolve();
-                }
-              );
-            });
-          }
-        }
-
-        // External / YouTube link
-        if (hasLink) {
-          const yt = /youtu\.?be|youtube\.com/i.test(link);
-          media.push({
-            type: yt ? 'youtube' : 'link',
-            url: link,
-            name: yt ? 'YouTube' : 'Link'
-          });
-        }
-
-        pBar.style.width = '95%';
-        pLbl.textContent = 'সেভ হচ্ছে...';
-
-        // Firestore
-        const data = {
-          title: title || '',
-          text: text || '',
-          media,
-          imageLink: media.find(m => m.type === 'image')?.url || '',
-          videoLink: media.find(m => m.type === 'youtube' || m.type === 'video')?.url || '',
-          createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        };
-
-        await db.collection('posts').add(data);
-
-        pBar.style.width = '100%';
-        pLbl.textContent = 'সফল!';
-        showMsg(msg, '✅ আপডেট সফলভাবে যোগ হয়েছে!', 'ok');
-
-        // reset
-        document.getElementById('title').value = '';
-        document.getElementById('text').value = '';
-        document.getElementById('linkInput').value = '';
-        clearFiles();
-
-        setTimeout(() => {
-          pBox.classList.remove('show');
-          loadPosts();
-        }, 900);
-
-      } catch (err) {
-        console.error(err);
-        let hint = err.message || 'অজানা সমস্যা';
-        if (/storage\/unauthorized|permission/i.test(hint)) {
-          hint = 'Storage অনুমতি নেই। Firebase Console → Storage → Rules এ লিখুন: allow write: if request.auth != null;';
-        } else if (/storage\/retry-limit|network/i.test(hint)) {
-          hint = 'নেটওয়ার্ক সমস্যা। আবার চেষ্টা করুন।';
-        } else if (/storage\/object-not-found/i.test(hint)) {
-          hint = 'Storage বাcket ঠিক নেই। Firebase Console চেক করুন।';
-        }
-        showMsg(msg, '❌ ' + hint, 'err');
-        pBox.classList.remove('show');
-      } finally {
-        busy = false;
-        btn.disabled = false;
-        btn.textContent = 'সাবমিট করুন';
-      }
-    }
-
-    // ========== LOAD / DELETE ==========
-    function loadPosts() {
-      const list = document.getElementById('postList');
-      list.innerHTML = '<div class="empty">লোড হচ্ছে...</div>';
-
-      db.collection('posts').orderBy('createdAt', 'desc').get()
-        .then(snap => {
-          if (snap.empty) {
-            list.innerHTML = '<div class="empty">এখনো কোনো আপডেট নেই</div>';
-            return;
-          }
-          list.innerHTML = '';
-          snap.forEach(doc => {
-            const d = doc.data();
-            const el = document.createElement('div');
-            el.className = 'post';
-            let html = '';
-
-            if (d.createdAt?.toDate) {
-              html += `<div class="post-date">${d.createdAt.toDate().toLocaleString('bn-BD')}</div>`;
-            }
-            if (d.title) html += `<div class="post-title">${esc(d.title)}</div>`;
-            if (d.text) html += `<div class="post-text">${esc(d.text)}</div>`;
-
-            if (d.media?.length) {
-              d.media.forEach(m => {
-                if (m.type === 'image') {
-                  html += `<div class="post-media"><img src="${m.url}" loading="lazy" onerror="this.style.display='none'"></div>`;
-                } else if (m.type === 'video') {
-                  html += `<video src="${m.url}" controls style="max-width:100%;max-height:160px;border-radius:8px;margin-bottom:8px;"></video>`;
-                } else if (m.type === 'audio') {
-                  html += `<audio src="${m.url}" controls style="width:100%;margin-bottom:8px;"></audio>`;
-                } else if (m.type === 'youtube') {
-                  const id = ytId(m.url);
-                  if (id) {
-                    html += `<div style="position:relative;padding-bottom:56%;height:0;border-radius:8px;overflow:hidden;margin-bottom:8px;background:#000">
-                      <iframe src="https://www.youtube.com/embed/${id}" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen></iframe></div>`;
-                  }
-                } else {
-                  const icon = m.type === 'pdf' ? '📄' : (m.type === 'link' ? '🔗' : '📎');
-                  html += `<a class="file-chip" href="${esc(m.url)}" target="_blank" rel="noopener">${icon} ${esc(m.name || 'ফাইল')}</a>`;
-                }
-              });
-            } else {
-              // old format
-              if (d.imageLink) html += `<div class="post-media"><img src="${d.imageLink}" loading="lazy"></div>`;
-              if (d.videoLink) {
-                const id = ytId(d.videoLink);
-                if (id) {
-                  html += `<div style="position:relative;padding-bottom:56%;height:0;border-radius:8px;overflow:hidden;margin-bottom:8px;background:#000">
-                    <iframe src="https://www.youtube.com/embed/${id}" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen></iframe></div>`;
-                }
-              }
-            }
-
-            html += `<button class="btn btn-danger" style="margin-top:8px" onclick="delPost('${doc.id}')">ডিলিট</button>`;
-            el.innerHTML = html;
-            list.appendChild(el);
-          });
-        })
-        .catch(e => {
-          console.error(e);
-          list.innerHTML = '<div class="empty" style="color:var(--danger)">লোড ব্যর্থ</div>';
-        });
-    }
-
-    function delPost(id) {
-      if (!confirm('ডিলিট করতে চান?')) return;
-      db.collection('posts').doc(id).delete().then(loadPosts);
-    }
-
-    // ========== HELPERS ==========
-    function showMsg(el, text, type) {
-      el.textContent = text;
-      el.className = 'msg show ' + type;
-    }
-    function hideMsg(el) {
-      el.className = 'msg';
-      el.textContent = '';
-    }
-    function fmt(b) {
-      if (b < 1024) return b + ' B';
-      if (b < 1048576) return (b / 1024).toFixed(1) + ' KB';
-      return (b / 1048576).toFixed(2) + ' MB';
-    }
-    function esc(s) {
-      return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
-    function ytId(u) {
-      if (!u) return null;
-      const m = u.match(/(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/watch\?.+&v=))([\w-]{11})/);
-      return m ? m[1] : null;
-    }
-
-    // init
-    setType('image');
-  </script>
+  function esc(s){
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+</script>
 </body>
 </html>
