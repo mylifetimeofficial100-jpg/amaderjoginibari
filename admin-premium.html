@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>অ্যাডমিন প্যানেল — আমাদের যোগিনী বাড়ী</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a2332;
+      --surface2: #243044;
+      --border: #2d3a4f;
+      --primary: #3dd68c;
+      --primary-dim: #2bb673;
+      --primary-bg: rgba(61, 214, 140, 0.12);
+      --danger: #ff6b6b;
+      --danger-bg: rgba(255, 107, 107, 0.12);
+      --text: #e8eef7;
+      --muted: #8b9bb4;
+      --radius: 14px;
+      --shadow: 0 8px 32px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans Bengali', 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.55;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 20% -20%, rgba(61,214,140,0.08), transparent),
+        radial-gradient(ellipse 60% 40% at 90% 10%, rgba(61,140,214,0.06), transparent);
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    /* ===== Header ===== */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary), #2a9d6a);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 16px rgba(61,214,140,0.3);
+    }
+    .brand h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .brand p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    /* ===== Cards ===== */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+    .card-title span.badge {
+      font-size: 0.7rem;
+      background: var(--primary-bg);
+      color: var(--primary);
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    /* ===== Form ===== */
+    .field { margin-bottom: 16px; }
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 7px;
+      letter-spacing: 0.02em;
+    }
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(61,214,140,0.15);
+    }
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: #5a6a82; }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dim));
+      color: #0a1a12;
+      box-shadow: 0 4px 16px rgba(61,214,140,0.25);
+    }
+    .btn-primary:hover:not(:disabled) {
+      box-shadow: 0 6px 24px rgba(61,214,140,0.4);
+      filter: brightness(1.05);
+    }
+    .btn-danger {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid rgba(255,107,107,0.3);
+      width: auto;
+      padding: 8px 14px;
+      font-size: 13px;
+    }
+    .btn-danger:hover { background: rgba(255,107,107,0.2); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      width: auto;
+      padding: 8px 14px;
+      font-size: 13px;
+    }
+    .btn-ghost:hover { border-color: var(--muted); color: var(--text); }
+
+    /* ===== Media Type Pills ===== */
+    .type-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .pill {
+      padding: 9px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pill:hover { border-color: var(--primary); color: var(--primary); }
+    .pill.active {
+      background: var(--primary-bg);
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: 0 0 0 1px var(--primary);
+    }
+
+    /* ===== Drop Zone ===== */
+    .drop {
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      padding: 32px 16px;
+      text-align: center;
+      background: var(--surface2);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .drop:hover, .drop.over {
+      border-color: var(--primary);
+      background: var(--primary-bg);
+    }
+    .drop .big-icon { font-size: 2.4rem; margin-bottom: 10px; opacity: 0.9; }
+    .drop p { font-size: 0.9rem; color: var(--muted); }
+    .drop .sub { font-size: 0.75rem; color: #5a6a82; margin-top: 6px; }
+    .drop input { display: none; }
+
+    /* ===== Quality ===== */
+    .quality-box {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: var(--surface2);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .quality-box.show { display: block; }
+    .quality-box label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .quality-box input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+      height: 6px;
+    }
+
+    /* ===== Preview ===== */
+    .previews { margin-top: 14px; }
+    .preview-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+      position: relative;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .preview-card img,
+    .preview-card video {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+      background: #111;
+    }
+    .preview-card .info { flex: 1; min-width: 0; }
+    .preview-card .info .name {
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .preview-card .info .meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+    .preview-card .info .saved {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .preview-card .x {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: none;
+      background: var(--danger-bg);
+      color: var(--danger);
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== Progress ===== */
+    .progress-box {
+      display: none;
+      margin: 14px 0;
+    }
+    .progress-box.show { display: block; }
+    .progress-track {
+      height: 6px;
+      background: var(--surface2);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-dim), var(--primary));
+      width: 0%;
+      transition: width 0.3s;
+      border-radius: 3px;
+    }
+    .progress-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    /* ===== Messages ===== */
+    .msg {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-align: center;
+      display: none;
+    }
+    .msg.show { display: block; }
+    .msg.ok { background: var(--primary-bg); color: var(--primary); }
+    .msg.err { background: var(--danger-bg); color: var(--danger); }
+    .msg.info { background: rgba(100,140,200,0.12); color: #7ab0ff; }
+
+    /* ===== Login ===== */
+    .login-wrap {
+      max-width: 400px;
+      margin: 60px auto 0;
+    }
+    .login-wrap .card { text-align: center; }
+    .login-wrap .brand { justify-content: center; margin-bottom: 24px; }
+    .login-wrap .field { text-align: left; }
+
+    /* ===== User bar ===== */
+    .user-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .user-row strong { color: var(--text); }
+
+    /* ===== Post list ===== */
+    .post {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .post:last-child { border-bottom: none; }
+    .post-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .post-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .post-text {
+      font-size: 0.9rem;
+      color: #c5d0e0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin-bottom: 10px;
+    }
+    .post-media img {
+      max-width: 100%;
+      max-height: 160px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      object-fit: cover;
+    }
+    .file-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .file-chip:hover { border-color: var(--primary); }
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 0;
+      font-size: 0.9rem;
+    }
+
+    /* ===== Spinner ===== */
+    .spin {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(10,26,18,0.25);
+      border-top-color: #0a1a12;
+      border-radius: 50%;
+      animation: s 0.6s linear infinite;
+      display: inline-block;
+    }
+    @keyframes s { to { transform: rotate(360deg); } }
+
+    /* ===== Link section ===== */
+    .link-box { display: none; }
+    .link-box.show { display: block; }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 12px 10px 30px; }
+      .card { padding: 18px; }
+      .pill { padding: 8px 10px; font-size: 0.78rem; }
+      .topbar { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== LOGIN ==================== -->
+  <div class="wrap login-wrap" id="loginView">
+    <div class="card">
+      <div class="brand">
+        <div class="brand-icon">🔐</div>
+        <div>
+          <h1>অ্যাডমিন লগইন</h1>
+          <p>আমাদের যোগিনী বাড়ী</p>
+        </div>
+      </div>
+      <div class="field">
+        <label>ইমেইল</label>
+        <input type="email" id="email" placeholder="admin@example.com" autocomplete="email">
+      </div>
+      <div class="field">
+        <label>পাসওয়ার্ড</label>
+        <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <button class="btn btn-primary" id="loginBtn" onclick="login()">লগইন করুন</button>
+      <div class="msg" id="loginMsg"></div>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN PANEL ==================== -->
+  <div class="wrap" id="mainView" style="display:none;">
+
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-icon">🌿</div>
+        <div>
+          <h1>কন্টেন্ট ম্যানেজার</h1>
+          <p>লেটেস্ট আপডেট নিয়ন্ত্রণ</p>
+        </div>
+      </div>
+      <button class="btn btn-ghost" onclick="logout()">লগআউট</button>
+    </div>
+
+    <!-- New Post -->
+    <div class="card">
+      <div class="user-row">
+        <div>লগইন আছেন: <strong id="userLabel">—</strong></div>
+      </div>
+
+      <div class="card-title">নতুন আপডেট যোগ করুন <span class="badge">NEW</span></div>
+
+      <div class="field">
+        <label>শিরোনাম (ঐচ্ছিক)</label>
+        <input type="text" id="title" placeholder="উদাহরণ: নৌকা ভ্রমণ-২৬">
+      </div>
+
+      <div class="field">
+        <label>বিস্তারিত টেক্সট / নোটিশ</label>
+        <textarea id="text" placeholder="এখানে নোটিশ বা বিস্তারিত লিখুন..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>মিডিয়া টাইপ বেছে নিন</label>
+        <div class="type-pills">
+          <button type="button" class="pill active" data-t="image" onclick="setType('image')">🖼️ ছবি</button>
+          <button type="button" class="pill" data-t="video" onclick="setType('video')">🎬 ভিডিও</button>
+          <button type="button" class="pill" data-t="audio" onclick="setType('audio')">🎵 অডিও</button>
+          <button type="button" class="pill" data-t="pdf" onclick="setType('pdf')">📄 PDF</button>
+          <button type="button" class="pill" data-t="file" onclick="setType('file')">📎 ফাইল</button>
+          <button type="button" class="pill" data-t="link" onclick="setType('link')">🔗 লিংক</button>
+        </div>
+      </div>
+
+      <!-- File drop -->
+      <div id="fileSection">
+        <div class="drop" id="dropZone">
+          <div class="big-icon" id="dropIcon">📁</div>
+          <p>ফাইল ড্রপ করুন বা ক্লিক করে বেছে নিন</p>
+          <p class="sub" id="dropSub">ছবি অটো কম্প্রেস হবে · সব ধরনের ফাইল সাপোর্ট</p>
+          <input type="file" id="fileInput">
+        </div>
+
+        <div class="quality-box" id="qualityBox">
+          <label>
+            <span>ইমেজ কোয়ালিটি</span>
+            <span id="qVal">75%</span>
+          </label>
+          <input type="range" id="qSlider" min="40" max="95" value="75" step="5">
+        </div>
+
+        <div class="previews" id="previews"></div>
+      </div>
+
+      <!-- Link -->
+      <div class="link-box" id="linkSection">
+        <div class="field">
+          <label>ইউটিউব বা যেকোনো লিংক</label>
+          <input type="url" id="linkInput" placeholder="https://youtube.com/watch?v=... অথবা অন্য লিংক">
+        </div>
+      </div>
+
+      <div class="progress-box" id="progressBox">
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        <div class="progress-label" id="progressLabel">প্রস্তুত...</div>
+      </div>
+
+      <button class="btn btn-primary" id="submitBtn" onclick="submit()" style="margin-top:8px;">
+        সাবমিট করুন
+      </button>
+      <div class="msg" id="submitMsg"></div>
+    </div>
+
+    <!-- Old posts -->
+    <div class="card">
+      <div class="card-title">পুরনো আপডেটসমূহ</div>
+      <div id="postList"><div class="empty">লোড হচ্ছে...</div></div>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+
+  <script>
+    // ========== CONFIG ==========
+    const firebaseConfig = {
+      apiKey: "AIzaSyBqiOcn85zgvzDXt_Y60e3CQDEpdlYRBQ0",
+      authDomain: "amader-joginibari.firebaseapp.com",
+      projectId: "amader-joginibari",
+      storageBucket: "amader-joginibari.firebasestorage.app",
+      messagingSenderId: "917158468104",
+      appId: "1:917158468104:web:039539cca785319febcfbd",
+      measurementId: "G-SK4FHVPSTE"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    const storage = firebase.storage();
+
+    // ========== STATE ==========
+    let mediaType = 'image';
+    let files = []; // { file, name, size, origSize, preview, type }
+    let busy = false;
+
+    // ========== AUTH ==========
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        document.getElementById('loginView').style.display = 'none';
+        document.getElementById('mainView').style.display = 'block';
+        document.getElementById('userLabel').textContent = user.email || 'Admin';
+        loadPosts();
+      } else {
+        document.getElementById('loginView').style.display = 'block';
+        document.getElementById('mainView').style.display = 'none';
+      }
+    });
+
+    function login() {
+      const email = document.getElementById('email').value.trim();
+      const pass = document.getElementById('password').value;
+      const msg = document.getElementById('loginMsg');
+      const btn = document.getElementById('loginBtn');
+      if (!email || !pass) {
+        showMsg(msg, 'ইমেইল ও পাসওয়ার্ড দিন', 'err');
+        return;
+      }
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spin"></span> লগইন হচ্ছে...';
+      hideMsg(msg);
+      auth.signInWithEmailAndPassword(email, pass)
+        .catch(e => {
+          console.error(e);
+          showMsg(msg, 'ভুল ইমেইল বা পাসওয়ার্ড', 'err');
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.textContent = 'লগইন করুন';
+        });
+    }
+
+    function logout() { auth.signOut(); }
+
+    document.getElementById('password').addEventListener('keydown', e => {
+      if (e.key === 'Enter') login();
+    });
+
+    // ========== MEDIA TYPE ==========
+    function setType(t) {
+      mediaType = t;
+      document.querySelectorAll('.pill').forEach(p => {
+        p.classList.toggle('active', p.dataset.t === t);
+      });
+
+      const fileSec = document.getElementById('fileSection');
+      const linkSec = document.getElementById('linkSection');
+      const qBox = document.getElementById('qualityBox');
+      const input = document.getElementById('fileInput');
+      const icon = document.getElementById('dropIcon');
+      const sub = document.getElementById('dropSub');
+
+      if (t === 'link') {
+        fileSec.style.display = 'none';
+        linkSec.classList.add('show');
+        clearFiles();
+      } else {
+        fileSec.style.display = 'block';
+        linkSec.classList.remove('show');
+        document.getElementById('linkInput').value = '';
+
+        const map = {
+          image: { accept: 'image/*', icon: '🖼️', sub: 'JPG/PNG/WEBP — অটো কম্প্রেস · কোয়ালিটি ক্লিয়ার থাকবে' },
+          video: { accept: 'video/*', icon: '🎬', sub: 'MP4, MOV, WEBM ইত্যাদি' },
+          audio: { accept: 'audio/*', icon: '🎵', sub: 'MP3, WAV, M4A ইত্যাদি' },
+          pdf:   { accept: '.pdf,application/pdf', icon: '📄', sub: 'শুধুমাত্র PDF ফাইল' },
+          file:  { accept: '*/*', icon: '📎', sub: 'যেকোনো ফাইল — ZIP, DOC, XLS...' }
+        };
+        const m = map[t] || map.file;
+        input.accept = m.accept;
+        input.multiple = (t === 'image' || t === 'file');
+        icon.textContent = m.icon;
+        sub.textContent = m.sub;
+        qBox.classList.toggle('show', t === 'image');
+      }
+    }
+
+    document.getElementById('qSlider').addEventListener('input', function() {
+      document.getElementById('qVal').textContent = this.value + '%';
+    });
+
+    // ========== DROP ZONE ==========
+    const zone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+
+    zone.addEventListener('click', () => fileInput.click());
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('over'));
+    zone.addEventListener('drop', e => {
+      e.preventDefault();
+      zone.classList.remove('over');
+      handleFiles(e.dataTransfer.files);
+    });
+    fileInput.addEventListener('change', () => {
+      handleFiles(fileInput.files);
+      fileInput.value = '';
+    });
+
+    // ========== PURE JS IMAGE COMPRESS (no external lib) ==========
+    function compressImage(file, qualityPercent) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        const url = URL.createObjectURL(file);
+        img.onload = () => {
+          URL.revokeObjectURL(url);
+          let w = img.width;
+          let h = img.height;
+          const max = 1920;
+          if (w > max || h > max) {
+            if (w > h) { h = Math.round(h * max / w); w = max; }
+            else { w = Math.round(w * max / h); h = max; }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          canvas.toBlob(blob => {
+            if (!blob) { resolve(file); return; }
+            const out = new File([blob], file.name.replace(/\.\w+$/, '.jpg'), {
+              type: 'image/jpeg',
+              lastModified: Date.now()
+            });
+            resolve(out);
+          }, 'image/jpeg', qualityPercent / 100);
+        };
+        img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+        img.src = url;
+      });
+    }
+
+    async function handleFiles(list) {
+      if (!list || !list.length || busy) return;
+      const msg = document.getElementById('submitMsg');
+
+      for (const raw of Array.from(list)) {
+        // type check
+        if (mediaType === 'image' && !raw.type.startsWith('image/')) {
+          showMsg(msg, 'শুধু ছবি সিলেক্ট করুন', 'err'); continue;
+        }
+        if (mediaType === 'video' && !raw.type.startsWith('video/')) {
+          showMsg(msg, 'শুধু ভিডিও সিলেক্ট করুন', 'err'); continue;
+        }
+        if (mediaType === 'audio' && !raw.type.startsWith('audio/')) {
+          showMsg(msg, 'শুধু অডিও সিলেক্ট করুন', 'err'); continue;
+        }
+        if (mediaType === 'pdf' && raw.type !== 'application/pdf' && !raw.name.toLowerCase().endsWith('.pdf')) {
+          showMsg(msg, 'শুধু PDF সিলেক্ট করুন', 'err'); continue;
+        }
+
+        let finalFile = raw;
+        let origSize = raw.size;
+        let compressedSize = null;
+
+        if (mediaType === 'image' && raw.type.startsWith('image/')) {
+          showMsg(msg, 'ছবি কম্প্রেস হচ্ছে...', 'info');
+          const q = parseInt(document.getElementById('qSlider').value, 10);
+          try {
+            finalFile = await compressImage(raw, q);
+            compressedSize = finalFile.size;
+          } catch (e) {
+            console.warn('compress fail', e);
+            finalFile = raw;
+          }
+          hideMsg(msg);
+        }
+
+        const preview = URL.createObjectURL(finalFile);
+        files.push({
+          file: finalFile,
+          name: raw.name,
+          size: finalFile.size,
+          origSize,
+          compressedSize,
+          preview,
+          type: mediaType
+        });
+      }
+      renderPreviews();
+    }
+
+    function renderPreviews() {
+      const box = document.getElementById('previews');
+      box.innerHTML = '';
+      files.forEach((f, i) => {
+        const div = document.createElement('div');
+        div.className = 'preview-card';
+        let thumb = '';
+        if (f.type === 'image') thumb = `<img src="${f.preview}" alt="">`;
+        else if (f.type === 'video') thumb = `<video src="${f.preview}" style="width:72px;height:72px;object-fit:cover;border-radius:8px;"></video>`;
+        else thumb = `<div style="width:72px;height:72px;background:#111;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;">📄</div>`;
+
+        const sizeLine = f.compressedSize
+          ? `<span class="saved">${fmt(f.origSize)} → ${fmt(f.compressedSize)}</span>`
+          : fmt(f.size);
+
+        div.innerHTML = `
+          ${thumb}
+          <div class="info">
+            <div class="name">${esc(f.name)}</div>
+            <div class="meta">${sizeLine}</div>
+          </div>
+          <button class="x" onclick="removeFile(${i})">✕</button>
+        `;
+        box.appendChild(div);
+      });
+    }
+
+    function removeFile(i) {
+      if (files[i]?.preview) URL.revokeObjectURL(files[i].preview);
+      files.splice(i, 1);
+      renderPreviews();
+    }
+
+    function clearFiles() {
+      files.forEach(f => { if (f.preview) URL.revokeObjectURL(f.preview); });
+      files = [];
+      renderPreviews();
+    }
+
+    // ========== SUBMIT ==========
+    async function submit() {
+      if (busy) return;
+      const title = document.getElementById('title').value.trim();
+      const text = document.getElementById('text').value.trim();
+      const link = document.getElementById('linkInput').value.trim();
+      const msg = document.getElementById('submitMsg');
+      const btn = document.getElementById('submitBtn');
+      const pBox = document.getElementById('progressBox');
+      const pBar = document.getElementById('progressBar');
+      const pLbl = document.getElementById('progressLabel');
+
+      const hasFile = files.length > 0;
+      const hasLink = mediaType === 'link' && link;
+
+      if (!title && !text && !hasFile && !hasLink) {
+        showMsg(msg, 'কমপক্ষে টেক্সট, ফাইল বা লিংক দিন', 'err');
+        return;
+      }
+
+      busy = true;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spin"></span> আপলোড হচ্ছে...';
+      hideMsg(msg);
+      pBox.classList.add('show');
+      pBar.style.width = '5%';
+      pLbl.textContent = 'শুরু হচ্ছে...';
+
+      try {
+        const media = [];
+
+        // Upload files to Storage
+        if (hasFile) {
+          for (let i = 0; i < files.length; i++) {
+            const f = files[i];
+            pLbl.textContent = `আপলোড ${i + 1}/${files.length}: ${f.name}`;
+            const ext = (f.name.split('.').pop() || 'bin').toLowerCase();
+            const path = `posts/${Date.now()}_${Math.random().toString(36).slice(2, 7)}.${ext}`;
+            const ref = storage.ref(path);
+
+            await new Promise((resolve, reject) => {
+              const task = ref.put(f.file, {
+                contentType: f.file.type || 'application/octet-stream'
+              });
+              task.on('state_changed',
+                snap => {
+                  const pct = 5 + ((i + snap.bytesTransferred / snap.totalBytes) / files.length) * 85;
+                  pBar.style.width = Math.min(90, pct) + '%';
+                },
+                err => reject(err),
+                async () => {
+                  const url = await task.snapshot.ref.getDownloadURL();
+                  media.push({
+                    type: f.type,
+                    url,
+                    name: f.name,
+                    size: f.size,
+                    originalSize: f.origSize
+                  });
+                  resolve();
+                }
+              );
+            });
+          }
+        }
+
+        // External / YouTube link
+        if (hasLink) {
+          const yt = /youtu\.?be|youtube\.com/i.test(link);
+          media.push({
+            type: yt ? 'youtube' : 'link',
+            url: link,
+            name: yt ? 'YouTube' : 'Link'
+          });
+        }
+
+        pBar.style.width = '95%';
+        pLbl.textContent = 'সেভ হচ্ছে...';
+
+        // Firestore
+        const data = {
+          title: title || '',
+          text: text || '',
+          media,
+          imageLink: media.find(m => m.type === 'image')?.url || '',
+          videoLink: media.find(m => m.type === 'youtube' || m.type === 'video')?.url || '',
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+
+        await db.collection('posts').add(data);
+
+        pBar.style.width = '100%';
+        pLbl.textContent = 'সফল!';
+        showMsg(msg, '✅ আপডেট সফলভাবে যোগ হয়েছে!', 'ok');
+
+        // reset
+        document.getElementById('title').value = '';
+        document.getElementById('text').value = '';
+        document.getElementById('linkInput').value = '';
+        clearFiles();
+
+        setTimeout(() => {
+          pBox.classList.remove('show');
+          loadPosts();
+        }, 900);
+
+      } catch (err) {
+        console.error(err);
+        let hint = err.message || 'অজানা সমস্যা';
+        if (/storage\/unauthorized|permission/i.test(hint)) {
+          hint = 'Storage অনুমতি নেই। Firebase Console → Storage → Rules এ লিখুন: allow write: if request.auth != null;';
+        } else if (/storage\/retry-limit|network/i.test(hint)) {
+          hint = 'নেটওয়ার্ক সমস্যা। আবার চেষ্টা করুন।';
+        } else if (/storage\/object-not-found/i.test(hint)) {
+          hint = 'Storage বাcket ঠিক নেই। Firebase Console চেক করুন।';
+        }
+        showMsg(msg, '❌ ' + hint, 'err');
+        pBox.classList.remove('show');
+      } finally {
+        busy = false;
+        btn.disabled = false;
+        btn.textContent = 'সাবমিট করুন';
+      }
+    }
+
+    // ========== LOAD / DELETE ==========
+    function loadPosts() {
+      const list = document.getElementById('postList');
+      list.innerHTML = '<div class="empty">লোড হচ্ছে...</div>';
+
+      db.collection('posts').orderBy('createdAt', 'desc').get()
+        .then(snap => {
+          if (snap.empty) {
+            list.innerHTML = '<div class="empty">এখনো কোনো আপডেট নেই</div>';
+            return;
+          }
+          list.innerHTML = '';
+          snap.forEach(doc => {
+            const d = doc.data();
+            const el = document.createElement('div');
+            el.className = 'post';
+            let html = '';
+
+            if (d.createdAt?.toDate) {
+              html += `<div class="post-date">${d.createdAt.toDate().toLocaleString('bn-BD')}</div>`;
+            }
+            if (d.title) html += `<div class="post-title">${esc(d.title)}</div>`;
+            if (d.text) html += `<div class="post-text">${esc(d.text)}</div>`;
+
+            if (d.media?.length) {
+              d.media.forEach(m => {
+                if (m.type === 'image') {
+                  html += `<div class="post-media"><img src="${m.url}" loading="lazy" onerror="this.style.display='none'"></div>`;
+                } else if (m.type === 'video') {
+                  html += `<video src="${m.url}" controls style="max-width:100%;max-height:160px;border-radius:8px;margin-bottom:8px;"></video>`;
+                } else if (m.type === 'audio') {
+                  html += `<audio src="${m.url}" controls style="width:100%;margin-bottom:8px;"></audio>`;
+                } else if (m.type === 'youtube') {
+                  const id = ytId(m.url);
+                  if (id) {
+                    html += `<div style="position:relative;padding-bottom:56%;height:0;border-radius:8px;overflow:hidden;margin-bottom:8px;background:#000">
+                      <iframe src="https://www.youtube.com/embed/${id}" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen></iframe></div>`;
+                  }
+                } else {
+                  const icon = m.type === 'pdf' ? '📄' : (m.type === 'link' ? '🔗' : '📎');
+                  html += `<a class="file-chip" href="${esc(m.url)}" target="_blank" rel="noopener">${icon} ${esc(m.name || 'ফাইল')}</a>`;
+                }
+              });
+            } else {
+              // old format
+              if (d.imageLink) html += `<div class="post-media"><img src="${d.imageLink}" loading="lazy"></div>`;
+              if (d.videoLink) {
+                const id = ytId(d.videoLink);
+                if (id) {
+                  html += `<div style="position:relative;padding-bottom:56%;height:0;border-radius:8px;overflow:hidden;margin-bottom:8px;background:#000">
+                    <iframe src="https://www.youtube.com/embed/${id}" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen></iframe></div>`;
+                }
+              }
+            }
+
+            html += `<button class="btn btn-danger" style="margin-top:8px" onclick="delPost('${doc.id}')">ডিলিট</button>`;
+            el.innerHTML = html;
+            list.appendChild(el);
+          });
+        })
+        .catch(e => {
+          console.error(e);
+          list.innerHTML = '<div class="empty" style="color:var(--danger)">লোড ব্যর্থ</div>';
+        });
+    }
+
+    function delPost(id) {
+      if (!confirm('ডিলিট করতে চান?')) return;
+      db.collection('posts').doc(id).delete().then(loadPosts);
+    }
+
+    // ========== HELPERS ==========
+    function showMsg(el, text, type) {
+      el.textContent = text;
+      el.className = 'msg show ' + type;
+    }
+    function hideMsg(el) {
+      el.className = 'msg';
+      el.textContent = '';
+    }
+    function fmt(b) {
+      if (b < 1024) return b + ' B';
+      if (b < 1048576) return (b / 1024).toFixed(1) + ' KB';
+      return (b / 1048576).toFixed(2) + ' MB';
+    }
+    function esc(s) {
+      return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function ytId(u) {
+      if (!u) return null;
+      const m = u.match(/(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/watch\?.+&v=))([\w-]{11})/);
+      return m ? m[1] : null;
+    }
+
+    // init
+    setType('image');
+  </script>
+</body>
+</html>
