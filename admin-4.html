@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অ্যাডমিন প্যানেল - আমাদের যোগিনী বাড়ী</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Noto Sans Bengali', Arial, sans-serif; max-width: 520px; margin: 24px auto; padding: 12px; background: #f0ebe0; color: #1a1610; }
+  .box { background: #fff; padding: 22px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); margin-bottom: 18px; }
+  input, textarea, button { width: 100%; padding: 13px; margin: 8px 0; border: 1px solid #d0c8b4; border-radius: 8px; font-size: 16px; font-family: inherit; }
+  textarea { resize: vertical; min-height: 90px; }
+  button { background: #1f4a32; color: #fff; border: none; cursor: pointer; font-weight: 600; transition: 0.2s; }
+  button:hover { background: #163326; }
+  h2 { text-align: center; color: #12261a; margin: 10px 0 20px; }
+  h3 { margin: 0 0 12px; color: #1f4a32; font-size: 1.15rem; }
+  #logout { background: #b84a42; margin-top: 12px; }
+  #logout:hover { background: #9a3c36; }
+  .msg { text-align: center; font-weight: 600; margin-top: 12px; min-height: 24px; }
+  .item { border-bottom: 1px solid #eee; padding: 14px 0; }
+  .item:last-child { border-bottom: none; }
+  .item img { max-width: 100%; border-radius: 8px; margin: 8px 0; }
+  .item button { background: #b84a42; width: auto; padding: 7px 14px; font-size: 14px; margin-top: 8px; }
+  .item button:hover { background: #9a3c36; }
+  .success { color: #1f4a32; }
+  .error { color: #b84a42; }
+</style>
+</head>
+<body>
+
+<h2>🔐 অ্যাডমিন লগইন</h2>
+
+<div class="box" id="loginBox">
+  <input type="email" id="email" placeholder="ইমেইল" autocomplete="email">
+  <input type="password" id="password" placeholder="পাসওয়ার্ড" autocomplete="current-password">
+  <button onclick="login()">লগইন করুন</button>
+  <div class="msg" id="loginMsg"></div>
+</div>
+
+<div class="box" id="formBox" style="display:none;">
+  <h3>নতুন পোস্ট যোগ করুন</h3>
+  <textarea id="noticeText" placeholder="নোটিশ / টেক্সট লিখুন"></textarea>
+  <input type="url" id="imageLink" placeholder="ছবির লিংক (Image URL)">
+  <input type="url" id="videoLink" placeholder="ইউটিউব ভিডিও লিংক">
+  <button onclick="submitPost()">সাবমিট করুন</button>
+  <div class="msg" id="submitMsg"></div>
+  <button id="logout" onclick="logout()">লগআউট</button>
+</div>
+
+<div class="box" id="listBox" style="display:none;">
+  <h3>পুরনো পোস্টসমূহ (ডিলিট করতে চাইলে)</h3>
+  <div id="postList">লোড হচ্ছে...</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBqiOcn85zgvzDXt_Y60e3CQDEpdlYRBQ0",
+    authDomain: "amader-joginibari.firebaseapp.com",
+    projectId: "amader-joginibari",
+    storageBucket: "amader-joginibari.firebasestorage.app",
+    messagingSenderId: "917158468104",
+    appId: "1:917158468104:web:039539cca785319febcfbd",
+    measurementId: "G-SK4FHVPSTE"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("formBox").style.display = "block";
+      document.getElementById("listBox").style.display = "block";
+      loadPosts();
+    } else {
+      document.getElementById("loginBox").style.display = "block";
+      document.getElementById("formBox").style.display = "none";
+      document.getElementById("listBox").style.display = "none";
+    }
+  });
+
+  function login() {
+    var email = document.getElementById("email").value.trim();
+    var password = document.getElementById("password").value;
+    var msg = document.getElementById("loginMsg");
+    msg.textContent = "লগইন হচ্ছে...";
+    msg.className = "msg";
+
+    auth.signInWithEmailAndPassword(email, password)
+      .catch(function(err) {
+        msg.textContent = "ভুল ইমেইল বা পাসওয়ার্ড!";
+        msg.className = "msg error";
+        console.error(err);
+      });
+  }
+
+  function logout() {
+    auth.signOut();
+  }
+
+  function submitPost() {
+    var text = document.getElementById("noticeText").value.trim();
+    var image = document.getElementById("imageLink").value.trim();
+    var video = document.getElementById("videoLink").value.trim();
+    var msg = document.getElementById("submitMsg");
+
+    if (!text && !image && !video) {
+      msg.textContent = "কমপক্ষে একটি ঘর পূরণ করুন!";
+      msg.className = "msg error";
+      return;
+    }
+
+    msg.textContent = "সেভ হচ্ছে...";
+    msg.className = "msg";
+
+    db.collection("posts").add({
+      text: text,
+      imageLink: image,
+      videoLink: video,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(function() {
+      msg.textContent = "✅ সফলভাবে যোগ হয়েছে!";
+      msg.className = "msg success";
+      document.getElementById("noticeText").value = "";
+      document.getElementById("imageLink").value = "";
+      document.getElementById("videoLink").value = "";
+      loadPosts();
+    }).catch(function(err) {
+      msg.textContent = "❌ সমস্যা: " + err.message;
+      msg.className = "msg error";
+    });
+  }
+
+  function loadPosts() {
+    var listDiv = document.getElementById("postList");
+    listDiv.innerHTML = "লোড হচ্ছে...";
+
+    db.collection("posts").orderBy("createdAt", "desc").get()
+      .then(function(snapshot) {
+        listDiv.innerHTML = "";
+        if (snapshot.empty) {
+          listDiv.innerHTML = "<p style='color:#666;'>কোনো পোস্ট নেই।</p>";
+          return;
+        }
+        snapshot.forEach(function(doc) {
+          var d = doc.data();
+          var div = document.createElement("div");
+          div.className = "item";
+          var html = "";
+          if (d.text) html += "<p style='margin:0 0 8px;'>" + d.text + "</p>";
+          if (d.imageLink) html += "<img src='" + d.imageLink + "' alt=''>";
+          if (d.videoLink) html += "<p style='font-size:0.9rem;color:#555;'>🎬 " + d.videoLink + "</p>";
+          html += "<button onclick=\"deletePost('" + doc.id + "')\">ডিলিট করুন</button>";
+          div.innerHTML = html;
+          listDiv.appendChild(div);
+        });
+      })
+      .catch(function(err) {
+        listDiv.innerHTML = "<p style='color:#b84a42;'>লোড করতে সমস্যা হয়েছে</p>";
+        console.error(err);
+      });
+  }
+
+  function deletePost(id) {
+    if (confirm("আপনি কি নিশ্চিত ডিলিট করতে চান?")) {
+      db.collection("posts").doc(id).delete().then(loadPosts);
+    }
+  }
+</script>
+
+</body>
+</html>
