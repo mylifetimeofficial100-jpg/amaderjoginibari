@@ -49,14 +49,14 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
 <script>
-  // ⚠️ apiKey এবং appId এখনো অসম্পূর্ণ ছিল - Firebase Console থেকে পুরোটা কপি করে বসান
   const firebaseConfig = {
-    apiKey: "AIzaSyBqiOcn85zgvzDXt_Y6Oe30", // ⚠️ এটা অসম্পূর্ণ মনে হচ্ছে, পুরোটা বসান
+    apiKey: "AIzaSyBqiOcn85zgvzDXt_Y60e3CQDEpdlYRBQ0",
     authDomain: "amader-joginibari.firebaseapp.com",
     projectId: "amader-joginibari",
     storageBucket: "amader-joginibari.firebasestorage.app",
-    messagingSenderId: "91715846104",
-    appId: "1:91715846104:web:039539cca7" // ⚠️ এটাও অসম্পূর্ণ মনে হচ্ছে, পুরোটা বসান
+    messagingSenderId: "917158468104",
+    appId: "1:917158468104:web:039539cca785319febcfbd",
+    measurementId: "G-SK4FHVPSTE"
   };
 
   firebase.initializeApp(firebaseConfig);
@@ -82,6 +82,7 @@
     auth.signInWithEmailAndPassword(email, password)
       .catch(err => {
         document.getElementById("loginMsg").innerText = "ভুল ইমেইল বা পাসওয়ার্ড!";
+        console.error(err);
       });
   }
 
