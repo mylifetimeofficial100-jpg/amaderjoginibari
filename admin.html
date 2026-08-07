@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অ্যাডমিন প্যানেল - আমাদের যোগিনী বাড়ী</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 500px; margin: 30px auto; padding: 15px; background:#f4f4f4; }
+  .box { background:#fff; padding:20px; border-radius:10px; box-shadow:0 0 8px rgba(0,0,0,0.1); margin-bottom:20px; }
+  input, textarea, button { width:100%; padding:12px; margin:8px 0; box-sizing:border-box; border:1px solid #ccc; border-radius:6px; font-size:16px; }
+  button { background:#2563eb; color:#fff; border:none; cursor:pointer; font-weight:bold; }
+  button:hover { background:#1d4ed8; }
+  h2 { text-align:center; }
+  #logout { background:#dc2626; margin-top:10px; }
+  .msg { text-align:center; font-weight:bold; margin-top:10px; }
+  .item { border-bottom:1px solid #eee; padding:10px 0; }
+  .item img { max-width:100%; border-radius:6px; }
+  .item button { background:#dc2626; width:auto; padding:6px 12px; font-size:14px; }
+</style>
+</head>
+<body>
+
+<h2>🔐 অ্যাডমিন লগইন</h2>
+
+<div class="box" id="loginBox">
+  <input type="email" id="email" placeholder="ইমেইল">
+  <input type="password" id="password" placeholder="পাসওয়ার্ড">
+  <button onclick="login()">লগইন করুন</button>
+  <div class="msg" id="loginMsg"></div>
+</div>
+
+<div class="box" id="formBox" style="display:none;">
+  <h3>নতুন পোস্ট যোগ করুন</h3>
+  <textarea id="noticeText" placeholder="নোটিশ / টেক্সট লিখুন" rows="4"></textarea>
+  <input type="text" id="imageLink" placeholder="ছবির লিংক (Image URL)">
+  <input type="text" id="videoLink" placeholder="ইউটিউব ভিডিও লিংক">
+  <button onclick="submitPost()">সাবমিট করুন</button>
+  <div class="msg" id="submitMsg"></div>
+  <button id="logout" onclick="logout()">লগআউট</button>
+</div>
+
+<div class="box" id="listBox" style="display:none;">
+  <h3>পুরনো পোস্টসমূহ (ডিলিট করতে চাইলে)</h3>
+  <div id="postList">লোড হচ্ছে...</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+  // ⚠️ apiKey এবং appId এখনো অসম্পূর্ণ ছিল - Firebase Console থেকে পুরোটা কপি করে বসান
+  const firebaseConfig = {
+    apiKey: "AIzaSyBqiOcn85zgvzDXt_Y6Oe30", // ⚠️ এটা অসম্পূর্ণ মনে হচ্ছে, পুরোটা বসান
+    authDomain: "amader-joginibari.firebaseapp.com",
+    projectId: "amader-joginibari",
+    storageBucket: "amader-joginibari.firebasestorage.app",
+    messagingSenderId: "91715846104",
+    appId: "1:91715846104:web:039539cca7" // ⚠️ এটাও অসম্পূর্ণ মনে হচ্ছে, পুরোটা বসান
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("formBox").style.display = "block";
+      document.getElementById("listBox").style.display = "block";
+      loadPosts();
+    } else {
+      document.getElementById("loginBox").style.display = "block";
+      document.getElementById("formBox").style.display = "none";
+      document.getElementById("listBox").style.display = "none";
+    }
+  });
+
+  function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    auth.signInWithEmailAndPassword(email, password)
+      .catch(err => {
+        document.getElementById("loginMsg").innerText = "ভুল ইমেইল বা পাসওয়ার্ড!";
+      });
+  }
+
+  function logout() {
+    auth.signOut();
+  }
+
+  function submitPost() {
+    const text = document.getElementById("noticeText").value;
+    const image = document.getElementById("imageLink").value;
+    const video = document.getElementById("videoLink").value;
+
+    if (!text && !image && !video) {
+      document.getElementById("submitMsg").innerText = "কমপক্ষে একটি ঘর পূরণ করুন!";
+      return;
+    }
+
+    db.collection("posts").add({
+      text: text,
+      imageLink: image,
+      videoLink: video,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      document.getElementById("submitMsg").innerText = "✅ সফলভাবে যোগ হয়েছে!";
+      document.getElementById("noticeText").value = "";
+      document.getElementById("imageLink").value = "";
+      document.getElementById("videoLink").value = "";
+      loadPosts();
+    }).catch(err => {
+      document.getElementById("submitMsg").innerText = "❌ সমস্যা হয়েছে: " + err.message;
+    });
+  }
+
+  function loadPosts() {
+    const listDiv = document.getElementById("postList");
+    listDiv.innerHTML = "লোড হচ্ছে...";
+    db.collection("posts").orderBy("createdAt", "desc").get().then(snapshot => {
+      listDiv.innerHTML = "";
+      if (snapshot.empty) {
+        listDiv.innerHTML = "কোনো পোস্ট নেই।";
+        return;
+      }
+      snapshot.forEach(doc => {
+        const d = doc.data();
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `
+          <p>${d.text || ""}</p>
+          ${d.imageLink ? `<img src="${d.imageLink}">` : ""}
+          ${d.videoLink ? `<p>🎬 ${d.videoLink}</p>` : ""}
+          <button onclick="deletePost('${doc.id}')">ডিলিট করুন</button>
+        `;
+        listDiv.appendChild(div);
+      });
+    });
+  }
+
+  function deletePost(id) {
+    if (confirm("আপনি কি নিশ্চিত ডিলিট করতে চান?")) {
+      db.collection("posts").doc(id).delete().then(loadPosts);
+    }
+  }
+</script>
+
+</body>
+</html>

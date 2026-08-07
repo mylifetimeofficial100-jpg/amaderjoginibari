@@ -1,0 +1,57 @@
+<!-- এই অংশটুকু আপনার মেইন index.html ফাইলে যেখানে নোটিশ/ছবি/ভিডিও দেখাতে চান, সেখানে বসান -->
+
+<div id="posts-container">লোড হচ্ছে...</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+  // ⚠️ admin.html এ যেভাবে ঠিক করেছেন, একই পুরো ও সঠিক config এখানেও বসান
+  const firebaseConfig = {
+    apiKey: "AIzaSyBqiOcn85zgvzDXt_Y6Oe30", // ⚠️ পুরোটা বসান
+    authDomain: "amader-joginibari.firebaseapp.com",
+    projectId: "amader-joginibari",
+    storageBucket: "amader-joginibari.firebasestorage.app",
+    messagingSenderId: "91715846104",
+    appId: "1:91715846104:web:039539cca7" // ⚠️ পুরোটা বসান
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  function extractYouTubeId(link) {
+    const match = link.match(/(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/watch\?.+&v=))([\w-]{11})/);
+    return match ? match[1] : null;
+  }
+
+  db.collection("posts").orderBy("createdAt", "desc").get().then(snapshot => {
+    const container = document.getElementById("posts-container");
+    container.innerHTML = "";
+
+    if (snapshot.empty) {
+      container.innerHTML = "<p>কোনো নোটিশ নেই।</p>";
+      return;
+    }
+
+    snapshot.forEach(doc => {
+      const d = doc.data();
+      const div = document.createElement("div");
+      div.style.cssText = "border:1px solid #eee; padding:15px; margin-bottom:15px; border-radius:8px;";
+
+      let html = "";
+      if (d.text) html += `<p>${d.text}</p>`;
+      if (d.imageLink) html += `<img src="${d.imageLink}" style="max-width:100%; border-radius:6px;">`;
+      if (d.videoLink) {
+        const videoId = extractYouTubeId(d.videoLink);
+        if (videoId) {
+          html += `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+        }
+      }
+      div.innerHTML = html;
+      container.appendChild(div);
+    });
+  }).catch(err => {
+    document.getElementById("posts-container").innerText = "ডেটা লোড করতে সমস্যা হয়েছে।";
+    console.error(err);
+  });
+</script>
