@@ -151,7 +151,7 @@
     opacity:.95;
   }
   .nav-wrap{
-    max-width:1180px; margin:0 auto; padding:14px 22px;
+    max-width:1180px; margin:0 auto; padding:16px 22px 15px;
     display:flex; align-items:center; justify-content:space-between; gap:18px;
     position:relative;
   }
@@ -187,8 +187,8 @@
   }
   .brand-text{
     font-family:'Baloo Da 2',sans-serif; font-weight:800;
-    font-size: clamp(1.05rem, 3.2vw, 1.48rem);
-    letter-spacing: .2px;
+    font-size: clamp(1.25rem, 4vw, 1.55rem);
+    letter-spacing: .35px;
     line-height: 1.2;
     background: linear-gradient(180deg, #fffef8 10%, #f0d9a8 55%, #e8c87a 100%);
     -webkit-background-clip: text;
@@ -202,9 +202,9 @@
   .brand-text small{
     display:block;
     font-family:'Noto Sans Bengali',sans-serif; font-weight:600;
-    font-size: .58rem;
-    letter-spacing: 1.2px;
-    margin-top: 3px;
+    font-size: .62rem;
+    letter-spacing: 2.2px;
+    margin-top: 5px;
     text-transform: uppercase;
     background: linear-gradient(90deg, #c4954a, #f0d9a8, #c4954a);
     -webkit-background-clip: text;
@@ -237,12 +237,12 @@
   }
 
   @media (max-width:760px){
-    .nav-wrap{ padding:10px 12px; gap:10px; }
-    .brand{ gap:10px; }
-    .brand-logo{ width:40px; height:40px; }
-    .brand-logo svg{ width:26px; height:26px; }
-    .brand-text{ font-size:1.05rem; letter-spacing:0; }
-    .brand-text small{ font-size:.52rem; letter-spacing:0.8px; }
+    .nav-wrap{ padding:16px 14px 14px; gap:12px; }
+    .brand{ gap:12px; }
+    .brand-logo{ width:48px; height:48px; }
+    .brand-logo svg{ width:30px; height:30px; }
+    .brand-text{ font-size:1.28rem; letter-spacing:.3px; }
+    .brand-text small{ font-size:.58rem; letter-spacing:1.6px; margin-top:5px; }
     nav{
       position:absolute; top:100%; left:0; right:0;
       flex-direction:column; gap:0;
@@ -260,14 +260,6 @@
     .nav-toggle{ display:flex; }
   }
 
-
-  @media (max-width:380px){
-    .brand-text{ font-size:0.95rem; }
-    .brand-text small{ font-size:.48rem; letter-spacing:0.5px; }
-    .brand-logo{ width:36px; height:36px; }
-    .brand-logo svg{ width:22px; height:22px; }
-    .nav-toggle{ width:38px; height:38px; }
-  }
 
   /* ---------- HERO ---------- */
   .hero{
