@@ -1,0 +1,43 @@
+====================================================
+Firebase Console → Firestore Database → Rules
+নিচের পুরো কোডটি Rules এ বসিয়ে Publish করুন
+(আপনার প্রজেক্টের পুরনো rules থাকলে এটি দিয়ে প্রতিস্থাপন
+ অথবা posts/opinions অংশ মিলিয়ে নিন)
+====================================================
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // পোস্ট: সবাই পড়তে পারবে, শুধু লগইন অ্যাডমিন লিখতে/মুছতে পারবে
+    match /posts/{postId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // পাবলিক মতামত: সবাই পড়তে ও নতুন লিখতে পারবে (সীমাসহ)
+    match /opinions/{opinionId} {
+      allow read: if true;
+      allow create: if
+        request.resource.data.keys().hasOnly(['name', 'message', 'createdAt']) &&
+        request.resource.data.name is string &&
+        request.resource.data.message is string &&
+        request.resource.data.name.size() > 0 &&
+        request.resource.data.name.size() < 80 &&
+        request.resource.data.message.size() > 0 &&
+        request.resource.data.message.size() < 2000;
+      allow update, delete: if request.auth != null;
+    }
+
+    // অন্য সব কালেকশন ডিফল্ট বন্ধ
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+====================================================
+প্রথমবার opinions orderBy এরর এলে:
+Browser Console এ যে Index লিংক আসবে সেখানে ক্লিক করে
+Create Index করুন।
+====================================================

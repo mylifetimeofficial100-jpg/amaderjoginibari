@@ -1074,6 +1074,11 @@
   .life-card .life-img{ cursor:zoom-in; }
   .photo-band-frame{ cursor:zoom-in; }
 
+
+  .admin-team{
+    background: var(--paper);
+    padding: 72px 24px;
+  }
 </style>
 </head>
 <body>
@@ -1111,6 +1116,7 @@
 <a href="#notice">লেটেস্ট আপডেট</a>
 <a href="#opinion">মতামত</a>
 <a href="#join">ফেসবুক গ্রুপ</a>
+<a href="#admin-team">এডমিনেরা</a>
 </nav>
 </div>
 </header>
@@ -1650,6 +1656,29 @@
 <div class="join-meta">পাবলিক গ্রুপ · ৪৫৮ সদস্য · দুর্গানগর, উল্লাপাড়া, সিরাজগঞ্জ</div>
 </div>
 </section>
+
+<section class="admin-team" id="admin-team">
+  <div class="section-inner" style="max-width:720px;margin:0 auto;text-align:center;">
+    <div class="section-head" style="margin-bottom:28px;max-width:none;text-align:center;">
+      <span class="eyebrow" style="display:inline-flex;justify-content:center;color:var(--sindoor);">পরিচালনা</span>
+      <h2 style="margin:8px 0 12px;">আমাদের এডমিনেরা</h2>
+      <p style="color:var(--ink-soft);max-width:520px;margin:0 auto;font-size:1.05rem;">
+        এই ওয়েবসাইট ও গ্রামের ডিজিটাল কার্যক্রম পরিচালনায় যারা নিয়োজিত — তাদের তথ্য এখানে ধাপে ধাপে যোগ করা হবে।
+      </p>
+    </div>
+    <div class="admin-team-card" style="background:#faf8f2;border-radius:16px;padding:28px 24px;border:1px solid rgba(31,74,50,.08);box-shadow:0 8px 24px rgba(18,38,26,.06);">
+      <p style="margin:0 0 8px;font-size:1.05rem;color:var(--forest-deep);font-weight:600;">🛡️ এডমিন টিম</p>
+      <p style="margin:0;color:var(--ink-soft);line-height:1.7;">
+        শীঘ্রই এখানে এডমিনদের নাম, দায়িত্ব ও যোগাযোগের তথ্য প্রকাশ করা হবে।
+        আপাতত ওয়েবসাইট পরিচালনা করছেন ডেভেলপার টিম।
+      </p>
+      <div style="margin-top:18px;">
+        <a href="#developer" class="btn btn-primary" style="display:inline-flex;border:0;">💻 ওয়েব ডেভেলপার দেখুন</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="maker" id="developer">
 <div class="maker-card">
 <div class="maker-photo">
@@ -1673,7 +1702,7 @@
 <div class="footer-inner">
 <div>
 <div class="footer-brand">আমাদের যোগিনী বাড়ী</div>
-<p>যোগিনীপুর গ্রাম, দুর্গানগর ইউনিয়ন, উল্লাপাড়া, সিরাজগঞ্জ — আমাদের সবার প্রিয় জন্মভূমি। সবুজ ছায়া, মাটির গন্ধ আর শতবর্ষী বটের ছায়াতলে গড়ে ওঠা একটি জীবন্ত গ্রাম।</p>
+<p>যোগিনীবাড়ী গ্রাম, দুর্গানগর ইউনিয়ন, উল্লাপাড়া, সিরাজগঞ্জ — আমাদের সবার প্রিয় জন্মভূমি। সবুজ ছায়া, মাটির গন্ধ আর শতবর্ষী বটের ছায়াতলে গড়ে ওঠা একটি জীবন্ত গ্রাম।</p>
 <p class="footer-email" style="margin-top:14px;"><a href="mailto:mylifetimeofficial100@gmail.com">📧 mylifetimeofficial100@gmail.com</a></p>
 </div>
 <div class="footer-links">
@@ -1684,16 +1713,18 @@
 <a href="#notice">লেটেস্ট আপডেট</a>
 <a href="#opinion">মতামত</a>
 <a href="#join">ফেসবুক গ্রুপ</a>
+<a href="#admin-team">এডমিনেরা</a>
+<a href="#developer">ওয়েব ডেভেলপার</a>
 </div>
 </div>
-<div class="footer-bottom">© যোগিনীপুর গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি <span class="footer-heart">♥</span></div>
+<div class="footer-bottom">© যোগিনীবাড়ী গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি <span class="footer-heart">♥</span></div>
 </footer>
 <script>
 
 /* Scroll Reveal - soft entrance for sections */
 (function(){
   function initReveal(){
-    var els = document.querySelectorAll('.about, .tree-band, .photo-band, .life, .notice, .opinion, .join, .maker, .life-card, .section-head, .frame-photo, .stat-row');
+    var els = document.querySelectorAll('.about, .tree-band, .photo-band, .life, .notice, .opinion, .join, .admin-team, .maker, .life-card, .section-head, .frame-photo, .stat-row');
     els.forEach(function(el){
       if(!el.classList.contains('reveal')) el.classList.add('reveal');
     });
