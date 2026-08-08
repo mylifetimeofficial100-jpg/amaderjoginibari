@@ -130,6 +130,7 @@
   /* ---------- PREMIUM NAV / BRAND ---------- */
   header{
     position:sticky; top:0; z-index:100;
+    overflow:visible;
     background:
       linear-gradient(180deg, #0c1a12 0%, #12261a 42%, #1a3a28 100%);
     backdrop-filter:blur(18px) saturate(1.25);
@@ -151,9 +152,10 @@
     opacity:.95;
   }
   .nav-wrap{
-    max-width:1180px; margin:0 auto; padding:16px 22px 15px;
+    max-width:1180px; margin:0 auto; padding:20px 22px 16px;
     display:flex; align-items:center; justify-content:space-between; gap:18px;
     position:relative;
+    overflow:visible;
   }
   .brand{
     display:flex; align-items:center; gap:12px;
@@ -161,6 +163,7 @@
     transition: transform .35s cubic-bezier(.22,1,.36,1);
     min-width:0; flex:1;
     overflow:visible;
+    padding-top: 2px;
   }
   .brand:hover{ transform:translateY(-1px); }
   .brand-logo{
@@ -189,7 +192,9 @@
     font-family:'Baloo Da 2',sans-serif; font-weight:800;
     font-size: clamp(1.25rem, 4vw, 1.55rem);
     letter-spacing: .35px;
-    line-height: 1.2;
+    line-height: 1.45;
+    padding-top: 6px;
+    padding-bottom: 2px;
     background: linear-gradient(180deg, #fffef8 10%, #f0d9a8 55%, #e8c87a 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -237,12 +242,12 @@
   }
 
   @media (max-width:760px){
-    .nav-wrap{ padding:16px 14px 14px; gap:12px; }
-    .brand{ gap:12px; }
+    .nav-wrap{ padding:20px 14px 16px; gap:12px; overflow:visible; }
+    .brand{ gap:12px; overflow:visible; }
     .brand-logo{ width:48px; height:48px; }
     .brand-logo svg{ width:30px; height:30px; }
-    .brand-text{ font-size:1.28rem; letter-spacing:.3px; }
-    .brand-text small{ font-size:.58rem; letter-spacing:1.6px; margin-top:5px; }
+    .brand-text{ font-size:1.28rem; letter-spacing:.3px; line-height:1.5; padding-top:8px; }
+    .brand-text small{ font-size:.58rem; letter-spacing:1.6px; margin-top:6px; }
     nav{
       position:absolute; top:100%; left:0; right:0;
       flex-direction:column; gap:0;
