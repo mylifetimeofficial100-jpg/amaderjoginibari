@@ -1,23 +1,24 @@
-ফাস্টার হোমপেজ — আপলোড নির্দেশনা
+SEO উন্নত ফাইল — আপলোড নির্দেশনা
 ================================
 
 এই প্যাকেজে যা আছে:
-- index.html  (শুধু প্রথম স্লাইড প্রিলোড যোগ করা হয়েছে, ডিজাইন অপরিবর্তিত)
-- slide_01.jpg থেকে slide_11.jpg  (অপটিমাইজড — সাইজ অনেক কমেছে)
+1. index.html     → শক্তিশালী Description + Schema (Place, Organization, sameAs)
+2. gallery.html   → উন্নত Description
+3. sitemap.xml    → admin বাদ, lastmod যোগ, priority ঠিক
+4. robots.txt     → admin.html ব্লক (Google যেন অ্যাডমিন ইনডেক্স না করে)
 
-কী করবেন:
-1) এই ফোল্ডারের সব ফাইল GitHub রিপোতে আপলোড করুন
-2) পুরনো slide_01.jpg ... slide_11.jpg এবং index.html রিপ্লেস হবে
-3) অন্য কোনো ফাইল (gallery.html, photo_*, admin.html, img_*) মুছবেন না / ছুঁবেন না
+কী করবেন (Android):
+1. GitHub → আপনার রিপো → Add file → Upload files
+2. এই ৪টা ফাইল একসাথে সিলেক্ট করে আপলোড করুন
+3. Commit changes
+4. ২-৩ মিনিট পর সাইট চেক করুন
 
-ধাপ (Android):
-- GitHub → আপনার রিপো → Add file → Upload files
-- একসাথে সিলেক্ট করুন: index.html + সব slide_01 থেকে slide_11
-- Commit changes
-- ২-৩ মিনিট অপেক্ষা করুন
-- সাইট খুলে চেক করুন
+গুরুত্বপূর্ণ:
+- অন্য কোনো ফাইল মুছবেন না
+- admin.html আগের মতোই থাকবে (শুধু Google তাকে ইনডেক্স করবে না)
+- ডিজাইন ও ফিচার একদম অপরিবর্তিত
 
-ফলাফল:
-- Hero স্লাইডার অনেক দ্রুত লোড হবে
-- হোমপেজের প্রথম লোড স্পিড বাড়বে
-- ডিজাইন, কনটেন্ট, গ্যালারি, অ্যাডমিন, Firebase — সব একদম আগের মতোই থাকবে
+আপলোডের পর Google Search Console এ:
+- Sitemaps সেকশনে গিয়ে আবার sitemap.xml সাবমিট/রিফ্রেশ করুন
+- URL Inspection দিয়ে হোমপেজ ও gallery.html Inspect → Request Indexing করুন
+
