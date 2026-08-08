@@ -716,6 +716,76 @@
     font-size: 1.02rem;
     line-height: 1.7;
   }
+
+  /* ========== PREMIUM SCROLL REVEAL + 3D TOUCH ========== */
+  .reveal{
+    opacity:0;
+    transform: translateY(28px);
+    transition: opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1);
+    will-change: opacity, transform;
+  }
+  .reveal.visible{
+    opacity:1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1{ transition-delay:.1s; }
+  .reveal-delay-2{ transition-delay:.2s; }
+  .reveal-delay-3{ transition-delay:.3s; }
+
+  /* Life cards - soft 3D lift */
+  .life-card{
+    transition: transform .4s cubic-bezier(0.22,1,0.36,1), box-shadow .4s ease;
+    transform-style: preserve-3d;
+  }
+  .life-card:hover{
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 18px 40px -12px rgba(18,38,26,.22);
+  }
+  .life-card .life-img img{
+    transition: transform .7s cubic-bezier(0.22,1,0.36,1);
+  }
+  .life-card:hover .life-img img{
+    transform: scale(1.06);
+  }
+
+  /* Notice / posts cards */
+  #posts-container > div{
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  #posts-container > div:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(18,38,26,.12) !important;
+  }
+
+  /* Frame photo already has hover - enhance a bit */
+  .frame-photo{
+    transition: transform .45s ease, box-shadow .45s ease;
+  }
+  .frame-photo:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 26px 48px -14px rgba(30,61,42,.32);
+  }
+
+  /* Soft pulse on section eyebrow for attention */
+  @keyframes softPulse{
+    0%,100%{ opacity:1; }
+    50%{ opacity:.75; }
+  }
+  .notice .eyebrow{
+    animation: softPulse 2.8s ease-in-out infinite;
+  }
+
+  /* Mobile menu polish */
+  @media (max-width:760px){
+    nav a{
+      transition: background .25s ease, padding-left .25s ease;
+    }
+    nav a:active, nav a:hover{
+      background: rgba(250,248,242,.18);
+      padding-left: 14px;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1323,6 +1393,40 @@
 <div class="footer-bottom">© যোগিনীপুর গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি <span class="footer-heart">♥</span></div>
 </footer>
 <script>
+
+/* Scroll Reveal - soft entrance for sections */
+(function(){
+  function initReveal(){
+    var els = document.querySelectorAll('.about, .tree-band, .photo-band, .life, .notice, .opinion, .join, .maker, .life-card, .section-head, .frame-photo, .stat-row');
+    els.forEach(function(el){
+      if(!el.classList.contains('reveal')) el.classList.add('reveal');
+    });
+    // stagger life cards
+    var cards = document.querySelectorAll('.life-card');
+    cards.forEach(function(c,i){
+      c.classList.add('reveal-delay-' + ((i % 3) + 1));
+    });
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(el){ el.classList.add('visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    },{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initReveal);
+  } else {
+    initReveal();
+  }
+})();
+
 function escapeHtml(text) {
   var div = document.createElement('div');
   div.textContent = text;
