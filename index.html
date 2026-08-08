@@ -443,6 +443,19 @@
     box-shadow: 0 8px 22px rgba(47,74,102,.4);
   }
 
+  .btn-opinion{
+    background: linear-gradient(145deg, #8b5a6b 0%, #6b3f4f 100%);
+    color:#faf0f2;
+    border-color: rgba(255,255,255,.15);
+  }
+  .btn-opinion:hover{
+    background: linear-gradient(145deg, #9b6a7b 0%, #7b4f5f 100%);
+    color:#fff;
+    transform:translateY(-3px);
+    box-shadow: 0 8px 22px rgba(107,63,79,.4);
+  }
+
+
   @media (max-width:519px){
     .btn{ font-size:.82rem; padding:12px 10px; }
   }
@@ -1092,6 +1105,7 @@
 <a class="btn btn-primary" href="#about">🌿 গ্রামকে জানুন</a>
 <a class="btn btn-accent" href="gallery.html">📸 ছবিঘর দেখুন</a>
 <a class="btn btn-photos" href="#jibon">🖼️ মেইন পেজের ছবি</a>
+<a class="btn btn-opinion" href="#opinion">💬 পাবলিক মতামত</a>
 <a class="btn btn-ghost" href="https://facebook.com/groups/717295329059799/" rel="noopener" target="_blank">👥 ফেসবুক গ্রুপ</a>
 <a class="btn btn-dev" href="#developer">💻 ওয়েব ডেভেলপার</a>
 <a class="btn btn-admin" href="#admin-team">🛡️ আমাদের এডমিনেরা</a>
@@ -1693,47 +1707,124 @@ function escapeHtml(text) {
   div.textContent = text;
   return div.innerHTML;
 }
+
+function fmtOpinionDate(ts) {
+  try {
+    if (ts && ts.toDate) {
+      return ts.toDate().toLocaleString('bn-BD', { dateStyle: 'medium', timeStyle: 'short' });
+    }
+  } catch (e) {}
+  return '';
+}
+
+function getOpinionDb() {
+  try {
+    if (typeof firebase === 'undefined') return null;
+    if (!firebase.apps || !firebase.apps.length) {
+      firebase.initializeApp({
+        apiKey: "AIzaSyBqiOcn85zgvzDXt_Y60e3CQDEpdlYRBQ0",
+        authDomain: "amader-joginibari.firebaseapp.com",
+        projectId: "amader-joginibari",
+        storageBucket: "amader-joginibari.firebasestorage.app",
+        messagingSenderId: "917158468104",
+        appId: "1:917158468104:web:039539cca785319febcfbd"
+      });
+    }
+    return firebase.firestore();
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+}
+
 function renderComments() {
-  var comments = JSON.parse(localStorage.getItem('joginiComments') || '[]');
   var list = document.getElementById('commentsList');
   if (!list) return;
-  if (comments.length === 0) {
-    list.innerHTML = '<p style="color:var(--ink-soft);text-align:center;font-size:.95rem;">এখনো কোনো মতামত নেই। আপনিই প্রথম লিখুন!</p>';
+  list.innerHTML = '<p style="color:var(--ink-soft);text-align:center;font-size:.95rem;">মতামত লোড হচ্ছে...</p>';
+
+  var db = getOpinionDb();
+  if (!db) {
+    list.innerHTML = '<p style="color:#b84a42;text-align:center;">মতামত লোড করা যাচ্ছে না। পেজ রিফ্রেশ করুন।</p>';
     return;
   }
-  var html = '<h3 style="margin:0 0 18px;font-size:1.2rem;color:var(--forest-deep);">সবার মতামত</h3>';
-  comments.forEach(function(c) {
-    html += '<div style="background:#faf8f2;border-radius:10px;padding:16px 18px;margin-bottom:12px;border-left:4px solid var(--mud);box-shadow:0 2px 8px rgba(0,0,0,.04);">' +
-      '<b style="color:var(--forest-deep);">' + escapeHtml(c.name) + '</b>' +
-      '<span style="font-size:.78rem;color:var(--ink-soft);margin-left:10px;">' + escapeHtml(c.date) + '</span>' +
-      '<p style="margin:8px 0 0;color:var(--ink-soft);line-height:1.6;">' + escapeHtml(c.message) + '</p></div>';
-  });
-  list.innerHTML = html;
+
+  db.collection('opinions')
+    .orderBy('createdAt', 'desc')
+    .limit(50)
+    .get()
+    .then(function(snap) {
+      if (snap.empty) {
+        list.innerHTML = '<p style="color:var(--ink-soft);text-align:center;font-size:.95rem;">এখনো কোনো মতামত নেই। আপনিই প্রথম লিখুন!</p>';
+        return;
+      }
+      var html = '<h3 style="margin:0 0 18px;font-size:1.2rem;color:var(--forest-deep);">সবার মতামত</h3>';
+      snap.forEach(function(doc) {
+        var c = doc.data();
+        html += '<div style="background:#faf8f2;border-radius:12px;padding:16px 18px;margin-bottom:12px;border-left:4px solid var(--mud);box-shadow:0 2px 10px rgba(0,0,0,.05);">' +
+          '<b style="color:var(--forest-deep);">' + escapeHtml(c.name || '') + '</b>' +
+          '<span style="font-size:.78rem;color:var(--ink-soft);margin-left:10px;">' + escapeHtml(fmtOpinionDate(c.createdAt)) + '</span>' +
+          '<p style="margin:8px 0 0;color:var(--ink-soft);line-height:1.65;white-space:pre-wrap;">' + escapeHtml(c.message || '') + '</p></div>';
+      });
+      list.innerHTML = html;
+    })
+    .catch(function(err) {
+      console.error(err);
+      var msg = 'মতামত লোড করতে সমস্যা হয়েছে।';
+      if (err && err.code === 'permission-denied') {
+        msg = 'মতামত দেখতে অনুমতি নেই। Firebase Rules আপডেট করুন।';
+      } else if (err && /index/i.test(err.message || '')) {
+        msg = 'Firestore Index দরকার। Console-এর লিংক থেকে Index তৈরি করুন।';
+      }
+      list.innerHTML = '<p style="color:#b84a42;text-align:center;">' + msg + '</p>';
+    });
 }
+
 function submitOpinion(e) {
   e.preventDefault();
   var nameEl = document.getElementById('op-name');
   var msgEl = document.getElementById('op-msg');
-  var name = nameEl.value.trim();
-  var msg = msgEl.value.trim();
+  var name = (nameEl.value || '').trim();
+  var msg = (msgEl.value || '').trim();
   if (!name || !msg) return false;
+  if (msg.length > 2000) {
+    alert('মতামত একটু ছোট করে লিখুন (সর্বোচ্চ ২০০০ অক্ষর)।');
+    return false;
+  }
 
-  var comments = JSON.parse(localStorage.getItem('joginiComments') || '[]');
-  comments.unshift({
+  var btn = document.querySelector('#opinionForm button[type="submit"]');
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'পাঠানো হচ্ছে...';
+  }
+
+  var db = getOpinionDb();
+  if (!db) {
+    alert('সংযোগ সমস্যা। একটু পর আবার চেষ্টা করুন।');
+    if (btn) { btn.disabled = false; btn.textContent = 'মতামত পাঠান'; }
+    return false;
+  }
+
+  db.collection('opinions').add({
     name: name,
     message: msg,
-    date: new Date().toLocaleString('bn-BD', { dateStyle: 'medium', timeStyle: 'short' })
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  })
+  .then(function() {
+    nameEl.value = '';
+    msgEl.value = '';
+    document.getElementById('opinionForm').style.display = 'none';
+    document.getElementById('opinionThanks').classList.add('show');
+    renderComments();
+  })
+  .catch(function(err) {
+    console.error(err);
+    var msgErr = 'মতামত সেভ করা যায়নি।';
+    if (err && err.code === 'permission-denied') {
+      msgErr = 'মতামত সেভের অনুমতি নেই। Firebase Firestore Rules এ opinions create allow করুন।';
+    }
+    alert(msgErr);
+    if (btn) { btn.disabled = false; btn.textContent = 'মতামত পাঠান'; }
   });
-  localStorage.setItem('joginiComments', JSON.stringify(comments));
-  renderComments();
-
-  document.getElementById('opinionForm').style.display = 'none';
-  document.getElementById('opinionThanks').classList.add('show');
-
-  // ইমেইলেও পাঠানোর চেষ্টা (ইউজারের মেইল ক্লায়েন্ট খুলবে)
-  var subject = encodeURIComponent('যোগিনী বাড়ী — মতামত: ' + name);
-  var body = encodeURIComponent(msg + '\n\n— ' + name);
-  window.location.href = 'mailto:mylifetimeofficial100@gmail.com?subject=' + subject + '&body=' + body;
 
   return false;
 }
