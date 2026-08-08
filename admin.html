@@ -40,8 +40,8 @@
     margin-bottom: 14px;
     font-family: inherit;
   }
-  textarea { min-height: 80px; resize: vertical; }
-  label { font-weight: bold; font-size: 14px; }
+  textarea { min-height: 90px; resize: vertical; }
+  label { font-weight: bold; font-size: 14px; display: block; }
   .hint { font-weight: normal; font-size: 12px; color: #666; }
   button {
     background: #1f3a24;
@@ -101,6 +101,14 @@
   .msg.ok { background: #e2f4e2; color: #1f3a24; }
   .msg.err { background: #fbe2e2; color: #a33; }
   .section-title { font-size: 16px; font-weight: bold; margin-bottom: 12px; color: #1f3a24; }
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 500px) {
+    .row-2 { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -128,8 +136,9 @@
       <label>বিবরণ</label>
       <textarea id="postDesc" placeholder="বিস্তারিত লিখুন..."></textarea>
 
-      <label>ক্যাটাগরি</label>
-      <select id="postCategory">
+      <!-- সেকশন ১: মিডিয়া / ধরন (আগের মতো) -->
+      <label>ধরন <span class="hint">(আগের অপশন)</span></label>
+      <select id="postType">
         <option value="আপডেট">আপডেট / সংবাদ</option>
         <option value="ছবি">ছবি গ্যালারি</option>
         <option value="ভিডিও">ভিডিও</option>
@@ -137,10 +146,42 @@
         <option value="ডকুমেন্ট">নোটিশ / ডকুমেন্ট</option>
       </select>
 
-      <label>লিংক (ঐচ্ছিক) <span class="hint">— YouTube বা অন্য কোনো লিংক</span></label>
+      <!-- সেকশন ২: গ্রামের বিষয় / ক্যাটাগরি (নতুন) -->
+      <label>বিষয় / ক্যাটাগরি <span class="hint">(গ্রামের বিষয়)</span></label>
+      <select id="postCategory">
+        <option value="আপডেট">আপডেট / সংবাদ</option>
+        <option value="নোটিশ">নোটিশ</option>
+        <option value="হারানো">হারানো / পাওয়া</option>
+        <option value="ঘোষণা">ঘোষণা / অনুষ্ঠান</option>
+        <option value="যুব সমাজ">যুব সমাজ</option>
+        <option value="খেলাধুলা">খেলাধুলা</option>
+        <option value="সামাজিক">সামাজিক উদ্যোগ</option>
+        <option value="কৃষি">কৃষি ও বাজার</option>
+        <option value="আইন">আইন ও নিয়ম</option>
+        <option value="জরুরি">জরুরি</option>
+        <option value="ধর্মীয়">ধর্মীয়</option>
+        <option value="শিক্ষা">শিক্ষা</option>
+        <option value="উন্নয়ন">উন্নয়ন কাজ</option>
+        <option value="ছবি">ছবি / ভিডিও</option>
+      </select>
+
+      <label>প্রকাশক / কর্তৃপক্ষ</label>
+      <select id="postPublisher">
+        <option value="যুব সমাজ">যুব সমাজ</option>
+        <option value="মসজিদ কর্তৃপক্ষ">মসজিদ কর্তৃপক্ষ</option>
+        <option value="গ্রামবাসী">গ্রামবাসী</option>
+        <option value="ইউনিয়ন পরিষদ">ইউনিয়ন পরিষদ</option>
+        <option value="স্কুল কর্তৃপক্ষ">স্কুল কর্তৃপক্ষ</option>
+        <option value="খেলাধুলা কমিটি">খেলাধুলা কমিটি</option>
+        <option value="কৃষক সমাজ">কৃষক সমাজ</option>
+        <option value="সামাজিক কমিটি">সামাজিক কমিটি</option>
+        <option value="অন্যান্য">অন্যান্য</option>
+      </select>
+
+      <label>লিংক (ঐচ্ছিক) <span class="hint">— YouTube, Facebook বা অন্য কোনো লিংক</span></label>
       <input type="url" id="postLink" placeholder="যেমন: https://youtube.com/watch?v=xxxxx">
 
-      <label>ফাইল যুক্ত করুন <span class="hint">(ছবি, ভিডিও, অডিও, PDF, Word — একাধিক নির্বাচন করা যাবে)</span></label>
+      <label>ফাইল যুক্ত করুন <span class="hint">(ছবি, ভিডিও, অডিও, PDF — একাধিক নির্বাচন করা যাবে)</span></label>
       <div class="file-input-wrap">
         <input type="file" id="fileInput" multiple accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.txt,.xls,.xlsx,.ppt,.pptx">
         <div class="file-list" id="fileList">কোনো ফাইল নির্বাচিত হয়নি</div>
@@ -159,7 +200,6 @@
   </div>
 </div>
 
-<!-- Firebase -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import {
@@ -180,11 +220,8 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // ---- Cloudinary config ----
   const CLOUD_NAME = "ykmetzgo";
   const UPLOAD_PRESET = "mby2erxi";
-
-  // ---- Simple password gate ----
   const ADMIN_PASSWORD = "joginibari2026";
 
   window.checkPassword = function () {
@@ -199,7 +236,6 @@
     }
   };
 
-  // show selected file names
   const fileInput = document.getElementById("fileInput");
   fileInput.addEventListener("change", () => {
     const files = Array.from(fileInput.files);
@@ -262,7 +298,9 @@
   window.submitPost = async function () {
     const title = document.getElementById("postTitle").value.trim();
     const desc = document.getElementById("postDesc").value.trim();
+    const type = document.getElementById("postType").value;
     const category = document.getElementById("postCategory").value;
+    const publisher = document.getElementById("postPublisher").value;
     const link = document.getElementById("postLink").value.trim();
     const files = Array.from(fileInput.files);
     const msgBox = document.getElementById("uploadMsg");
@@ -282,19 +320,17 @@
     const uploadedFiles = [];
 
     try {
-      // লিংক থাকলে আগে সেটা যোগ করি
       if (link) {
         const linkType = detectLinkType(link);
         uploadedFiles.push({
           url: link,
           resourceType: linkType,
           format: "",
-          originalName: linkType === "youtube" ? "YouTube ভিডিও" : "লিংক",
+          originalName: linkType === "youtube" ? "YouTube ভিডিও" : (linkType === "facebook" ? "Facebook ভিডিও" : "লিংক"),
           bytes: 0
         });
       }
 
-      // ফাইলগুলো আপলোড
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const rowId = `prog-${i}`;
@@ -313,7 +349,9 @@
       await addDoc(collection(db, "posts"), {
         title,
         description: desc,
+        type,
         category,
+        publisher,
         files: uploadedFiles,
         createdAt: serverTimestamp()
       });
@@ -353,7 +391,7 @@
         html += `
           <div class="post-item">
             <h4>${p.title || ""}</h4>
-            <div class="meta">${p.category || ""} · ${fileCount} টি ফাইল/লিংক</div>
+            <div class="meta">${p.type || ""} · ${p.category || ""} · ${p.publisher || ""} · ${fileCount} টি ফাইল/লিংক</div>
             <div class="files">${(p.description || "").slice(0, 100)}</div>
             <button class="del-btn" onclick="deletePost('${docSnap.id}')">🗑️ মুছে ফেলুন</button>
           </div>`;
