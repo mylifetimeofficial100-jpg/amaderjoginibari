@@ -811,6 +811,154 @@
     }
   }
 
+
+  /* ========== OVERALL PROFESSIONAL POLISH ========== */
+
+  /* smoother selection */
+  ::selection{ background: rgba(196,149,74,.35); color: var(--forest-deep); }
+
+  /* notice section - match site language */
+  .notice{
+    position: relative;
+    padding: 72px 24px !important;
+    background: linear-gradient(180deg, #d6cdb2 0%, #cfc5a8 100%) !important;
+  }
+  .notice .section-inner{
+    max-width: 920px !important;
+  }
+  .notice .section-head h2{
+    letter-spacing: .3px;
+  }
+  #posts-container > div{
+    background: #faf8f2 !important;
+    border: 1px solid rgba(31,74,50,.08) !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    margin-bottom: 18px !important;
+    box-shadow: 0 6px 20px rgba(18,38,26,.06) !important;
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  #posts-container > div:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 14px 32px rgba(18,38,26,.12) !important;
+  }
+
+  /* life grid cards polish */
+  .life-card{
+    border-radius: 14px;
+    overflow: hidden;
+    background: #faf8f2;
+    box-shadow: 0 8px 24px rgba(18,38,26,.08);
+  }
+  .life-card .life-body{
+    padding: 16px 18px 18px;
+  }
+  .life-tag{
+    display: inline-block;
+    font-size: .72rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sindoor);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  /* about / frame */
+  .frame-photo{
+    border-radius: 14px !important;
+    border: 5px solid #fffef8 !important;
+  }
+
+  /* tree band soft vignette already exists - slight text polish */
+  .tree-band p{ line-height: 1.85; }
+
+  /* opinion card */
+  .opinion-card{
+    border-radius: 18px !important;
+    box-shadow: 0 12px 36px rgba(18,38,26,.08) !important;
+    border: 1px solid rgba(31,74,50,.06);
+  }
+
+  /* join section button if any */
+  .join a.btn, .join .btn{
+    border-radius: 50px;
+  }
+
+  /* maker / developer card */
+  .maker-card{
+    border-radius: 18px !important;
+    box-shadow: 0 14px 40px rgba(18,38,26,.1) !important;
+    border: 1px solid rgba(31,74,50,.06);
+    transition: transform .4s ease, box-shadow .4s ease;
+  }
+  .maker-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px rgba(18,38,26,.14) !important;
+  }
+  .maker-photo{
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  /* header subtle depth */
+  header{
+    box-shadow: 0 10px 36px rgba(18,38,26,.38), 0 1px 0 rgba(240,217,168,.1) inset !important;
+  }
+
+  /* footer links */
+  .footer-links a{
+    transition: color .25s ease, transform .25s ease, padding-left .25s ease;
+  }
+  .footer-links a:hover{
+    color: var(--mud-light) !important;
+    transform: translateX(2px);
+  }
+
+  /* stats row */
+  .stat b{
+    background: linear-gradient(135deg, var(--sindoor), #d46a52);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* mobile nav smoother */
+  @media (max-width:760px){
+    nav{
+      box-shadow: 0 16px 40px rgba(0,0,0,.25);
+      border-bottom: 1px solid rgba(240,217,168,.15);
+    }
+    nav a{
+      font-size: 1.05rem;
+      letter-spacing: .3px;
+    }
+  }
+
+  /* hero text readability */
+  .hero-bottom p{
+    text-shadow: 0 1px 8px rgba(0,0,0,.25);
+    line-height: 1.85;
+  }
+
+  /* section heads consistent */
+  .section-head h2{
+    line-height: 1.25;
+  }
+
+  /* soft focus for accessibility */
+  a:focus-visible, button:focus-visible{
+    outline: 3px solid var(--mud-light);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+
+  /* reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+    .btn, .life-card, #posts-container > div, .maker-card{ transition:none !important; }
+    .btn-notice::after{ display:none; }
+  }
+
 </style>
 </head>
 <body>
@@ -910,12 +1058,12 @@
 </div>
 </div>
 </section>
-<section class="notice" id="notice" style="padding: 60px 20px; background: #d6cdb2;">
-<div class="section-inner" style="max-width: 900px; margin: 0 auto;">
-<div class="section-head" style="text-align: center; margin-bottom: 40px;">
-<span class="eyebrow" style="display:inline-block; font-size:0.8rem; letter-spacing:3px; text-transform:uppercase; color:#b84a42; margin-bottom:10px;">আপডেট</span>
-<h2 style="font-family:'Baloo Da 2',sans-serif; font-size:clamp(1.8rem,4vw,2.5rem); color:#12261a; margin:0 0 12px;">লেটেস্ট আপডেট</h2>
-<p style="color:#3f382c; font-size:1.05rem; max-width:560px; margin:0 auto;">গ্রামের সাম্প্রতিক খবর, নোটিশ ও গুরুত্বপূর্ণ আপডেট এখানে দেখুন।</p>
+<section class="notice" id="notice">
+<div class="section-inner" style="max-width: 920px; margin: 0 auto;">
+<div class="section-head" style="text-align: center; margin-bottom: 36px;">
+<span class="eyebrow" style="display:inline-flex; align-items:center; gap:8px; justify-content:center; font-size:0.8rem; letter-spacing:3px; text-transform:uppercase; color:#b84a42; margin-bottom:12px;">আপডেট</span>
+<h2 style="font-family:'Baloo Da 2',sans-serif; font-size:clamp(1.85rem,4vw,2.6rem); color:#12261a; margin:0 0 14px;">লেটেস্ট আপডেট</h2>
+<p style="color:#3f382c; font-size:1.08rem; max-width:560px; margin:0 auto; line-height:1.75;">গ্রামের সাম্প্রতিক খবর, নোটিশ ও গুরুত্বপূর্ণ আপডেট এখানে দেখুন।</p>
 </div>
 
 <div id="posts-container">
