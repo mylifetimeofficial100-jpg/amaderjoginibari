@@ -12,22 +12,21 @@
     h1{text-align:center;font-size:1.25rem;color:#1f4a32;margin-bottom:6px}
     .sub{text-align:center;font-size:.82rem;color:#6b6358;margin-bottom:18px}
     label{display:block;font-size:.82rem;font-weight:600;color:#5c5346;margin:14px 0 6px}
-    input,textarea,select,button{font-family:inherit;font-size:15px}
+    input,textarea,button{font-family:inherit;font-size:15px}
     input,textarea{width:100%;padding:12px 14px;border:1.5px solid #d0c8b4;border-radius:10px;background:#faf8f2}
     input:focus,textarea:focus{outline:none;border-color:#1f4a32;background:#fff}
     textarea{min-height:90px;resize:vertical}
     .btn{width:100%;padding:13px;border:none;border-radius:10px;font-weight:700;cursor:pointer;margin-top:12px}
     .btn-green{background:#1f4a32;color:#fff}
-    .btn-green:hover{background:#163326}
-    .btn-green:disabled{opacity:.6;cursor:not-allowed}
+    .btn-green:disabled{opacity:.55;cursor:not-allowed}
     .btn-red{background:#b84a42;color:#fff;margin-top:10px}
     .btn-sm{width:auto;padding:7px 14px;font-size:13px}
-    .msg{text-align:center;font-weight:600;font-size:.9rem;margin-top:12px;min-height:22px}
+    .msg{text-align:center;font-weight:600;font-size:.88rem;margin-top:12px;min-height:22px;word-break:break-word}
     .ok{color:#1f4a32}.err{color:#b84a42}.info{color:#5c5346}
     .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
-    .tab{flex:1;min-width:70px;padding:9px 6px;border:1.5px solid #d0c8b4;border-radius:8px;background:#faf8f2;font-size:.8rem;font-weight:600;cursor:pointer;text-align:center;color:#5c5346}
+    .tab{flex:1;min-width:70px;padding:9px 6px;border:1.5px solid #d0c8b4;border-radius:8px;background:#faf8f2;font-size:.78rem;font-weight:600;cursor:pointer;text-align:center;color:#5c5346}
     .tab.on{background:#1f4a32;border-color:#1f4a32;color:#fff}
-    .drop{border:2px dashed #d0c8b4;border-radius:12px;padding:24px 12px;text-align:center;background:#faf8f2;cursor:pointer}
+    .drop{border:2px dashed #d0c8b4;border-radius:12px;padding:22px 12px;text-align:center;background:#faf8f2;cursor:pointer}
     .drop:hover,.drop.over{border-color:#1f4a32;background:#eef5f0}
     .drop input{display:none}
     .hint{font-size:.75rem;color:#8a8070;margin-top:6px}
@@ -36,7 +35,7 @@
     .preview .name{font-size:.8rem;color:#5c5346;text-align:center;margin-top:6px}
     .bar{height:6px;background:#e5e0d5;border-radius:3px;margin-top:12px;overflow:hidden;display:none}
     .bar.show{display:block}
-    .bar>i{display:block;height:100%;background:#1f4a32;width:0%;transition:width .25s}
+    .bar>i{display:block;height:100%;background:#1f4a32;width:0%;transition:width .2s}
     .post{border-bottom:1px solid #eee;padding:14px 0}
     .post:last-child{border-bottom:none}
     .post .d{font-size:.75rem;color:#b84a42;margin-bottom:4px}
@@ -45,6 +44,7 @@
     .empty{text-align:center;color:#8a8070;padding:20px 0}
     .user{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:#6b6358;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #eee}
     .hidden{display:none!important}
+    .note{background:#eef5f0;border:1px solid #c5d9cc;border-radius:10px;padding:10px 12px;font-size:.78rem;color:#1f4a32;margin-top:10px}
   </style>
 </head>
 <body>
@@ -69,42 +69,36 @@
     <h1 style="text-align:left;font-size:1.1rem;margin-bottom:4px">নতুন আপডেট</h1>
 
     <label>শিরোনাম (ঐচ্ছিক)</label>
-    <input type="text" id="title" placeholder="শিরোনাম লিখুন">
+    <input type="text" id="title" placeholder="শিরোনাম">
 
     <label>টেক্সট / নোটিশ</label>
     <textarea id="text" placeholder="নোটিশ লিখুন..."></textarea>
 
-    <label>কী যোগ করবেন?</label>
+    <label>মিডিয়া</label>
     <div class="tabs">
       <button type="button" class="tab on" data-t="none" onclick="setTab('none')">শুধু টেক্সট</button>
       <button type="button" class="tab" data-t="image" onclick="setTab('image')">ছবি</button>
-      <button type="button" class="tab" data-t="video" onclick="setTab('video')">ভিডিও</button>
+      <button type="button" class="tab" data-t="video" onclick="setTab('video')">ভিডিও লিংক</button>
       <button type="button" class="tab" data-t="link" onclick="setTab('link')">লিংক</button>
-      <button type="button" class="tab" data-t="file" onclick="setTab('file')">ফাইল/PDF</button>
     </div>
 
     <div id="panel-image" class="hidden">
       <div class="drop" id="dropImg" onclick="document.getElementById('fileImg').click()">
         <div style="font-size:1.8rem">🖼️</div>
-        <div>ছবি সিলেক্ট করুন</div>
-        <div class="hint">অটো কম্প্রেস হবে · অথবা নিচে URL দিন</div>
+        <div><b>ছবি সিলেক্ট করুন</b></div>
+        <div class="hint">অটো কম্প্রেস → কয়েক KB · Storage লাগবে না</div>
         <input type="file" id="fileImg" accept="image/*">
       </div>
       <div class="preview" id="prevImg"></div>
-      <label>অথবা ছবির লিংক (URL)</label>
+      <label>অথবা ছবির URL</label>
       <input type="url" id="imgUrl" placeholder="https://...">
+      <div class="note">ছবি ফোনে/কম্পিউটার থেকে নিলে অটো কম্প্রেস হয়ে Firestore-এ সেভ হবে। আলাদা Storage Rules লাগবে না।</div>
     </div>
 
     <div id="panel-video" class="hidden">
-      <div class="drop" id="dropVid" onclick="document.getElementById('fileVid').click()">
-        <div style="font-size:1.8rem">🎬</div>
-        <div>ভিডিও ফাইল সিলেক্ট</div>
-        <div class="hint">MP4 ইত্যাদি · অথবা নিচে ইউটিউব লিংক</div>
-        <input type="file" id="fileVid" accept="video/*">
-      </div>
-      <div class="preview" id="prevVid"></div>
-      <label>অথবা ইউটিউব / ভিডিও লিংক</label>
-      <input type="url" id="vidUrl" placeholder="https://youtube.com/...">
+      <label>ইউটিউব / ভিডিও লিংক</label>
+      <input type="url" id="vidUrl" placeholder="https://youtube.com/watch?v=...">
+      <div class="note">বড় ভিডিও ফাইল আপলোড নয় — ইউটিউব/ফেসবুক লিংক দিন।</div>
     </div>
 
     <div id="panel-link" class="hidden">
@@ -112,19 +106,8 @@
       <input type="url" id="extLink" placeholder="https://...">
     </div>
 
-    <div id="panel-file" class="hidden">
-      <div class="drop" id="dropFile" onclick="document.getElementById('fileAny').click()">
-        <div style="font-size:1.8rem">📎</div>
-        <div>PDF / ফাইল সিলেক্ট</div>
-        <div class="hint">PDF, DOC, ZIP ইত্যাদি</div>
-        <input type="file" id="fileAny" accept="*/*">
-      </div>
-      <div class="preview" id="prevFile"></div>
-    </div>
-
     <div class="bar" id="bar"><i id="barFill"></i></div>
     <div class="msg info" id="progText"></div>
-
     <button class="btn btn-green" id="submitBtn" onclick="doSubmit()">সাবমিট করুন</button>
     <div class="msg" id="submitMsg"></div>
   </div>
@@ -138,7 +121,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
 <script>
 (function(){
   var cfg = {
@@ -150,11 +132,9 @@
     appId: "1:917158468104:web:039539cca785319febcfbd",
     measurementId: "G-SK4FHVPSTE"
   };
-
   firebase.initializeApp(cfg);
   var auth = firebase.auth();
   var db = firebase.firestore();
-  var storage = firebase.storage();
 
   var tab = 'none';
   var pickedFile = null;
@@ -179,14 +159,11 @@
     var b = document.getElementById('loginBtn');
     if(!e||!p){ m.className='msg err'; m.textContent='ইমেইল ও পাসওয়ার্ড দিন'; return; }
     b.disabled = true; b.textContent = 'লগইন হচ্ছে...'; m.textContent='';
-    auth.signInWithEmailAndPassword(e,p).catch(function(err){
-      m.className='msg err'; m.textContent='ভুল ইমেইল বা পাসওয়ার্ড';
-      console.error(err);
-    }).finally(function(){ b.disabled=false; b.textContent='লগইন করুন'; });
+    auth.signInWithEmailAndPassword(e,p)
+      .catch(function(){ m.className='msg err'; m.textContent='ভুল ইমেইল বা পাসওয়ার্ড'; })
+      .finally(function(){ b.disabled=false; b.textContent='লগইন করুন'; });
   };
-
   window.doLogout = function(){ auth.signOut(); };
-
   document.getElementById('password').addEventListener('keydown', function(ev){
     if(ev.key==='Enter') doLogin();
   });
@@ -196,89 +173,94 @@
     document.querySelectorAll('.tab').forEach(function(el){
       el.classList.toggle('on', el.getAttribute('data-t')===t);
     });
-    ['image','video','link','file'].forEach(function(x){
+    ['image','video','link'].forEach(function(x){
       document.getElementById('panel-'+x).classList.toggle('hidden', x!==t);
     });
     pickedFile = null;
-    ['prevImg','prevVid','prevFile'].forEach(function(id){
-      var el=document.getElementById(id); if(el) el.innerHTML='';
-    });
+    var p = document.getElementById('prevImg'); if(p) p.innerHTML='';
   };
 
-  function bindFile(inputId, prevId, dropId){
-    var inp = document.getElementById(inputId);
-    var drop = document.getElementById(dropId);
-    inp.addEventListener('change', function(){
-      if(inp.files && inp.files[0]) handlePick(inp.files[0], prevId);
-      inp.value='';
-    });
-    if(drop){
-      drop.addEventListener('dragover', function(e){ e.preventDefault(); drop.classList.add('over'); });
-      drop.addEventListener('dragleave', function(){ drop.classList.remove('over'); });
-      drop.addEventListener('drop', function(e){
-        e.preventDefault(); drop.classList.remove('over');
-        if(e.dataTransfer.files[0]) handlePick(e.dataTransfer.files[0], prevId);
-      });
-    }
-  }
-  bindFile('fileImg','prevImg','dropImg');
-  bindFile('fileVid','prevVid','dropVid');
-  bindFile('fileAny','prevFile','dropFile');
+  var fileImg = document.getElementById('fileImg');
+  var dropImg = document.getElementById('dropImg');
+  fileImg.addEventListener('change', function(){
+    if(fileImg.files && fileImg.files[0]) handlePick(fileImg.files[0]);
+    fileImg.value='';
+  });
+  dropImg.addEventListener('dragover', function(e){ e.preventDefault(); dropImg.classList.add('over'); });
+  dropImg.addEventListener('dragleave', function(){ dropImg.classList.remove('over'); });
+  dropImg.addEventListener('drop', function(e){
+    e.preventDefault(); dropImg.classList.remove('over');
+    if(e.dataTransfer.files[0]) handlePick(e.dataTransfer.files[0]);
+  });
 
-  function handlePick(file, prevId){
+  function handlePick(file){
+    if(!file.type || file.type.indexOf('image/')!==0){
+      alert('শুধু ছবি ফাইল দিন (JPG, PNG, WEBP)');
+      return;
+    }
     pickedFile = file;
-    var prev = document.getElementById(prevId);
-    var size = (file.size/1024).toFixed(0) + ' KB';
-    if(file.type.indexOf('image/')===0){
-      var url = URL.createObjectURL(file);
-      prev.innerHTML = '<img src="'+url+'"><div class="name">'+esc(file.name)+' · '+size+'</div>';
-    } else {
-      prev.innerHTML = '<div class="name">📎 '+esc(file.name)+' · '+size+'</div>';
-    }
+    var url = URL.createObjectURL(file);
+    document.getElementById('prevImg').innerHTML =
+      '<img src="'+url+'"><div class="name">'+esc(file.name)+' · '+(file.size/1024).toFixed(0)+' KB (কম্প্রেস হবে)</div>';
   }
 
+  // Strong compress: target under ~180KB, max side 1280
   function compressImage(file){
-    return new Promise(function(resolve){
-      if(!file.type || file.type.indexOf('image/')!==0){ resolve(file); return; }
-      var img = new Image();
-      var url = URL.createObjectURL(file);
-      img.onload = function(){
-        URL.revokeObjectURL(url);
-        var w=img.width, h=img.height, max=1600;
-        if(w>max || h>max){
-          if(w>h){ h=Math.round(h*max/w); w=max; }
-          else { w=Math.round(w*max/h); h=max; }
-        }
-        var c=document.createElement('canvas');
-        c.width=w; c.height=h;
-        c.getContext('2d').drawImage(img,0,0,w,h);
-        c.toBlob(function(blob){
-          if(!blob){ resolve(file); return; }
-          resolve(new File([blob], file.name.replace(/\.\w+$/,'.jpg'), {type:'image/jpeg'}));
-        }, 'image/jpeg', 0.72);
-      };
-      img.onerror = function(){ URL.revokeObjectURL(url); resolve(file); };
-      img.src = url;
-    });
-  }
-
-  function uploadFile(file){
     return new Promise(function(resolve, reject){
-      var ext = (file.name.split('.').pop() || 'bin').toLowerCase();
-      var path = 'posts/' + Date.now() + '_' + Math.random().toString(36).slice(2,7) + '.' + ext;
-      var ref = storage.ref(path);
-      var task = ref.put(file, { contentType: file.type || 'application/octet-stream' });
-      task.on('state_changed',
-        function(s){
-          var pct = Math.round((s.bytesTransferred / s.totalBytes) * 100);
-          document.getElementById('barFill').style.width = pct + '%';
-          document.getElementById('progText').textContent = 'আপলোড ' + pct + '%';
-        },
-        function(err){ reject(err); },
-        function(){
-          task.snapshot.ref.getDownloadURL().then(resolve).catch(reject);
+      var img = new Image();
+      var obj = URL.createObjectURL(file);
+      img.onload = function(){
+        URL.revokeObjectURL(obj);
+        var w = img.width, h = img.height;
+        var max = 1280;
+        if(w > max || h > max){
+          if(w > h){ h = Math.round(h * max / w); w = max; }
+          else { w = Math.round(w * max / h); h = max; }
         }
-      );
+        var canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0,0,w,h);
+        ctx.drawImage(img, 0, 0, w, h);
+
+        var quality = 0.72;
+        function tryBlob(q){
+          canvas.toBlob(function(blob){
+            if(!blob){ reject(new Error('কম্প্রেস ব্যর্থ')); return; }
+            // if still large, reduce quality
+            if(blob.size > 200 * 1024 && q > 0.4){
+              tryBlob(q - 0.12);
+              return;
+            }
+            // if still huge, shrink dimensions
+            if(blob.size > 280 * 1024 && canvas.width > 800){
+              var nw = Math.round(canvas.width * 0.75);
+              var nh = Math.round(canvas.height * 0.75);
+              var c2 = document.createElement('canvas');
+              c2.width = nw; c2.height = nh;
+              c2.getContext('2d').drawImage(canvas, 0, 0, nw, nh);
+              canvas = c2;
+              tryBlob(Math.max(0.45, q - 0.05));
+              return;
+            }
+            var reader = new FileReader();
+            reader.onload = function(){
+              resolve({
+                dataUrl: reader.result,
+                size: blob.size,
+                width: canvas.width,
+                height: canvas.height
+              });
+            };
+            reader.onerror = function(){ reject(new Error('পড়তে সমস্যা')); };
+            reader.readAsDataURL(blob);
+          }, 'image/jpeg', q);
+        }
+        tryBlob(quality);
+      };
+      img.onerror = function(){ URL.revokeObjectURL(obj); reject(new Error('ছবি লোড ব্যর্থ')); };
+      img.src = obj;
     });
   }
 
@@ -286,18 +268,16 @@
     if(busy) return;
     var title = document.getElementById('title').value.trim();
     var text = document.getElementById('text').value.trim();
+    var imgUrl = document.getElementById('imgUrl').value.trim();
+    var vidUrl = document.getElementById('vidUrl').value.trim();
+    var extLink = document.getElementById('extLink').value.trim();
     var msg = document.getElementById('submitMsg');
     var btn = document.getElementById('submitBtn');
     var bar = document.getElementById('bar');
     var prog = document.getElementById('progText');
 
-    var imgUrl = document.getElementById('imgUrl').value.trim();
-    var vidUrl = document.getElementById('vidUrl').value.trim();
-    var extLink = document.getElementById('extLink').value.trim();
-
-    var hasSomething = title || text || pickedFile || imgUrl || vidUrl || extLink;
-    if(!hasSomething){
-      msg.className='msg err'; msg.textContent='কমপক্ষে কিছু লিখুন বা ফাইল/লিংক দিন';
+    if(!(title || text || pickedFile || imgUrl || vidUrl || extLink)){
+      msg.className='msg err'; msg.textContent='কমপক্ষে টেক্সট, ছবি বা লিংক দিন';
       return;
     }
 
@@ -306,59 +286,66 @@
     btn.textContent = 'সেভ হচ্ছে...';
     msg.textContent = '';
     bar.classList.add('show');
-    document.getElementById('barFill').style.width = '5%';
-    prog.textContent = 'প্রস্তুত...';
+    document.getElementById('barFill').style.width = '10%';
+    prog.textContent = 'শুরু...';
 
     try {
       var media = [];
+      var imageLink = '';
+      var videoLink = '';
 
+      // Image from file → compress → data URL (NO Storage needed)
       if(pickedFile){
-        prog.textContent = 'ফাইল প্রসেস হচ্ছে...';
-        var fileToUp = pickedFile;
-        if(tab==='image' || (pickedFile.type && pickedFile.type.indexOf('image/')===0)){
-          prog.textContent = 'ছবি কম্প্রেস হচ্ছে...';
-          fileToUp = await compressImage(pickedFile);
-          prog.textContent = 'কম্প্রেস: ' + (pickedFile.size/1024).toFixed(0) + 'KB → ' + (fileToUp.size/1024).toFixed(0) + 'KB';
+        prog.textContent = 'ছবি কম্প্রেস হচ্ছে...';
+        document.getElementById('barFill').style.width = '35%';
+        var before = pickedFile.size;
+        var result = await compressImage(pickedFile);
+        prog.textContent = 'কম্প্রেস: ' + (before/1024).toFixed(0) + ' KB → ' + (result.size/1024).toFixed(0) + ' KB';
+        document.getElementById('barFill').style.width = '70%';
+
+        // Firestore doc limit ~1MB. data URL ~ +33%. Keep under ~700KB binary.
+        if(result.size > 700 * 1024){
+          throw new Error('ছবি এখনো বড় (' + (result.size/1024).toFixed(0) + ' KB)। অন্য ছবি দিন বা আরো ছোট করুন।');
         }
-        prog.textContent = 'আপলোড শুরু...';
-        var url = await uploadFile(fileToUp);
-        var mtype = 'file';
-        if(tab==='image' || (pickedFile.type||'').indexOf('image/')===0) mtype = 'image';
-        else if(tab==='video' || (pickedFile.type||'').indexOf('video/')===0) mtype = 'video';
-        else if(tab==='file' && (pickedFile.type==='application/pdf' || /\.pdf$/i.test(pickedFile.name))) mtype = 'pdf';
-        media.push({ type: mtype, url: url, name: pickedFile.name, size: fileToUp.size });
+        media.push({
+          type: 'image',
+          url: result.dataUrl,
+          name: pickedFile.name,
+          size: result.size
+        });
+        imageLink = result.dataUrl;
+      } else if(tab === 'image' && imgUrl){
+        media.push({ type: 'image', url: imgUrl, name: 'Image URL' });
+        imageLink = imgUrl;
       }
 
-      if(tab==='image' && imgUrl && !pickedFile){
-        media.push({ type: 'image', url: imgUrl, name: 'Image URL' });
-      }
-      if(tab==='video' && vidUrl && !pickedFile){
+      if(tab === 'video' && vidUrl){
         var isYt = /youtu\.?be|youtube\.com/i.test(vidUrl);
-        media.push({ type: isYt ? 'youtube' : 'link', url: vidUrl, name: isYt ? 'YouTube' : 'Video Link' });
+        media.push({ type: isYt ? 'youtube' : 'link', url: vidUrl, name: isYt ? 'YouTube' : 'Video' });
+        videoLink = vidUrl;
       }
-      if(tab==='link' && extLink){
+      if(tab === 'link' && extLink){
         var isYt2 = /youtu\.?be|youtube\.com/i.test(extLink);
         media.push({ type: isYt2 ? 'youtube' : 'link', url: extLink, name: isYt2 ? 'YouTube' : 'Link' });
+        if(isYt2) videoLink = extLink;
       }
 
-      document.getElementById('barFill').style.width = '90%';
       prog.textContent = 'ডেটাবেসে সেভ হচ্ছে...';
+      document.getElementById('barFill').style.width = '90%';
 
-      var data = {
+      await db.collection('posts').add({
         title: title || '',
         text: text || '',
         media: media,
-        imageLink: (media.find(function(m){return m.type==='image';}) || {}).url || '',
-        videoLink: (media.find(function(m){return m.type==='youtube'||m.type==='video';}) || {}).url || '',
+        imageLink: imageLink,
+        videoLink: videoLink,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
-      };
-
-      await db.collection('posts').add(data);
+      });
 
       document.getElementById('barFill').style.width = '100%';
       prog.textContent = '';
       msg.className = 'msg ok';
-      msg.textContent = '✅ সফলভাবে যোগ হয়েছে!';
+      msg.textContent = '✅ সফল! ছবি/পোস্ট সেভ হয়েছে।';
 
       document.getElementById('title').value = '';
       document.getElementById('text').value = '';
@@ -366,21 +353,15 @@
       document.getElementById('vidUrl').value = '';
       document.getElementById('extLink').value = '';
       pickedFile = null;
-      ['prevImg','prevVid','prevFile'].forEach(function(id){ document.getElementById(id).innerHTML=''; });
+      document.getElementById('prevImg').innerHTML = '';
       setTab('none');
+      setTimeout(function(){ bar.classList.remove('show'); loadList(); }, 600);
 
-      setTimeout(function(){ bar.classList.remove('show'); loadList(); }, 800);
-
-    } catch(err) {
+    } catch(err){
       console.error(err);
       var t = (err && err.message) ? err.message : 'অজানা সমস্যা';
-      var code = (err && err.code) ? err.code : '';
-      if(/unauthorized|permission/i.test(t) || code==='storage/unauthorized'){
-        t = 'Storage অনুমতি নেই। Firebase Console → Storage → Rules এ allow write: if request.auth != null; দিয়ে Publish করুন।';
-      } else if(/quota|retry-limit|network/i.test(t)){
-        t = 'নেটওয়ার্ক সমস্যা। আবার চেষ্টা করুন। অথবা ছবির URL ব্যবহার করুন।';
-      } else if(code==='storage/unknown' || /bucket/i.test(t)){
-        t = 'Storage চালু নেই। Firebase Console → Storage → Get started করুন।';
+      if(/permission|Permission/i.test(t)){
+        t = 'Firestore অনুমতি নেই। Firebase → Firestore → Rules এ authenticated write চালু করুন।';
       }
       msg.className = 'msg err';
       msg.textContent = '❌ ' + t;
@@ -396,9 +377,9 @@
   function loadList(){
     var list = document.getElementById('list');
     list.innerHTML = '<div class="empty">লোড হচ্ছে...</div>';
-    db.collection('posts').orderBy('createdAt','desc').limit(40).get()
+    db.collection('posts').orderBy('createdAt','desc').limit(30).get()
       .then(function(snap){
-        if(snap.empty){ list.innerHTML='<div class="empty">কোনো পোস্ট নেই</div>'; return; }
+        if(snap.empty){ list.innerHTML = '<div class="empty">কোনো পোস্ট নেই</div>'; return; }
         list.innerHTML = '';
         snap.forEach(function(doc){
           var d = doc.data();
@@ -410,21 +391,21 @@
           }
           if(d.title) h += '<div style="font-weight:700;margin-bottom:4px">'+esc(d.title)+'</div>';
           if(d.text) h += '<div class="t">'+esc(d.text)+'</div>';
+          var imgSrc = '';
           if(d.media && d.media.length){
             d.media.forEach(function(m){
-              if(m.type==='image') h += '<img src="'+esc(m.url)+'" onerror="this.style.display=\'none\'">';
-              else h += '<div class="hint">'+esc(m.type)+': '+esc(m.name||m.url)+'</div>';
+              if(m.type==='image' && m.url) imgSrc = m.url;
+              else if(m.type!=='image') h += '<div class="hint">'+esc(m.type)+': '+esc((m.name||m.url||'').slice(0,60))+'</div>';
             });
-          } else if(d.imageLink){
-            h += '<img src="'+esc(d.imageLink)+'" onerror="this.style.display=\'none\'">';
           }
+          if(!imgSrc && d.imageLink) imgSrc = d.imageLink;
+          if(imgSrc) h += '<img src="'+imgSrc.replace(/"/g,'&quot;')+'" onerror="this.style.display=\'none\'">';
           h += '<button class="btn btn-red btn-sm" onclick="delPost(\''+doc.id+'\')">ডিলিট</button>';
           div.innerHTML = h;
           list.appendChild(div);
         });
       })
-      .catch(function(e){
-        console.error(e);
+      .catch(function(){
         list.innerHTML = '<div class="empty" style="color:#b84a42">লোড ব্যর্থ</div>';
       });
   }
