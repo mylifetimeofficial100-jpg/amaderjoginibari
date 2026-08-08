@@ -325,7 +325,7 @@
     display:grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap:12px;
-    max-width:420px;
+    max-width:440px;
     margin:0 auto;
     padding:4px 0 8px;
   }
@@ -335,8 +335,11 @@
       flex-wrap:wrap;
       justify-content:center;
       gap:14px;
-      max-width:none;
+      max-width:640px;
     }
+  }
+  @media (max-width:519px){
+    .hero-actions .btn{ font-size:.82rem; padding:12px 10px; }
   }
   @keyframes riseIn{from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);}}
 
@@ -404,9 +407,31 @@
     box-shadow: 0 10px 28px rgba(196,149,74,.45);
   }
   .btn-notice:hover::after{ transform: translateX(100%); }
+
+  .btn-dev{
+    background: linear-gradient(145deg, #2a5a3e 0%, #1f4a32 100%);
+    color:#f0d9a8;
+    border-color: rgba(240,217,168,.25);
+  }
+  .btn-dev:hover{
+    background: linear-gradient(145deg, #357048 0%, #2a5a3e 100%);
+    color:#fffef8;
+    transform:translateY(-3px);
+    box-shadow: 0 8px 22px rgba(31,74,50,.4);
+  }
+  .btn-admin{
+    background: linear-gradient(145deg, #5c4a2e 0%, #3f382c 100%);
+    color:#f0d9a8;
+    border-color: rgba(240,217,168,.2);
+  }
+  .btn-admin:hover{
+    background: linear-gradient(145deg, #6b5a3e 0%, #5c4a2e 100%);
+    color:#fffef8;
+    transform:translateY(-3px);
+    box-shadow: 0 8px 22px rgba(63,56,44,.35);
+  }
   @media (max-width:519px){
-    .btn{ font-size:.88rem; padding:13px 14px; }
-    .hero-actions .btn:last-child{ grid-column: 1 / -1; }
+    .btn{ font-size:.82rem; padding:12px 10px; }
   }
 
   /* ---------- ROOT DIVIDER (signature motif) ---------- */
@@ -880,6 +905,8 @@
 <a class="btn btn-primary" href="#about">🌿 গ্রামকে জানুন</a>
 <a class="btn btn-accent" href="gallery.html">📸 ছবিঘর দেখুন</a>
 <a class="btn btn-ghost" href="https://facebook.com/groups/717295329059799/" rel="noopener" target="_blank">👥 ফেসবুক গ্রুপ</a>
+<a class="btn btn-dev" href="https://www.facebook.com/abdurrahman89100" rel="noopener" target="_blank">💻 ওয়েব ডেভেলপার</a>
+<a class="btn btn-admin" href="#admin-team">🛡️ আমাদের এডমিনেরা</a>
 </div>
 </div>
 </section>
