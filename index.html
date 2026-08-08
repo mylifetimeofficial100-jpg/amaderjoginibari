@@ -119,64 +119,130 @@
   }
 
   
-  /* ---------- ENHANCED NAV ---------- */
+  /* ---------- PREMIUM NAV / BRAND ---------- */
   header{
     position:sticky; top:0; z-index:100;
-    background:linear-gradient(180deg, rgba(18,38,26,.98) 0%, rgba(31,74,50,.96) 100%);
-    backdrop-filter:blur(14px) saturate(1.2);
-    -webkit-backdrop-filter:blur(14px) saturate(1.2);
-    border-bottom:1px solid rgba(196,149,74,.45);
-    box-shadow:0 8px 32px rgba(18,38,26,.35), 0 1px 0 rgba(240,217,168,.08) inset;
+    background:
+      linear-gradient(180deg, #0c1a12 0%, #12261a 42%, #1a3a28 100%);
+    backdrop-filter:blur(18px) saturate(1.25);
+    -webkit-backdrop-filter:blur(18px) saturate(1.25);
+    border-bottom: none;
+    box-shadow:
+      0 12px 40px rgba(8,16,12,.55),
+      0 1px 0 rgba(240,217,168,.12) inset;
+  }
+  header::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(196,149,74,.25) 15%,
+      #e8c87a 50%,
+      rgba(196,149,74,.25) 85%,
+      transparent 100%);
+    opacity:.95;
   }
   .nav-wrap{
-    max-width:1180px; margin:0 auto; padding:12px 24px;
-    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    max-width:1180px; margin:0 auto; padding:14px 22px;
+    display:flex; align-items:center; justify-content:space-between; gap:18px;
+    position:relative;
   }
   .brand{
-    display:flex; align-items:center; gap:12px;
+    display:flex; align-items:center; gap:14px;
     color:var(--mud-light); text-decoration:none;
-    transition:transform .3s ease;
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
   }
-  .brand:hover{transform:translateY(-1px);}
-  .brand svg{
-    width:44px;height:44px;flex-shrink:0;
-    filter:drop-shadow(0 2px 8px rgba(240,217,168,.35));
-    animation:logoFloat 4.5s ease-in-out infinite;
+  .brand:hover{ transform:translateY(-1px); }
+  .brand-logo{
+    width:50px; height:50px; flex-shrink:0;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 35% 30%, rgba(240,217,168,.35), transparent 55%),
+      linear-gradient(145deg, #1f4a32 0%, #0e1f16 100%);
+    border:1.5px solid rgba(232,200,122,.55);
+    box-shadow:
+      0 0 0 3px rgba(196,149,74,.12),
+      0 6px 18px rgba(0,0,0,.35),
+      inset 0 1px 0 rgba(255,255,255,.12);
+    display:flex; align-items:center; justify-content:center;
+    animation: logoGlow 5s ease-in-out infinite;
   }
-  @keyframes logoFloat{
-    0%,100%{transform:translateY(0) rotate(0deg);}
-    50%{transform:translateY(-3px) rotate(1.5deg);}
+  .brand-logo svg{
+    width:32px; height:32px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
+  }
+  @keyframes logoGlow{
+    0%,100%{ box-shadow: 0 0 0 3px rgba(196,149,74,.12), 0 6px 18px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12); }
+    50%{ box-shadow: 0 0 0 4px rgba(232,200,122,.22), 0 8px 22px rgba(196,149,74,.2), inset 0 1px 0 rgba(255,255,255,.16); }
   }
   .brand-text{
-    font-family:'Baloo Da 2',sans-serif; font-weight:800; font-size:1.38rem;
-    color:#fffef8; text-shadow:0 1px 3px rgba(0,0,0,.35); letter-spacing:.3px;
+    font-family:'Baloo Da 2',sans-serif; font-weight:800;
+    font-size: clamp(1.2rem, 3.5vw, 1.48rem);
+    letter-spacing: .4px;
+    line-height: 1.15;
+    background: linear-gradient(180deg, #fffef8 10%, #f0d9a8 55%, #e8c87a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
   }
   .brand-text small{
-    display:block; font-family:'Noto Sans Bengali',sans-serif; font-weight:600;
-    font-size:.68rem; letter-spacing:2.2px; color:#f0d9a8; text-transform:uppercase;
-    text-shadow:0 1px 2px rgba(0,0,0,.25); margin-top:2px;
+    display:block;
+    font-family:'Noto Sans Bengali',sans-serif; font-weight:600;
+    font-size: .62rem;
+    letter-spacing: 2.4px;
+    margin-top: 4px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #c4954a, #f0d9a8, #c4954a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    opacity: .95;
+    filter: none;
   }
-  nav{display:flex; gap:2px;}
+  nav{display:flex; gap:4px; align-items:center;}
   nav a{
-    font-size:1rem; padding:9px 16px; border-radius:20px; text-decoration:none;
-    color:#faf6eb; font-weight:600; transition:.25s; letter-spacing:.2px;
+    font-size: .94rem; padding:9px 15px; border-radius:999px; text-decoration:none;
+    color: rgba(250,246,235,.88); font-weight:600; letter-spacing:.25px;
+    transition: all .28s cubic-bezier(.22,1,.36,1);
+    border: 1px solid transparent;
   }
   nav a:hover, nav a:focus-visible{
-    background:rgba(250,248,242,.22); color:#fff;
-    text-shadow:0 0 8px rgba(240,217,168,.4);
+    background: rgba(240,217,168,.12);
+    color: #fffef8;
+    border-color: rgba(240,217,168,.22);
+    box-shadow: 0 4px 14px rgba(0,0,0,.15);
   }
-  .nav-toggle{display:none; background:none; border:0; color:#faf8f2; font-size:1.6rem; cursor:pointer;}
+  .nav-toggle{
+    display:none; background:rgba(240,217,168,.1); border:1px solid rgba(240,217,168,.25);
+    color:#f0d9a8; font-size:1.35rem; cursor:pointer;
+    width:42px; height:42px; border-radius:12px;
+    display:none; align-items:center; justify-content:center;
+  }
 
   @media (max-width:760px){
+    .nav-wrap{ padding:12px 16px; }
+    .brand-logo{ width:44px; height:44px; }
+    .brand-logo svg{ width:28px; height:28px; }
+    .brand-text{ font-size:1.15rem; }
+    .brand-text small{ font-size:.58rem; letter-spacing:1.8px; }
     nav{
       position:absolute; top:100%; left:0; right:0;
-      flex-direction:column; background:var(--forest);
-      padding:8px 20px 16px; gap:0;
+      flex-direction:column; gap:0;
+      background: linear-gradient(180deg, #12261a 0%, #0e1f16 100%);
+      padding:10px 16px 18px;
       display:none;
+      border-bottom: 1px solid rgba(196,149,74,.3);
+      box-shadow: 0 16px 40px rgba(0,0,0,.4);
     }
     nav.open{display:flex;}
-    nav a{padding:12px 8px; border-bottom:1px solid rgba(250,248,242,.1); border-radius:0;}
-    .nav-toggle{display:block;}
+    nav a{
+      padding:14px 12px; border-radius:10px;
+      border-bottom:1px solid rgba(250,248,242,.06);
+    }
+    .nav-toggle{ display:flex; }
   }
 
   /* ---------- HERO ---------- */
@@ -926,10 +992,7 @@
     overflow: hidden;
   }
 
-  /* header subtle depth */
-  header{
-    box-shadow: 0 10px 36px rgba(18,38,26,.38), 0 1px 0 rgba(240,217,168,.1) inset !important;
-  }
+  /* header depth handled in premium nav */
 
   /* footer links */
   .footer-links a{
@@ -1018,7 +1081,7 @@
 <header>
 <div class="nav-wrap">
 <a class="brand" href="#top">
-<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<div class="brand-logo"><svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
   <!-- elegant banyan canopy -->
   <ellipse cx="24" cy="16" rx="18" ry="12" fill="#2a5c3a"/>
   <ellipse cx="14" cy="18" rx="9" ry="8" fill="#1e4a2e"/>
@@ -1036,7 +1099,7 @@
   <ellipse cx="24" cy="40" rx="14" ry="4" fill="#6b4a28" opacity=".85"/>
   <!-- small golden glow accent -->
   <circle cx="24" cy="14" r="3" fill="#e8d0a0" opacity=".35"/>
-</svg>
+</svg></div>
 <span class="brand-text">আমাদের যোগিনী বাড়ী<small>Amader Joginibari · গ্রামের পাতা</small></span>
 </a>
 <button aria-label="মেনু খুলুন" class="nav-toggle" onclick="document.getElementById('mainnav').classList.toggle('open')">☰</button>
