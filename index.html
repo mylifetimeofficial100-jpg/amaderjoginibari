@@ -1141,9 +1141,11 @@
           html += '<p style="margin:0 0 14px;line-height:1.75;color:#1a1610;font-size:1.05rem;white-space:pre-wrap;">' + esc(desc) + '</p>';
         }
 
-        // প্রকাশকের স্পষ্ট উল্লেখ (নিচে)
+        // প্রকাশকের স্পষ্ট উল্লেখ (নিচে) + গ্রামের নাম
         if (d.publisher) {
-          html += '<div style="margin-top:12px;padding-top:10px;border-top:1px solid #e5e0d5;font-size:0.85rem;color:#1f4a32;font-weight:600;">📌 ' + esc(d.publisher) + ' কর্তৃক প্রকাশিত</div>';
+          html += '<div style="margin-top:12px;padding-top:10px;border-top:1px solid #e5e0d5;font-size:0.85rem;color:#1f4a32;font-weight:600;">📌 যোগিনী বাড়ী · ' + esc(d.publisher) + ' কর্তৃক প্রকাশিত</div>';
+        } else {
+          html += '<div style="margin-top:12px;padding-top:10px;border-top:1px solid #e5e0d5;font-size:0.85rem;color:#1f4a32;font-weight:600;">📌 যোগিনী বাড়ী কর্তৃক প্রকাশিত</div>';
         }
 
         // files বা media দুটোই সাপোর্ট
