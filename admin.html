@@ -7,43 +7,46 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans Bengali',system-ui,sans-serif;background:#f3efe6;color:#1a1610;min-height:100vh;padding:16px;line-height:1.5}
-.box{max-width:520px;margin:0 auto 16px;background:#fff;border-radius:14px;padding:20px;box-shadow:0 4px 18px rgba(0,0,0,.08);border:1px solid #e5e0d5}
-h1{font-size:1.15rem;color:#1f4a32;margin-bottom:4px}
-.sub{font-size:.8rem;color:#6b6358;margin-bottom:14px;text-align:center}
+body{font-family:'Noto Sans Bengali',system-ui,sans-serif;background:#f3efe6;color:#1a1610;min-height:100vh;padding:14px;line-height:1.5}
+.box{max-width:540px;margin:0 auto 14px;background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.07);border:1px solid #e5e0d5}
+h1{font-size:1.12rem;color:#1f4a32}
+.sub{font-size:.8rem;color:#6b6358;text-align:center;margin-bottom:12px}
 label{display:block;font-size:.8rem;font-weight:600;color:#5c5346;margin:12px 0 5px}
 input,textarea,button{font-family:inherit;font-size:15px}
-input,textarea{width:100%;padding:11px 13px;border:1.5px solid #d0c8b4;border-radius:10px;background:#faf8f2}
+input,textarea{width:100%;padding:11px 12px;border:1.5px solid #d0c8b4;border-radius:10px;background:#faf8f2}
 input:focus,textarea:focus{outline:none;border-color:#1f4a32;background:#fff}
-textarea{min-height:88px;resize:vertical}
+textarea{min-height:84px;resize:vertical}
 .btn{width:100%;padding:12px;border:none;border-radius:10px;font-weight:700;cursor:pointer;margin-top:10px}
 .btn-green{background:#1f4a32;color:#fff}
 .btn-green:disabled{opacity:.55;cursor:not-allowed}
 .btn-red{background:#b84a42;color:#fff}
-.btn-sm{width:auto;padding:6px 12px;font-size:13px;margin-top:6px}
-.msg{text-align:center;font-weight:600;font-size:.85rem;margin-top:10px;min-height:20px;word-break:break-word}
+.btn-sm{width:auto;padding:6px 12px;font-size:12px;margin-top:6px}
+.btn-outline{background:#fff;border:1.5px solid #1f4a32;color:#1f4a32;width:auto;padding:8px 14px;font-size:13px;margin-top:8px}
+.msg{text-align:center;font-weight:600;font-size:.84rem;margin-top:10px;min-height:20px;word-break:break-word}
 .ok{color:#1f4a32}.err{color:#b84a42}.info{color:#5c5346}
 .tabs{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 10px}
-.tab{flex:1;min-width:64px;padding:8px 4px;border:1.5px solid #d0c8b4;border-radius:8px;background:#faf8f2;font-size:.75rem;font-weight:600;cursor:pointer;text-align:center;color:#5c5346}
+.tab{flex:1;min-width:62px;padding:8px 4px;border:1.5px solid #d0c8b4;border-radius:8px;background:#faf8f2;font-size:.74rem;font-weight:600;cursor:pointer;text-align:center;color:#5c5346}
 .tab.on{background:#1f4a32;border-color:#1f4a32;color:#fff}
-.drop{border:2px dashed #d0c8b4;border-radius:12px;padding:20px 10px;text-align:center;background:#faf8f2;cursor:pointer}
+.drop{border:2px dashed #d0c8b4;border-radius:12px;padding:18px 10px;text-align:center;background:#faf8f2;cursor:pointer}
 .drop:hover,.drop.over{border-color:#1f4a32;background:#eef5f0}
 .drop input{display:none}
-.hint{font-size:.72rem;color:#8a8070;margin-top:5px}
-.preview{margin-top:10px}
-.preview img{max-width:100%;max-height:180px;border-radius:10px;display:block;margin:0 auto}
-.preview .name{font-size:.78rem;color:#5c5346;text-align:center;margin-top:5px}
+.hint{font-size:.72rem;color:#8a8070;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.thumb{position:relative;border-radius:10px;overflow:hidden;background:#eee;aspect-ratio:1}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .rm{position:absolute;top:4px;right:4px;width:24px;height:24px;border:none;border-radius:50%;background:rgba(184,74,66,.95);color:#fff;font-size:14px;font-weight:700;cursor:pointer;line-height:24px;padding:0}
+.thumb .sz{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);color:#fff;font-size:10px;padding:2px 4px;text-align:center}
 .bar{height:6px;background:#e5e0d5;border-radius:3px;margin-top:10px;overflow:hidden;display:none}
 .bar.show{display:block}
 .bar>i{display:block;height:100%;background:#1f4a32;width:0%;transition:width .2s}
 .post{border-bottom:1px solid #eee;padding:12px 0}
 .post .d{font-size:.72rem;color:#b84a42;margin-bottom:3px}
 .post .t{font-size:.9rem;white-space:pre-wrap;word-break:break-word;margin-bottom:6px}
-.post img{max-width:100%;max-height:120px;border-radius:8px;margin-bottom:6px}
-.empty{text-align:center;color:#8a8070;padding:16px 0}
+.post img{max-width:100%;max-height:110px;border-radius:8px;margin:4px 4px 4px 0;display:inline-block;vertical-align:top}
+.empty{text-align:center;color:#8a8070;padding:14px 0}
 .user{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:#6b6358;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #eee}
 .hidden{display:none!important}
-.note{background:#eef5f0;border:1px solid #c5d9cc;border-radius:8px;padding:8px 10px;font-size:.75rem;color:#1f4a32;margin-top:8px}
+.note{background:#eef5f0;border:1px solid #c5d9cc;border-radius:8px;padding:8px 10px;font-size:.74rem;color:#1f4a32;margin-top:8px}
 </style>
 </head>
 <body>
@@ -75,23 +78,24 @@ textarea{min-height:88px;resize:vertical}
 
     <label>মিডিয়া</label>
     <div class="tabs">
-      <button type="button" class="tab on" data-t="none" onclick="setTab('none')">শুধু টেক্সট</button>
-      <button type="button" class="tab" data-t="image" onclick="setTab('image')">ছবি</button>
+      <button type="button" class="tab on" data-t="none" onclick="setTab('none')">টেক্সট</button>
+      <button type="button" class="tab" data-t="image" onclick="setTab('image')">ছবি (একাধিক)</button>
       <button type="button" class="tab" data-t="video" onclick="setTab('video')">ভিডিও লিংক</button>
       <button type="button" class="tab" data-t="link" onclick="setTab('link')">লিংক</button>
     </div>
 
     <div id="panel-image" class="hidden">
       <div class="drop" id="dropImg" onclick="document.getElementById('fileImg').click()">
-        <div style="font-size:1.6rem">🖼️</div>
-        <div><b>ছবি সিলেক্ট করুন</b></div>
-        <div class="hint">JPG / PNG — অটো কম্প্রেস</div>
-        <input type="file" id="fileImg" accept="image/jpeg,image/png,image/webp,image/gif,.jpg,.jpeg,.png,.webp">
+        <div style="font-size:1.5rem">🖼️</div>
+        <div><b>এক বা একাধিক ছবি সিলেক্ট</b></div>
+        <div class="hint">JPG / PNG · প্রতিটা অটো কম্প্রেস · সর্বোচ্চ ৮টি</div>
+        <input type="file" id="fileImg" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple>
       </div>
-      <div class="preview" id="prevImg"></div>
-      <label>অথবা ছবির URL (ঐচ্ছিক)</label>
-      <input type="url" id="imgUrl" placeholder="https://example.com/photo.jpg">
-      <div class="note">ফাইল সিলেক্ট করলে URL খালি রাখুন। শুধু একটি ব্যবহার করুন।</div>
+      <div class="grid" id="thumbGrid"></div>
+      <button type="button" class="btn btn-outline" id="addMoreBtn" onclick="document.getElementById('fileImg').click()" style="display:none">+ আরও ছবি যোগ</button>
+      <label>অথবা একটি ছবির URL</label>
+      <input type="url" id="imgUrl" placeholder="https://...">
+      <div class="note">ফাইল নিলে URL খালি রাখুন। একাধিক ছবি একসাথে সাবমিট করা যাবে।</div>
     </div>
 
     <div id="panel-video" class="hidden">
@@ -135,8 +139,9 @@ textarea{min-height:88px;resize:vertical}
   var db = firebase.firestore();
 
   var tab = 'none';
-  var pickedFile = null;
+  var files = []; // File objects queue
   var busy = false;
+  var MAX_IMAGES = 8;
 
   auth.onAuthStateChanged(function(u){
     if(u){
@@ -174,117 +179,142 @@ textarea{min-height:88px;resize:vertical}
     ['image','video','link'].forEach(function(x){
       document.getElementById('panel-'+x).classList.toggle('hidden', x!==t);
     });
-    pickedFile = null;
-    var p = document.getElementById('prevImg'); if(p) p.innerHTML='';
   };
 
   var fileImg = document.getElementById('fileImg');
   var dropImg = document.getElementById('dropImg');
   fileImg.addEventListener('change', function(){
-    if(fileImg.files && fileImg.files[0]) handlePick(fileImg.files[0]);
+    if(fileImg.files && fileImg.files.length) addFiles(fileImg.files);
     fileImg.value = '';
   });
   dropImg.addEventListener('dragover', function(e){ e.preventDefault(); dropImg.classList.add('over'); });
   dropImg.addEventListener('dragleave', function(){ dropImg.classList.remove('over'); });
   dropImg.addEventListener('drop', function(e){
     e.preventDefault(); dropImg.classList.remove('over');
-    if(e.dataTransfer.files[0]) handlePick(e.dataTransfer.files[0]);
+    if(e.dataTransfer.files && e.dataTransfer.files.length) addFiles(e.dataTransfer.files);
   });
 
-  function handlePick(file){
-    // accept common image types; some phones leave type empty
-    var ok = !file.type || file.type.indexOf('image/')===0 || /\.(jpe?g|png|webp|gif)$/i.test(file.name);
-    if(!ok){
-      alert('শুধু ছবি ফাইল দিন (JPG, PNG)');
-      return;
-    }
-    pickedFile = file;
-    // clear bad URL so it doesn't interfere
+  function addFiles(fileList){
     document.getElementById('imgUrl').value = '';
-    var prev = document.getElementById('prevImg');
-    var size = (file.size/1024).toFixed(0) + ' KB';
-    // preview via FileReader (more reliable on mobile than object URL sometimes)
-    var reader = new FileReader();
-    reader.onload = function(){
-      prev.innerHTML = '<img src="'+reader.result+'"><div class="name">'+esc(file.name)+' · '+size+' (কম্প্রেস হবে)</div>';
-    };
-    reader.onerror = function(){
-      prev.innerHTML = '<div class="name">'+esc(file.name)+' · '+size+' (প্রিভিউ যায়নি, সাবমিট চেষ্টা করুন)</div>';
-    };
-    reader.readAsDataURL(file);
+    for(var i=0;i<fileList.length;i++){
+      if(files.length >= MAX_IMAGES){
+        alert('সর্বোচ্চ '+MAX_IMAGES+'টি ছবি');
+        break;
+      }
+      var f = fileList[i];
+      var ok = !f.type || f.type.indexOf('image/')===0 || /\.(jpe?g|png|webp)$/i.test(f.name);
+      if(!ok) continue;
+      files.push(f);
+    }
+    renderThumbs();
   }
 
-  // Robust load: FileReader first, then object URL fallback
-  function loadImageElement(file){
+  function renderThumbs(){
+    var grid = document.getElementById('thumbGrid');
+    var addBtn = document.getElementById('addMoreBtn');
+    grid.innerHTML = '';
+    files.forEach(function(f, idx){
+      var div = document.createElement('div');
+      div.className = 'thumb';
+      div.innerHTML = '<button type="button" class="rm" data-i="'+idx+'">×</button><div class="sz">'+(f.size/1024).toFixed(0)+' KB</div>';
+      var img = document.createElement('img');
+      img.alt = '';
+      div.insertBefore(img, div.firstChild);
+      grid.appendChild(div);
+      // preview
+      var u = URL.createObjectURL(f);
+      img.onload = function(){ URL.revokeObjectURL(u); };
+      img.src = u;
+    });
+    grid.querySelectorAll('.rm').forEach(function(btn){
+      btn.onclick = function(e){
+        e.stopPropagation();
+        files.splice(parseInt(btn.getAttribute('data-i'),10), 1);
+        renderThumbs();
+      };
+    });
+    addBtn.style.display = files.length > 0 && files.length < MAX_IMAGES ? 'inline-block' : 'none';
+  }
+
+  function loadImageForCanvas(file){
     return new Promise(function(resolve, reject){
-      var img = new Image();
-      img.onload = function(){ resolve(img); };
-      img.onerror = function(){
-        // fallback object URL
-        var u = URL.createObjectURL(file);
-        var img2 = new Image();
-        img2.onload = function(){ URL.revokeObjectURL(u); resolve(img2); };
-        img2.onerror = function(){ URL.revokeObjectURL(u); reject(new Error('ছবি পড়া যায়নি। অন্য JPG/PNG চেষ্টা করুন।')); };
-        img2.src = u;
-      };
-      var r = new FileReader();
-      r.onload = function(){ img.src = r.result; };
-      r.onerror = function(){
-        var u = URL.createObjectURL(file);
-        img.onerror = function(){ URL.revokeObjectURL(u); reject(new Error('ছবি পড়া যায়নি। অন্য JPG/PNG চেষ্টা করুন।')); };
-        img.onload = function(){ URL.revokeObjectURL(u); resolve(img); };
-        img.src = u;
-      };
-      r.readAsDataURL(file);
+      function fromBitmap(){
+        if(typeof createImageBitmap !== 'function') return Promise.reject();
+        return createImageBitmap(file).then(function(bmp){
+          return { source: bmp, width: bmp.width, height: bmp.height, cleanup: function(){ try{ bmp.close(); }catch(e){} } };
+        });
+      }
+      function fromObjectURL(){
+        return new Promise(function(res, rej){
+          var u = URL.createObjectURL(file);
+          var img = new Image();
+          img.onload = function(){
+            res({ source: img, width: img.naturalWidth||img.width, height: img.naturalHeight||img.height, cleanup: function(){ URL.revokeObjectURL(u); } });
+          };
+          img.onerror = function(){ URL.revokeObjectURL(u); rej(); };
+          img.src = u;
+        });
+      }
+      function fromReader(){
+        return new Promise(function(res, rej){
+          var r = new FileReader();
+          r.onload = function(){
+            var img = new Image();
+            img.onload = function(){
+              res({ source: img, width: img.naturalWidth||img.width, height: img.naturalHeight||img.height, cleanup: function(){} });
+            };
+            img.onerror = function(){ rej(); };
+            img.src = r.result;
+          };
+          r.onerror = function(){ rej(); };
+          r.readAsDataURL(file);
+        });
+      }
+      fromBitmap().catch(fromObjectURL).catch(fromReader)
+        .then(resolve)
+        .catch(function(){ reject(new Error('ছবি পড়া যায়নি: '+(file.name||''))); });
     });
   }
 
-  function compressImage(file){
-    return loadImageElement(file).then(function(img){
+  function compressOne(file){
+    return loadImageForCanvas(file).then(function(info){
+      var w = info.width, h = info.height;
+      if(!w||!h){ info.cleanup(); throw new Error('সাইজ পাওয়া যায়নি'); }
+      var max = 1100;
+      if(w>max||h>max){
+        if(w>h){ h=Math.round(h*max/w); w=max; }
+        else { w=Math.round(w*max/h); h=max; }
+      }
+      var canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      var ctx = canvas.getContext('2d', { alpha: false });
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0,0,w,h);
+      ctx.drawImage(info.source, 0, 0, w, h);
+      info.cleanup();
+
       return new Promise(function(resolve, reject){
-        var w = img.naturalWidth || img.width;
-        var h = img.naturalHeight || img.height;
-        if(!w || !h){ reject(new Error('ছবির সাইজ পাওয়া যায়নি')); return; }
-
-        var max = 1200;
-        if(w > max || h > max){
-          if(w > h){ h = Math.round(h * max / w); w = max; }
-          else { w = Math.round(w * max / h); h = max; }
-        }
-
-        var canvas = document.createElement('canvas');
-        canvas.width = w;
-        canvas.height = h;
-        var ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, w, h);
-        ctx.drawImage(img, 0, 0, w, h);
-
         function encode(q, attempt){
           try {
             var dataUrl = canvas.toDataURL('image/jpeg', q);
-            // approximate binary size from base64
-            var approx = Math.round((dataUrl.length - 22) * 0.75);
-            if(approx > 200 * 1024 && q > 0.4 && attempt < 6){
-              encode(q - 0.1, attempt + 1);
-              return;
+            var size = Math.round((dataUrl.length - 23) * 0.75);
+            if(size > 170*1024 && q > 0.38 && attempt < 7){
+              encode(q - 0.1, attempt + 1); return;
             }
-            if(approx > 280 * 1024 && canvas.width > 700 && attempt < 8){
-              var nw = Math.round(canvas.width * 0.75);
-              var nh = Math.round(canvas.height * 0.75);
-              var c2 = document.createElement('canvas');
-              c2.width = nw; c2.height = nh;
-              c2.getContext('2d').drawImage(canvas, 0, 0, nw, nh);
-              canvas = c2;
-              encode(Math.max(0.45, q - 0.05), attempt + 1);
-              return;
+            if(size > 240*1024 && canvas.width > 600 && attempt < 10){
+              var nw=Math.round(canvas.width*0.72), nh=Math.round(canvas.height*0.72);
+              var c2=document.createElement('canvas');
+              c2.width=nw; c2.height=nh;
+              c2.getContext('2d').drawImage(canvas,0,0,nw,nh);
+              canvas=c2;
+              encode(Math.max(0.4, q-0.05), attempt+1); return;
             }
-            resolve({ dataUrl: dataUrl, size: approx, width: canvas.width, height: canvas.height });
+            resolve({ dataUrl: dataUrl, size: size, name: file.name });
           } catch(e){
-            reject(new Error('কম্প্রেস ব্যর্থ: ' + (e.message || '')));
+            reject(new Error('কম্প্রেস ব্যর্থ: '+(file.name||'')));
           }
         }
-        encode(0.72, 0);
+        encode(0.7, 0);
       });
     });
   }
@@ -301,13 +331,9 @@ textarea{min-height:88px;resize:vertical}
     var bar = document.getElementById('bar');
     var prog = document.getElementById('progText');
 
-    // ignore invalid imgUrl (must start with http)
-    if(imgUrl && !/^https?:\/\//i.test(imgUrl)){
-      imgUrl = '';
-      document.getElementById('imgUrl').value = '';
-    }
+    if(imgUrl && !/^https?:\/\//i.test(imgUrl)) imgUrl = '';
 
-    if(!(title || text || pickedFile || imgUrl || vidUrl || extLink)){
+    if(!(title || text || files.length || imgUrl || vidUrl || extLink)){
       msg.className='msg err'; msg.textContent='কমপক্ষে টেক্সট, ছবি বা লিংক দিন';
       return;
     }
@@ -317,7 +343,7 @@ textarea{min-height:88px;resize:vertical}
     btn.textContent = 'সেভ হচ্ছে...';
     msg.textContent = '';
     bar.classList.add('show');
-    document.getElementById('barFill').style.width = '10%';
+    document.getElementById('barFill').style.width = '5%';
     prog.textContent = 'শুরু...';
 
     try {
@@ -325,37 +351,45 @@ textarea{min-height:88px;resize:vertical}
       var imageLink = '';
       var videoLink = '';
 
-      if(pickedFile){
-        prog.textContent = 'ছবি প্রসেস হচ্ছে...';
-        document.getElementById('barFill').style.width = '30%';
-        var before = pickedFile.size;
-        var result = await compressImage(pickedFile);
-        prog.textContent = 'কম্প্রেস: ' + (before/1024).toFixed(0) + ' KB → ' + (result.size/1024).toFixed(0) + ' KB';
-        document.getElementById('barFill').style.width = '70%';
-
-        if(result.size > 700 * 1024){
-          throw new Error('ছবি এখনো বড়। অন্য ছবি দিন।');
+      if(files.length){
+        var totalBefore = 0, totalAfter = 0;
+        for(var i=0; i<files.length; i++){
+          prog.textContent = 'ছবি কম্প্রেস '+(i+1)+'/'+files.length+' ...';
+          document.getElementById('barFill').style.width = Math.round(10 + (i/files.length)*70) + '%';
+          totalBefore += files[i].size;
+          var result = await compressOne(files[i]);
+          totalAfter += result.size;
+          if(result.size > 700*1024){
+            throw new Error('একটি ছবি এখনো বড়: '+files[i].name);
+          }
+          media.push({ type: 'image', url: result.dataUrl, name: result.name, size: result.size });
+          if(!imageLink) imageLink = result.dataUrl; // first image for legacy field
         }
-        media.push({ type: 'image', url: result.dataUrl, name: pickedFile.name, size: result.size });
-        imageLink = result.dataUrl;
-      } else if(tab === 'image' && imgUrl){
-        media.push({ type: 'image', url: imgUrl, name: 'Image URL' });
+        prog.textContent = 'কম্প্রেস: '+(totalBefore/1024).toFixed(0)+' KB → '+(totalAfter/1024).toFixed(0)+' KB';
+      } else if(tab==='image' && imgUrl){
+        media.push({ type:'image', url:imgUrl, name:'Image URL' });
         imageLink = imgUrl;
       }
 
-      if(tab === 'video' && vidUrl){
-        var isYt = /youtu\.?be|youtube\.com/i.test(vidUrl);
-        media.push({ type: isYt ? 'youtube' : 'link', url: vidUrl, name: isYt ? 'YouTube' : 'Video' });
+      if(tab==='video' && vidUrl){
+        var yt = /youtu\.?be|youtube\.com/i.test(vidUrl);
+        media.push({ type: yt?'youtube':'link', url:vidUrl, name: yt?'YouTube':'Video' });
         videoLink = vidUrl;
       }
-      if(tab === 'link' && extLink){
-        var isYt2 = /youtu\.?be|youtube\.com/i.test(extLink);
-        media.push({ type: isYt2 ? 'youtube' : 'link', url: extLink, name: isYt2 ? 'YouTube' : 'Link' });
-        if(isYt2) videoLink = extLink;
+      if(tab==='link' && extLink){
+        var yt2 = /youtu\.?be|youtube\.com/i.test(extLink);
+        media.push({ type: yt2?'youtube':'link', url:extLink, name: yt2?'YouTube':'Link' });
+        if(yt2) videoLink = extLink;
       }
 
-      prog.textContent = 'ডেটাবেসে সেভ হচ্ছে...';
+      // Firestore ~1MB limit per doc. Multiple base64 images can exceed.
+      var payloadSize = JSON.stringify(media).length;
+      if(payloadSize > 900000){
+        throw new Error('ছবিগুলো মিলে খুব বড়। কম ছবি দিন (২–৩টি) অথবা ছোট ছবি ব্যবহার করুন।');
+      }
+
       document.getElementById('barFill').style.width = '90%';
+      prog.textContent = 'ডেটাবেসে সেভ হচ্ছে...';
 
       await db.collection('posts').add({
         title: title || '',
@@ -369,24 +403,23 @@ textarea{min-height:88px;resize:vertical}
       document.getElementById('barFill').style.width = '100%';
       prog.textContent = '';
       msg.className = 'msg ok';
-      msg.textContent = '✅ সফলভাবে সেভ হয়েছে!';
+      msg.textContent = '✅ সফল! '+(files.length? files.length+'টি ছবি · ':'')+'সেভ হয়েছে';
 
       document.getElementById('title').value = '';
       document.getElementById('text').value = '';
       document.getElementById('imgUrl').value = '';
       document.getElementById('vidUrl').value = '';
       document.getElementById('extLink').value = '';
-      pickedFile = null;
-      document.getElementById('prevImg').innerHTML = '';
+      files = [];
+      renderThumbs();
       setTab('none');
-      setTimeout(function(){ bar.classList.remove('show'); loadList(); }, 600);
+      setTimeout(function(){ bar.classList.remove('show'); loadList(); }, 700);
 
     } catch(err){
       console.error(err);
       var t = (err && err.message) ? err.message : 'সমস্যা হয়েছে';
-      if(/permission|Permission/i.test(t)){
-        t = 'Firestore অনুমতি নেই। Firebase Rules চেক করুন।';
-      }
+      if(/permission|Permission/i.test(t)) t = 'Firestore অনুমতি নেই। Rules চেক করুন।';
+      if(/exceeds|too large|INVALID_ARGUMENT/i.test(t)) t = 'ডেটা বড়। কম ছবি দিয়ে আবার চেষ্টা করুন।';
       msg.className = 'msg err';
       msg.textContent = '❌ ' + t;
       bar.classList.remove('show');
@@ -401,41 +434,36 @@ textarea{min-height:88px;resize:vertical}
   function loadList(){
     var list = document.getElementById('list');
     list.innerHTML = '<div class="empty">লোড হচ্ছে...</div>';
-    db.collection('posts').orderBy('createdAt','desc').limit(30).get()
+    db.collection('posts').orderBy('createdAt','desc').limit(25).get()
       .then(function(snap){
-        if(snap.empty){ list.innerHTML = '<div class="empty">কোনো পোস্ট নেই</div>'; return; }
+        if(snap.empty){ list.innerHTML='<div class="empty">কোনো পোস্ট নেই</div>'; return; }
         list.innerHTML = '';
         snap.forEach(function(doc){
           var d = doc.data();
           var div = document.createElement('div');
           div.className = 'post';
           var h = '';
-          if(d.createdAt && d.createdAt.toDate){
-            h += '<div class="d">'+d.createdAt.toDate().toLocaleString('bn-BD')+'</div>';
-          }
+          if(d.createdAt && d.createdAt.toDate) h += '<div class="d">'+d.createdAt.toDate().toLocaleString('bn-BD')+'</div>';
           if(d.title) h += '<div style="font-weight:700;margin-bottom:3px">'+esc(d.title)+'</div>';
           if(d.text) h += '<div class="t">'+esc(d.text)+'</div>';
-          var img = '';
           if(d.media && d.media.length){
             d.media.forEach(function(m){
-              if(m.type==='image' && m.url) img = m.url;
+              if(m.type==='image' && m.url) h += '<img src="'+String(m.url).replace(/"/g,'&quot;')+'" onerror="this.style.display=\'none\'">';
               else if(m.type!=='image') h += '<div class="hint">'+esc(m.type)+': '+esc((m.name||'').slice(0,40))+'</div>';
             });
+          } else if(d.imageLink){
+            h += '<img src="'+String(d.imageLink).replace(/"/g,'&quot;')+'" onerror="this.style.display=\'none\'">';
           }
-          if(!img && d.imageLink) img = d.imageLink;
-          if(img) h += '<img src="'+String(img).replace(/"/g,'&quot;')+'" onerror="this.style.display=\'none\'">';
           h += '<button class="btn btn-red btn-sm" onclick="delPost(\''+doc.id+'\')">ডিলিট</button>';
           div.innerHTML = h;
           list.appendChild(div);
         });
       })
-      .catch(function(){
-        list.innerHTML = '<div class="empty" style="color:#b84a42">লোড ব্যর্থ</div>';
-      });
+      .catch(function(){ list.innerHTML='<div class="empty" style="color:#b84a42">লোড ব্যর্থ</div>'; });
   }
 
   window.delPost = function(id){
-    if(!confirm('ডিলিট করবেন?')) return;
+    if(!confirm('ডিলিট?')) return;
     db.collection('posts').doc(id).delete().then(loadList);
   };
 
