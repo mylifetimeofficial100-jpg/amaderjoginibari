@@ -1065,13 +1065,18 @@
           '<span style="font-size:1.4rem;">🎬</span><span>ইউটিউব ভিডিও</span><span style="margin-left:auto;font-size:0.85rem;">খুলুন →</span></a>';
       }
     } else if (type === "facebook") {
-      // Facebook embed attempt
-      h += '<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;background:#000;margin-bottom:14px;">' +
-        '<iframe src="https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(url) + '&show_text=false&width=500" ' +
-        'style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;overflow:hidden;" ' +
-        'scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe></div>';
-      h += '<div style="text-align:center;margin-top:-8px;margin-bottom:14px;">' +
-        '<a href="' + esc(url) + '" target="_blank" rel="noopener" style="font-size:0.82rem;color:#1f4a32;text-decoration:none;">Facebook-এ খুলুন →</a></div>';
+      // Facebook - সুন্দর কার্ড (প্লেয়ার নয়, কারণ অনেক সময় unavailable দেখায়)
+      h += '<a href="' + esc(url) + '" target="_blank" rel="noopener" style="display:block;text-decoration:none;margin-bottom:14px;">' +
+        '<div style="background:linear-gradient(135deg,#1877f2 0%,#0d65d9 100%);border-radius:12px;padding:20px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 14px rgba(24,119,242,0.25);">' +
+        '<div style="width:52px;height:52px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
+        '<svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>' +
+        '</div>' +
+        '<div style="flex:1;min-width:0;">' +
+        '<div style="color:#fff;font-weight:700;font-size:1.05rem;margin-bottom:2px;">Facebook ভিডিও</div>' +
+        '<div style="color:rgba(255,255,255,0.85);font-size:0.88rem;">ক্লিক করে Facebook-এ দেখুন</div>' +
+        '</div>' +
+        '<div style="color:#fff;font-size:1.3rem;flex-shrink:0;">→</div>' +
+        '</div></a>';
     } else if (type === "vimeo") {
       var vid = extractVimeoId(url);
       if (vid) {
