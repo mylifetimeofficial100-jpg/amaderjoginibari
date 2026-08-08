@@ -31,8 +31,10 @@
   <link rel="icon" href="https://amaderjoginibari.vercel.app/favicon.png" type="image/png"/>
   <link rel="apple-touch-icon" href="https://amaderjoginibari.vercel.app/favicon.png"/>
   
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Fonts - match home -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet"/>
   
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -67,7 +69,7 @@
     body {
       background: linear-gradient(165deg, #d2c8ab 0%, #c9bf9c 45%, #c2b893 100%);
       color: var(--ink);
-      font-family: 'Noto Sans Bengali', sans-serif;
+      font-family: 'Noto Sans Bengali','Tiro Bangla',sans-serif;
       line-height: 1.7;
       min-height: 100vh;
     }
@@ -81,11 +83,17 @@
     /* ========== Enhanced Header ========== */
     header {
       position: sticky; top: 0; z-index: 100;
-      background: linear-gradient(180deg, rgba(18,38,26,.98) 0%, rgba(31,74,50,.96) 100%);
-      backdrop-filter: blur(14px) saturate(1.2);
-      -webkit-backdrop-filter: blur(14px) saturate(1.2);
-      border-bottom: 1px solid rgba(196,149,74,.45);
-      box-shadow: 0 8px 32px rgba(18,38,26,.35), 0 1px 0 rgba(240,217,168,.08) inset;
+      background: linear-gradient(180deg, #0c1a12 0%, #12261a 42%, #1a3a28 100%);
+      backdrop-filter: blur(18px) saturate(1.25);
+      -webkit-backdrop-filter: blur(18px) saturate(1.25);
+      border-bottom: none;
+      box-shadow: 0 12px 40px rgba(8,16,12,.55), 0 1px 0 rgba(240,217,168,.12) inset;
+    }
+    header::after {
+      content: "";
+      position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(196,149,74,.25) 15%, #e8c87a 50%, rgba(196,149,74,.25) 85%, transparent 100%);
+      opacity: .95;
     }
     .nav-wrap {
       max-width: 1200px; margin: 0 auto; padding: 12px 20px;
@@ -99,43 +107,52 @@
     }
     .brand:hover { transform: translateY(-1px); }
     .brand-logo {
-      width: 42px; height: 42px; flex-shrink: 0;
-      position: relative;
-      filter: drop-shadow(0 2px 8px rgba(240,217,168,.35));
+      width: 48px; height: 48px; flex-shrink: 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(240,217,168,.35), transparent 55%),
+        linear-gradient(145deg, #1f4a32 0%, #0e1f16 100%);
+      border: 1.5px solid rgba(232,200,122,.55);
+      box-shadow: 0 0 0 3px rgba(196,149,74,.12), 0 6px 18px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12);
+      display: flex; align-items: center; justify-content: center;
     }
     .brand-logo svg {
-      width: 100%; height: 100%;
-      animation: logoFloat 4.5s ease-in-out infinite;
-    }
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-3px) rotate(2deg); }
+      width: 30px; height: 30px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
     }
     .brand-text {
       display: flex; flex-direction: column; line-height: 1.15;
+      font-family: 'Baloo Da 2', sans-serif; font-weight: 800;
+      font-size: clamp(1.1rem, 3vw, 1.35rem);
+      background: linear-gradient(180deg, #fffef8 10%, #f0d9a8 55%, #e8c87a 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
     }
     .brand-text span {
       letter-spacing: 0.3px;
     }
-    .brand small {
-      display: block; font-size: .62rem; letter-spacing: 1.8px;
-      color: var(--mud-light); font-weight: 600; margin-top: 3px;
-      opacity: .92;
+    .brand-text small, .brand small {
+      display: block; font-family: 'Noto Sans Bengali', sans-serif; font-weight: 600;
+      font-size: .58rem; letter-spacing: 2px; margin-top: 3px; text-transform: uppercase;
+      background: linear-gradient(90deg, #c4954a, #f0d9a8, #c4954a);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      -webkit-text-fill-color: transparent; filter: none; opacity: 1;
     }
     .back-btn {
       display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, var(--mud) 0%, #d4a85a 100%);
-      color: #1a2f22;
-      padding: 10px 20px; border-radius: 50px;
-      text-decoration: none; font-weight: 700; font-size: .92rem;
-      box-shadow: 0 4px 14px rgba(196,149,74,.35);
-      transition: all .3s cubic-bezier(.2,.8,.2,1);
-      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(240,217,168,.12);
+      color: #f0d9a8;
+      padding: 9px 16px; border-radius: 999px;
+      text-decoration: none; font-weight: 600; font-size: .9rem;
+      transition: all .3s cubic-bezier(.22,1,.36,1);
+      border: 1px solid rgba(240,217,168,.25);
+      white-space: nowrap;
     }
     .back-btn:hover {
-      background: linear-gradient(135deg, var(--mud-light) 0%, #f5e0b0 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(196,149,74,.45);
+      background: rgba(240,217,168,.22);
+      border-color: rgba(240,217,168,.4);
+      box-shadow: 0 4px 14px rgba(0,0,0,.15);
     }
     .back-btn svg {
       width: 16px; height: 16px; transition: transform .3s;
@@ -399,26 +416,33 @@
     }
     .no-result.show { display: block; }
 
+
+    .grain {
+      position: fixed; inset: 0; pointer-events: none; z-index: 5; opacity: .03; mix-blend-mode: multiply;
+      background-image: radial-gradient(circle at 1px 1px, #000 1px, transparent 0);
+      background-size: 3px 3px;
+    }
   </style>
 </head>
 <body>
+<div class="grain" aria-hidden="true"></div>
   <header>
     <div class="nav-wrap">
       <a class="brand" href="https://amaderjoginibari.vercel.app/">
-        <div class="brand-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="32" cy="32" r="30" fill="url(#g1)" opacity=".9"/>
-  <path d="M32 14c-2 6-8 10-8 18 0 6 3.5 10 8 12 4.5-2 8-6 8-12 0-8-6-12-8-18z" fill="#f0d9a8"/>
-  <path d="M32 18c1.5 4 5 7 5 13 0 4-2 7-5 8.5-3-1.5-5-4.5-5-8.5 0-6 3.5-9 5-13z" fill="#c4954a"/>
-  <path d="M26 28c-3 2-5 5-5 9 0 3 1.5 5 4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <path d="M38 28c3 2 5 5 5 9 0 3-1.5 5-4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <circle cx="32" cy="42" r="2.5" fill="#1f4a32"/>
-  <defs>
-    <linearGradient id="g1" x1="8" y1="8" x2="56" y2="56">
-      <stop stop-color="#2d6a45"/>
-      <stop offset="1" stop-color="#1a3d28"/>
-    </linearGradient>
-  </defs>
-</svg></div>
+        <div class="brand-logo"><svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="24" cy="16" rx="18" ry="12" fill="#2a5c3a"/>
+          <ellipse cx="14" cy="18" rx="9" ry="8" fill="#1e4a2e"/>
+          <ellipse cx="34" cy="18" rx="9" ry="8" fill="#1e4a2e"/>
+          <ellipse cx="24" cy="12" rx="11" ry="8" fill="#357048"/>
+          <path d="M22 24 L22 38 Q24 40 26 38 L26 24" fill="#8b5e2b"/>
+          <path d="M23 24 L23 37 Q24 38.5 25 37 L25 24" fill="#a67c3d"/>
+          <path d="M16 22 Q14 28 13 36" stroke="#c4954a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M20 23 Q19 30 18 37" stroke="#d4a85a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M28 23 Q29 30 30 37" stroke="#d4a85a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M32 22 Q34 28 35 36" stroke="#c4954a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <ellipse cx="24" cy="40" rx="14" ry="4" fill="#6b4a28" opacity=".85"/>
+          <circle cx="24" cy="14" r="3" fill="#e8d0a0" opacity=".35"/>
+        </svg></div>
         <div class="brand-text">
           <span>আমাদের যোগিনী বাড়ী</span>
           <small>গ্রামের ছবিঘর</small>
@@ -435,7 +459,7 @@
     <span class="eyebrow">স্মৃতির খোঁজে</span>
     <h1>আমাদের গ্রামের ছবিঘর</h1>
     <p>যোগিনীবাড়ীর প্রতিদিনের জীবন, উৎসব, খেলাধুলা আর মানুষের হাসি — সব একসাথে এই গ্যালারিতে।</p>
-    <div class="photo-count">📸 105টি নির্বাচিত ছবি</div>
+    <div class="photo-count">📸 ১০৫টি নির্বাচিত ছবি</div>
   </section>
 
   
