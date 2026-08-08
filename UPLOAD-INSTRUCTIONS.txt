@@ -1,0 +1,30 @@
+ফাস্ট লোড — GitHub আপলোড নির্দেশনা
+================================
+
+⚠️ জরুরি: শুধু index.html আপলোড করলে ছবি ভাঙবে।
+   index.html + সব img_001 থেকে img_017 একসাথে লাগবে।
+
+ধাপ:
+1) নিচের ZIP ডাউনলোড করুন: site-fast-FINAL.zip
+2) ZIP খুলুন (Files অ্যাপ / RAR)
+3) GitHub → আপনার রিপো → Add file → Upload files
+4) একসাথে সিলেক্ট করুন:
+   - index.html
+   - img_001.jpg
+   - img_002.jpg
+   ... সব img_017.jpg পর্যন্ত
+   - robots.txt (থাকলে)
+   - sitemap.xml (থাকলে)
+5) Commit changes
+6) ২–৩ মিনিট পর সাইট খুলুন
+7) কোনো ছবি ভাঙলে GitHub এ img_ ফাইল আছে কিনা দেখুন
+
+মুছবেন না:
+- slide_01.jpg ইত্যাদি
+- gallery.html
+- photo_*.jpg
+- admin.html
+
+লক্ষ্য:
+- index.html ≈ ৯০ KB (আগে ~২.৫ MB)
+- সাইট দ্রুত খুলবে
