@@ -1119,13 +1119,31 @@
           html += '<div style="font-size:0.82rem;color:#b84a42;margin-bottom:10px;letter-spacing:0.5px;">' + fmtDate(d.createdAt) + '</div>';
         }
         if (d.title) {
-          html += '<h3 style="margin:0 0 10px;font-size:1.2rem;color:#12261a;font-weight:600;">' + esc(d.title) + '</h3>';
+          html += '<h3 style="margin:0 0 8px;font-size:1.2rem;color:#12261a;font-weight:600;">' + esc(d.title) + '</h3>';
+        }
+
+        // ধরন + ক্যাটাগরি + প্রকাশক দেখানো
+        var metaParts = [];
+        if (d.type) metaParts.push(esc(d.type));
+        if (d.category) metaParts.push(esc(d.category));
+        if (d.publisher) metaParts.push(esc(d.publisher));
+        if (metaParts.length) {
+          html += '<div style="font-size:0.82rem;color:#5c5346;margin-bottom:10px;display:flex;flex-wrap:wrap;gap:6px;">';
+          for (var mi = 0; mi < metaParts.length; mi++) {
+            html += '<span style="background:#e8f0eb;color:#1f4a32;padding:3px 10px;border-radius:20px;font-size:0.78rem;">' + metaParts[mi] + '</span>';
+          }
+          html += '</div>';
         }
         
         // description বা text দুটোই সাপোর্ট
         var desc = d.description || d.text || "";
         if (desc) {
           html += '<p style="margin:0 0 14px;line-height:1.75;color:#1a1610;font-size:1.05rem;white-space:pre-wrap;">' + esc(desc) + '</p>';
+        }
+
+        // প্রকাশকের স্পষ্ট উল্লেখ (নিচে)
+        if (d.publisher) {
+          html += '<div style="margin-top:12px;padding-top:10px;border-top:1px solid #e5e0d5;font-size:0.85rem;color:#1f4a32;font-weight:600;">📌 ' + esc(d.publisher) + ' কর্তৃক প্রকাশিত</div>';
         }
 
         // files বা media দুটোই সাপোর্ট
