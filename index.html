@@ -430,6 +430,19 @@
     transform:translateY(-3px);
     box-shadow: 0 8px 22px rgba(63,56,44,.35);
   }
+
+  .btn-photos{
+    background: linear-gradient(145deg, #4a6b8a 0%, #2f4a66 100%);
+    color:#f0f4f8;
+    border-color: rgba(255,255,255,.15);
+  }
+  .btn-photos:hover{
+    background: linear-gradient(145deg, #5a7b9a 0%, #3f5a76 100%);
+    color:#fff;
+    transform:translateY(-3px);
+    box-shadow: 0 8px 22px rgba(47,74,102,.4);
+  }
+
   @media (max-width:519px){
     .btn{ font-size:.82rem; padding:12px 10px; }
   }
@@ -959,6 +972,32 @@
     .btn-notice::after{ display:none; }
   }
 
+
+  /* Lightbox for main page photos */
+  .lb-overlay{
+    display:none; position:fixed; inset:0; z-index:9999;
+    background:rgba(10,20,14,.92); backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    align-items:center; justify-content:center; padding:20px;
+    animation: lbFade .25s ease;
+  }
+  .lb-overlay.open{ display:flex; }
+  @keyframes lbFade{ from{opacity:0;} to{opacity:1;} }
+  .lb-overlay img{
+    max-width:min(960px, 96vw); max-height:88vh;
+    border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,.5);
+    object-fit:contain; background:#111;
+  }
+  .lb-close{
+    position:absolute; top:16px; right:18px;
+    width:44px; height:44px; border:0; border-radius:50%;
+    background:rgba(255,255,255,.15); color:#fff; font-size:1.5rem;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .lb-close:hover{ background:rgba(255,255,255,.28); }
+  .life-card .life-img{ cursor:zoom-in; }
+  .photo-band-frame{ cursor:zoom-in; }
+
 </style>
 </head>
 <body>
@@ -1052,6 +1091,7 @@
 <a class="btn btn-notice" href="#notice">📢 লেটেস্ট আপডেট</a>
 <a class="btn btn-primary" href="#about">🌿 গ্রামকে জানুন</a>
 <a class="btn btn-accent" href="gallery.html">📸 ছবিঘর দেখুন</a>
+<a class="btn btn-photos" href="#jibon">🖼️ মেইন পেজের ছবি</a>
 <a class="btn btn-ghost" href="https://facebook.com/groups/717295329059799/" rel="noopener" target="_blank">👥 ফেসবুক গ্রুপ</a>
 <a class="btn btn-dev" href="#developer">💻 ওয়েব ডেভেলপার</a>
 <a class="btn btn-admin" href="#admin-team">🛡️ আমাদের এডমিনেরা</a>
@@ -1365,7 +1405,7 @@
 </svg>
 </div>
 </section>
-<section class="photo-band">
+<section class="photo-band" id="photos">
 <div class="photo-band-inner">
 <div class="section-head">
 <span class="eyebrow">সামাজিক উদ্যোগ</span>
@@ -1604,6 +1644,48 @@
   } else {
     initReveal();
   }
+})();
+
+
+/* Simple lightbox for main-page photos */
+(function(){
+  function openLb(src, alt){
+    var ov = document.getElementById('lbOverlay');
+    if(!ov){
+      ov = document.createElement('div');
+      ov.id = 'lbOverlay';
+      ov.className = 'lb-overlay';
+      ov.innerHTML = '<button class="lb-close" aria-label="বন্ধ">×</button><img alt="">';
+      document.body.appendChild(ov);
+      ov.addEventListener('click', function(e){
+        if(e.target === ov || e.target.classList.contains('lb-close')) closeLb();
+      });
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+    }
+    var img = ov.querySelector('img');
+    img.src = src;
+    img.alt = alt || '';
+    ov.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb(){
+    var ov = document.getElementById('lbOverlay');
+    if(ov){ ov.classList.remove('open'); document.body.style.overflow = ''; }
+  }
+  function bind(){
+    document.querySelectorAll('.life-card .life-img img, .photo-band-frame img, .frame-photo img').forEach(function(img){
+      if(img.dataset.lbBound) return;
+      img.dataset.lbBound = '1';
+      img.addEventListener('click', function(e){
+        e.preventDefault();
+        openLb(img.src, img.alt);
+      });
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind);
+  else bind();
+  // re-bind after dynamic content if any
+  setTimeout(bind, 1500);
 })();
 
 function escapeHtml(text) {
