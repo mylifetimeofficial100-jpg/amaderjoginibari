@@ -251,8 +251,10 @@
     if (!link) return "link";
     const u = link.toLowerCase();
     if (u.includes("youtube.com") || u.includes("youtu.be")) return "youtube";
+    if (u.includes("facebook.com") || u.includes("fb.watch") || u.includes("fb.com")) return "facebook";
+    if (u.includes("vimeo.com")) return "vimeo";
     if (u.match(/\.(jpg|jpeg|png|gif|webp)(\?|$)/)) return "image";
-    if (u.match(/\.(mp4|webm|mov)(\?|$)/)) return "video";
+    if (u.match(/\.(mp4|webm|mov|mkv|m4v)(\?|$)/)) return "video";
     if (u.match(/\.pdf(\?|$)/)) return "pdf";
     return "link";
   }
