@@ -31,8 +31,10 @@
   <link rel="icon" href="https://amaderjoginibari.vercel.app/favicon.png" type="image/png"/>
   <link rel="apple-touch-icon" href="https://amaderjoginibari.vercel.app/favicon.png"/>
   
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Fonts - match home -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet"/>
   
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -50,1663 +52,1617 @@
     }
   }
   </script>
+
 <style>
-    :root {
-      --forest: #1f4a32;
-      --forest-deep: #12261a;
-      --mud: #c4954a;
-      --mud-light: #f0d9a8;
-      --sindoor: #b84a42;
-      --paper: #d6cdb2;
-      --paper-dim: #c9bfa0;
-      --ink: #1a1610;
-      --ink-soft: #3f382c;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: linear-gradient(165deg, #d2c8ab 0%, #c9bf9c 45%, #c2b893 100%);
-      color: var(--ink);
-      font-family: 'Noto Sans Bengali', sans-serif;
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-    h1, h2, h3 {
-      font-family: 'Baloo Da 2', sans-serif;
-      font-weight: 700;
-      color: var(--forest-deep);
-    }
+  :root{
+    --forest:#1f4a32;
+    --forest-deep:#12261a;
+    --mud:#c4954a;
+    --mud-light:#f0d9a8;
+    --tin:#8a929a;
+    --sindoor:#b84a42;
+    --paper:#d6cdb2;
+    --paper-dim:#c9bfa0;
+    --ink:#1a1610;
+    --ink-soft:#3f382c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:linear-gradient(165deg, #d2c8ab 0%, #c9bf9c 45%, #c2b893 100%);
+    color:var(--ink);
+    font-family:'Noto Sans Bengali','Tiro Bangla',sans-serif;
+    line-height:1.75;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo Da 2','Noto Sans Bengali',sans-serif;
+    font-weight:700;
+    color:var(--forest-deep);
+    letter-spacing:.2px;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
 
-    
-    /* ========== Enhanced Header ========== */
-    header {
-      position: sticky; top: 0; z-index: 100;
-      background: linear-gradient(180deg, rgba(18,38,26,.98) 0%, rgba(31,74,50,.96) 100%);
-      backdrop-filter: blur(14px) saturate(1.2);
-      -webkit-backdrop-filter: blur(14px) saturate(1.2);
-      border-bottom: 1px solid rgba(196,149,74,.45);
-      box-shadow: 0 8px 32px rgba(18,38,26,.35), 0 1px 0 rgba(240,217,168,.08) inset;
-    }
-    .nav-wrap {
-      max-width: 1200px; margin: 0 auto; padding: 12px 20px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    }
-    .brand {
-      display: flex; align-items: center; gap: 12px;
-      color: #fffef8; text-decoration: none;
-      font-family: 'Baloo Da 2', sans-serif; font-weight: 800; font-size: 1.28rem;
-      transition: transform .3s ease;
-    }
-    .brand:hover { transform: translateY(-1px); }
-    .brand-logo {
-      width: 42px; height: 42px; flex-shrink: 0;
-      position: relative;
-      filter: drop-shadow(0 2px 8px rgba(240,217,168,.35));
-    }
-    .brand-logo svg {
-      width: 100%; height: 100%;
-      animation: logoFloat 4.5s ease-in-out infinite;
-    }
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-3px) rotate(2deg); }
-    }
-    .brand-text {
-      display: flex; flex-direction: column; line-height: 1.15;
-    }
-    .brand-text span {
-      letter-spacing: 0.3px;
-    }
-    .brand small {
-      display: block; font-size: .62rem; letter-spacing: 1.8px;
-      color: var(--mud-light); font-weight: 600; margin-top: 3px;
-      opacity: .92;
-    }
-    .back-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, var(--mud) 0%, #d4a85a 100%);
-      color: #1a2f22;
-      padding: 10px 20px; border-radius: 50px;
-      text-decoration: none; font-weight: 700; font-size: .92rem;
-      box-shadow: 0 4px 14px rgba(196,149,74,.35);
-      transition: all .3s cubic-bezier(.2,.8,.2,1);
-      border: 1px solid rgba(255,255,255,.15);
-    }
-    .back-btn:hover {
-      background: linear-gradient(135deg, var(--mud-light) 0%, #f5e0b0 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(196,149,74,.45);
-    }
-    .back-btn svg {
-      width: 16px; height: 16px; transition: transform .3s;
-    }
-    .back-btn:hover svg { transform: translateX(-3px); }
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:5; opacity:.03; mix-blend-mode:multiply;
+    background-image:radial-gradient(circle at 1px 1px, #000 1px, transparent 0);
+    background-size:3px 3px;
+  }
 
-    /* ========== Enhanced Footer ========== */
-    footer {
-      background: linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%);
-      color: #d4c9a8;
-      position: relative;
-      overflow: hidden;
-      padding: 0;
-    }
-    footer::before {
-      content: "";
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(196,149,74,.5), transparent);
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      padding: 42px 24px 28px;
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 36px;
-      position: relative; z-index: 1;
-    }
-    .footer-brand {
-      display: flex; flex-direction: column; gap: 12px;
-    }
-    .footer-logo-row {
-      display: flex; align-items: center; gap: 12px;
-    }
-    .footer-logo {
-      width: 48px; height: 48px;
-      filter: drop-shadow(0 2px 10px rgba(240,217,168,.3));
-    }
-    .footer-logo svg {
-      width: 100%; height: 100%;
-      animation: logoFloat 5s ease-in-out infinite;
-    }
-    .footer-brand h3 {
-      font-family: 'Baloo Da 2', sans-serif;
-      font-size: 1.35rem; color: #faf8f2; margin: 0;
-      font-weight: 800;
-    }
-    .footer-brand p {
-      font-size: .9rem; line-height: 1.65; color: #c9bfa0;
-      max-width: 320px; margin: 0;
-    }
-    .footer-col h4 {
-      font-family: 'Baloo Da 2', sans-serif;
-      font-size: 1.05rem; color: var(--mud-light);
-      margin: 0 0 14px; font-weight: 700;
-      letter-spacing: .5px;
-    }
-    .footer-col ul {
-      list-style: none; padding: 0; margin: 0;
-    }
-    .footer-col li {
-      margin-bottom: 9px;
-    }
-    .footer-col a {
-      color: #d4c9a8; text-decoration: none;
-      font-size: .92rem; transition: color .25s, padding-left .25s;
-      display: inline-block;
-    }
-    .footer-col a:hover {
-      color: var(--mud-light);
-      padding-left: 4px;
-    }
-    .footer-bottom {
-      border-top: 1px solid rgba(196,149,74,.2);
-      padding: 18px 24px;
-      text-align: center;
-      font-size: .85rem;
-      color: #a89b7a;
-      position: relative; z-index: 1;
-    }
-    .footer-bottom a {
-      color: var(--mud-light); text-decoration: none; font-weight: 600;
-    }
-    .footer-bottom a:hover { text-decoration: underline; }
-    .footer-heart {
-      display: inline-block;
-      animation: heartbeat 1.8s ease-in-out infinite;
-      color: #e07a6a;
-    }
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      15% { transform: scale(1.2); }
-      30% { transform: scale(1); }
-      45% { transform: scale(1.15); }
-      60% { transform: scale(1); }
-    }
+  /* ========== Header - exact match home ========== */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:linear-gradient(180deg, #0c1a12 0%, #12261a 42%, #1a3a28 100%);
+    backdrop-filter:blur(18px) saturate(1.25);
+    -webkit-backdrop-filter:blur(18px) saturate(1.25);
+    border-bottom:none;
+    box-shadow:0 12px 40px rgba(8,16,12,.55), 0 1px 0 rgba(240,217,168,.12) inset;
+  }
+  header::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:2px;
+    background:linear-gradient(90deg, transparent 0%, rgba(196,149,74,.25) 15%, #e8c87a 50%, rgba(196,149,74,.25) 85%, transparent 100%);
+    opacity:.95;
+  }
+  .nav-wrap{
+    max-width:1180px; margin:0 auto; padding:14px 22px;
+    display:flex; align-items:center; justify-content:space-between; gap:18px;
+    position:relative;
+  }
+  .brand{
+    display:flex; align-items:center; gap:14px;
+    color:var(--mud-light); text-decoration:none;
+    transition:transform .35s cubic-bezier(.22,1,.36,1);
+  }
+  .brand:hover{ transform:translateY(-1px); }
+  .brand-logo{
+    width:50px; height:50px; flex-shrink:0;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 35% 30%, rgba(240,217,168,.35), transparent 55%),
+      linear-gradient(145deg, #1f4a32 0%, #0e1f16 100%);
+    border:1.5px solid rgba(232,200,122,.55);
+    box-shadow:0 0 0 3px rgba(196,149,74,.12), 0 6px 18px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .brand-logo svg{ width:32px; height:32px; filter:drop-shadow(0 2px 4px rgba(0,0,0,.3)); }
+  .brand-text{
+    font-family:'Baloo Da 2',sans-serif; font-weight:800;
+    font-size:clamp(1.15rem, 3.2vw, 1.4rem);
+    letter-spacing:.4px; line-height:1.15;
+    background:linear-gradient(180deg, #fffef8 10%, #f0d9a8 55%, #e8c87a 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 2px 6px rgba(0,0,0,.35));
+  }
+  .brand-text small{
+    display:block; font-family:'Noto Sans Bengali',sans-serif; font-weight:600;
+    font-size:.58rem; letter-spacing:2px; margin-top:3px; text-transform:uppercase;
+    background:linear-gradient(90deg, #c4954a, #f0d9a8, #c4954a);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    -webkit-text-fill-color:transparent; filter:none;
+  }
+  .back-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(240,217,168,.12); color:#f0d9a8;
+    padding:9px 16px; border-radius:999px; text-decoration:none;
+    font-weight:600; font-size:.9rem; border:1px solid rgba(240,217,168,.25);
+    transition:all .3s cubic-bezier(.22,1,.36,1); white-space:nowrap;
+  }
+  .back-btn:hover{
+    background:rgba(240,217,168,.22); border-color:rgba(240,217,168,.4);
+    box-shadow:0 4px 14px rgba(0,0,0,.15);
+  }
+  .back-btn svg{ width:18px; height:18px; }
 
-    /* soft decorative circles in footer */
-    .footer-deco {
-      position: absolute; border-radius: 50%;
-      background: radial-gradient(circle, rgba(196,149,74,.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .footer-deco.d1 { width: 280px; height: 280px; top: -80px; right: -60px; }
-    .footer-deco.d2 { width: 180px; height: 180px; bottom: -40px; left: 10%; }
+  @media (max-width:600px){
+    .nav-wrap{ padding:12px 14px; }
+    .brand-logo{ width:44px; height:44px; }
+    .brand-logo svg{ width:28px; height:28px; }
+    .back-btn{ padding:8px 12px; font-size:.82rem; }
+    .back-btn span{ display:none; }
+  }
 
-    @media (max-width: 800px) {
-      .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 36px 20px 24px;
-        text-align: center;
-      }
-      .footer-brand { align-items: center; }
-      .footer-brand p { max-width: 100%; }
-      .footer-logo-row { justify-content: center; }
-      .footer-col ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; }
-      .footer-col li { margin: 0; }
-    }
-    @media (max-width: 600px) {
-      .brand { font-size: 1.1rem; }
-      .brand-logo { width: 36px; height: 36px; }
-      .back-btn { padding: 8px 14px; font-size: .85rem; }
-    }
+  /* ========== Hero ========== */
+  .gallery-hero{
+    background:linear-gradient(180deg, var(--forest) 0%, #163326 100%);
+    padding:48px 24px 56px; text-align:center; color:#faf8f2;
+    position:relative;
+  }
+  .gallery-hero::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(ellipse at top center, rgba(196,149,74,.18), transparent 55%);
+    pointer-events:none;
+  }
+  .gallery-hero .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.8rem; letter-spacing:3px; text-transform:uppercase;
+    color:var(--mud-light); margin-bottom:14px; position:relative;
+  }
+  .gallery-hero .eyebrow::before{ content:""; width:26px; height:2px; background:var(--mud-light); display:inline-block; }
+  .gallery-hero h1{
+    font-size:clamp(1.9rem, 5vw, 3rem); margin:0 0 14px; color:#faf8f2;
+    line-height:1.15; position:relative;
+  }
+  .gallery-hero p{
+    max-width:560px; margin:0 auto 20px; font-size:1.08rem; color:#f0ebe0;
+    opacity:.95; position:relative; line-height:1.7;
+  }
+  .photo-count{
+    display:inline-block; background:rgba(240,217,168,.15);
+    border:1px solid rgba(240,217,168,.3); color:var(--mud-light);
+    padding:8px 18px; border-radius:999px; font-size:.92rem; font-weight:600;
+    position:relative;
+  }
 
-    /* Hero of gallery */
-    .gallery-hero {
-      background: linear-gradient(180deg, var(--forest) 0%, #163326 100%);
-      color: #faf8f2; text-align: center;
-      padding: 50px 20px 45px;
-    }
-    .gallery-hero .eyebrow {
-      display: inline-block; font-size: .8rem; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--mud-light); margin-bottom: 12px;
-    }
-    .gallery-hero h1 {
-      font-size: clamp(2rem, 5.5vw, 3.4rem); color: #faf8f2;
-      margin: 0 0 14px; line-height: 1.15;
-    }
-    .gallery-hero p {
-      max-width: 560px; margin: 0 auto; color: #e8e0cc; font-size: 1.08rem;
-    }
-    .photo-count {
-      display: inline-block; margin-top: 18px;
-      background: rgba(240,217,168,.15); border: 1px solid rgba(240,217,168,.35);
-      padding: 6px 16px; border-radius: 20px; font-size: .9rem; color: var(--mud-light);
-    }
+  /* ========== Filter bar ========== */
+  .filter-bar{
+    max-width:1180px; margin:0 auto;
+    padding:28px 20px 12px;
+    display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+  }
+  .filter-btn{
+    font-family:'Noto Sans Bengali',sans-serif;
+    font-size:.9rem; font-weight:600;
+    padding:9px 18px; border-radius:999px;
+    border:1.5px solid rgba(31,74,50,.22);
+    background:rgba(255,252,245,.85);
+    color:var(--forest-deep); cursor:pointer;
+    transition:all .28s cubic-bezier(.22,1,.36,1);
+  }
+  .filter-btn:hover{
+    background:rgba(31,74,50,.1); border-color:var(--forest);
+    transform:translateY(-2px);
+  }
+  .filter-btn.active{
+    background:linear-gradient(145deg, var(--forest) 0%, #2a5c3a 100%);
+    color:#faf8f2; border-color:transparent;
+    box-shadow:0 4px 14px rgba(31,74,50,.3);
+  }
+  .filter-count{
+    display:inline-block; margin-left:4px; font-size:.75rem; opacity:.8;
+  }
 
-    /* Grid */
-    .gallery-wrap {
-      max-width: 1200px; margin: 0 auto; padding: 40px 16px 70px;
-    }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 22px;
-      perspective: 1200px;
-    }
+  /* ========== Gallery grid - match home life-card style ========== */
+  .gallery-section{ padding:12px 20px 80px; }
+  .gallery-grid{
+    max-width:1180px; margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  @media (max-width:980px){
+    .gallery-grid{ grid-template-columns:repeat(2, 1fr); gap:18px; }
+  }
+  @media (max-width:560px){
+    .gallery-grid{ grid-template-columns:1fr; gap:16px; }
+  }
 
-    /* 3D Card */
-    .card-3d {
-      perspective: 1000px;
-    }
-    .card-inner {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px -10px rgba(36,29,19,.18);
-      transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease;
-      transform-style: preserve-3d;
-      height: 100%;
-    }
-    .card-3d:hover .card-inner {
-      transform: rotateY(6deg) rotateX(4deg) translateY(-10px) scale(1.03);
-      box-shadow: 0 22px 40px -12px rgba(30,61,42,.28);
-    }
-    .card-img {
-      overflow: hidden; position: relative;
-      background: #e9e2cd;
-    }
-    .card-img img {
-      width: 100%; height: auto; display: block; object-fit: contain;
-      transition: transform .6s ease;
-    }
-    .card-3d:hover .card-img img {
-      transform: scale(1.08);
-    }
-    .card-body {
-      padding: 16px 18px 20px;
-    }
-    .tag {
-      display: inline-block; font-size: .72rem; letter-spacing: 1.4px;
-      text-transform: uppercase; color: var(--sindoor); font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .card-body h3 {
-      font-size: 1.12rem; margin: 0 0 6px; color: var(--forest-deep);
-    }
-    .card-body p {
-      margin: 0; color: var(--ink-soft); font-size: .92rem; line-height: 1.55;
-    }
+  .gallery-card{
+    background:#fff; border-radius:12px; overflow:hidden;
+    box-shadow:0 8px 22px -12px rgba(36,29,19,.18);
+    transition:transform .35s ease, box-shadow .35s ease;
+    content-visibility:auto;
+    contain-intrinsic-size:auto 320px;
+  }
+  .gallery-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 32px -14px rgba(36,29,19,.25);
+  }
+  .gallery-card.hidden{ display:none; }
 
-    /* Footer styles moved to Enhanced Footer section above */
+  .gallery-img{
+    height:210px; overflow:hidden; background:#e9e2cd;
+    position:relative;
+  }
+  .gallery-img img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .55s ease;
+    cursor:pointer;
+  }
+  .gallery-card:hover .gallery-img img{ transform:scale(1.06); }
 
-    @media (max-width: 600px) {
-      .gallery-grid { grid-template-columns: 1fr; gap: 18px; }
+  .gallery-body{ padding:16px 18px 20px; }
+  .tag{
+    display:inline-block; font-size:.72rem; letter-spacing:1.4px;
+    text-transform:uppercase; color:var(--sindoor); font-weight:700;
+    margin-bottom:6px;
+  }
+  .gallery-body h3{
+    font-size:1.1rem; margin:0 0 6px; color:var(--forest-deep); line-height:1.35;
+  }
+  .gallery-body p{
+    margin:0; color:var(--ink-soft); font-size:.92rem; line-height:1.55;
+  }
 
-      .card-3d:hover .card-inner {
-        transform: translateY(-6px) scale(1.02);
-      }
-  
-    /* ========== Gallery Filter ========== */
-    .filter-bar {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 16px 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-    .filter-btn {
-      font-family: 'Noto Sans Bengali', sans-serif;
-      font-size: .9rem;
-      font-weight: 600;
-      padding: 8px 18px;
-      border-radius: 50px;
-      border: 1.5px solid rgba(31,74,50,.25);
-      background: rgba(255,255,255,.7);
-      color: var(--forest-deep);
-      cursor: pointer;
-      transition: all .25s ease;
-      backdrop-filter: blur(4px);
-    }
-    .filter-btn:hover {
-      background: rgba(31,74,50,.1);
-      border-color: var(--forest);
-      transform: translateY(-1px);
-    }
-    .filter-btn.active {
-      background: linear-gradient(135deg, var(--forest) 0%, #2a5c3a 100%);
-      color: #faf8f2;
-      border-color: transparent;
-      box-shadow: 0 4px 14px rgba(31,74,50,.3);
-    }
-    .filter-count {
-      display: inline-block;
-      margin-left: 4px;
-      font-size: .75rem;
-      opacity: .75;
-    }
-    .card-3d.hidden {
-      display: none;
-    }
-    .no-result {
-      display: none;
-      text-align: center;
-      padding: 50px 20px;
-      color: var(--ink-soft);
-      font-size: 1.1rem;
-      grid-column: 1 / -1;
-    }
-    .no-result.show { display: block; }
+  .no-result{
+    display:none; text-align:center; padding:50px 20px;
+    color:var(--ink-soft); font-size:1.1rem; grid-column:1 / -1;
+  }
+  .no-result.show{ display:block; }
 
-  </style>
+  /* ========== Lightbox ========== */
+  .lb-overlay{
+    position:fixed; inset:0; z-index:9999;
+    background:rgba(10,20,14,.92);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s;
+    padding:20px;
+  }
+  .lb-overlay.open{ opacity:1; visibility:visible; }
+  .lb-overlay img{
+    max-width:min(96vw, 1100px); max-height:88vh;
+    object-fit:contain; border-radius:8px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+  .lb-close{
+    position:absolute; top:18px; right:22px;
+    background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2);
+    color:#fff; font-size:1.8rem; width:44px; height:44px;
+    border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:background .25s;
+  }
+  .lb-close:hover{ background:rgba(255,255,255,.25); }
+
+  /* ========== Footer - match home style ========== */
+  footer{
+    background:linear-gradient(180deg, #0e1f16 0%, #0a1610 100%);
+    color:#c9bfa0; padding:0; position:relative; overflow:hidden;
+  }
+  .footer-inner{
+    max-width:1180px; margin:0 auto; padding:48px 24px 28px;
+    display:grid; grid-template-columns:1.4fr 1fr; gap:40px;
+    position:relative; z-index:1;
+  }
+  @media (max-width:700px){
+    .footer-inner{ grid-template-columns:1fr; gap:28px; text-align:center; }
+  }
+  .footer-brand{
+    font-family:'Baloo Da 2',sans-serif; font-weight:800; font-size:1.35rem;
+    color:var(--mud-light); margin-bottom:12px;
+  }
+  .footer-inner p{ font-size:.95rem; line-height:1.7; color:#a89b7a; max-width:420px; }
+  @media (max-width:700px){ .footer-inner p{ margin:0 auto; } }
+  .footer-links{
+    display:flex; flex-wrap:wrap; gap:12px 22px; align-content:flex-start; padding-top:6px;
+  }
+  @media (max-width:700px){ .footer-links{ justify-content:center; } }
+  .footer-links a{
+    text-decoration:none; color:#d4c9a8; font-size:.92rem;
+    transition:color .25s, padding-left .25s;
+  }
+  .footer-links a:hover{ color:var(--mud-light); padding-left:3px; }
+  .footer-bottom{
+    max-width:1180px; margin:0 auto; padding:18px 24px;
+    border-top:1px solid rgba(196,149,74,.2);
+    font-size:.85rem; color:#a89b7a; text-align:center; position:relative; z-index:1;
+  }
+  .footer-heart{
+    display:inline-block; animation:heartbeat 1.8s ease-in-out infinite; color:#e07a6a;
+  }
+  @keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    15%{transform:scale(1.2);}
+    30%{transform:scale(1);}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .gallery-card, .gallery-img img, .filter-btn{ transition:none !important; }
+    .footer-heart{ animation:none; }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <div class="nav-wrap">
-      <a class="brand" href="https://amaderjoginibari.vercel.app/">
-        <div class="brand-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="32" cy="32" r="30" fill="url(#g1)" opacity=".9"/>
-  <path d="M32 14c-2 6-8 10-8 18 0 6 3.5 10 8 12 4.5-2 8-6 8-12 0-8-6-12-8-18z" fill="#f0d9a8"/>
-  <path d="M32 18c1.5 4 5 7 5 13 0 4-2 7-5 8.5-3-1.5-5-4.5-5-8.5 0-6 3.5-9 5-13z" fill="#c4954a"/>
-  <path d="M26 28c-3 2-5 5-5 9 0 3 1.5 5 4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <path d="M38 28c3 2 5 5 5 9 0 3-1.5 5-4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <circle cx="32" cy="42" r="2.5" fill="#1f4a32"/>
-  <defs>
-    <linearGradient id="g1" x1="8" y1="8" x2="56" y2="56">
-      <stop stop-color="#2d6a45"/>
-      <stop offset="1" stop-color="#1a3d28"/>
-    </linearGradient>
-  </defs>
-</svg></div>
-        <div class="brand-text">
-          <span>আমাদের যোগিনী বাড়ী</span>
-          <small>গ্রামের ছবিঘর</small>
-        </div>
-      </a>
-      <a class="back-btn" href="https://amaderjoginibari.vercel.app/">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        মূল পেজে ফিরে যান
-      </a>
-    </div>
-  </header>
+<div class="grain"></div>
 
-  <section class="gallery-hero">
-    <span class="eyebrow">স্মৃতির খোঁজে</span>
-    <h1>আমাদের গ্রামের ছবিঘর</h1>
-    <p>যোগিনীবাড়ীর প্রতিদিনের জীবন, উৎসব, খেলাধুলা আর মানুষের হাসি — সব একসাথে এই গ্যালারিতে।</p>
-    <div class="photo-count">📸 105টি নির্বাচিত ছবি</div>
-  </section>
-
-  
-  <div class="filter-bar" id="filterBar">
-    <button class="filter-btn active" data-filter="all">সব <span class="filter-count" id="count-all"></span></button>
-    <button class="filter-btn" data-filter="ফুটবল">ফুটবল</button>
-    <button class="filter-btn" data-filter="ঈদ">ঈদ</button>
-    <button class="filter-btn" data-filter="জালসা">জালসা / মাহফিল</button>
-    <button class="filter-btn" data-filter="মসজিদ">মসজিদ</button>
-    <button class="filter-btn" data-filter="মেলা">মেলা / হাট</button>
-    <button class="filter-btn" data-filter="বন্ধুত্ব">বন্ধুত্ব</button>
-    <button class="filter-btn" data-filter="রান্না">রান্না / খাবার</button>
-    <button class="filter-btn" data-filter="অনুষ্ঠান">অনুষ্ঠান</button>
-    <button class="filter-btn" data-filter="দৈনন্দিন">দৈনন্দিন</button>
+<header>
+  <div class="nav-wrap">
+    <a class="brand" href="https://amaderjoginibari.vercel.app/">
+      <div class="brand-logo">
+        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="24" cy="16" rx="18" ry="12" fill="#2a5c3a"/>
+          <ellipse cx="14" cy="18" rx="9" ry="8" fill="#1e4a2e"/>
+          <ellipse cx="34" cy="18" rx="9" ry="8" fill="#1e4a2e"/>
+          <ellipse cx="24" cy="12" rx="11" ry="8" fill="#357048"/>
+          <path d="M22 24 L22 38 Q24 40 26 38 L26 24" fill="#8b5e2b"/>
+          <path d="M23 24 L23 37 Q24 38.5 25 37 L25 24" fill="#a67c3d"/>
+          <path d="M16 22 Q14 28 13 36" stroke="#c4954a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M20 23 Q19 30 18 37" stroke="#d4a85a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M28 23 Q29 30 30 37" stroke="#d4a85a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M32 22 Q34 28 35 36" stroke="#c4954a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <ellipse cx="24" cy="40" rx="14" ry="4" fill="#6b4a28" opacity=".85"/>
+          <circle cx="24" cy="14" r="3" fill="#e8d0a0" opacity=".35"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        আমাদের যোগিনী বাড়ী
+        <small>গ্রামের ছবিঘর</small>
+      </div>
+    </a>
+    <a class="back-btn" href="https://amaderjoginibari.vercel.app/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <span>মূল পেজে ফিরে যান</span>
+    </a>
   </div>
+</header>
 
-  <div class="gallery-wrap">
-        <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_001.jpg" alt="মসজিদে ইফতারির আয়োজন" loading="lazy">
+<section class="gallery-hero">
+  <span class="eyebrow">স্মৃতির খোঁজে</span>
+  <h1>আমাদের গ্রামের ছবিঘর</h1>
+  <p>যোগিনীবাড়ীর প্রতিদিনের জীবন, উৎসব, খেলাধুলা আর মানুষের হাসি — সব একসাথে এই গ্যালারিতে।</p>
+  <div class="photo-count">📸 ১০৫টি নির্বাচিত ছবি</div>
+</section>
+
+<div class="filter-bar" id="filterBar">
+  <button class="filter-btn active" data-filter="all">সব <span class="filter-count" id="count-all"></span></button>
+  <button class="filter-btn" data-filter="ফুটবল">ফুটবল</button>
+  <button class="filter-btn" data-filter="ঈদ">ঈদ</button>
+  <button class="filter-btn" data-filter="জালসা">জালসা / মাহফিল</button>
+  <button class="filter-btn" data-filter="মসজিদ">মসজিদ</button>
+  <button class="filter-btn" data-filter="মেলা">মেলা / হাট</button>
+  <button class="filter-btn" data-filter="বন্ধুত্ব">বন্ধুত্ব</button>
+  <button class="filter-btn" data-filter="রান্না">রান্না / খাবার</button>
+  <button class="filter-btn" data-filter="অনুষ্ঠান">অনুষ্ঠান</button>
+  <button class="filter-btn" data-filter="দৈনন্দিন">দৈনন্দিন</button>
+</div>
+
+<section class="gallery-section">
+<div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_001.jpg" alt="মসজিদে ইফতারির আয়োজন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ইফতারি</span>
           <h3>মসজিদে ইফতারির আয়োজন</h3>
           <p>রমজান মাসে মসজিদে সবাই মিলে ইফতারের সুন্দর আয়োজন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_002.jpg" alt="ইফতারের আয়োজন" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_002.jpg" alt="ইফতারের আয়োজন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ইফতারি</span>
           <h3>ইফতারের আয়োজন</h3>
           <p>মসজিদে ইফতার উপলক্ষে খাবার পরিবেশনের দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="রান্না">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_003.jpg" alt="ইফতারের প্লেট" loading="lazy">
+    <div class="gallery-card" data-category="রান্না">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_003.jpg" alt="ইফতারের প্লেট" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">খাবারদাবার</span>
           <h3>ইফতারের প্লেট</h3>
           <p>খিচুড়ি, ডিম ও ফলমূল দিয়ে সাজানো ইফতারের থালা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_004.jpg" alt="প্রসাবখানা তৈরি" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_004.jpg" alt="প্রসাবখানা তৈরি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">নির্মাণ</span>
           <h3>প্রসাবখানা তৈরি</h3>
           <p>কালীবাড়ি বোর্ড ঘরের পিছনে প্রসাবখানা তৈরি করা হচ্ছে।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="বন্ধুত্ব">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_005.jpg" alt="বন্ধুদের গ্রুপ ছবি" loading="lazy">
+    <div class="gallery-card" data-category="বন্ধুত্ব">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_005.jpg" alt="বন্ধুদের গ্রুপ ছবি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">বন্ধুত্ব</span>
           <h3>বন্ধুদের গ্রুপ ছবি</h3>
           <p>গাছের ছায়ায় খড়ের গাদার পাশে দাঁড়িয়ে বন্ধুদের আনন্দময় মুহূর্ত।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_006.jpg" alt="গ্রামের ফুটবল টিম" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_006.jpg" alt="গ্রামের ফুটবল টিম" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>গ্রামের ফুটবল টিম</h3>
           <p>ছোট-বড় মিলে টিম গঠন করে ফুটবল খেলার আয়োজন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_007.jpg" alt="যোগিনীবাড়ী প্রিমিয়ার লিগ" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_007.jpg" alt="যোগিনীবাড়ী প্রিমিয়ার লিগ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>যোগিনীবাড়ী প্রিমিয়ার লিগ</h3>
           <p>সিজন ২-এর ম্যাচ ঘোষণার পোস্টার — সুমন বনাম জিয়ারুল।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_008.jpg" alt="মাঠে ফুটবল খেলা" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_008.jpg" alt="মাঠে ফুটবল খেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>মাঠে ফুটবল খেলা</h3>
           <p>গ্রামের ছোট-বড় সবাই মিলে মাঠে ফুটবল খেলছে।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_009.jpg" alt="ছোট-বড়দের খেলা" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_009.jpg" alt="ছোট-বড়দের খেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ছোট-বড়দের খেলা</h3>
           <p>খালি পায়ে মাঠে ছুটে বেড়ানো গ্রামের ছেলেদের খেলা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_010.jpg" alt="ফুটবল টিমের অনুমতিপত্র" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_010.jpg" alt="ফুটবল টিমের অনুমতিপত্র" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ফুটবল টিমের অনুমতিপত্র</h3>
           <p>ফুটবল খেলার জন্য টিম অনুমতিপত্র নিয়েছে।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_011.jpg" alt="ফুটবল টিমের অনুমতিপত্র" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_011.jpg" alt="ফুটবল টিমের অনুমতিপত্র" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ফুটবল টিমের অনুমতিপত্র</h3>
           <p>ফুটবল খেলার জন্য টিম অনুমতিপত্র নিয়েছে।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_012.jpg" alt="টুর্নামেন্ট সিজন ২" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_012.jpg" alt="টুর্নামেন্ট সিজন ২" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>টুর্নামেন্ট সিজন ২</h3>
           <p>যোগিনীবাড়ী ফুটবল টুর্নামেন্ট ২০২৬ সিজন ২ — শীঘ্রই আসছে।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="অনুষ্ঠান">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_013.jpg" alt="পুরস্কার বিতরণী" loading="lazy">
+    <div class="gallery-card" data-category="অনুষ্ঠান">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_013.jpg" alt="পুরস্কার বিতরণী" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">পুরস্কার</span>
           <h3>পুরস্কার বিতরণী</h3>
           <p>খেলা শেষে বিজয়ীদের হাতে ট্রফি ও সনদ তুলে দেওয়া হচ্ছে।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_014.jpg" alt="মসজিদে ইফতার" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_014.jpg" alt="মসজিদে ইফতার" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ইফতারি</span>
           <h3>মসজিদে ইফতার</h3>
           <p>রমজান মাসে মসজিদে ইফতার উপলক্ষে আয়োজিত অনুষ্ঠান।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="জালসা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_015.jpg" alt="সবজির ওরস জালসা" loading="lazy">
+    <div class="gallery-card" data-category="জালসা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_015.jpg" alt="সবজির ওরস জালসা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">জালসা</span>
           <h3>সবজির ওরস জালসা</h3>
           <p>শীতের রাতে সবজির ওরস উপলক্ষে জালসার আয়োজন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="জালসা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_016.jpg" alt="সবজি কাটার কাজ" loading="lazy">
+    <div class="gallery-card" data-category="জালসা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_016.jpg" alt="সবজি কাটার কাজ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">কৃষি</span>
           <h3>সবজি কাটার কাজ</h3>
           <p>ওরস জালসার জন্য সবজি কেটে প্রস্তুত করা হচ্ছে।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="জালসা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_017.jpg" alt="জালসা উপলক্ষে মেলা" loading="lazy">
+    <div class="gallery-card" data-category="জালসা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_017.jpg" alt="জালসা উপলক্ষে মেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মেলা</span>
           <h3>জালসা উপলক্ষে মেলা</h3>
           <p>মসজিদের জালসা উপলক্ষে কালীবাড়ি বটতলায় মেলার আয়োজন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_018.jpg" alt="শসার আড়ত" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_018.jpg" alt="শসার আড়ত" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">হাটবাজার</span>
           <h3>শসার আড়ত</h3>
           <p>কালীবাড়ি বটতলায় শসা বিক্রির আড়ত।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_019.jpg" alt="শসার আড়ত" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_019.jpg" alt="শসার আড়ত" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">হাটবাজার</span>
           <h3>শসার আড়ত</h3>
           <p>কালীবাড়িতে শসার বড় স্তূপ নিয়ে বেচাকেনা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_020.jpg" alt="শসার আড়ত" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_020.jpg" alt="শসার আড়ত" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">হাটবাজার</span>
           <h3>শসার আড়ত</h3>
           <p>কালীবাড়ি বটতলায় শসার আড়তের ব্যস্ততা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="দৈনন্দিন">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_021.jpg" alt="বিকালে কালীবাড়ি" loading="lazy">
+    <div class="gallery-card" data-category="দৈনন্দিন">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_021.jpg" alt="বিকালে কালীবাড়ি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">দৈনন্দিন</span>
           <h3>বিকালে কালীবাড়ি</h3>
           <p>বিকেল বেলা কালীবাড়ি বটতলার পরিচিত দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="দৈনন্দিন">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_022.jpg" alt="দাঁড়িপাল্লা নির্বাচন" loading="lazy">
+    <div class="gallery-card" data-category="দৈনন্দিন">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_022.jpg" alt="দাঁড়িপাল্লা নির্বাচন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">রাজনীতি</span>
           <h3>দাঁড়িপাল্লা নির্বাচন</h3>
           <p>নির্বাচন উপলক্ষে দাঁড়িপাল্লার পক্ষে স্লোগান।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="অনুষ্ঠান">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_023.jpg" alt="ট্রফি হাতে বিজয়ী" loading="lazy">
+    <div class="gallery-card" data-category="অনুষ্ঠান">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_023.jpg" alt="ট্রফি হাতে বিজয়ী" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">পুরস্কার</span>
           <h3>ট্রফি হাতে বিজয়ী</h3>
           <p>বটগাছের নিচে ট্রফি হাতে বিজয়ী খেলোয়াড় ও তার সঙ্গীরা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_024.jpg" alt="ফুটবল খেলা" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_024.jpg" alt="ফুটবল খেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ফুটবল খেলা</h3>
           <p>মাঠে চলছে উত্তেজনাপূর্ণ ফুটবল ম্যাচ।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_025.jpg" alt="ছোট-বড়দের খেলা" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_025.jpg" alt="ছোট-বড়দের খেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ছোট-বড়দের খেলা</h3>
           <p>গ্রামের মাঠে ছোট-বড় মিলে ফুটবল খেলার আনন্দ।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_026.jpg" alt="ফুটবল খেলার আয়োজন" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_026.jpg" alt="ফুটবল খেলার আয়োজন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ফুটবল খেলার আয়োজন</h3>
           <p>গ্রামে ফুটবল খেলার বিশেষ আয়োজন করা হয়েছিল।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_027.jpg" alt="ফুটবল খেলার আয়োজন" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_027.jpg" alt="ফুটবল খেলার আয়োজন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ফুটবল খেলার আয়োজন</h3>
           <p>মাঠে জড়ো হয়ে খেলার প্রস্তুতি নিচ্ছে ছেলেরা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_028.jpg" alt="বিকেলের ফুটবল" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_028.jpg" alt="বিকেলের ফুটবল" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>বিকেলের ফুটবল</h3>
           <p>বিকেল বেলা মাঠে ছোট-বড়দের ফুটবল খেলা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_029.jpg" alt="ছোটদের ফুটবল" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_029.jpg" alt="ছোটদের ফুটবল" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ছোটদের ফুটবল</h3>
           <p>ছোট ছেলেদের উদ্দীপনাময় ফুটবল খেলা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_030.jpg" alt="ফুটবল ম্যাচ" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_030.jpg" alt="ফুটবল ম্যাচ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ফুটবল ম্যাচ</h3>
           <p>মাঠজুড়ে চলছে জমজমাট ফুটবল খেলা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_031.jpg" alt="টিম নিয়ে খেলা" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_031.jpg" alt="টিম নিয়ে খেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>টিম নিয়ে খেলা</h3>
           <p>ছোট-বড়দের টিম নিয়ে ফুটবল খেলার আয়োজন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_032.jpg" alt="গ্রামের ফুটবল টিম" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_032.jpg" alt="গ্রামের ফুটবল টিম" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>গ্রামের ফুটবল টিম</h3>
           <p>গ্রামের ছোট-বড়দের নিয়ে গড়া ফুটবল টিম।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_033.jpg" alt="ফুটবল খেলা" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_033.jpg" alt="ফুটবল খেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ফুটবল খেলা</h3>
           <p>মাঠে বল নিয়ে খেলোয়াড়দের দৌড়ঝাঁপ।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_034.jpg" alt="ছোট-বড়দের খেলা" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_034.jpg" alt="ছোট-বড়দের খেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ছোট-বড়দের খেলা</h3>
           <p>গ্রামের মাঠে সবাই মিলে ফুটবল খেলছে।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_035.jpg" alt="মাঠের খেলা" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_035.jpg" alt="মাঠের খেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>মাঠের খেলা</h3>
           <p>ছোট-বড় মিলে মাঠে ফুটবলের উন্মাদনা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="অনুষ্ঠান">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_036.jpg" alt="বিজয়ী দলের ছবি" loading="lazy">
+    <div class="gallery-card" data-category="অনুষ্ঠান">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_036.jpg" alt="বিজয়ী দলের ছবি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">পুরস্কার</span>
           <h3>বিজয়ী দলের ছবি</h3>
           <p>ট্রফি ও মেডেল হাতে বিজয়ী দলের গর্বিত মুহূর্ত।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="জালসা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_037.jpg" alt="জালসা উপলক্ষে দোকানপাট" loading="lazy">
+    <div class="gallery-card" data-category="জালসা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_037.jpg" alt="জালসা উপলক্ষে দোকানপাট" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মেলা</span>
           <h3>জালসা উপলক্ষে দোকানপাট</h3>
           <p>মসজিদের জালসা উপলক্ষে দোকানপাটের আনাগোনা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_038.jpg" alt="চানমিয়ার সিঙ্গারা" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_038.jpg" alt="চানমিয়ার সিঙ্গারা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">খাবারদাবার</span>
           <h3>চানমিয়ার সিঙ্গারা</h3>
           <p>চানমিয়ার দোকানের তাজা সিঙ্গারা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ঈদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_039.jpg" alt="ঈদগাহ মাঠ" loading="lazy">
+    <div class="gallery-card" data-category="ঈদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_039.jpg" alt="ঈদগাহ মাঠ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ঈদ</span>
           <h3>ঈদগাহ মাঠ</h3>
           <p>ঈদের নামাজের জন্য প্রস্তুত ঈদগাহ মাঠ।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="রান্না">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_040.jpg" alt="রমজানের ইফতারি" loading="lazy">
+    <div class="gallery-card" data-category="রান্না">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_040.jpg" alt="রমজানের ইফতারি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ইফতারি</span>
           <h3>রমজানের ইফতারি</h3>
           <p>রমজান মাসের বিকেল বেলায় ইফতারির আয়োজন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_041.jpg" alt="জার্সি পরে বন্ধু" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_041.jpg" alt="জার্সি পরে বন্ধু" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">বন্ধুত্ব</span>
           <h3>জার্সি পরে বন্ধু</h3>
           <p>একই মানুষ — আগে ব্রাজিল, এখন আর্জেন্টিনার জার্সি পরে।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_042.jpg" alt="কবিরাজের দোকান" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_042.jpg" alt="কবিরাজের দোকান" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">হাটবাজার</span>
           <h3>কবিরাজের দোকান</h3>
           <p>রাতের আলোয় কবিরাজের ওষুধ ও মশলার পসরা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_043.jpg" alt="কবিরাজের আবির্ভাব" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_043.jpg" alt="কবিরাজের আবির্ভাব" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">হাটবাজার</span>
           <h3>কবিরাজের আবির্ভাব</h3>
           <p>কালীবাড়িতে কবিরাজের আবির্ভাব হয়েছিল।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_044.jpg" alt="মাটির খেলনার পসরা" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_044.jpg" alt="মাটির খেলনার পসরা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মেলা</span>
           <h3>মাটির খেলনার পসরা</h3>
           <p>রঙিন মাটির খেলনা ও হাঁড়ি-পাতিলের দোকান।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_045.jpg" alt="মাটির জিনিসের দোকান" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_045.jpg" alt="মাটির জিনিসের দোকান" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মেলা</span>
           <h3>মাটির জিনিসের দোকান</h3>
           <p>গাছের ছায়ায় মাটির তৈরি জিনিসপত্রের পসরা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_046.jpg" alt="হাটে বেচাকেনা" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_046.jpg" alt="হাটে বেচাকেনা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">হাটবাজার</span>
           <h3>হাটে বেচাকেনা</h3>
           <p>ছোটখাটো জিনিসপত্র নিয়ে হাটে বেচাকেনা চলছে।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_047.jpg" alt="ফুচকার দোকান" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_047.jpg" alt="ফুচকার দোকান" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">খাবারদাবার</span>
           <h3>ফুচকার দোকান</h3>
           <p>ফুচকা বিক্রির ব্যস্ততা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ঈদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_048.jpg" alt="খেলনার মেলা" loading="lazy">
+    <div class="gallery-card" data-category="ঈদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_048.jpg" alt="খেলনার মেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ঈদ</span>
           <h3>খেলনার মেলা</h3>
           <p>ঈদগাহ মাঠে শিশুদের স্মৃতির খেলনা বিক্রি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ঈদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_049.jpg" alt="খেলনার পসরা" loading="lazy">
+    <div class="gallery-card" data-category="ঈদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_049.jpg" alt="খেলনার পসরা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ঈদ</span>
           <h3>খেলনার পসরা</h3>
           <p>ঈদের দিন ছোটদের খেলনা বিক্রির দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ঈদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_050.jpg" alt="খেলনার মেলা" loading="lazy">
+    <div class="gallery-card" data-category="ঈদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_050.jpg" alt="খেলনার মেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ঈদ</span>
           <h3>খেলনার মেলা</h3>
           <p>নীল চাদরে সাজানো খেলনার পসরায় শিশুদের ভিড়।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ঈদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_051.jpg" alt="ঈদের সকাল" loading="lazy">
+    <div class="gallery-card" data-category="ঈদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_051.jpg" alt="ঈদের সকাল" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ঈদ</span>
           <h3>ঈদের সকাল</h3>
           <p>ঈদের দিন সকালে গ্রামের আনন্দময় পরিবেশ।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_052.jpg" alt="ফুটবল খেলা উপলক্ষে" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_052.jpg" alt="ফুটবল খেলা উপলক্ষে" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ফুটবল খেলা উপলক্ষে</h3>
           <p>ফুটবল ম্যাচ উপলক্ষে জড়ো হওয়া খেলোয়াড়রা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ঈদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_053.jpg" alt="পাঞ্জাবি পরে যুবকরা" loading="lazy">
+    <div class="gallery-card" data-category="ঈদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_053.jpg" alt="পাঞ্জাবি পরে যুবকরা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">দৈনন্দিন</span>
           <h3>পাঞ্জাবি পরে যুবকরা</h3>
           <p>করোনার পরের এক সাধারণ দিনে সাদা পাঞ্জাবি পরে কয়েকজনের ছবি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_054.jpg" alt="আমাদের মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_054.jpg" alt="আমাদের মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>আমাদের মসজিদ</h3>
           <p>যোগিনীবাড়ী বাইতুর নূর জামে মসজিদের সৌন্দর্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_055.jpg" alt="আশিকের দোকান" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_055.jpg" alt="আশিকের দোকান" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">দোকান</span>
           <h3>আশিকের দোকান</h3>
           <p>কালীবাড়ি বটতলায় আশিকের পরিচিত দোকান।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="রান্না">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_056.jpg" alt="ইফতার বিক্রি" loading="lazy">
+    <div class="gallery-card" data-category="রান্না">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_056.jpg" alt="ইফতার বিক্রি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ইফতারি</span>
           <h3>ইফতার বিক্রি</h3>
           <p>রমজান মাসে কালীবাড়ি বটতলায় ইফতার বিক্রি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_057.jpg" alt="সবজি বিক্রি" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_057.jpg" alt="সবজি বিক্রি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">হাটবাজার</span>
           <h3>সবজি বিক্রি</h3>
           <p>রমজানের বিকেল বেলা কালীবাড়িতে সবজি বিক্রি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="রান্না">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_058.jpg" alt="ইফতারি বিক্রি" loading="lazy">
+    <div class="gallery-card" data-category="রান্না">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_058.jpg" alt="ইফতারি বিক্রি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ইফতারি</span>
           <h3>ইফতারি বিক্রি</h3>
           <p>কালীবাড়ি বটতলায় রমজানের ইফতারি বিক্রির দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_059.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_059.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>বাইতুর নূর জামে মসজিদ</h3>
           <p>যোগিনীবাড়ী বাইতুর নূর জামে মসজিদের দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_060.jpg" alt="মসজিদের অজুখানা" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_060.jpg" alt="মসজিদের অজুখানা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>মসজিদের অজুখানা</h3>
           <p>যোগিনীবাড়ী মসজিদের অজুখানার ছবি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_061.jpg" alt="মসজিদে ইফতার" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_061.jpg" alt="মসজিদে ইফতার" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ইফতারি</span>
           <h3>মসজিদে ইফতার</h3>
           <p>মসজিদে ইফতারের বিশেষ আয়োজন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_062.jpg" alt="জামে মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_062.jpg" alt="জামে মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>জামে মসজিদ</h3>
           <p>আমাদের প্রিয় জামে মসজিদের সৌন্দর্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="রান্না">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_063.jpg" alt="ইফতারি শেষে নামাজ" loading="lazy">
+    <div class="gallery-card" data-category="রান্না">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_063.jpg" alt="ইফতারি শেষে নামাজ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ইফতারি</span>
           <h3>ইফতারি শেষে নামাজ</h3>
           <p>রমজানে ইফতারি শেষে নামাজের জন্য প্রস্তুতি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="দৈনন্দিন">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_064.jpg" alt="আমাদের কালীবাড়ি" loading="lazy">
+    <div class="gallery-card" data-category="দৈনন্দিন">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_064.jpg" alt="আমাদের কালীবাড়ি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">কালীবাড়ি</span>
           <h3>আমাদের কালীবাড়ি</h3>
           <p>গ্রামের প্রাণকেন্দ্র কালীবাড়ির দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="বন্ধুত্ব">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_065.jpg" alt="মাঠে বন্ধুদের সাথে" loading="lazy">
+    <div class="gallery-card" data-category="বন্ধুত্ব">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_065.jpg" alt="মাঠে বন্ধুদের সাথে" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">বন্ধুত্ব</span>
           <h3>মাঠে বন্ধুদের সাথে</h3>
           <p>ধানখেতের পাশে বন্ধুদের সাথে তোলা সেলফি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="অনুষ্ঠান">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_066.jpg" alt="ফ্রি ফায়ার খেলার আয়োজন" loading="lazy">
+    <div class="gallery-card" data-category="অনুষ্ঠান">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_066.jpg" alt="ফ্রি ফায়ার খেলার আয়োজন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">খেলা</span>
           <h3>ফ্রি ফায়ার খেলার আয়োজন</h3>
           <p>কালীবাড়ি বটতলার চা স্টলে ফ্রি ফায়ার খেলার আয়োজন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="দৈনন্দিন">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_067.jpg" alt="গোস্ত কাটা" loading="lazy">
+    <div class="gallery-card" data-category="দৈনন্দিন">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_067.jpg" alt="গোস্ত কাটা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">দৈনন্দিন</span>
           <h3>গোস্ত কাটা</h3>
           <p>কালীবাড়ি বটতলায় গোস্ত কাটার ব্যস্ততা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="জালসা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_068.jpg" alt="সবজির ওরস জালসা" loading="lazy">
+    <div class="gallery-card" data-category="জালসা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_068.jpg" alt="সবজির ওরস জালসা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">জালসা</span>
           <h3>সবজির ওরস জালসা</h3>
           <p>শীতের রাতে গ্রামে সবজির ওরস জালসার আয়োজন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="বন্ধুত্ব">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_069.jpg" alt="গাছের নিচে বন্ধুরা" loading="lazy">
+    <div class="gallery-card" data-category="বন্ধুত্ব">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_069.jpg" alt="গাছের নিচে বন্ধুরা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">বন্ধুত্ব</span>
           <h3>গাছের নিচে বন্ধুরা</h3>
           <p>বটগাছের নিচে বন্ধুদের সাথে তোলা সেলফি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_070.jpg" alt="যোগিনীবাড়ী মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_070.jpg" alt="যোগিনীবাড়ী মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>যোগিনীবাড়ী মসজিদ</h3>
           <p>আমাদের প্রিয় মসজিদের সুন্দর দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_071.jpg" alt="আমাদের মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_071.jpg" alt="আমাদের মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>আমাদের মসজিদ</h3>
           <p>যোগিনীবাড়ী মসজিদের শান্ত পরিবেশ।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_072.jpg" alt="আমাদের মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_072.jpg" alt="আমাদের মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>আমাদের মসজিদ</h3>
           <p>মসজিদের আরেকটি সুন্দর মুহূর্ত।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_073.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_073.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>বাইতুর নূর জামে মসজিদ</h3>
           <p>যোগিনীবাড়ী বাইতুর নূর জামে মসজিদ।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_074.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_074.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>বাইতুর নূর জামে মসজিদ</h3>
           <p>মসজিদের সামনের দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="বন্ধুত্ব">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_075.jpg" alt="তিন বন্ধুর ছবি" loading="lazy">
+    <div class="gallery-card" data-category="বন্ধুত্ব">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_075.jpg" alt="তিন বন্ধুর ছবি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">বন্ধুত্ব</span>
           <h3>তিন বন্ধুর ছবি</h3>
           <p>ধানখেতের পাশে তিন বন্ধুর সেলফি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="বন্ধুত্ব">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_076.jpg" alt="অনুষ্ঠানে বন্ধুরা" loading="lazy">
+    <div class="gallery-card" data-category="বন্ধুত্ব">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_076.jpg" alt="অনুষ্ঠানে বন্ধুরা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">অনুষ্ঠান</span>
           <h3>অনুষ্ঠানে বন্ধুরা</h3>
           <p>বড় অনুষ্ঠানে বন্ধুদের সাথে তোলা গ্রুপ ছবি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="অনুষ্ঠান">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_077.jpg" alt="অনুষ্ঠানের মুহূর্ত" loading="lazy">
+    <div class="gallery-card" data-category="অনুষ্ঠান">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_077.jpg" alt="অনুষ্ঠানের মুহূর্ত" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">অনুষ্ঠান</span>
           <h3>অনুষ্ঠানের মুহূর্ত</h3>
           <p>একই অনুষ্ঠানে আরেকটি আনন্দময় মুহূর্ত।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ঈদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_078.jpg" alt="ঈদের পোশাকে তিনজন" loading="lazy">
+    <div class="gallery-card" data-category="ঈদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_078.jpg" alt="ঈদের পোশাকে তিনজন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ঈদ</span>
           <h3>ঈদের পোশাকে তিনজন</h3>
           <p>রঙিন পাঞ্জাবি পরে তিন বন্ধুর ঈদের ছবি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ঈদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_079.jpg" alt="পাঞ্জাবি পরে বন্ধুরা" loading="lazy">
+    <div class="gallery-card" data-category="ঈদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_079.jpg" alt="পাঞ্জাবি পরে বন্ধুরা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ঈদ</span>
           <h3>পাঞ্জাবি পরে বন্ধুরা</h3>
           <p>কালো, বেগুনি ও ক্রিম রঙের পাঞ্জাবিতে তিনজন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ঈদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_080.jpg" alt="ঈদের দিনের ছবি" loading="lazy">
+    <div class="gallery-card" data-category="ঈদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_080.jpg" alt="ঈদের দিনের ছবি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ঈদ</span>
           <h3>ঈদের দিনের ছবি</h3>
           <p>পাঞ্জাবি পরে বন্ধুদের ঈদের স্মৃতি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="বন্ধুত্ব">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_081.jpg" alt="নৌকায় বন্ধুরা" loading="lazy">
+    <div class="gallery-card" data-category="বন্ধুত্ব">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_081.jpg" alt="নৌকায় বন্ধুরা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">নৌকা ভ্রমণ</span>
           <h3>নৌকায় বন্ধুরা</h3>
           <p>নদীতে নৌকায় চড়ে বন্ধুদের আনন্দময় ভ্রমণ।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="বন্ধুত্ব">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_082.jpg" alt="তরমুজ খেয়ে আড্ডা" loading="lazy">
+    <div class="gallery-card" data-category="বন্ধুত্ব">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_082.jpg" alt="তরমুজ খেয়ে আড্ডা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">নৌকা ভ্রমণ</span>
           <h3>তরমুজ খেয়ে আড্ডা</h3>
           <p>নৌকার উপর তরমুজ কেটে বন্ধুদের সাথে আড্ডা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="দৈনন্দিন">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_083.jpg" alt="কালীবাড়ি বটতলা" loading="lazy">
+    <div class="gallery-card" data-category="দৈনন্দিন">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_083.jpg" alt="কালীবাড়ি বটতলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">কালীবাড়ি</span>
           <h3>কালীবাড়ি বটতলা</h3>
           <p>যোগিনীবাড়ী কালীবাড়ি বটতলার পরিচিত দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_084.jpg" alt="যোগিনীবাড়ী মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_084.jpg" alt="যোগিনীবাড়ী মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>যোগিনীবাড়ী মসজিদ</h3>
           <p>মসজিদের আরেকটি সুন্দর ছবি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_085.jpg" alt="আমাদের মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_085.jpg" alt="আমাদের মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>আমাদের মসজিদ</h3>
           <p>মসজিদের শান্ত ও সুন্দর পরিবেশ।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_086.jpg" alt="জামে মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_086.jpg" alt="জামে মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>জামে মসজিদ</h3>
           <p>আমাদের জামে মসজিদের দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_087.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_087.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>বাইতুর নূর জামে মসজিদ</h3>
           <p>যোগিনীবাড়ী বাইতুর নূর জামে মসজিদ।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="দৈনন্দিন">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_088.jpg" alt="আগামীর ভবিষ্যৎ" loading="lazy">
+    <div class="gallery-card" data-category="দৈনন্দিন">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_088.jpg" alt="আগামীর ভবিষ্যৎ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">শিশু</span>
           <h3>আগামীর ভবিষ্যৎ</h3>
           <p>আমাদের শিশু-কিশোরদের দল — গ্রামের আগামী দিন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="দৈনন্দিন">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_089.jpg" alt="জীবনরা তিন ভাইবোন" loading="lazy">
+    <div class="gallery-card" data-category="দৈনন্দিন">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_089.jpg" alt="জীবনরা তিন ভাইবোন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">পরিবার</span>
           <h3>জীবনরা তিন ভাইবোন</h3>
           <p>জীবনরা তিন ভাইবোন একই ফ্রেমে।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="জালসা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_090.jpg" alt="মাওলানা আব্দুল্লাহ আল আমিন" loading="lazy">
+    <div class="gallery-card" data-category="জালসা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_090.jpg" alt="মাওলানা আব্দুল্লাহ আল আমিন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ওয়াজ</span>
           <h3>মাওলানা আব্দুল্লাহ আল আমিন</h3>
           <p>গ্রামে ওয়াজ মাহফিলে এসেছিলেন মাওলানা আব্দুল্লাহ আল আমিন।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="জালসা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_091.jpg" alt="মসজিদে জালসার আয়োজন" loading="lazy">
+    <div class="gallery-card" data-category="জালসা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_091.jpg" alt="মসজিদে জালসার আয়োজন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">জালসা</span>
           <h3>মসজিদে জালসার আয়োজন</h3>
           <p>মসজিদে জালসা উপলক্ষে বিশেষ আয়োজন করা হয়েছিল।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="জালসা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_092.jpg" alt="জালসার আয়োজন" loading="lazy">
+    <div class="gallery-card" data-category="জালসা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_092.jpg" alt="জালসার আয়োজন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">জালসা</span>
           <h3>জালসার আয়োজন</h3>
           <p>মসজিদের জালসা উপলক্ষে প্রস্তুতির দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="জালসা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_093.jpg" alt="জালসার আয়োজন" loading="lazy">
+    <div class="gallery-card" data-category="জালসা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_093.jpg" alt="জালসার আয়োজন" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">জালসা</span>
           <h3>জালসার আয়োজন</h3>
           <p>জালসা উপলক্ষে মসজিদ প্রাঙ্গণের ব্যস্ততা।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="দৈনন্দিন">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_094.jpg" alt="রাতের কালীবাড়ি বটতলা" loading="lazy">
+    <div class="gallery-card" data-category="দৈনন্দিন">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_094.jpg" alt="রাতের কালীবাড়ি বটতলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">রাতের দৃশ্য</span>
           <h3>রাতের কালীবাড়ি বটতলা</h3>
           <p>রাতের আঁধারে কালীবাড়ি বটতলার দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="ফুটবল">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_095.jpg" alt="ফুটবল ও স্মৃতি" loading="lazy">
+    <div class="gallery-card" data-category="ফুটবল">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_095.jpg" alt="ফুটবল ও স্মৃতি" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ফুটবল</span>
           <h3>ফুটবল ও স্মৃতি</h3>
           <p>আমাদের গ্রামে ফুটবল খেলা ও কিছু অমূল্য স্মৃতি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মেলা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_096.jpg" alt="বিকেলের হইচই" loading="lazy">
+    <div class="gallery-card" data-category="মেলা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_096.jpg" alt="বিকেলের হইচই" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">হাটবাজার</span>
           <h3>বিকেলের হইচই</h3>
           <p>কালীবাড়ি বটতলায় বিকেল বেলা বাজারের মতো হইহুল্লোড়।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_097.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_097.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>বাইতুর নূর জামে মসজিদ</h3>
           <p>যোগিনীবাড়ী বাইতুর নূর জামে মসজিদের ছবি।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_098.jpg" alt="মসজিদের অজুখানা" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_098.jpg" alt="মসজিদের অজুখানা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>মসজিদের অজুখানা</h3>
           <p>আমাদের মসজিদের অজুখানার দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_099.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_099.jpg" alt="বাইতুর নূর জামে মসজিদ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মসজিদ</span>
           <h3>বাইতুর নূর জামে মসজিদ</h3>
           <p>মসজিদের আরেকটি সুন্দর মুহূর্ত।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="জালসা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_100.jpg" alt="জালসার গেট" loading="lazy">
+    <div class="gallery-card" data-category="জালসা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_100.jpg" alt="জালসার গেট" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">জালসা</span>
           <h3>জালসার গেট</h3>
           <p>বাইতুল নূর জামে মসজিদের জালসার গেট।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_101.jpg" alt="মসজিদে ইফতার" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_101.jpg" alt="মসজিদে ইফতার" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">ইফতারি</span>
           <h3>মসজিদে ইফতার</h3>
           <p>মসজিদে ইফতারের আয়োজনের দৃশ্য।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="রান্না">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_102.jpg" alt="ইফতারির প্লেট" loading="lazy">
+    <div class="gallery-card" data-category="রান্না">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_102.jpg" alt="ইফতারির প্লেট" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">খাবারদাবার</span>
           <h3>ইফতারির প্লেট</h3>
           <p>সুন্দর করে সাজানো ইফতারির প্লেট।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="অনুষ্ঠান">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_103.jpg" alt="পুরস্কার বিতরণ" loading="lazy">
+    <div class="gallery-card" data-category="অনুষ্ঠান">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_103.jpg" alt="পুরস্কার বিতরণ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">পুরস্কার</span>
           <h3>পুরস্কার বিতরণ</h3>
           <p>খেলা উপলক্ষে পুরস্কার বিতরণের মুহূর্ত।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="জালসা">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_104.jpg" alt="জালসা ওরস শরীফ" loading="lazy">
+    <div class="gallery-card" data-category="জালসা">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_104.jpg" alt="জালসা ওরস শরীফ" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">জালসা</span>
           <h3>জালসা ওরস শরীফ</h3>
           <p>জালসা ওরস শরীফের ধর্মীয় অনুষ্ঠান।</p>
         </div>
       </div>
     </div>
-    <div class="card-3d" data-category="মসজিদ">
-      <div class="card-inner">
-        <div class="card-img">
-          <img src="photo_105.jpg" alt="মসজিদের পাশে মেলা" loading="lazy">
+    <div class="gallery-card" data-category="মসজিদ">
+      <div class="gallery-card-inner">
+        <div class="gallery-img">
+          <img src="photo_105.jpg" alt="মসজিদের পাশে মেলা" loading="lazy" decoding="async">
         </div>
-        <div class="card-body">
+        <div class="gallery-body">
           <span class="tag">মেলা</span>
           <h3>মসজিদের পাশে মেলা</h3>
           <p>মসজিদের পাশে ছোট-বড় দোকানপাট নিয়ে মেলার আয়োজন।</p>
@@ -1716,70 +1672,47 @@
     </div>
   </div>
 
-    <footer>
-    <div class="footer-deco d1"></div>
-    <div class="footer-deco d2"></div>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo-row">
-          <div class="footer-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="32" cy="32" r="30" fill="url(#g1)" opacity=".9"/>
-  <path d="M32 14c-2 6-8 10-8 18 0 6 3.5 10 8 12 4.5-2 8-6 8-12 0-8-6-12-8-18z" fill="#f0d9a8"/>
-  <path d="M32 18c1.5 4 5 7 5 13 0 4-2 7-5 8.5-3-1.5-5-4.5-5-8.5 0-6 3.5-9 5-13z" fill="#c4954a"/>
-  <path d="M26 28c-3 2-5 5-5 9 0 3 1.5 5 4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <path d="M38 28c3 2 5 5 5 9 0 3-1.5 5-4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <circle cx="32" cy="42" r="2.5" fill="#1f4a32"/>
-  <defs>
-    <linearGradient id="g1" x1="8" y1="8" x2="56" y2="56">
-      <stop stop-color="#2d6a45"/>
-      <stop offset="1" stop-color="#1a3d28"/>
-    </linearGradient>
-  </defs>
-</svg></div>
-          <h3>আমাদের যোগিনী বাড়ী</h3>
-        </div>
-        <p>সবুজ ছায়া, মাটির গন্ধ আর শতবর্ষী বটের ছায়াতলে গড়ে ওঠা একটি জীবন্ত গ্রাম। এখানেই আমাদের শিকড়, এখানেই আমাদের পরিচয়।</p>
-      </div>
-      <div class="footer-col">
-        <h4>দ্রুত লিংক</h4>
-        <ul>
-          <li><a href="https://amaderjoginibari.vercel.app/">মূল পৃষ্ঠা</a></li>
-          <li><a href="https://amaderjoginibari.vercel.app/gallery.html">গ্রামের ছবিঘর</a></li>
-          <li><a href="https://facebook.com/groups/717295329059799/" target="_blank" rel="noopener">ফেসবুক গ্রুপ</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>যোগাযোগ</h4>
-        <ul>
-          <li><a href="https://facebook.com/groups/717295329059799/" target="_blank" rel="noopener">গ্রামের গ্রুপে যোগ দিন</a></li>
-          <li style="color:#c9bfa0;font-size:.9rem;">দুর্গানগর · উল্লাপাড়া · সিরাজগঞ্জ</li>
-        </ul>
-      </div>
+    
+  <div class="no-result" id="noResult">এই ক্যাটাগরিতে কোনো ছবি নেই।</div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">আমাদের যোগিনী বাড়ী</div>
+      <p>যোগিনীবাড়ী গ্রাম, দুর্গানগর ইউনিয়ন, উল্লাপাড়া, সিরাজগঞ্জ — আমাদের সবার প্রিয় জন্মভূমি। সবুজ ছায়া, মাটির গন্ধ আর শতবর্ষী বটের ছায়াতলে গড়ে ওঠা একটি জীবন্ত গ্রাম।</p>
     </div>
-    <div class="footer-bottom">
-      <p>© যোগিনীবাড়ী গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি <span class="footer-heart">♥</span></p>
-      <p style="margin-top:6px;"><a href="https://amaderjoginibari.vercel.app/">মূল ওয়েবসাইটে ফিরে যান</a></p>
+    <div class="footer-links">
+      <a href="https://amaderjoginibari.vercel.app/">মূল পৃষ্ঠা</a>
+      <a href="https://amaderjoginibari.vercel.app/#about">গ্রামের কথা</a>
+      <a href="https://amaderjoginibari.vercel.app/#jibon">গ্রামজীবন</a>
+      <a href="gallery.html">ছবিঘর</a>
+      <a href="https://amaderjoginibari.vercel.app/#notice">লেটেস্ট আপডেট</a>
+      <a href="emergency.html">জরুরি সেবা</a>
+      <a href="https://facebook.com/groups/717295329059799/" target="_blank" rel="noopener">ফেসবুক গ্রুপ</a>
+      <a href="https://amaderjoginibari.vercel.app/#developer">ওয়েব ডেভেলপার</a>
     </div>
-  </footer>
+  </div>
+  <div class="footer-bottom">© যোগিনীবাড়ী গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি <span class="footer-heart">♥</span></div>
+</footer>
 
 <script>
-(function() {
-  const buttons = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.card-3d');
-  const noResult = document.getElementById('noResult');
-  const countAll = document.getElementById('count-all');
-
+/* Filter */
+(function(){
+  var buttons = document.querySelectorAll('.filter-btn');
+  var cards = document.querySelectorAll('.gallery-card');
+  var noResult = document.getElementById('noResult');
+  var countAll = document.getElementById('count-all');
   if (countAll) countAll.textContent = '(' + cards.length + ')';
 
-  buttons.forEach(btn => {
-    btn.addEventListener('click', function() {
-      buttons.forEach(b => b.classList.remove('active'));
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      buttons.forEach(function(b){ b.classList.remove('active'); });
       this.classList.add('active');
-      const filter = this.getAttribute('data-filter');
-      let visible = 0;
-
-      cards.forEach(card => {
-        const cat = card.getAttribute('data-category') || 'দৈনন্দিন';
+      var filter = this.getAttribute('data-filter');
+      var visible = 0;
+      cards.forEach(function(card){
+        var cat = card.getAttribute('data-category') || 'দৈনন্দিন';
         if (filter === 'all' || cat === filter) {
           card.classList.remove('hidden');
           visible++;
@@ -1787,7 +1720,6 @@
           card.classList.add('hidden');
         }
       });
-
       if (noResult) {
         if (visible === 0) noResult.classList.add('show');
         else noResult.classList.remove('show');
@@ -1795,7 +1727,39 @@
     });
   });
 })();
-</script>
 
+/* Lightbox - match home page */
+(function(){
+  function openLb(src, alt){
+    var ov = document.getElementById('lbOverlay');
+    if (!ov) {
+      ov = document.createElement('div');
+      ov.id = 'lbOverlay';
+      ov.className = 'lb-overlay';
+      ov.innerHTML = '<button class="lb-close" aria-label="বন্ধ">×</button><img alt="">';
+      document.body.appendChild(ov);
+      ov.addEventListener('click', function(e){
+        if (e.target === ov || e.target.classList.contains('lb-close')) closeLb();
+      });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLb(); });
+    }
+    var img = ov.querySelector('img');
+    img.src = src;
+    img.alt = alt || '';
+    ov.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb(){
+    var ov = document.getElementById('lbOverlay');
+    if (ov) { ov.classList.remove('open'); document.body.style.overflow = ''; }
+  }
+  document.querySelectorAll('.gallery-img img').forEach(function(img){
+    img.addEventListener('click', function(e){
+      e.preventDefault();
+      openLb(img.src, img.alt);
+    });
+  });
+})();
+</script>
 </body>
 </html>
