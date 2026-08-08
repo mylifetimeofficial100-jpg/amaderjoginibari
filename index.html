@@ -980,19 +980,25 @@
     if (!item) return "file";
     if (typeof item === "string") {
       var u = item.toLowerCase();
-      if (u.match(/\.(jpg|jpeg|png|gif|webp|bmp)(\?|$)/)) return "image";
-      if (u.match(/\.(mp4|webm|mov|mkv)(\?|$)/)) return "video";
-      if (u.match(/\.(mp3|wav|ogg|m4a)(\?|$)/)) return "audio";
+      if (u.match(/\.(jpg|jpeg|png|gif|webp|bmp|svg)(\?|$)/)) return "image";
+      if (u.match(/\.(mp4|webm|mov|mkv|avi)(\?|$)/)) return "video";
+      if (u.match(/\.(mp3|wav|ogg|m4a|aac)(\?|$)/)) return "audio";
       if (u.match(/\.pdf(\?|$)/)) return "pdf";
       if (u.includes("youtube.com") || u.includes("youtu.be")) return "youtube";
       return "link";
     }
-    var t = (item.type || item.resource_type || "").toLowerCase();
+    // resourceType সাপোর্ট (অ্যাডমিন যেভাবে সেভ করে)
+    var t = (item.resourceType || item.type || item.resource_type || "").toLowerCase();
     if (t.includes("image") || t === "img") return "image";
     if (t.includes("video")) return "video";
     if (t.includes("audio")) return "audio";
     if (t.includes("pdf") || t === "raw") return "pdf";
     if (t.includes("youtube")) return "youtube";
+    var fmt = (item.format || "").toLowerCase();
+    if (["jpg","jpeg","png","gif","webp","bmp","svg"].indexOf(fmt) !== -1) return "image";
+    if (["mp4","webm","mov","mkv","avi"].indexOf(fmt) !== -1) return "video";
+    if (["mp3","wav","ogg","m4a","aac"].indexOf(fmt) !== -1) return "audio";
+    if (fmt === "pdf") return "pdf";
     return "file";
   }
 
@@ -1005,7 +1011,7 @@
   function getName(item) {
     if (!item) return "";
     if (typeof item === "string") return "";
-    return item.name || item.original_filename || item.public_id || "";
+    return item.originalName || item.name || item.original_filename || item.public_id || "";
   }
 
   function renderMedia(item) {
@@ -1013,7 +1019,7 @@
     if (!url) return "";
     var type = getType(item);
     var name = getName(item);
-    var size = (item && item.size) ? item.size : 0;
+    var size = (item && (item.bytes || item.size)) ? (item.bytes || item.size) : 0;
     var h = "";
 
     if (type === "image") {
@@ -1087,142 +1093,6 @@
           if (d.videoLink) html += renderMedia(d.videoLink);
         }
 
-        html += '</div>';
-      });
-      box.innerHTML = html;
-    })
-    .catch(function (err) {
-      console.error("Posts load error:", err);
-      var box = document.getElementById("posts-container");
-      if (box) {
-        box.innerHTML = '<p style="text-align:center;color:#b84a42;padding:30px 0;">ডেটা লোড করতে সমস্যা হয়েছে। পরে আবার চেষ্টা করুন।</p>';
-      }
-    });
-})();
-</script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script>
-(function () {
-  var config = {
-    apiKey: "AIzaSyBqiOcn85zgvzDXt_Y60e3CQDEpdlYRBQ0",
-    authDomain: "amader-joginibari.firebaseapp.com",
-    projectId: "amader-joginibari",
-    storageBucket: "amader-joginibari.firebasestorage.app",
-    messagingSenderId: "917158468104",
-    appId: "1:917158468104:web:039539cca785319febcfbd",
-    measurementId: "G-SK4FHVPSTE"
-  };
-
-  if (!firebase.apps.length) {
-    firebase.initializeApp(config);
-  }
-  var db = firebase.firestore();
-
-  function ytId(link) {
-    if (!link) return null;
-    var m = String(link).match(/(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/watch\?.+&v=))([\w-]{11})/);
-    return m ? m[1] : null;
-  }
-
-  function fmtDate(ts) {
-    if (!ts || !ts.toDate) return "";
-    try {
-      return ts.toDate().toLocaleDateString("bn-BD", { year: "numeric", month: "long", day: "numeric" });
-    } catch (e) { return ""; }
-  }
-
-  function esc(s) {
-    if (!s) return "";
-    return String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
-  }
-
-  function fmtSize(b) {
-    if (!b) return "";
-    if (b < 1024) return b + " B";
-    if (b < 1048576) return (b / 1024).toFixed(1) + " KB";
-    return (b / 1048576).toFixed(1) + " MB";
-  }
-
-  function renderMedia(m) {
-    if (!m || !m.url) return "";
-    var h = "";
-    if (m.type === "image") {
-      h += '<img src="' + esc(m.url) + '" alt="" style="width:100%;max-height:420px;object-fit:cover;border-radius:10px;margin-bottom:14px;display:block;" loading="lazy" onerror="this.style.display=\'none\'">';
-    } else if (m.type === "video") {
-      h += '<video src="' + esc(m.url) + '" controls playsinline style="width:100%;max-height:400px;border-radius:10px;margin-bottom:14px;background:#000;"></video>';
-    } else if (m.type === "audio") {
-      h += '<div style="background:#f0ebe0;padding:14px;border-radius:10px;margin-bottom:14px;">' +
-        '<div style="font-size:0.85rem;color:#5c5346;margin-bottom:8px;">🎵 ' + esc(m.name || "অডিও") + '</div>' +
-        '<audio src="' + esc(m.url) + '" controls style="width:100%;"></audio></div>';
-    } else if (m.type === "youtube") {
-      var id = ytId(m.url);
-      if (id) {
-        h += '<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;background:#000;margin-bottom:14px;">' +
-          '<iframe src="https://www.youtube.com/embed/' + id + '" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" ' +
-          'allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div>';
-      } else {
-        h += '<a href="' + esc(m.url) + '" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;background:#e8f0eb;color:#1f4a32;padding:12px 16px;border-radius:8px;text-decoration:none;margin-bottom:12px;font-weight:500;">' +
-          '<span style="font-size:1.4rem;">🎬</span><span>ইউটিউব ভিডিও</span><span style="margin-left:auto;font-size:0.85rem;">খুলুন →</span></a>';
-      }
-    } else if (m.type === "pdf" || m.type === "file" || m.type === "link") {
-      var icon = m.type === "pdf" ? "📄" : (m.type === "link" ? "🔗" : "📎");
-      var label = m.name || (m.type === "link" ? "লিংক খুলুন" : "ফাইল ডাউনলোড");
-      var size = m.size ? " (" + fmtSize(m.size) + ")" : "";
-      h += '<a href="' + esc(m.url) + '" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;background:#e8f0eb;color:#1f4a32;padding:12px 16px;border-radius:8px;text-decoration:none;margin-bottom:12px;font-weight:500;">' +
-        '<span style="font-size:1.4rem;">' + icon + '</span>' +
-        '<span style="word-break:break-all;">' + esc(label) + size + '</span>' +
-        '<span style="margin-left:auto;font-size:0.85rem;flex-shrink:0;">খুলুন →</span></a>';
-    }
-    return h;
-  }
-
-  db.collection("posts")
-    .orderBy("createdAt", "desc")
-    .limit(30)
-    .get()
-    .then(function (snap) {
-      var box = document.getElementById("posts-container");
-      if (!box) return;
-      if (snap.empty) {
-        box.innerHTML = '<p style="text-align:center;color:#666;padding:40px 0;font-size:1.05rem;">এখনো কোনো আপডেট নেই। শীঘ্রই নতুন আপডেট আসবে।</p>';
-        return;
-      }
-      var html = "";
-      snap.forEach(function (doc) {
-        var d = doc.data();
-        html += '<div style="background:#faf8f2;border:1px solid #e5e0d5;border-radius:12px;padding:22px;margin-bottom:20px;box-shadow:0 4px 14px rgba(18,38,26,0.06);">';
-        if (d.createdAt) {
-          html += '<div style="font-size:0.82rem;color:#b84a42;margin-bottom:10px;letter-spacing:0.5px;">' + fmtDate(d.createdAt) + '</div>';
-        }
-        if (d.title) {
-          html += '<h3 style="margin:0 0 10px;font-size:1.2rem;color:#12261a;font-weight:600;">' + esc(d.title) + '</h3>';
-        }
-        if (d.text) {
-          html += '<p style="margin:0 0 14px;line-height:1.75;color:#1a1610;font-size:1.05rem;white-space:pre-wrap;">' + esc(d.text) + '</p>';
-        }
-        if (d.media && d.media.length) {
-          for (var i = 0; i < d.media.length; i++) {
-            html += renderMedia(d.media[i]);
-          }
-        } else {
-          if (d.imageLink) {
-            html += '<img src="' + esc(d.imageLink) + '" alt="" style="width:100%;max-height:420px;object-fit:cover;border-radius:10px;margin-bottom:14px;display:block;" loading="lazy" onerror="this.style.display=\'none\'">';
-          }
-          if (d.videoLink) {
-            var id = ytId(d.videoLink);
-            if (id) {
-              html += '<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;background:#000;margin-bottom:14px;">' +
-                '<iframe src="https://www.youtube.com/embed/' + id + '" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe></div>';
-            } else {
-              html += '<a href="' + esc(d.videoLink) + '" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;background:#e8f0eb;color:#1f4a32;padding:12px 16px;border-radius:8px;text-decoration:none;margin-bottom:12px;font-weight:500;">' +
-                '<span style="font-size:1.4rem;">🔗</span><span style="word-break:break-all;">' + esc(d.videoLink) + '</span><span style="margin-left:auto;font-size:0.85rem;flex-shrink:0;">খুলুন →</span></a>';
-            }
-          }
-        }
         html += '</div>';
       });
       box.innerHTML = html;
