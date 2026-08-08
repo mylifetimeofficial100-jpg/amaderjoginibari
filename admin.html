@@ -2,130 +2,168 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>অ্যাডমিন — আমাদের যোগিনী বাড়ী</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>এডমিন প্যানেল — আমাদের যোগিনী বাড়ী</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans Bengali',system-ui,sans-serif;background:#f3efe6;color:#1a1610;min-height:100vh;padding:14px;line-height:1.5}
-.box{max-width:540px;margin:0 auto 14px;background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 16px rgba(0,0,0,.07);border:1px solid #e5e0d5}
-h1{font-size:1.12rem;color:#1f4a32}
-.sub{font-size:.8rem;color:#6b6358;text-align:center;margin-bottom:12px}
-label{display:block;font-size:.8rem;font-weight:600;color:#5c5346;margin:12px 0 5px}
-input,textarea,button{font-family:inherit;font-size:15px}
-input,textarea{width:100%;padding:11px 12px;border:1.5px solid #d0c8b4;border-radius:10px;background:#faf8f2}
-input:focus,textarea:focus{outline:none;border-color:#1f4a32;background:#fff}
-textarea{min-height:84px;resize:vertical}
-.btn{width:100%;padding:12px;border:none;border-radius:10px;font-weight:700;cursor:pointer;margin-top:10px}
-.btn-green{background:#1f4a32;color:#fff}
-.btn-green:disabled{opacity:.55;cursor:not-allowed}
-.btn-red{background:#b84a42;color:#fff}
-.btn-sm{width:auto;padding:6px 12px;font-size:12px;margin-top:6px}
-.btn-outline{background:#fff;border:1.5px solid #1f4a32;color:#1f4a32;width:auto;padding:8px 14px;font-size:13px;margin-top:8px}
-.msg{text-align:center;font-weight:600;font-size:.84rem;margin-top:10px;min-height:20px;word-break:break-word}
-.ok{color:#1f4a32}.err{color:#b84a42}.info{color:#5c5346}
-.tabs{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 10px}
-.tab{flex:1;min-width:62px;padding:8px 4px;border:1.5px solid #d0c8b4;border-radius:8px;background:#faf8f2;font-size:.74rem;font-weight:600;cursor:pointer;text-align:center;color:#5c5346}
-.tab.on{background:#1f4a32;border-color:#1f4a32;color:#fff}
-.drop{border:2px dashed #d0c8b4;border-radius:12px;padding:18px 10px;text-align:center;background:#faf8f2;cursor:pointer}
-.drop:hover,.drop.over{border-color:#1f4a32;background:#eef5f0}
-.drop input{display:none}
-.hint{font-size:.72rem;color:#8a8070;margin-top:4px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
-.thumb{position:relative;border-radius:10px;overflow:hidden;background:#eee;aspect-ratio:1}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.thumb .rm{position:absolute;top:4px;right:4px;width:24px;height:24px;border:none;border-radius:50%;background:rgba(184,74,66,.95);color:#fff;font-size:14px;font-weight:700;cursor:pointer;line-height:24px;padding:0}
-.thumb .sz{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);color:#fff;font-size:10px;padding:2px 4px;text-align:center}
-.bar{height:6px;background:#e5e0d5;border-radius:3px;margin-top:10px;overflow:hidden;display:none}
-.bar.show{display:block}
-.bar>i{display:block;height:100%;background:#1f4a32;width:0%;transition:width .2s}
-.post{border-bottom:1px solid #eee;padding:12px 0}
-.post .d{font-size:.72rem;color:#b84a42;margin-bottom:3px}
-.post .t{font-size:.9rem;white-space:pre-wrap;word-break:break-word;margin-bottom:6px}
-.post img{max-width:100%;max-height:110px;border-radius:8px;margin:4px 4px 4px 0;display:inline-block;vertical-align:top}
-.empty{text-align:center;color:#8a8070;padding:14px 0}
-.user{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:#6b6358;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #eee}
-.hidden{display:none!important}
-.note{background:#eef5f0;border:1px solid #c5d9cc;border-radius:8px;padding:8px 10px;font-size:.74rem;color:#1f4a32;margin-top:8px}
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans Bengali', Arial, sans-serif;
+    background: #f0ece0;
+    margin: 0;
+    padding: 0;
+    color: #2c3e2d;
+  }
+  header {
+    background: #1f3a24;
+    color: #fff;
+    padding: 18px 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 16px; }
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+  #loginBox { max-width: 360px; margin: 60px auto; }
+  input[type=password], input[type=text], textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-top: 6px;
+    margin-bottom: 14px;
+    font-family: inherit;
+  }
+  textarea { min-height: 80px; resize: vertical; }
+  label { font-weight: bold; font-size: 14px; }
+  button {
+    background: #1f3a24;
+    color: #fff;
+    border: none;
+    padding: 13px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+    cursor: pointer;
+  }
+  button:disabled { background: #999; }
+  .file-input-wrap {
+    border: 2px dashed #1f3a24;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 14px;
+    background: #f7f5ee;
+  }
+  .file-list { font-size: 13px; margin-top: 8px; color: #555; }
+  .progress-item {
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .bar {
+    height: 6px;
+    background: #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+  .bar-fill {
+    height: 100%;
+    background: #1f3a24;
+    width: 0%;
+    transition: width 0.2s;
+  }
+  .post-item {
+    border: 1px solid #e5e0d0;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+  .post-item h4 { margin: 0 0 4px 0; }
+  .post-item .meta { font-size: 12px; color: #888; margin-bottom: 6px; }
+  .post-item .files { font-size: 13px; color: #444; }
+  .del-btn {
+    background: #a33;
+    width: auto;
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .msg { font-size: 13px; padding: 8px; border-radius: 6px; margin-bottom: 10px; }
+  .msg.ok { background: #e2f4e2; color: #1f3a24; }
+  .msg.err { background: #fbe2e2; color: #a33; }
+  .section-title { font-size: 16px; font-weight: bold; margin-bottom: 12px; color: #1f3a24; }
 </style>
 </head>
 <body>
 
-<div class="box" id="loginBox">
-  <h1 style="text-align:center">🔐 অ্যাডমিন লগইন</h1>
-  <p class="sub">আমাদের যোগিনী বাড়ী</p>
-  <label>ইমেইল</label>
-  <input type="email" id="email" placeholder="ইমেইল" autocomplete="email">
-  <label>পাসওয়ার্ড</label>
-  <input type="password" id="password" placeholder="পাসওয়ার্ড" autocomplete="current-password">
-  <button class="btn btn-green" id="loginBtn" onclick="doLogin()">লগইন করুন</button>
-  <div class="msg" id="loginMsg"></div>
+<div id="loginBox" class="wrap">
+  <div class="card">
+    <div class="section-title">🔒 এডমিন লগইন</div>
+    <input type="password" id="pwInput" placeholder="পাসওয়ার্ড দিন">
+    <button onclick="checkPassword()">প্রবেশ করুন</button>
+    <div id="loginMsg"></div>
+  </div>
 </div>
 
-<div id="mainBox" class="hidden">
-  <div class="box">
-    <div class="user">
-      <span id="userEmail">—</span>
-      <button class="btn btn-red btn-sm" onclick="doLogout()">লগআউট</button>
-    </div>
-    <h1>নতুন আপডেট</h1>
+<div id="adminPanel" style="display:none;">
+  <header>আমাদের যোগিনী বাড়ী — এডমিন প্যানেল</header>
+  <div class="wrap">
 
-    <label>শিরোনাম (ঐচ্ছিক)</label>
-    <input type="text" id="title" placeholder="শিরোনাম">
+    <div class="card">
+      <div class="section-title">➕ নতুন পোস্ট যোগ করুন</div>
+      <div id="uploadMsg"></div>
 
-    <label>টেক্সট / নোটিশ</label>
-    <textarea id="text" placeholder="নোটিশ লিখুন..."></textarea>
+      <label>শিরোনাম</label>
+      <input type="text" id="postTitle" placeholder="যেমন: ফুটবল খেলা নিয়ে হই-হুল্লো">
 
-    <label>মিডিয়া</label>
-    <div class="tabs">
-      <button type="button" class="tab on" data-t="none" onclick="setTab('none')">টেক্সট</button>
-      <button type="button" class="tab" data-t="image" onclick="setTab('image')">ছবি (একাধিক)</button>
-      <button type="button" class="tab" data-t="video" onclick="setTab('video')">ভিডিও লিংক</button>
-      <button type="button" class="tab" data-t="link" onclick="setTab('link')">লিংক</button>
-    </div>
+      <label>বিবরণ</label>
+      <textarea id="postDesc" placeholder="বিস্তারিত লিখুন..."></textarea>
 
-    <div id="panel-image" class="hidden">
-      <div class="drop" id="dropImg" onclick="document.getElementById('fileImg').click()">
-        <div style="font-size:1.5rem">🖼️</div>
-        <div><b>এক বা একাধিক ছবি সিলেক্ট</b></div>
-        <div class="hint">JPG / PNG · প্রতিটা অটো কম্প্রেস · সর্বোচ্চ ৮টি</div>
-        <input type="file" id="fileImg" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple>
+      <label>ক্যাটাগরি</label>
+      <select id="postCategory">
+        <option value="আপডেট">আপডেট / সংবাদ</option>
+        <option value="ছবি">ছবি গ্যালারি</option>
+        <option value="ভিডিও">ভিডিও</option>
+        <option value="অডিও">অডিও</option>
+        <option value="ডকুমেন্ট">নোটিশ / ডকুমেন্ট</option>
+      </select>
+
+      <label>ফাইল যুক্ত করুন (ছবি, ভিডিও, অডিও, PDF, Word — একাধিক নির্বাচন করা যাবে)</label>
+      <div class="file-input-wrap">
+        <input type="file" id="fileInput" multiple accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.txt,.xls,.xlsx,.ppt,.pptx">
+        <div class="file-list" id="fileList">কোনো ফাইল নির্বাচিত হয়নি</div>
       </div>
-      <div class="grid" id="thumbGrid"></div>
-      <button type="button" class="btn btn-outline" id="addMoreBtn" onclick="document.getElementById('fileImg').click()" style="display:none">+ আরও ছবি যোগ</button>
-      <label>অথবা একটি ছবির URL</label>
-      <input type="url" id="imgUrl" placeholder="https://...">
-      <div class="note">ফাইল নিলে URL খালি রাখুন। একাধিক ছবি একসাথে সাবমিট করা যাবে।</div>
+
+      <div id="progressArea"></div>
+
+      <button id="submitBtn" onclick="submitPost()">পোস্ট প্রকাশ করুন</button>
     </div>
 
-    <div id="panel-video" class="hidden">
-      <label>ইউটিউব / ভিডিও লিংক</label>
-      <input type="url" id="vidUrl" placeholder="https://youtube.com/watch?v=...">
+    <div class="card">
+      <div class="section-title">📋 প্রকাশিত পোস্টসমূহ</div>
+      <div id="postsList">লোড হচ্ছে...</div>
     </div>
 
-    <div id="panel-link" class="hidden">
-      <label>যেকোনো লিংক</label>
-      <input type="url" id="extLink" placeholder="https://...">
-    </div>
-
-    <div class="bar" id="bar"><i id="barFill"></i></div>
-    <div class="msg info" id="progText"></div>
-    <button class="btn btn-green" id="submitBtn" onclick="doSubmit()">সাবমিট করুন</button>
-    <div class="msg" id="submitMsg"></div>
-  </div>
-
-  <div class="box">
-    <h1 style="margin-bottom:10px">পুরনো আপডেট</h1>
-    <div id="list"><div class="empty">লোড হচ্ছে...</div></div>
   </div>
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script>
-(function(){
-  var cfg = {
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, getDocs, deleteDoc, doc,
+    orderBy, query, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
     apiKey: "AIzaSyBqiOcn85zgvzDXt_Y60e3CQDEpdlYRBQ0",
     authDomain: "amader-joginibari.firebaseapp.com",
     projectId: "amader-joginibari",
@@ -134,343 +172,176 @@ textarea{min-height:84px;resize:vertical}
     appId: "1:917158468104:web:039539cca785319febcfbd",
     measurementId: "G-SK4FHVPSTE"
   };
-  firebase.initializeApp(cfg);
-  var auth = firebase.auth();
-  var db = firebase.firestore();
 
-  var tab = 'none';
-  var files = []; // File objects queue
-  var busy = false;
-  var MAX_IMAGES = 8;
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-  auth.onAuthStateChanged(function(u){
-    if(u){
-      document.getElementById('loginBox').classList.add('hidden');
-      document.getElementById('mainBox').classList.remove('hidden');
-      document.getElementById('userEmail').textContent = u.email || 'Admin';
-      loadList();
+  // ---- Cloudinary config ----
+  const CLOUD_NAME = "ykmetzgo";
+  const UPLOAD_PRESET = "mby2erxi";
+
+  // ---- Simple password gate ----
+  const ADMIN_PASSWORD = "joginibari2026"; // <-- এখানে আপনার পাসওয়ার্ড বদলে নিন
+
+  window.checkPassword = function () {
+    const val = document.getElementById("pwInput").value;
+    if (val === ADMIN_PASSWORD) {
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("adminPanel").style.display = "block";
+      loadPosts();
     } else {
-      document.getElementById('loginBox').classList.remove('hidden');
-      document.getElementById('mainBox').classList.add('hidden');
+      document.getElementById("loginMsg").innerHTML =
+        '<div class="msg err">ভুল পাসওয়ার্ড, আবার চেষ্টা করুন</div>';
     }
-  });
-
-  window.doLogin = function(){
-    var e = document.getElementById('email').value.trim();
-    var p = document.getElementById('password').value;
-    var m = document.getElementById('loginMsg');
-    var b = document.getElementById('loginBtn');
-    if(!e||!p){ m.className='msg err'; m.textContent='ইমেইল ও পাসওয়ার্ড দিন'; return; }
-    b.disabled=true; b.textContent='লগইন হচ্ছে...'; m.textContent='';
-    auth.signInWithEmailAndPassword(e,p)
-      .catch(function(){ m.className='msg err'; m.textContent='ভুল ইমেইল বা পাসওয়ার্ড'; })
-      .finally(function(){ b.disabled=false; b.textContent='লগইন করুন'; });
-  };
-  window.doLogout = function(){ auth.signOut(); };
-  document.getElementById('password').addEventListener('keydown', function(ev){
-    if(ev.key==='Enter') doLogin();
-  });
-
-  window.setTab = function(t){
-    tab = t;
-    document.querySelectorAll('.tab').forEach(function(el){
-      el.classList.toggle('on', el.getAttribute('data-t')===t);
-    });
-    ['image','video','link'].forEach(function(x){
-      document.getElementById('panel-'+x).classList.toggle('hidden', x!==t);
-    });
   };
 
-  var fileImg = document.getElementById('fileImg');
-  var dropImg = document.getElementById('dropImg');
-  fileImg.addEventListener('change', function(){
-    if(fileImg.files && fileImg.files.length) addFiles(fileImg.files);
-    fileImg.value = '';
-  });
-  dropImg.addEventListener('dragover', function(e){ e.preventDefault(); dropImg.classList.add('over'); });
-  dropImg.addEventListener('dragleave', function(){ dropImg.classList.remove('over'); });
-  dropImg.addEventListener('drop', function(e){
-    e.preventDefault(); dropImg.classList.remove('over');
-    if(e.dataTransfer.files && e.dataTransfer.files.length) addFiles(e.dataTransfer.files);
+  // show selected file names
+  const fileInput = document.getElementById("fileInput");
+  fileInput.addEventListener("change", () => {
+    const files = Array.from(fileInput.files);
+    document.getElementById("fileList").innerHTML = files.length
+      ? files.map(f => `📎 ${f.name} (${(f.size/1024/1024).toFixed(2)} MB)`).join("<br>")
+      : "কোনো ফাইল নির্বাচিত হয়নি";
   });
 
-  function addFiles(fileList){
-    document.getElementById('imgUrl').value = '';
-    for(var i=0;i<fileList.length;i++){
-      if(files.length >= MAX_IMAGES){
-        alert('সর্বোচ্চ '+MAX_IMAGES+'টি ছবি');
-        break;
-      }
-      var f = fileList[i];
-      var ok = !f.type || f.type.indexOf('image/')===0 || /\.(jpe?g|png|webp)$/i.test(f.name);
-      if(!ok) continue;
-      files.push(f);
-    }
-    renderThumbs();
+  function resourceTypeFor(file) {
+    if (file.type.startsWith("image/")) return "image";
+    if (file.type.startsWith("video/")) return "video";
+    if (file.type.startsWith("audio/")) return "video"; // cloudinary treats audio under video endpoint
+    return "raw"; // pdf, docx, etc.
   }
 
-  function renderThumbs(){
-    var grid = document.getElementById('thumbGrid');
-    var addBtn = document.getElementById('addMoreBtn');
-    grid.innerHTML = '';
-    files.forEach(function(f, idx){
-      var div = document.createElement('div');
-      div.className = 'thumb';
-      div.innerHTML = '<button type="button" class="rm" data-i="'+idx+'">×</button><div class="sz">'+(f.size/1024).toFixed(0)+' KB</div>';
-      var img = document.createElement('img');
-      img.alt = '';
-      div.insertBefore(img, div.firstChild);
-      grid.appendChild(div);
-      // preview
-      var u = URL.createObjectURL(f);
-      img.onload = function(){ URL.revokeObjectURL(u); };
-      img.src = u;
-    });
-    grid.querySelectorAll('.rm').forEach(function(btn){
-      btn.onclick = function(e){
-        e.stopPropagation();
-        files.splice(parseInt(btn.getAttribute('data-i'),10), 1);
-        renderThumbs();
+  function uploadToCloudinary(file, onProgress) {
+    return new Promise((resolve, reject) => {
+      const type = resourceTypeFor(file);
+      const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${type}/upload`;
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", UPLOAD_PRESET);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", url);
+      xhr.upload.onprogress = (e) => {
+        if (e.lengthComputable) onProgress(Math.round((e.loaded / e.total) * 100));
       };
-    });
-    addBtn.style.display = files.length > 0 && files.length < MAX_IMAGES ? 'inline-block' : 'none';
-  }
-
-  function loadImageForCanvas(file){
-    return new Promise(function(resolve, reject){
-      function fromBitmap(){
-        if(typeof createImageBitmap !== 'function') return Promise.reject();
-        return createImageBitmap(file).then(function(bmp){
-          return { source: bmp, width: bmp.width, height: bmp.height, cleanup: function(){ try{ bmp.close(); }catch(e){} } };
-        });
-      }
-      function fromObjectURL(){
-        return new Promise(function(res, rej){
-          var u = URL.createObjectURL(file);
-          var img = new Image();
-          img.onload = function(){
-            res({ source: img, width: img.naturalWidth||img.width, height: img.naturalHeight||img.height, cleanup: function(){ URL.revokeObjectURL(u); } });
-          };
-          img.onerror = function(){ URL.revokeObjectURL(u); rej(); };
-          img.src = u;
-        });
-      }
-      function fromReader(){
-        return new Promise(function(res, rej){
-          var r = new FileReader();
-          r.onload = function(){
-            var img = new Image();
-            img.onload = function(){
-              res({ source: img, width: img.naturalWidth||img.width, height: img.naturalHeight||img.height, cleanup: function(){} });
-            };
-            img.onerror = function(){ rej(); };
-            img.src = r.result;
-          };
-          r.onerror = function(){ rej(); };
-          r.readAsDataURL(file);
-        });
-      }
-      fromBitmap().catch(fromObjectURL).catch(fromReader)
-        .then(resolve)
-        .catch(function(){ reject(new Error('ছবি পড়া যায়নি: '+(file.name||''))); });
-    });
-  }
-
-  function compressOne(file){
-    return loadImageForCanvas(file).then(function(info){
-      var w = info.width, h = info.height;
-      if(!w||!h){ info.cleanup(); throw new Error('সাইজ পাওয়া যায়নি'); }
-      var max = 1100;
-      if(w>max||h>max){
-        if(w>h){ h=Math.round(h*max/w); w=max; }
-        else { w=Math.round(w*max/h); h=max; }
-      }
-      var canvas = document.createElement('canvas');
-      canvas.width = w; canvas.height = h;
-      var ctx = canvas.getContext('2d', { alpha: false });
-      ctx.fillStyle = '#fff';
-      ctx.fillRect(0,0,w,h);
-      ctx.drawImage(info.source, 0, 0, w, h);
-      info.cleanup();
-
-      return new Promise(function(resolve, reject){
-        function encode(q, attempt){
-          try {
-            var dataUrl = canvas.toDataURL('image/jpeg', q);
-            var size = Math.round((dataUrl.length - 23) * 0.75);
-            if(size > 170*1024 && q > 0.38 && attempt < 7){
-              encode(q - 0.1, attempt + 1); return;
-            }
-            if(size > 240*1024 && canvas.width > 600 && attempt < 10){
-              var nw=Math.round(canvas.width*0.72), nh=Math.round(canvas.height*0.72);
-              var c2=document.createElement('canvas');
-              c2.width=nw; c2.height=nh;
-              c2.getContext('2d').drawImage(canvas,0,0,nw,nh);
-              canvas=c2;
-              encode(Math.max(0.4, q-0.05), attempt+1); return;
-            }
-            resolve({ dataUrl: dataUrl, size: size, name: file.name });
-          } catch(e){
-            reject(new Error('কম্প্রেস ব্যর্থ: '+(file.name||'')));
-          }
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const res = JSON.parse(xhr.responseText);
+          resolve({
+            url: res.secure_url,
+            resourceType: type,
+            format: res.format || "",
+            originalName: file.name,
+            bytes: res.bytes
+          });
+        } else {
+          reject(new Error("Cloudinary upload failed: " + xhr.responseText));
         }
-        encode(0.7, 0);
-      });
+      };
+      xhr.onerror = () => reject(new Error("Network error during upload"));
+      xhr.send(formData);
     });
   }
 
-  window.doSubmit = async function(){
-    if(busy) return;
-    var title = document.getElementById('title').value.trim();
-    var text = document.getElementById('text').value.trim();
-    var imgUrl = document.getElementById('imgUrl').value.trim();
-    var vidUrl = document.getElementById('vidUrl').value.trim();
-    var extLink = document.getElementById('extLink').value.trim();
-    var msg = document.getElementById('submitMsg');
-    var btn = document.getElementById('submitBtn');
-    var bar = document.getElementById('bar');
-    var prog = document.getElementById('progText');
+  window.submitPost = async function () {
+    const title = document.getElementById("postTitle").value.trim();
+    const desc = document.getElementById("postDesc").value.trim();
+    const category = document.getElementById("postCategory").value;
+    const files = Array.from(fileInput.files);
+    const msgBox = document.getElementById("uploadMsg");
+    const progressArea = document.getElementById("progressArea");
+    const submitBtn = document.getElementById("submitBtn");
 
-    if(imgUrl && !/^https?:\/\//i.test(imgUrl)) imgUrl = '';
-
-    if(!(title || text || files.length || imgUrl || vidUrl || extLink)){
-      msg.className='msg err'; msg.textContent='কমপক্ষে টেক্সট, ছবি বা লিংক দিন';
+    if (!title) {
+      msgBox.innerHTML = '<div class="msg err">শিরোনাম দিন</div>';
       return;
     }
 
-    busy = true;
-    btn.disabled = true;
-    btn.textContent = 'সেভ হচ্ছে...';
-    msg.textContent = '';
-    bar.classList.add('show');
-    document.getElementById('barFill').style.width = '5%';
-    prog.textContent = 'শুরু...';
+    submitBtn.disabled = true;
+    submitBtn.textContent = "আপলোড হচ্ছে...";
+    progressArea.innerHTML = "";
+    msgBox.innerHTML = "";
+
+    const uploadedFiles = [];
 
     try {
-      var media = [];
-      var imageLink = '';
-      var videoLink = '';
-
-      if(files.length){
-        var totalBefore = 0, totalAfter = 0;
-        for(var i=0; i<files.length; i++){
-          prog.textContent = 'ছবি কম্প্রেস '+(i+1)+'/'+files.length+' ...';
-          document.getElementById('barFill').style.width = Math.round(10 + (i/files.length)*70) + '%';
-          totalBefore += files[i].size;
-          var result = await compressOne(files[i]);
-          totalAfter += result.size;
-          if(result.size > 700*1024){
-            throw new Error('একটি ছবি এখনো বড়: '+files[i].name);
-          }
-          media.push({ type: 'image', url: result.dataUrl, name: result.name, size: result.size });
-          if(!imageLink) imageLink = result.dataUrl; // first image for legacy field
-        }
-        prog.textContent = 'কম্প্রেস: '+(totalBefore/1024).toFixed(0)+' KB → '+(totalAfter/1024).toFixed(0)+' KB';
-      } else if(tab==='image' && imgUrl){
-        media.push({ type:'image', url:imgUrl, name:'Image URL' });
-        imageLink = imgUrl;
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const rowId = `prog-${i}`;
+        progressArea.innerHTML += `
+          <div class="progress-item">
+            ${file.name}
+            <div class="bar"><div class="bar-fill" id="${rowId}"></div></div>
+          </div>`;
+        const result = await uploadToCloudinary(file, (pct) => {
+          const bar = document.getElementById(rowId);
+          if (bar) bar.style.width = pct + "%";
+        });
+        uploadedFiles.push(result);
       }
 
-      if(tab==='video' && vidUrl){
-        var yt = /youtu\.?be|youtube\.com/i.test(vidUrl);
-        media.push({ type: yt?'youtube':'link', url:vidUrl, name: yt?'YouTube':'Video' });
-        videoLink = vidUrl;
-      }
-      if(tab==='link' && extLink){
-        var yt2 = /youtu\.?be|youtube\.com/i.test(extLink);
-        media.push({ type: yt2?'youtube':'link', url:extLink, name: yt2?'YouTube':'Link' });
-        if(yt2) videoLink = extLink;
-      }
-
-      // Firestore ~1MB limit per doc. Multiple base64 images can exceed.
-      var payloadSize = JSON.stringify(media).length;
-      if(payloadSize > 900000){
-        throw new Error('ছবিগুলো মিলে খুব বড়। কম ছবি দিন (২–৩টি) অথবা ছোট ছবি ব্যবহার করুন।');
-      }
-
-      document.getElementById('barFill').style.width = '90%';
-      prog.textContent = 'ডেটাবেসে সেভ হচ্ছে...';
-
-      await db.collection('posts').add({
-        title: title || '',
-        text: text || '',
-        media: media,
-        imageLink: imageLink,
-        videoLink: videoLink,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      await addDoc(collection(db, "posts"), {
+        title,
+        description: desc,
+        category,
+        files: uploadedFiles,
+        createdAt: serverTimestamp()
       });
 
-      document.getElementById('barFill').style.width = '100%';
-      prog.textContent = '';
-      msg.className = 'msg ok';
-      msg.textContent = '✅ সফল! '+(files.length? files.length+'টি ছবি · ':'')+'সেভ হয়েছে';
+      msgBox.innerHTML = '<div class="msg ok">✅ পোস্ট সফলভাবে প্রকাশিত হয়েছে!</div>';
+      document.getElementById("postTitle").value = "";
+      document.getElementById("postDesc").value = "";
+      fileInput.value = "";
+      document.getElementById("fileList").textContent = "কোনো ফাইল নির্বাচিত হয়নি";
+      progressArea.innerHTML = "";
+      loadPosts();
 
-      document.getElementById('title').value = '';
-      document.getElementById('text').value = '';
-      document.getElementById('imgUrl').value = '';
-      document.getElementById('vidUrl').value = '';
-      document.getElementById('extLink').value = '';
-      files = [];
-      renderThumbs();
-      setTab('none');
-      setTimeout(function(){ bar.classList.remove('show'); loadList(); }, 700);
-
-    } catch(err){
+    } catch (err) {
       console.error(err);
-      var t = (err && err.message) ? err.message : 'সমস্যা হয়েছে';
-      if(/permission|Permission/i.test(t)) t = 'Firestore অনুমতি নেই। Rules চেক করুন।';
-      if(/exceeds|too large|INVALID_ARGUMENT/i.test(t)) t = 'ডেটা বড়। কম ছবি দিয়ে আবার চেষ্টা করুন।';
-      msg.className = 'msg err';
-      msg.textContent = '❌ ' + t;
-      bar.classList.remove('show');
-      prog.textContent = '';
+      msgBox.innerHTML = `<div class="msg err">❌ সমস্যা হয়েছে: ${err.message}</div>`;
     } finally {
-      busy = false;
-      btn.disabled = false;
-      btn.textContent = 'সাবমিট করুন';
+      submitBtn.disabled = false;
+      submitBtn.textContent = "পোস্ট প্রকাশ করুন";
     }
   };
 
-  function loadList(){
-    var list = document.getElementById('list');
-    list.innerHTML = '<div class="empty">লোড হচ্ছে...</div>';
-    db.collection('posts').orderBy('createdAt','desc').limit(25).get()
-      .then(function(snap){
-        if(snap.empty){ list.innerHTML='<div class="empty">কোনো পোস্ট নেই</div>'; return; }
-        list.innerHTML = '';
-        snap.forEach(function(doc){
-          var d = doc.data();
-          var div = document.createElement('div');
-          div.className = 'post';
-          var h = '';
-          if(d.createdAt && d.createdAt.toDate) h += '<div class="d">'+d.createdAt.toDate().toLocaleString('bn-BD')+'</div>';
-          if(d.title) h += '<div style="font-weight:700;margin-bottom:3px">'+esc(d.title)+'</div>';
-          if(d.text) h += '<div class="t">'+esc(d.text)+'</div>';
-          if(d.media && d.media.length){
-            d.media.forEach(function(m){
-              if(m.type==='image' && m.url) h += '<img src="'+String(m.url).replace(/"/g,'&quot;')+'" onerror="this.style.display=\'none\'">';
-              else if(m.type!=='image') h += '<div class="hint">'+esc(m.type)+': '+esc((m.name||'').slice(0,40))+'</div>';
-            });
-          } else if(d.imageLink){
-            h += '<img src="'+String(d.imageLink).replace(/"/g,'&quot;')+'" onerror="this.style.display=\'none\'">';
-          }
-          h += '<button class="btn btn-red btn-sm" onclick="delPost(\''+doc.id+'\')">ডিলিট</button>';
-          div.innerHTML = h;
-          list.appendChild(div);
-        });
-      })
-      .catch(function(){ list.innerHTML='<div class="empty" style="color:#b84a42">লোড ব্যর্থ</div>'; });
-  }
-
-  window.delPost = function(id){
-    if(!confirm('ডিলিট?')) return;
-    db.collection('posts').doc(id).delete().then(loadList);
+  window.loadPosts = async function () {
+    const listBox = document.getElementById("postsList");
+    listBox.textContent = "লোড হচ্ছে...";
+    try {
+      const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        listBox.textContent = "এখনো কোনো পোস্ট নেই";
+        return;
+      }
+      let html = "";
+      snap.forEach((docSnap) => {
+        const p = docSnap.data();
+        const fileCount = (p.files || []).length;
+        html += `
+          <div class="post-item">
+            <h4>${p.title || ""}</h4>
+            <div class="meta">${p.category || ""} · ${fileCount} টি ফাইল</div>
+            <div class="files">${(p.description || "").slice(0, 100)}</div>
+            <button class="del-btn" onclick="deletePost('${docSnap.id}')">🗑️ মুছে ফেলুন</button>
+          </div>`;
+      });
+      listBox.innerHTML = html;
+    } catch (err) {
+      listBox.innerHTML = `<div class="msg err">লোড করতে সমস্যা: ${err.message}</div>`;
+    }
   };
 
-  function esc(s){
-    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-})();
+  window.deletePost = async function (id) {
+    if (!confirm("আপনি কি নিশ্চিত এই পোস্টটি মুছে ফেলতে চান?")) return;
+    try {
+      await deleteDoc(doc(db, "posts", id));
+      loadPosts();
+    } catch (err) {
+      alert("মুছতে সমস্যা হয়েছে: " + err.message);
+    }
+  };
 </script>
 </body>
 </html>

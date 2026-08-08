@@ -1,0 +1,137 @@
+<!--
+  ============================================================
+  এই অংশটুকু আপনার index.html এর যেখানে পোস্টগুলো দেখাতে চান
+  (যেমন "লেটেস্ট আপডেট" সেকশনের জায়গায়) সেখানে বসিয়ে দিন।
+  ============================================================
+-->
+
+<section id="postsSection" style="max-width:640px; margin:0 auto; padding:16px;">
+  <div id="postsContainer">লোড হচ্ছে...</div>
+</section>
+
+<style>
+  .pj-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+  .pj-date { color: #b5442e; font-size: 13px; margin-bottom: 6px; }
+  .pj-title { font-size: 19px; font-weight: bold; margin: 0 0 8px 0; color: #1f3a24; }
+  .pj-desc { font-size: 15px; color: #444; margin-bottom: 10px; line-height: 1.6; }
+  .pj-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+  .pj-gallery img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; }
+  .pj-video, .pj-audio { width: 100%; border-radius: 8px; margin-bottom: 10px; }
+  .pj-doc {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #eef1e6;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: #1f3a24;
+    font-size: 14px;
+  }
+  .pj-doc span.name { font-weight: bold; }
+  .pj-doc span.open { color: #1f3a24; }
+</style>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBqiOcn85zgvzDXt_Y60e3CQDEpdlYRBQ0",
+    authDomain: "amader-joginibari.firebaseapp.com",
+    projectId: "amader-joginibari",
+    storageBucket: "amader-joginibari.firebasestorage.app",
+    messagingSenderId: "917158468104",
+    appId: "1:917158468104:web:039539cca785319febcfbd",
+    measurementId: "G-SK4FHVPSTE"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  function formatDate(ts) {
+    if (!ts || !ts.toDate) return "";
+    const d = ts.toDate();
+    const months = ["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+    return `${d.getDate()} ${months[d.getMonth()]}, ${d.getFullYear()}`;
+  }
+
+  function docIcon(format) {
+    const f = (format || "").toLowerCase();
+    if (f === "pdf") return "📕";
+    if (["doc","docx"].includes(f)) return "📘";
+    if (["xls","xlsx"].includes(f)) return "📗";
+    if (["ppt","pptx"].includes(f)) return "📙";
+    return "📄";
+  }
+
+  async function loadPublicPosts() {
+    const container = document.getElementById("postsContainer");
+    try {
+      const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        container.innerHTML = "<p>এখনো কোনো পোস্ট নেই।</p>";
+        return;
+      }
+
+      let html = "";
+      snap.forEach((docSnap) => {
+        const p = docSnap.data();
+        const files = p.files || [];
+        const images = files.filter(f => f.resourceType === "image");
+        const videos = files.filter(f => f.resourceType === "video" && !isAudio(f));
+        const audios = files.filter(f => isAudio(f));
+        const docs = files.filter(f => f.resourceType === "raw");
+
+        html += `<div class="pj-card">`;
+        html += `<div class="pj-date">${formatDate(p.createdAt)} · ${p.category || ""}</div>`;
+        html += `<div class="pj-title">${p.title || ""}</div>`;
+        if (p.description) html += `<div class="pj-desc">${p.description}</div>`;
+
+        if (images.length) {
+          html += `<div class="pj-gallery">`;
+          images.forEach(f => { html += `<img src="${f.url}" alt="${p.title || ''}">`; });
+          html += `</div>`;
+        }
+
+        videos.forEach(f => {
+          html += `<video class="pj-video" controls preload="metadata">
+                      <source src="${f.url}" type="video/mp4">
+                    </video>`;
+        });
+
+        audios.forEach(f => {
+          html += `<audio class="pj-audio" controls src="${f.url}"></audio>`;
+        });
+
+        docs.forEach(f => {
+          html += `<a class="pj-doc" href="${f.url}" target="_blank" rel="noopener">
+                      <span class="name">${docIcon(f.format)} ${f.originalName || 'ডকুমেন্ট'}</span>
+                      <span class="open">খুলুন →</span>
+                    </a>`;
+        });
+
+        html += `</div>`;
+      });
+
+      container.innerHTML = html;
+    } catch (err) {
+      container.innerHTML = `<p style="color:#a33;">পোস্ট লোড করতে সমস্যা হয়েছে: ${err.message}</p>`;
+    }
+  }
+
+  function isAudio(f) {
+    const audioExt = ["mp3","wav","ogg","m4a","aac"];
+    return f.resourceType === "video" && audioExt.includes((f.format || "").toLowerCase());
+  }
+
+  loadPublicPosts();
+</script>
