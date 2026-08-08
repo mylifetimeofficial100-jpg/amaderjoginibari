@@ -321,19 +321,93 @@
   .hero-bottom p{
     max-width:640px; margin:0 auto 30px; font-size:1.12rem; color:#f0ebe0;
   }
-  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; justify-content:center;}
+  .hero-actions{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:12px;
+    max-width:420px;
+    margin:0 auto;
+    padding:4px 0 8px;
+  }
+  @media (min-width:520px){
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:14px;
+      max-width:none;
+    }
+  }
   @keyframes riseIn{from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);}}
 
   .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    padding:13px 26px; border-radius:6px; text-decoration:none;
-    font-weight:600; font-size:1rem; transition:.25s; border:2px solid transparent;
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 22px; border-radius:50px; text-decoration:none;
+    font-weight:700; font-size:.95rem; letter-spacing:.3px;
+    transition: all .3s cubic-bezier(0.4,0,0.2,1);
+    border:2px solid transparent;
     cursor:pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,.18);
+    white-space:nowrap;
   }
-  .btn-primary{background:var(--mud); color:#1a2f22;}
-  .btn-primary:hover{background:var(--mud-light); transform:translateY(-2px);}
-  .btn-ghost{border-color:rgba(250,248,242,.6); color:#faf8f2;}
-  .btn-ghost:hover{background:rgba(250,248,242,.14); transform:translateY(-2px);}
+  .btn:active{ transform:scale(0.97); }
+  .btn-primary{
+    background: linear-gradient(145deg, #e8c87a 0%, #c4954a 100%);
+    color:#12261a;
+    border-color: rgba(240,217,168,.35);
+  }
+  .btn-primary:hover{
+    background: linear-gradient(145deg, #f0d9a8 0%, #d4a85a 100%);
+    transform:translateY(-3px);
+    box-shadow: 0 8px 22px rgba(196,149,74,.35);
+  }
+  .btn-accent{
+    background: linear-gradient(145deg, #c45a52 0%, #b84a42 100%);
+    color:#fffef8;
+    border-color: rgba(255,255,255,.12);
+  }
+  .btn-accent:hover{
+    background: linear-gradient(145deg, #d46a62 0%, #c45a52 100%);
+    transform:translateY(-3px);
+    box-shadow: 0 8px 22px rgba(184,74,66,.4);
+  }
+  .btn-ghost{
+    background: rgba(255,255,255,.08);
+    border-color: rgba(250,248,242,.45);
+    color:#faf8f2;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .btn-ghost:hover{
+    background: rgba(250,248,242,.18);
+    border-color: rgba(250,248,242,.7);
+    transform:translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+  }
+  .btn-notice{
+    background: linear-gradient(145deg, #f0d9a8 0%, #e8c87a 50%, #c4954a 100%);
+    color:#12261a;
+    border-color: rgba(240,217,168,.5);
+    box-shadow: 0 4px 18px rgba(196,149,74,.3), 0 0 0 1px rgba(240,217,168,.2);
+    position:relative;
+    overflow:hidden;
+  }
+  .btn-notice::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.25) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform .6s ease;
+  }
+  .btn-notice:hover{
+    transform:translateY(-3px);
+    box-shadow: 0 10px 28px rgba(196,149,74,.45);
+  }
+  .btn-notice:hover::after{ transform: translateX(100%); }
+  @media (max-width:519px){
+    .btn{ font-size:.88rem; padding:13px 14px; }
+    .hero-actions .btn:last-child{ grid-column: 1 / -1; }
+  }
 
   /* ---------- ROOT DIVIDER (signature motif) ---------- */
   .root-divider{
@@ -732,10 +806,10 @@
 <div class="hero-bottom">
 <p>সবুজ প্রকৃতি আর মায়াময় পরিবেশে গড়ে ওঠা এক প্রাণবন্ত গ্রাম — আমাদের যোগিনী বাড়ী। যেখানে প্রতিটি মানুষ একে অপরের সাথে গভীর আত্মিক বন্ধনে আবদ্ধ এবং প্রতিটি সকাল শুরু হয় এক নতুন সম্ভাবনায়। আমাদের গ্রামের ঐতিহ্যকে জানতে এবং এর সুন্দর মুহূর্তগুলোর সাথে যুক্ত থাকতে আমাদের সঙ্গেই থাকুন।</p>
 <div class="hero-actions">
-<a class="btn btn-primary" href="#notice">📢 লেটেস্ট আপডেট</a>
-<a class="btn btn-primary" href="#about">গ্রামকে জানুন</a>
-<a class="btn btn-primary" href="gallery.html" style="background:#b84a42; color:#fff;">📸 গ্রামের ছবিঘর দেখুন</a>
-<a class="btn btn-ghost" href="https://facebook.com/groups/717295329059799/" rel="noopener" target="_blank">ফেসবুক গ্রুপে যোগ দিন</a>
+<a class="btn btn-notice" href="#notice">📢 লেটেস্ট আপডেট</a>
+<a class="btn btn-primary" href="#about">🌿 গ্রামকে জানুন</a>
+<a class="btn btn-accent" href="gallery.html">📸 ছবিঘর দেখুন</a>
+<a class="btn btn-ghost" href="https://facebook.com/groups/717295329059799/" rel="noopener" target="_blank">👥 ফেসবুক গ্রুপ</a>
 </div>
 </div>
 </section>
