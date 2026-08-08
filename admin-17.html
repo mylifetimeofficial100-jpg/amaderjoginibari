@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>এডমিন প্যানেল — আমাদের যোগিনী বাড়ী</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans Bengali', Arial, sans-serif;
+    background: #f0ece0;
+    margin: 0;
+    padding: 0;
+    color: #2c3e2d;
+  }
+  header {
+    background: #1f3a24;
+    color: #fff;
+    padding: 18px 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 16px; }
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+  #loginBox { max-width: 360px; margin: 60px auto; }
+  input[type=password], input[type=text], input[type=url], textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-top: 6px;
+    margin-bottom: 14px;
+    font-family: inherit;
+  }
+  textarea { min-height: 90px; resize: vertical; }
+  label { font-weight: bold; font-size: 14px; display: block; }
+  .hint { font-weight: normal; font-size: 12px; color: #666; }
+  button {
+    background: #1f3a24;
+    color: #fff;
+    border: none;
+    padding: 13px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+    cursor: pointer;
+  }
+  button:disabled { background: #999; }
+  .file-input-wrap {
+    border: 2px dashed #1f3a24;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 14px;
+    background: #f7f5ee;
+  }
+  .file-list { font-size: 13px; margin-top: 8px; color: #555; }
+  .progress-item {
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+  }
+  .bar {
+    height: 6px;
+    background: #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+  .bar-fill {
+    height: 100%;
+    background: #1f3a24;
+    width: 0%;
+    transition: width 0.2s;
+  }
+  .post-item {
+    border: 1px solid #e5e0d0;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+  .post-item h4 { margin: 0 0 4px 0; }
+  .post-item .meta { font-size: 12px; color: #888; margin-bottom: 6px; }
+  .post-item .files { font-size: 13px; color: #444; }
+  .del-btn {
+    background: #a33;
+    width: auto;
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .msg { font-size: 13px; padding: 8px; border-radius: 6px; margin-bottom: 10px; }
+  .msg.ok { background: #e2f4e2; color: #1f3a24; }
+  .msg.err { background: #fbe2e2; color: #a33; }
+  .section-title { font-size: 16px; font-weight: bold; margin-bottom: 12px; color: #1f3a24; }
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 500px) {
+    .row-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="loginBox" class="wrap">
+  <div class="card">
+    <div class="section-title">🔒 এডমিন লগইন</div>
+    <input type="password" id="pwInput" placeholder="পাসওয়ার্ড দিন">
+    <button onclick="checkPassword()">প্রবেশ করুন</button>
+    <div id="loginMsg"></div>
+  </div>
+</div>
+
+<div id="adminPanel" style="display:none;">
+  <header>আমাদের যোগিনী বাড়ী — এডমিন প্যানেল</header>
+  <div class="wrap">
+
+    <div class="card">
+      <div class="section-title">➕ নতুন পোস্ট যোগ করুন</div>
+      <div id="uploadMsg"></div>
+
+      <label>শিরোনাম</label>
+      <input type="text" id="postTitle" placeholder="যেমন: ফুটবল খেলা নিয়ে হই-হুল্লো">
+
+      <label>বিবরণ</label>
+      <textarea id="postDesc" placeholder="বিস্তারিত লিখুন..."></textarea>
+
+      <!-- সেকশন ১: মিডিয়া / ধরন (আগের মতো) -->
+      <label>ধরন <span class="hint">(আগের অপশন)</span></label>
+      <select id="postType">
+        <option value="আপডেট">আপডেট / সংবাদ</option>
+        <option value="ছবি">ছবি গ্যালারি</option>
+        <option value="ভিডিও">ভিডিও</option>
+        <option value="অডিও">অডিও</option>
+        <option value="ডকুমেন্ট">নোটিশ / ডকুমেন্ট</option>
+      </select>
+
+      <!-- সেকশন ২: গ্রামের বিষয় / ক্যাটাগরি (নতুন) -->
+      <label>বিষয় / ক্যাটাগরি <span class="hint">(গ্রামের বিষয়)</span></label>
+      <select id="postCategory">
+        <option value="আপডেট">আপডেট / সংবাদ</option>
+        <option value="নোটিশ">নোটিশ</option>
+        <option value="হারানো">হারানো / পাওয়া</option>
+        <option value="ঘোষণা">ঘোষণা / অনুষ্ঠান</option>
+        <option value="যুব সমাজ">যুব সমাজ</option>
+        <option value="খেলাধুলা">খেলাধুলা</option>
+        <option value="সামাজিক">সামাজিক উদ্যোগ</option>
+        <option value="কৃষি">কৃষি ও বাজার</option>
+        <option value="আইন">আইন ও নিয়ম</option>
+        <option value="জরুরি">জরুরি</option>
+        <option value="ধর্মীয়">ধর্মীয়</option>
+        <option value="শিক্ষা">শিক্ষা</option>
+        <option value="উন্নয়ন">উন্নয়ন কাজ</option>
+        <option value="ছবি">ছবি / ভিডিও</option>
+      </select>
+
+      <label>প্রকাশক / কর্তৃপক্ষ</label>
+      <select id="postPublisher">
+        <option value="যুব সমাজ">যুব সমাজ</option>
+        <option value="মসজিদ কর্তৃপক্ষ">মসজিদ কর্তৃপক্ষ</option>
+        <option value="গ্রামবাসী">গ্রামবাসী</option>
+        <option value="ইউনিয়ন পরিষদ">ইউনিয়ন পরিষদ</option>
+        <option value="স্কুল কর্তৃপক্ষ">স্কুল কর্তৃপক্ষ</option>
+        <option value="খেলাধুলা কমিটি">খেলাধুলা কমিটি</option>
+        <option value="কৃষক সমাজ">কৃষক সমাজ</option>
+        <option value="সামাজিক কমিটি">সামাজিক কমিটি</option>
+        <option value="অন্যান্য">অন্যান্য</option>
+      </select>
+
+      <label>লিংক (ঐচ্ছিক) <span class="hint">— YouTube, Facebook বা অন্য কোনো লিংক</span></label>
+      <input type="url" id="postLink" placeholder="যেমন: https://youtube.com/watch?v=xxxxx">
+
+      <label>ফাইল যুক্ত করুন <span class="hint">(ছবি, ভিডিও, অডিও, PDF — একাধিক নির্বাচন করা যাবে)</span></label>
+      <div class="file-input-wrap">
+        <input type="file" id="fileInput" multiple accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.txt,.xls,.xlsx,.ppt,.pptx">
+        <div class="file-list" id="fileList">কোনো ফাইল নির্বাচিত হয়নি</div>
+      </div>
+
+      <div id="progressArea"></div>
+
+      <button id="submitBtn" onclick="submitPost()">পোস্ট প্রকাশ করুন</button>
+    </div>
+
+    <div class="card">
+      <div class="section-title">📋 প্রকাশিত পোস্টসমূহ</div>
+      <div id="postsList">লোড হচ্ছে...</div>
+    </div>
+
+  </div>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, getDocs, deleteDoc, doc,
+    orderBy, query, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBqiOcn85zgvzDXt_Y60e3CQDEpdlYRBQ0",
+    authDomain: "amader-joginibari.firebaseapp.com",
+    projectId: "amader-joginibari",
+    storageBucket: "amader-joginibari.firebasestorage.app",
+    messagingSenderId: "917158468104",
+    appId: "1:917158468104:web:039539cca785319febcfbd",
+    measurementId: "G-SK4FHVPSTE"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const CLOUD_NAME = "ykmetzgo";
+  const UPLOAD_PRESET = "mby2erxi";
+  const ADMIN_PASSWORD = "joginibari2026";
+
+  window.checkPassword = function () {
+    const val = document.getElementById("pwInput").value;
+    if (val === ADMIN_PASSWORD) {
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("adminPanel").style.display = "block";
+      loadPosts();
+    } else {
+      document.getElementById("loginMsg").innerHTML =
+        '<div class="msg err">ভুল পাসওয়ার্ড, আবার চেষ্টা করুন</div>';
+    }
+  };
+
+  const fileInput = document.getElementById("fileInput");
+  fileInput.addEventListener("change", () => {
+    const files = Array.from(fileInput.files);
+    document.getElementById("fileList").innerHTML = files.length
+      ? files.map(f => `📎 ${f.name} (${(f.size/1024/1024).toFixed(2)} MB)`).join("<br>")
+      : "কোনো ফাইল নির্বাচিত হয়নি";
+  });
+
+  function resourceTypeFor(file) {
+    if (file.type.startsWith("image/")) return "image";
+    if (file.type.startsWith("video/")) return "video";
+    if (file.type.startsWith("audio/")) return "video";
+    return "raw";
+  }
+
+  function uploadToCloudinary(file, onProgress) {
+    return new Promise((resolve, reject) => {
+      const type = resourceTypeFor(file);
+      const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${type}/upload`;
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", UPLOAD_PRESET);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", url);
+      xhr.upload.onprogress = (e) => {
+        if (e.lengthComputable) onProgress(Math.round((e.loaded / e.total) * 100));
+      };
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const res = JSON.parse(xhr.responseText);
+          resolve({
+            url: res.secure_url,
+            resourceType: type,
+            format: res.format || "",
+            originalName: file.name,
+            bytes: res.bytes
+          });
+        } else {
+          reject(new Error("Cloudinary upload failed: " + xhr.responseText));
+        }
+      };
+      xhr.onerror = () => reject(new Error("Network error during upload"));
+      xhr.send(formData);
+    });
+  }
+
+  function detectLinkType(link) {
+    if (!link) return "link";
+    const u = link.toLowerCase();
+    if (u.includes("youtube.com") || u.includes("youtu.be")) return "youtube";
+    if (u.includes("facebook.com") || u.includes("fb.watch") || u.includes("fb.com")) return "facebook";
+    if (u.includes("vimeo.com")) return "vimeo";
+    if (u.match(/\.(jpg|jpeg|png|gif|webp)(\?|$)/)) return "image";
+    if (u.match(/\.(mp4|webm|mov|mkv|m4v)(\?|$)/)) return "video";
+    if (u.match(/\.pdf(\?|$)/)) return "pdf";
+    return "link";
+  }
+
+  window.submitPost = async function () {
+    const title = document.getElementById("postTitle").value.trim();
+    const desc = document.getElementById("postDesc").value.trim();
+    const type = document.getElementById("postType").value;
+    const category = document.getElementById("postCategory").value;
+    const publisher = document.getElementById("postPublisher").value;
+    const link = document.getElementById("postLink").value.trim();
+    const files = Array.from(fileInput.files);
+    const msgBox = document.getElementById("uploadMsg");
+    const progressArea = document.getElementById("progressArea");
+    const submitBtn = document.getElementById("submitBtn");
+
+    if (!title) {
+      msgBox.innerHTML = '<div class="msg err">শিরোনাম দিন</div>';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "আপলোড হচ্ছে...";
+    progressArea.innerHTML = "";
+    msgBox.innerHTML = "";
+
+    const uploadedFiles = [];
+
+    try {
+      if (link) {
+        const linkType = detectLinkType(link);
+        uploadedFiles.push({
+          url: link,
+          resourceType: linkType,
+          format: "",
+          originalName: linkType === "youtube" ? "YouTube ভিডিও" : (linkType === "facebook" ? "Facebook ভিডিও" : "লিংক"),
+          bytes: 0
+        });
+      }
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const rowId = `prog-${i}`;
+        progressArea.innerHTML += `
+          <div class="progress-item">
+            ${file.name}
+            <div class="bar"><div class="bar-fill" id="${rowId}"></div></div>
+          </div>`;
+        const result = await uploadToCloudinary(file, (pct) => {
+          const bar = document.getElementById(rowId);
+          if (bar) bar.style.width = pct + "%";
+        });
+        uploadedFiles.push(result);
+      }
+
+      await addDoc(collection(db, "posts"), {
+        title,
+        description: desc,
+        type,
+        category,
+        publisher,
+        files: uploadedFiles,
+        createdAt: serverTimestamp()
+      });
+
+      msgBox.innerHTML = '<div class="msg ok">✅ পোস্ট সফলভাবে প্রকাশিত হয়েছে!</div>';
+      document.getElementById("postTitle").value = "";
+      document.getElementById("postDesc").value = "";
+      document.getElementById("postLink").value = "";
+      fileInput.value = "";
+      document.getElementById("fileList").textContent = "কোনো ফাইল নির্বাচিত হয়নি";
+      progressArea.innerHTML = "";
+      loadPosts();
+
+    } catch (err) {
+      console.error(err);
+      msgBox.innerHTML = `<div class="msg err">❌ সমস্যা হয়েছে: ${err.message}</div>`;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "পোস্ট প্রকাশ করুন";
+    }
+  };
+
+  window.loadPosts = async function () {
+    const listBox = document.getElementById("postsList");
+    listBox.textContent = "লোড হচ্ছে...";
+    try {
+      const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        listBox.textContent = "এখনো কোনো পোস্ট নেই";
+        return;
+      }
+      let html = "";
+      snap.forEach((docSnap) => {
+        const p = docSnap.data();
+        const fileCount = (p.files || []).length;
+        html += `
+          <div class="post-item">
+            <h4>${p.title || ""}</h4>
+            <div class="meta">${p.type || ""} · ${p.category || ""} · ${p.publisher || ""} · ${fileCount} টি ফাইল/লিংক</div>
+            <div class="files">${(p.description || "").slice(0, 100)}</div>
+            <button class="del-btn" onclick="deletePost('${docSnap.id}')">🗑️ মুছে ফেলুন</button>
+          </div>`;
+      });
+      listBox.innerHTML = html;
+    } catch (err) {
+      listBox.innerHTML = `<div class="msg err">লোড করতে সমস্যা: ${err.message}</div>`;
+    }
+  };
+
+  window.deletePost = async function (id) {
+    if (!confirm("আপনি কি নিশ্চিত এই পোস্টটি মুছে ফেলতে চান?")) return;
+    try {
+      await deleteDoc(doc(db, "posts", id));
+      loadPosts();
+    } catch (err) {
+      alert("মুছতে সমস্যা হয়েছে: " + err.message);
+    }
+  };
+</script>
+</body>
+</html>
