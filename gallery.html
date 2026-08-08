@@ -422,6 +422,61 @@
       background-image: radial-gradient(circle at 1px 1px, #000 1px, transparent 0);
       background-size: 3px 3px;
     }
+  
+    /* ========== Footer - match home page exactly ========== */
+    footer{
+      background:linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%);
+      color:#d4c9a8; position:relative; overflow:hidden; padding:0;
+    }
+    footer::before{
+      content:""; position:absolute; top:0; left:0; right:0; height:1px;
+      background:linear-gradient(90deg, transparent, rgba(196,149,74,.5), transparent);
+    }
+    .footer-inner{
+      max-width:1180px; margin:0 auto; padding:42px 24px 28px;
+      display:grid; grid-template-columns:1.5fr 1fr; gap:36px;
+      position:relative; z-index:1;
+    }
+    .footer-brand{
+      font-family:'Baloo Da 2',sans-serif; color:#faf8f2; font-size:1.35rem; font-weight:800;
+    }
+    .footer-inner p{margin:10px 0 0; font-size:.92rem; max-width:360px; color:#c9bfa0; line-height:1.65;}
+    .footer-email a{color:#f0d9a8 !important; text-decoration:none; font-weight:600; font-size:.95rem;}
+    .footer-email a:hover{text-decoration:underline;}
+    .footer-links{display:flex; flex-wrap:wrap; gap:12px 22px; align-content:flex-start; padding-top:6px;}
+    .footer-links a{
+      text-decoration:none; color:#d4c9a8; font-size:.92rem;
+      transition:color .25s, padding-left .25s;
+    }
+    .footer-links a:hover{color:var(--mud-light); padding-left:3px;}
+    .footer-bottom{
+      max-width:1180px; margin:0 auto; padding:18px 24px;
+      border-top:1px solid rgba(196,149,74,.2);
+      font-size:.85rem; color:#a89b7a; text-align:center; position:relative; z-index:1;
+    }
+    .footer-heart{
+      display:inline-block; animation:heartbeat 1.8s ease-in-out infinite; color:#e07a6a;
+    }
+    @keyframes heartbeat{
+      0%,100%{transform:scale(1);}
+      15%{transform:scale(1.2);}
+      30%{transform:scale(1);}
+      45%{transform:scale(1.15);}
+      60%{transform:scale(1);}
+    }
+    .footer-deco{
+      position:absolute; border-radius:50%;
+      background:radial-gradient(circle, rgba(196,149,74,.08) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .footer-deco.d1{width:280px; height:280px; top:-80px; right:-60px;}
+    .footer-deco.d2{width:180px; height:180px; bottom:-40px; left:8%;}
+    @media (max-width:700px){
+      .footer-inner{ grid-template-columns:1fr; gap:28px; text-align:center; }
+      .footer-inner p{ margin-left:auto; margin-right:auto; }
+      .footer-links{ justify-content:center; }
+    }
+
   </style>
 </head>
 <body>
@@ -1741,50 +1796,30 @@
   </div>
 
     <footer>
-    <div class="footer-deco d1"></div>
-    <div class="footer-deco d2"></div>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo-row">
-          <div class="footer-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="32" cy="32" r="30" fill="url(#g1)" opacity=".9"/>
-  <path d="M32 14c-2 6-8 10-8 18 0 6 3.5 10 8 12 4.5-2 8-6 8-12 0-8-6-12-8-18z" fill="#f0d9a8"/>
-  <path d="M32 18c1.5 4 5 7 5 13 0 4-2 7-5 8.5-3-1.5-5-4.5-5-8.5 0-6 3.5-9 5-13z" fill="#c4954a"/>
-  <path d="M26 28c-3 2-5 5-5 9 0 3 1.5 5 4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <path d="M38 28c3 2 5 5 5 9 0 3-1.5 5-4 6.5" stroke="#f0d9a8" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-  <circle cx="32" cy="42" r="2.5" fill="#1f4a32"/>
-  <defs>
-    <linearGradient id="g1" x1="8" y1="8" x2="56" y2="56">
-      <stop stop-color="#2d6a45"/>
-      <stop offset="1" stop-color="#1a3d28"/>
-    </linearGradient>
-  </defs>
-</svg></div>
-          <h3>আমাদের যোগিনী বাড়ী</h3>
-        </div>
-        <p>সবুজ ছায়া, মাটির গন্ধ আর শতবর্ষী বটের ছায়াতলে গড়ে ওঠা একটি জীবন্ত গ্রাম। এখানেই আমাদের শিকড়, এখানেই আমাদের পরিচয়।</p>
-      </div>
-      <div class="footer-col">
-        <h4>দ্রুত লিংক</h4>
-        <ul>
-          <li><a href="https://amaderjoginibari.vercel.app/">মূল পৃষ্ঠা</a></li>
-          <li><a href="https://amaderjoginibari.vercel.app/gallery.html">গ্রামের ছবিঘর</a></li>
-          <li><a href="https://facebook.com/groups/717295329059799/" target="_blank" rel="noopener">ফেসবুক গ্রুপ</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>যোগাযোগ</h4>
-        <ul>
-          <li><a href="https://facebook.com/groups/717295329059799/" target="_blank" rel="noopener">গ্রামের গ্রুপে যোগ দিন</a></li>
-          <li style="color:#c9bfa0;font-size:.9rem;">দুর্গানগর · উল্লাপাড়া · সিরাজগঞ্জ</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© যোগিনীবাড়ী গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি <span class="footer-heart">♥</span></p>
-      <p style="margin-top:6px;"><a href="https://amaderjoginibari.vercel.app/">মূল ওয়েবসাইটে ফিরে যান</a></p>
-    </div>
-  </footer>
+<div class="footer-deco d1"></div>
+<div class="footer-deco d2"></div>
+<div class="footer-inner">
+<div>
+<div class="footer-brand">আমাদের যোগিনী বাড়ী</div>
+<p>যোগিনীবাড়ী গ্রাম, দুর্গানগর ইউনিয়ন, উল্লাপাড়া, সিরাজগঞ্জ — আমাদের সবার প্রিয় জন্মভূমি। সবুজ ছায়া, মাটির গন্ধ আর শতবর্ষী বটের ছায়াতলে গড়ে ওঠা একটি জীবন্ত গ্রাম।</p>
+<p class="footer-email" style="margin-top:14px;"><a href="mailto:mylifetimeofficial100@gmail.com">📧 mylifetimeofficial100@gmail.com</a></p>
+</div>
+<div class="footer-links">
+<a href="https://amaderjoginibari.vercel.app/">মূল পৃষ্ঠা</a>
+<a href="https://amaderjoginibari.vercel.app/#about">গ্রামের কথা</a>
+<a href="https://amaderjoginibari.vercel.app/#tree">বটগাছ</a>
+<a href="https://amaderjoginibari.vercel.app/#jibon">গ্রামজীবন</a>
+<a href="gallery.html">ছবিঘর</a>
+<a href="https://amaderjoginibari.vercel.app/#notice">লেটেস্ট আপডেট</a>
+<a href="https://amaderjoginibari.vercel.app/#opinion">মতামত</a>
+<a href="emergency.html">জরুরি সেবা</a>
+<a href="https://facebook.com/groups/717295329059799/" target="_blank" rel="noopener">ফেসবুক গ্রুপ</a>
+<a href="https://amaderjoginibari.vercel.app/#admin-team">এডমিনেরা</a>
+<a href="https://amaderjoginibari.vercel.app/#developer">ওয়েব ডেভেলপার</a>
+</div>
+</div>
+<div class="footer-bottom">© যোগিনীবাড়ী গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি <span class="footer-heart">♥</span></div>
+</footer>
 
 <script>
 (function() {
