@@ -554,6 +554,18 @@
     box-shadow: 0 8px 22px rgba(184,74,66,.45);
   }
 
+  .btn-purpose{
+    background: linear-gradient(145deg, #3d6b5a 0%, #2a4f42 100%);
+    color:#e8f5f0;
+    border-color: rgba(240,217,168,.22);
+  }
+  .btn-purpose:hover{
+    background: linear-gradient(145deg, #4a7d6a 0%, #3d6b5a 100%);
+    color:#fff;
+    transform:translateY(-3px);
+    box-shadow: 0 8px 22px rgba(42,79,66,.4);
+  }
+
   @media (max-width:519px){
     .btn{ font-size:.82rem; padding:12px 10px; }
   }
@@ -605,6 +617,44 @@
     background:linear-gradient(0deg, rgba(30,61,42,.78), transparent);
     color:#faf8f2; font-size:.9rem;
   }
+  /* ---------- PURPOSE ---------- */
+  .purpose{background:linear-gradient(180deg, #f4ecd8 0%, var(--paper) 100%);}
+  .purpose-inner{max-width:820px; margin:0 auto;}
+  .purpose-list{margin:22px 0 24px; padding-left:0; list-style:none;}
+  .purpose-list li{
+    position:relative;
+    margin:0 0 16px;
+    padding:16px 18px 16px 52px;
+    background:rgba(255,255,255,.55);
+    border-radius:12px;
+    border:1px solid rgba(31,74,50,.08);
+    color:var(--ink-soft);
+    font-size:1.05rem;
+    line-height:1.8;
+  }
+  .purpose-list li::before{
+    content:attr(data-num);
+    position:absolute; left:14px; top:16px;
+    width:28px; height:28px; border-radius:50%;
+    background:var(--forest);
+    color:#f0d9a8;
+    font-family:'Baloo Da 2',sans-serif;
+    font-weight:700; font-size:.9rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .purpose-list li strong{color:var(--forest-deep); font-weight:600;}
+  .purpose-note{
+    margin-top:28px;
+    padding:20px 22px;
+    background:rgba(184,74,66,.08);
+    border-left:4px solid var(--sindoor);
+    border-radius:0 12px 12px 0;
+    color:var(--ink-soft);
+    font-size:1.02rem;
+    line-height:1.8;
+  }
+  .purpose-note strong{color:var(--sindoor);}
+
 
   /* ---------- TREE STORY BAND ---------- */
   .tree-band{
@@ -1172,6 +1222,7 @@
 <button aria-label="মেনু খুলুন" class="nav-toggle" onclick="document.getElementById('mainnav').classList.toggle('open')">☰</button>
 <nav id="mainnav">
 <a href="#about">গ্রামের কথা</a>
+<a href="#purpose">মূল উদ্দেশ্য</a>
 <a href="#tree">শতবর্ষী বটগাছ</a>
 <a href="#jibon">গ্রামজীবন</a>
 <a href="gallery.html">ছবিঘর</a>
@@ -1235,6 +1286,7 @@
 <div class="hero-actions">
 <a class="btn btn-notice" href="#notice">📢 লেটেস্ট আপডেট</a>
 <a class="btn btn-emergency" href="emergency.html">🚨 জরুরি সেবা</a>
+<a class="btn btn-purpose" href="#purpose">🎯 মূল উদ্দেশ্য</a>
 <a class="btn btn-primary" href="#about">🌿 গ্রামকে জানুন</a>
 <a class="btn btn-accent" href="gallery.html">📸 ছবিঘর দেখুন</a>
 <a class="btn btn-photos" href="#jibon">🖼️ মেইন পেজের ছবি</a>
@@ -1541,6 +1593,26 @@
 </div>
 </div>
 </section>
+<section class="purpose" id="purpose">
+<div class="section-inner purpose-inner">
+<div class="section-head" style="max-width:100%;">
+<span class="eyebrow">মূল উদ্দেশ্য</span>
+<h2>আমাদের ওয়েবসাইটের মূল উদ্দেশ্য</h2>
+<p>আমাদের এই ওয়েবসাইটটি তৈরি করার একমাত্র লক্ষ্য হলো—প্রযুক্তির মাধ্যমে আমাদের যোগিনী বাড়ী গ্রামকে সবার সামনে তুলে ধরা এবং সকল গ্রামবাসীকে এক সুতোয় বেঁধে রাখা।</p>
+</div>
+<p style="color:var(--ink-soft); font-size:1.06rem; margin:0 0 8px;">আমাদের মূল উদ্দেশ্যগুলো হলো:</p>
+<ul class="purpose-list">
+<li data-num="১"><strong>গ্রামের পরিচিতি তুলে ধরা:</strong> আমাদের সুন্দর গ্রাম, এর ইতিহাস, ফুলজার নদী, কালীবাড়ী বটতলা এবং এখানকার মানুষের সহজ-সরল জীবনযাত্রাকে ইন্টারনেটে তুলে ধরা।</li>
+<li data-num="২"><strong>তথ্য সহজ করা:</strong> গ্রামের শিক্ষা প্রতিষ্ঠান, চিকিৎসাসেবা এবং জরুরি সব যোগাযোগ ও ফোন নম্বর এক জায়গায় এনে সবার জন্য তথ্য পাওয়া সহজ করা।</li>
+<li data-num="৩"><strong>স্বদেশ ও প্রবাসের মেলবন্ধন:</strong> গ্রাম থেকে যারা দেশের বিভিন্ন প্রান্তে বা প্রবাসে আছেন, তারা যেন এক ক্লিকেই নিজের গ্রামের সব খবর ও ছবি দেখতে পারেন এবং মাটির টান অনুভব করেন।</li>
+<li data-num="৪"><strong>একতা ও সামাজিক উন্নয়ন:</strong> গ্রামের তরুণদের মানবিক কাজ, রক্তদান কর্মসূচি এবং যেকোনো সামাজিক প্রয়োজনে সবাইকে একসাথে কাজ করতে উৎসাহিত করা।</li>
+</ul>
+<p style="color:var(--ink-soft); font-size:1.06rem; margin:8px 0 0;"><strong style="color:var(--forest-deep);">এক কথায়:</strong> এটি আমাদের গ্রামের সকল মানুষের যোগাযোগের একটি অভিন্ন প্ল্যাটফর্ম, যেখানে কোনো ভেদাভেদ নেই—আছে শুধু গ্রামের প্রতি ভালোবাসা।</p>
+<div class="purpose-note">
+<strong>📢 আপনার প্রতি অনুরোধ (তথ্য আহ্বান):</strong> আমাদের গ্রামের সঠিক ইতিহাস, প্রতিষ্ঠার সাল কিংবা নিখুঁত জনসংখ্যা ও আয়তনের তথ্য যদি আপনার জানা থাকে বা কোনো নির্ভরযোগ্য সূত্র থাকে, তবে দয়া করে আমাদের অ্যাডমিন প্যানেলে যোগাযোগ করে জানান। আপনার দেওয়া সঠিক তথ্যটি আমাদের এই ওয়েবসাইটকে আরও সমৃদ্ধ করতে সাহায্য করবে।
+</div>
+</div>
+</section>
 <section class="tree-band" id="tree">
 <div class="section-inner">
 <div>
@@ -1787,6 +1859,7 @@
 </div>
 <div class="footer-links">
 <a href="#about">গ্রামের কথা</a>
+<a href="#purpose">মূল উদ্দেশ্য</a>
 <a href="#tree">বটগাছ</a>
 <a href="#jibon">গ্রামজীবন</a>
 <a href="gallery.html">ছবিঘর</a>
@@ -1805,7 +1878,7 @@
 /* Scroll Reveal - soft entrance for sections */
 (function(){
   function initReveal(){
-    var els = document.querySelectorAll('.about, .tree-band, .photo-band, .life, .notice, .opinion, .join, .admin-team, .maker, .life-card, .section-head, .frame-photo, .stat-row');
+    var els = document.querySelectorAll('.about, .purpose, .tree-band, .photo-band, .life, .notice, .opinion, .join, .admin-team, .maker, .life-card, .section-head, .frame-photo, .stat-row');
     els.forEach(function(el){
       if(!el.classList.contains('reveal')) el.classList.add('reveal');
     });
