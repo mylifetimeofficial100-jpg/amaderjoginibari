@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ওয়েবসাইটের মূল উদ্দেশ্য | আমাদের যোগিনী বাড়ী</title>
+  <meta name="description" content="আমাদের যোগিনী বাড়ী ওয়েবসাইটের মূল উদ্দেশ্য — গ্রামের পরিচিতি, তথ্য সহজকরণ, স্বদেশ-প্রবাস মেলবন্ধন ও সামাজিক উন্নয়ন।"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://amaderjoginibari.vercel.app/purpose.html"/>
+  <link rel="icon" href="https://amaderjoginibari.vercel.app/favicon.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="https://amaderjoginibari.vercel.app/favicon.png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --forest:#1f4a32;
+      --forest-deep:#12261a;
+      --mud:#c4954a;
+      --mud-light:#f0d9a8;
+      --sindoor:#b84a42;
+      --paper:#d6cdb2;
+      --paper-dim:#c9bfa0;
+      --ink:#1a1610;
+      --ink-soft:#3f382c;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{
+      background:linear-gradient(165deg, #d2c8ab 0%, #c9bf9c 45%, #c2b893 100%);
+      color:var(--ink);
+      font-family:'Noto Sans Bengali','Tiro Bangla',sans-serif;
+      line-height:1.75;
+      min-height:100vh;
+    }
+    h1,h2,h3{font-family:'Baloo Da 2','Noto Sans Bengali',sans-serif;font-weight:700;color:var(--forest-deep);}
+
+    .grain{
+      position:fixed; inset:0; pointer-events:none; z-index:5; opacity:.03; mix-blend-mode:multiply;
+      background-image:radial-gradient(circle at 1px 1px, #000 1px, transparent 0);
+      background-size:3px 3px;
+    }
+
+    header{
+      position:sticky;top:0;z-index:100;
+      background:linear-gradient(180deg, #0c1a12 0%, #12261a 42%, #1a3a28 100%);
+      backdrop-filter:blur(18px) saturate(1.25);
+      -webkit-backdrop-filter:blur(18px) saturate(1.25);
+      box-shadow:0 12px 40px rgba(8,16,12,.55), 0 1px 0 rgba(240,217,168,.12) inset;
+    }
+    header::after{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+      background:linear-gradient(90deg, transparent 0%, rgba(196,149,74,.25) 15%, #e8c87a 50%, rgba(196,149,74,.25) 85%, transparent 100%);
+      opacity:.95;
+    }
+    .nav-wrap{
+      max-width:900px;margin:0 auto;padding:14px 20px;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      color:var(--mud-light);text-decoration:none;
+      transition:transform .35s cubic-bezier(.22,1,.36,1);
+    }
+    .brand:hover{transform:translateY(-1px);}
+    .brand-logo{
+      width:46px;height:46px;flex-shrink:0;border-radius:50%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(240,217,168,.35), transparent 55%),
+        linear-gradient(145deg, #1f4a32 0%, #0e1f16 100%);
+      border:1.5px solid rgba(232,200,122,.55);
+      box-shadow:0 0 0 3px rgba(196,149,74,.12), 0 6px 18px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .brand-logo svg{width:28px;height:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));}
+    .brand-text{
+      font-family:'Baloo Da 2',sans-serif;font-weight:800;
+      font-size:clamp(1.1rem, 3.2vw, 1.3rem);
+      letter-spacing:.3px;line-height:1.15;
+      background:linear-gradient(180deg, #fffef8 10%, #f0d9a8 55%, #e8c87a 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      -webkit-text-fill-color:transparent;
+      filter:drop-shadow(0 2px 6px rgba(0,0,0,.35));
+    }
+    .brand-text small{
+      display:block;font-family:'Noto Sans Bengali',sans-serif;font-weight:600;
+      font-size:.58rem;letter-spacing:1.8px;margin-top:3px;text-transform:uppercase;
+      background:linear-gradient(90deg, #c4954a, #f0d9a8, #c4954a);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      -webkit-text-fill-color:transparent;filter:none;
+    }
+    .back-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(240,217,168,.12);color:#f0d9a8;
+      padding:9px 16px;border-radius:999px;text-decoration:none;
+      font-weight:600;font-size:.9rem;border:1px solid rgba(240,217,168,.25);
+      transition:all .3s cubic-bezier(.22,1,.36,1);white-space:nowrap;
+    }
+    .back-btn:hover{
+      background:rgba(240,217,168,.22);
+      border-color:rgba(240,217,168,.4);
+      box-shadow:0 4px 14px rgba(0,0,0,.15);
+    }
+
+    .hero{
+      background:linear-gradient(180deg, var(--forest) 0%, #163326 100%);
+      padding:42px 20px 52px;text-align:center;color:#faf8f2;
+      position:relative;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:radial-gradient(ellipse at top center, rgba(196,149,74,.15), transparent 60%);
+      pointer-events:none;
+    }
+    .hero .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:.78rem;letter-spacing:3px;text-transform:uppercase;
+      color:var(--mud-light);margin-bottom:14px;position:relative;
+    }
+    .hero .eyebrow::before{content:"";width:22px;height:2px;background:var(--mud-light);display:inline-block;}
+    .hero h1{
+      font-size:clamp(1.9rem,5.2vw,2.9rem);margin-bottom:12px;color:#faf8f2;
+      line-height:1.15;position:relative;
+    }
+    .hero p{max-width:560px;margin:0 auto;opacity:.92;font-size:1.05rem;position:relative;line-height:1.75;}
+
+    .container{max-width:820px;margin:0 auto;padding:0 18px 70px;}
+
+    .section{
+      background:rgba(255,252,245,.94);
+      border-radius:18px;
+      padding:28px 24px;
+      margin-top:28px;
+      box-shadow:0 12px 36px rgba(18,38,26,.12);
+      border:1px solid rgba(196,149,74,.18);
+    }
+    .section-title{
+      display:flex;align-items:center;gap:12px;
+      font-size:1.35rem;margin-bottom:22px;
+      padding-bottom:14px;border-bottom:2px solid rgba(196,149,74,.22);
+    }
+    .section-title span{font-size:1.55rem;line-height:1;}
+    .section-title h2{font-size:1.3rem;margin:0;}
+
+    .intro-text{
+      color:var(--ink-soft);
+      font-size:1.06rem;
+      line-height:1.85;
+      margin-bottom:8px;
+    }
+
+    .purpose-list{margin:18px 0 8px;padding-left:0;list-style:none;}
+    .purpose-list li{
+      position:relative;
+      margin:0 0 14px;
+      padding:18px 18px 18px 56px;
+      background:#fff;
+      border-radius:14px;
+      border:1px solid rgba(196,149,74,.18);
+      color:var(--ink-soft);
+      font-size:1.04rem;
+      line-height:1.8;
+      box-shadow:0 2px 10px rgba(18,38,26,.04);
+      transition:all .28s cubic-bezier(.22,1,.36,1);
+    }
+    .purpose-list li:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 22px rgba(18,38,26,.1);
+      border-color:rgba(196,149,74,.35);
+    }
+    .purpose-list li::before{
+      content:attr(data-num);
+      position:absolute;left:14px;top:18px;
+      width:30px;height:30px;border-radius:50%;
+      background:var(--forest);
+      color:#f0d9a8;
+      font-family:'Baloo Da 2',sans-serif;
+      font-weight:700;font-size:.95rem;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .purpose-list li strong{color:var(--forest-deep);font-weight:600;}
+
+    .summary-box{
+      margin-top:20px;
+      padding:18px 20px;
+      background:rgba(31,74,50,.07);
+      border-radius:14px;
+      border:1px solid rgba(31,74,50,.12);
+      color:var(--ink-soft);
+      font-size:1.04rem;
+      line-height:1.8;
+    }
+    .summary-box strong{color:var(--forest-deep);}
+
+    .note-box{
+      background:rgba(184,74,66,.07);
+      border:1px solid rgba(184,74,66,.2);
+      border-radius:14px;
+      padding:18px 20px;
+      margin-top:20px;
+      font-size:.98rem;
+      line-height:1.75;
+      color:var(--ink-soft);
+    }
+    .note-box strong{color:var(--sindoor);}
+
+    footer{
+      text-align:center;padding:36px 20px 40px;
+      color:var(--ink-soft);font-size:.9rem;
+      border-top:1px solid rgba(196,149,74,.2);
+      background:rgba(210,200,171,.4);
+    }
+    footer a{color:var(--forest);font-weight:600;text-decoration:none;}
+    footer a:hover{color:var(--sindoor);}
+
+    @media (max-width:560px){
+      .nav-wrap{padding:12px 14px;}
+      .brand-logo{width:42px;height:42px;}
+      .brand-logo svg{width:24px;height:24px;}
+      .back-btn{padding:8px 12px;font-size:.82rem;}
+      .section{padding:22px 16px;border-radius:14px;}
+      .hero{padding:32px 16px 40px;}
+      .purpose-list li{padding:16px 14px 16px 50px;}
+    }
+  </style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header>
+  <div class="nav-wrap">
+    <a class="brand" href="https://amaderjoginibari.vercel.app/">
+      <div class="brand-logo">
+        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="24" cy="16" rx="18" ry="12" fill="#2a5c3a"/>
+          <ellipse cx="14" cy="18" rx="9" ry="8" fill="#1e4a2e"/>
+          <ellipse cx="34" cy="18" rx="9" ry="8" fill="#1e4a2e"/>
+          <ellipse cx="24" cy="12" rx="11" ry="8" fill="#357048"/>
+          <path d="M22 24 L22 38 Q24 40 26 38 L26 24" fill="#8b5e2b"/>
+          <path d="M23 24 L23 37 Q24 38.5 25 37 L25 24" fill="#a67c3d"/>
+          <path d="M16 22 Q14 28 13 36" stroke="#c4954a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M20 23 Q19 30 18 37" stroke="#d4a85a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M28 23 Q29 30 30 37" stroke="#d4a85a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M32 22 Q34 28 35 36" stroke="#c4954a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <ellipse cx="24" cy="40" rx="14" ry="4" fill="#6b4a28" opacity=".85"/>
+          <circle cx="24" cy="14" r="3" fill="#e8d0a0" opacity=".35"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        আমাদের যোগিনী বাড়ী
+        <small>মূল উদ্দেশ্য</small>
+      </div>
+    </a>
+    <a class="back-btn" href="https://amaderjoginibari.vercel.app/">← মূল পেজে ফিরে যান</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">আমাদের লক্ষ্য</div>
+  <h1>ওয়েবসাইটের মূল উদ্দেশ্য</h1>
+  <p>প্রযুক্তির মাধ্যমে যোগিনী বাড়ীকে সবার সামনে তুলে ধরা এবং সকল গ্রামবাসীকে এক সুতোয় বেঁধে রাখা</p>
+</section>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-title">
+      <span>🎯</span>
+      <h2>আমাদের মূল উদ্দেশ্য</h2>
+    </div>
+    <p class="intro-text">আমাদের এই ওয়েবসাইটটি তৈরি করার একমাত্র লক্ষ্য হলো—প্রযুক্তির মাধ্যমে আমাদের যোগিনী বাড়ী গ্রামকে সবার সামনে তুলে ধরা এবং সকল গ্রামবাসীকে এক সুতোয় বেঁধে রাখা।</p>
+    <p class="intro-text" style="margin-top:14px;margin-bottom:4px;"><strong style="color:var(--forest-deep);">আমাদের মূল উদ্দেশ্যগুলো হলো:</strong></p>
+    <ul class="purpose-list">
+      <li data-num="১"><strong>গ্রামের পরিচিতি তুলে ধরা:</strong> আমাদের সুন্দর গ্রাম, এর ইতিহাস, ফুলজার নদী, কালীবাড়ী বটতলা এবং এখানকার মানুষের সহজ-সরল জীবনযাত্রাকে ইন্টারনেটে তুলে ধরা।</li>
+      <li data-num="২"><strong>তথ্য সহজ করা:</strong> গ্রামের শিক্ষা প্রতিষ্ঠান, চিকিৎসাসেবা এবং জরুরি সব যোগাযোগ ও ফোন নম্বর এক জায়গায় এনে সবার জন্য তথ্য পাওয়া সহজ করা।</li>
+      <li data-num="৩"><strong>স্বদেশ ও প্রবাসের মেলবন্ধন:</strong> গ্রাম থেকে যারা দেশের বিভিন্ন প্রান্তে বা প্রবাসে আছেন, তারা যেন এক ক্লিকেই নিজের গ্রামের সব খবর ও ছবি দেখতে পারেন এবং মাটির টান অনুভব করেন।</li>
+      <li data-num="৪"><strong>একতা ও সামাজিক উন্নয়ন:</strong> গ্রামের তরুণদের মানবিক কাজ, রক্তদান কর্মসূচি এবং যেকোনো সামাজিক প্রয়োজনে সবাইকে একসাথে কাজ করতে উৎসাহিত করা।</li>
+    </ul>
+    <div class="summary-box">
+      <strong>এক কথায়:</strong> এটি আমাদের গ্রামের সকল মানুষের যোগাযোগের একটি অভিন্ন প্ল্যাটফর্ম, যেখানে কোনো ভেদাভেদ নেই—আছে শুধু গ্রামের প্রতি ভালোবাসা।
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <span>📢</span>
+      <h2>আপনার প্রতি অনুরোধ</h2>
+    </div>
+    <div class="note-box">
+      <strong>তথ্য আহ্বান:</strong> আমাদের গ্রামের সঠিক ইতিহাস, প্রতিষ্ঠার সাল কিংবা নিখুঁত জনসংখ্যা ও আয়তনের তথ্য যদি আপনার জানা থাকে বা কোনো নির্ভরযোগ্য সূত্র থাকে, তবে দয়া করে আমাদের অ্যাডমিন প্যানেলে যোগাযোগ করে জানান। আপনার দেওয়া সঠিক তথ্যটি আমাদের এই ওয়েবসাইটকে আরও সমৃদ্ধ করতে সাহায্য করবে।
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><a href="https://amaderjoginibari.vercel.app/">← মূল পেজে ফিরে যান</a></p>
+  <p style="margin-top:10px;">© যোগিনীবাড়ী গ্রামবাসী — ভালোবাসা ও মমতায় তৈরি</p>
+</footer>
+
+</body>
+</html>
