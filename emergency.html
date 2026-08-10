@@ -18,20 +18,30 @@
 
   <style>
     :root{
-      --forest:#1f4a32;
-      --forest-deep:#12261a;
-      --mud:#c4954a;
-      --mud-light:#f0d9a8;
-      --sindoor:#b84a42;
-      --paper:#d6cdb2;
-      --paper-dim:#c9bfa0;
-      --ink:#1a1610;
-      --ink-soft:#3f382c;
-    }
+    --forest:#1a4530;
+    --forest-mid:#2a5c40;
+    --forest-deep:#0e1f16;
+    --mud:#c9a05a;
+    --mud-light:#f3e2b8;
+    --mud-deep:#8a6a32;
+    --tin:#7a848c;
+    --sindoor:#a8453c;
+    --paper:#ddd4bc;
+    --paper-light:#f7f3e8;
+    --paper-dim:#cfc5a8;
+    --ink:#16130e;
+    --ink-soft:#3a3428;
+    --card-bg:#faf8f2;
+    --shadow-soft:0 8px 28px rgba(14,31,22,.08);
+    --shadow-lift:0 16px 40px rgba(14,31,22,.14);
+    --radius:16px;
+    --radius-sm:12px;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
     *{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{
-      background:linear-gradient(165deg, #d2c8ab 0%, #c9bf9c 45%, #c2b893 100%);
+      background:radial-gradient(ellipse 120% 80% at 50% -20%, rgba(243,226,184,.35), transparent 50%), linear-gradient(165deg, #d8cfb6 0%, #d0c6ad 40%, #c8bea4 100%);
       color:var(--ink);
       font-family:'Noto Sans Bengali','Tiro Bangla',sans-serif;
       line-height:1.75;
@@ -228,7 +238,51 @@
       .section{padding:22px 16px;border-radius:14px;}
       .hero{padding:32px 16px 40px;}
     }
-  </style>
+  
+  /* ========== VILLAGE PRO UPGRADE 2026 ========== */
+  body{
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  .feature-card,
+  .season-card,
+  .note-box,
+  .stat-card,
+  .card,
+  .info-card,
+  .section .feature-card{
+    border-radius: var(--radius, 16px) !important;
+    box-shadow: var(--shadow-soft, 0 8px 28px rgba(14,31,22,.08)) !important;
+    transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s cubic-bezier(.22,1,.36,1) !important;
+    background: var(--card-bg, #faf8f2);
+  }
+  .feature-card:hover,
+  .season-card:hover,
+  .stat-card:hover{
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift, 0 16px 40px rgba(14,31,22,.14)) !important;
+  }
+  a.btn, .btn, .gallery-link, .back-link, button[type="submit"],
+  .nav a, header a.brand{
+    transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, filter .25s ease !important;
+  }
+  a.btn:hover, .btn:hover, .gallery-link:hover{
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+  }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline: 2px solid var(--mud, #c9a05a);
+    outline-offset: 3px;
+  }
+  ::selection{ background: rgba(201,160,90,.35); color: var(--forest-deep, #0e1f16); }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: .01ms !important;
+      transition-duration: .01ms !important;
+    }
+  }
+
+</style>
 </head>
 <body>
 <div class="grain"></div>

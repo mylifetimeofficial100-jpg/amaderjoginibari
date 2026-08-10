@@ -7,6 +7,28 @@
 <link rel="apple-touch-icon" href="https://amaderjoginibari.vercel.app/favicon.png"/>
 <title>এডমিন প্যানেল — আমাদের যোগিনীবাড়ী</title>
 <style>
+  :root{
+    --forest:#1a4530;
+    --forest-mid:#2a5c40;
+    --forest-deep:#0e1f16;
+    --mud:#c9a05a;
+    --mud-light:#f3e2b8;
+    --mud-deep:#8a6a32;
+    --tin:#7a848c;
+    --sindoor:#a8453c;
+    --paper:#ddd4bc;
+    --paper-light:#f7f3e8;
+    --paper-dim:#cfc5a8;
+    --ink:#16130e;
+    --ink-soft:#3a3428;
+    --card-bg:#faf8f2;
+    --shadow-soft:0 8px 28px rgba(14,31,22,.08);
+    --shadow-lift:0 16px 40px rgba(14,31,22,.14);
+    --radius:16px;
+    --radius-sm:12px;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+
   * { box-sizing: border-box; }
   body {
     font-family: 'Noto Sans Bengali', Arial, sans-serif;
@@ -111,6 +133,50 @@
   @media (max-width: 500px) {
     .row-2 { grid-template-columns: 1fr; }
   }
+
+  /* ========== VILLAGE PRO UPGRADE 2026 ========== */
+  body{
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  .feature-card,
+  .season-card,
+  .note-box,
+  .stat-card,
+  .card,
+  .info-card,
+  .section .feature-card{
+    border-radius: var(--radius, 16px) !important;
+    box-shadow: var(--shadow-soft, 0 8px 28px rgba(14,31,22,.08)) !important;
+    transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s cubic-bezier(.22,1,.36,1) !important;
+    background: var(--card-bg, #faf8f2);
+  }
+  .feature-card:hover,
+  .season-card:hover,
+  .stat-card:hover{
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift, 0 16px 40px rgba(14,31,22,.14)) !important;
+  }
+  a.btn, .btn, .gallery-link, .back-link, button[type="submit"],
+  .nav a, header a.brand{
+    transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, filter .25s ease !important;
+  }
+  a.btn:hover, .btn:hover, .gallery-link:hover{
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+  }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline: 2px solid var(--mud, #c9a05a);
+    outline-offset: 3px;
+  }
+  ::selection{ background: rgba(201,160,90,.35); color: var(--forest-deep, #0e1f16); }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: .01ms !important;
+      transition-duration: .01ms !important;
+    }
+  }
+
 </style>
 </head>
 <body>
