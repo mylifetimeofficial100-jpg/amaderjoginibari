@@ -1393,6 +1393,7 @@
       <span class="djw-today-dot"></span>
       <span class="djw-today-text">আজ</span>
       <span class="djw-today-bar" id="djw-bar">লোড হচ্ছে...</span>
+      <span class="djw-today-ritu" id="djw-ritu">...</span>
     </span>
     <span class="djw-chip"><span class="djw-ico">🌿</span><span class="djw-chip-value" id="djw-bn">...</span></span>
     <span class="djw-chip"><span class="djw-ico">🗓️</span><span class="djw-chip-value" id="djw-en">...</span></span>
@@ -1436,6 +1437,13 @@
   }
   #djw-mini .djw-today-text { color: #b8dcc4; font-size: 10px; font-weight: 700; }
   #djw-mini .djw-today-bar { color: #ffffff; font-size: 11px; font-weight: 700; }
+  #djw-mini .djw-today-ritu {
+    color: #ffd966;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding-left: 6px;
+    border-left: 1px solid rgba(255,255,255,0.18);
+  }
   #djw-mini .djw-chip { display: flex; align-items: center; gap: 4px; }
   #djw-mini .djw-ico { font-size: 11px; line-height: 1; }
   #djw-mini .djw-chip-value { color: #ffd966; font-size: 11px; font-weight: 700; white-space: nowrap; }
@@ -1451,6 +1459,8 @@
   function toBn(n){ return String(n).split('').map(c => /[0-9]/.test(c) ? bnDigits[+c] : c).join(''); }
   const bnWeekday = ['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
   const bnMonth = ['বৈশাখ','জ্যৈষ্ঠ','আষাঢ়','শ্রাবণ','ভাদ্র','আশ্বিন','কার্তিক','অগ্রহায়ণ','পৌষ','মাঘ','ফাল্গুন','চৈত্র'];
+  // বাংলা ঋতু — প্রতি দুই মাসে একটি ঋতু (বৈশাখ-জ্যৈষ্ঠ: গ্রীষ্ম, আষাঢ়-শ্রাবণ: বর্ষা, ইত্যাদি)
+  const bnRitu = ['গ্রীষ্ম','গ্রীষ্ম','বর্ষা','বর্ষা','শরৎ','শরৎ','হেমন্ত','হেমন্ত','শীত','শীত','বসন্ত','বসন্ত'];
   const enMonthBn = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
   const arMonthBn = ['মহররম','সফর','রবিউল আউয়াল','রবিউস সানি','জমাদিউল আউয়াল','জমাদিউস সানি','রজব','শাবান','রমজান','শাওয়াল','জিলকদ','জিলহজ'];
 
@@ -1470,7 +1480,7 @@
     const lens = [31,31,31,31,31,30,30,30,30,30,30, isLeap ? 30 : 29];
     let mi = 0;
     while (dayNum >= lens[mi]) { dayNum -= lens[mi]; mi++; }
-    return { day: dayNum + 1, month: bnMonth[mi], year: bYear };
+    return { day: dayNum + 1, month: bnMonth[mi], year: bYear, ritu: bnRitu[mi] };
   }
 
   function djwUpdate() {
@@ -1479,6 +1489,7 @@
 
     const bn = banglaDate(now);
     document.getElementById('djw-bn').textContent = toBn(bn.day) + ' ' + bn.month + ', ' + toBn(bn.year);
+    document.getElementById('djw-ritu').textContent = bn.ritu + ' কাল';
 
     document.getElementById('djw-en').textContent =
       toBn(now.getDate()) + ' ' + enMonthBn[now.getMonth()] + ', ' + toBn(now.getFullYear());
