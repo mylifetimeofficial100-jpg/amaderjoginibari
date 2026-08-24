@@ -185,6 +185,7 @@
   .brand-logo{
     width:50px; height:50px; flex-shrink:0;
     border-radius:50%;
+    overflow:hidden;
     background:
       radial-gradient(circle at 35% 30%, rgba(240,217,168,.35), transparent 55%),
       linear-gradient(145deg, #1f4a32 0%, #0e1f16 100%);
@@ -196,9 +197,10 @@
     display:flex; align-items:center; justify-content:center;
     animation: logoGlow 5s ease-in-out infinite;
   }
-  .brand-logo svg{
-    width:32px; height:32px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
+  .brand-logo img{
+    width:100%; height:100%;
+    object-fit:cover;
+    border-radius:50%;
   }
   @keyframes logoGlow{
     0%,100%{ box-shadow: 0 0 0 3px rgba(196,149,74,.12), 0 6px 18px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12); }
@@ -1348,25 +1350,7 @@
 <header>
 <div class="nav-wrap">
 <a class="brand" href="#top">
-<div class="brand-logo"><svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-  <!-- elegant banyan canopy -->
-  <ellipse cx="24" cy="16" rx="18" ry="12" fill="#2a5c3a"/>
-  <ellipse cx="14" cy="18" rx="9" ry="8" fill="#1e4a2e"/>
-  <ellipse cx="34" cy="18" rx="9" ry="8" fill="#1e4a2e"/>
-  <ellipse cx="24" cy="12" rx="11" ry="8" fill="#357048"/>
-  <!-- trunk -->
-  <path d="M22 24 L22 38 Q24 40 26 38 L26 24" fill="#8b5e2b"/>
-  <path d="M23 24 L23 37 Q24 38.5 25 37 L25 24" fill="#a67c3d"/>
-  <!-- hanging roots / aerial roots -->
-  <path d="M16 22 Q14 28 13 36" stroke="#c4954a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-  <path d="M20 23 Q19 30 18 37" stroke="#d4a85a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-  <path d="M28 23 Q29 30 30 37" stroke="#d4a85a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-  <path d="M32 22 Q34 28 35 36" stroke="#c4954a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-  <!-- base soil mound -->
-  <ellipse cx="24" cy="40" rx="14" ry="4" fill="#6b4a28" opacity=".85"/>
-  <!-- small golden glow accent -->
-  <circle cx="24" cy="14" r="3" fill="#e8d0a0" opacity=".35"/>
-</svg></div>
+<div class="brand-logo"><img src="logo.jpg" alt="আমাদের যোগিনীবাড়ী লোগো" loading="eager" decoding="async"></div>
 <span class="brand-text">আমাদের যোগিনীবাড়ী<small>Amader Joginibari · গ্রামের পাতা</small></span>
 </a>
 <button aria-label="মেনু খুলুন" class="nav-toggle" onclick="document.getElementById('mainnav').classList.toggle('open')">☰</button>
