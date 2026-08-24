@@ -303,6 +303,12 @@
   .hero h1{
     font-size:clamp(2.4rem, 6.4vw, 4.6rem);
     margin:0; line-height:1.1; color:#faf8f2;
+    background: linear-gradient(180deg, #fffef8 20%, #f0d9a8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 4px 14px rgba(0,0,0,.25));
   }
 
 
@@ -457,7 +463,18 @@
     cursor:pointer;
     box-shadow: 0 4px 14px rgba(0,0,0,.18);
     white-space:nowrap;
+    position:relative;
+    overflow:hidden;
   }
+  .btn::before{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.22) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform .6s ease;
+    pointer-events:none;
+  }
+  .btn:hover::before{ transform: translateX(100%); }
   .btn:active{ transform:scale(0.97); }
   .btn-primary{
     background: linear-gradient(145deg, #e8c87a 0%, #c4954a 100%);
