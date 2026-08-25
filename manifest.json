@@ -1,31 +1,25 @@
 {
-  "name": "আমাদের যোগিনী বাড়ী",
+  "name": "আমাদের যোগিনীবাড়ী",
   "short_name": "যোগিনীবাড়ী",
-  "description": "যোগিনীবাড়ী গ্রামের তথ্য, ইতিহাস, ছবি, স্মৃতি ও আপডেট",
+  "description": "যোগিনীবাড়ী গ্রাম, দুর্গানগর ইউনিয়ন, উল্লাপাড়া, সিরাজগঞ্জ — গ্রামের নিজস্ব ওয়েবসাইট",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#1f4a32",
   "theme_color": "#1f4a32",
-  "lang": "bn",
   "icons": [
     {
-      "src": "/favicon.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/favicon.png",
+      "src": "icon-512.jpg",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/jpeg",
+      "purpose": "any"
     },
     {
-      "src": "/favicon.ico",
-      "sizes": "48x48",
-      "type": "image/x-icon"
+      "src": "icon-512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "maskable"
     }
   ]
 }
