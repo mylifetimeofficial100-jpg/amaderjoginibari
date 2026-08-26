@@ -1491,22 +1491,57 @@
     document.getElementById('djw-en').textContent =
       toBn(now.getDate()) + ' ' + enMonthBn[now.getMonth()] + ', ' + toBn(now.getFullYear());
 
-    try {
-      // নোট: ব্রাউজারের ডিফল্ট Islamic (tabular) ক্যালকুলেশন সাধারণত প্রকৃত চাঁদ দেখা তারিখের চেয়ে ১ দিন এগিয়ে দেখায়,
-      // তাই বাস্তব/স্থানীয়ভাবে ঘোষিত হিজরি তারিখের সাথে মিলাতে ১ দিন পিছিয়ে হিসাব করা হচ্ছে।
-      const adjustedForHijri = new Date(now.getTime() - 2 * 86400000);
-      const parts = new Intl.DateTimeFormat('en-US-u-ca-islamic', { day: 'numeric', month: 'numeric', year: 'numeric' })
-        .formatToParts(adjustedForHijri);
-      let hDay, hMonth, hYear;
-      parts.forEach(p => {
-        if (p.type === 'day') hDay = parseInt(p.value, 10);
-        if (p.type === 'month') hMonth = parseInt(p.value, 10);
-        if (p.type === 'year') hYear = parseInt(p.value, 10);
-      });
-      document.getElementById('djw-ar').textContent = toBn(hDay) + ' ' + arMonthBn[hMonth - 1] + ', ' + toBn(hYear);
-    } catch (e) {
-      document.getElementById('djw-ar').textContent = 'পাওয়া যায়নি';
+    updateHijriDate(now);
+  }
+
+  // হিজরি তারিখ — লাইভ API থেকে (প্রকৃত ঘোষিত চাঁদ-নির্ভর তারিখ, স্থির/fixed সংখ্যা বিয়োগের বদলে)
+  // প্রতিদিন ব্রাউজারে ক্যাশ করা থাকবে (localStorage), যাতে বারবার নেটওয়ার্ক কল না লাগে এবং সাইট দ্রুত থাকে।
+  function updateHijriDate(now) {
+    const todayKey = now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate();
+    let cached = null;
+    try { cached = JSON.parse(localStorage.getItem('djw-hijri-cache') || 'null'); } catch(e) {}
+
+    if (cached && cached.dateKey === todayKey && cached.text) {
+      document.getElementById('djw-ar').textContent = cached.text;
+      return;
     }
+
+    const dd = String(now.getDate()).padStart(2,'0');
+    const mm = String(now.getMonth()+1).padStart(2,'0');
+    const yyyy = now.getFullYear();
+    // adjustment=-1 : বাংলাদেশের স্থানীয় চাঁদ দেখা কমিটির ঘোষণা সাধারণত আন্তর্জাতিক গাণিতিক হিসাবের চেয়ে ১ দিন পিছিয়ে থাকে,
+    // তাই API-র নিজস্ব সমন্বয় প্যারামিটার দিয়ে এটা ঠিক করা হচ্ছে (এলোমেলো সংখ্যা বিয়োগ না, এটা API-রই সমর্থিত ফিচার)
+    const apiUrl = 'https://api.aladhan.com/v1/gToH/' + dd + '-' + mm + '-' + yyyy + '?adjustment=-1';
+
+    fetch(apiUrl)
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        const h = data.data.hijri;
+        const hDay = parseInt(h.day, 10);
+        const hMonthIdx = parseInt(h.month.number, 10) - 1;
+        const hYear = parseInt(h.year, 10);
+        const text = toBn(hDay) + ' ' + arMonthBn[hMonthIdx] + ', ' + toBn(hYear);
+        document.getElementById('djw-ar').textContent = text;
+        try {
+          localStorage.setItem('djw-hijri-cache', JSON.stringify({dateKey: todayKey, text: text}));
+        } catch(e) {}
+      })
+      .catch(function(){
+        // API না পাওয়া গেলে (নেটওয়ার্ক সমস্যা), ব্রাউজারের নিজস্ব হিসাব ব্যাকআপ হিসেবে ব্যবহার হবে
+        try {
+          const parts = new Intl.DateTimeFormat('en-US-u-ca-islamic', { day: 'numeric', month: 'numeric', year: 'numeric' })
+            .formatToParts(now);
+          let hDay, hMonth, hYear;
+          parts.forEach(function(p){
+            if (p.type === 'day') hDay = parseInt(p.value, 10);
+            if (p.type === 'month') hMonth = parseInt(p.value, 10);
+            if (p.type === 'year') hYear = parseInt(p.value, 10);
+          });
+          document.getElementById('djw-ar').textContent = toBn(hDay) + ' ' + arMonthBn[hMonth - 1] + ', ' + toBn(hYear);
+        } catch(e2) {
+          document.getElementById('djw-ar').textContent = 'পাওয়া যায়নি';
+        }
+      });
   }
 
   djwUpdate();
