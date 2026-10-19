@@ -30,9 +30,8 @@
   <meta name="twitter:image" content="https://amaderjoginibari.vercel.app/favicon.png"/>
   
   <!-- Icons -->
-  <link rel="icon" href="https://amaderjoginibari.vercel.app/favicon.png" type="image/png"/>
+  <link rel="icon" href="https://amaderjoginibari.vercel.app/favicon.png" type="image/png" sizes="192x192"/>
   <link rel="apple-touch-icon" href="https://amaderjoginibari.vercel.app/favicon.png"/>
-  <link rel="manifest" href="manifest.json"/>
   
   <!-- Fonts -->
     <link rel="dns-prefetch" href="https://www.gstatic.com"/>
@@ -47,8 +46,9 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://amaderjoginibari.vercel.app/#website",
     "name": "আমাদের যোগিনীবাড়ী",
-    "alternateName": "Amader Joginibari",
+    "alternateName": ["Amader Joginibari", "যোগিনীবাড়ী", "amaderjoginibari.vercel.app"],
     "url": "https://amaderjoginibari.vercel.app/",
     "description": "যোগিনীবাড়ী গ্রামের অফিসিয়াল ওয়েবসাইট। সিরাজগঞ্জের উল্লাপাড়া উপজেলার দুর্গানগর ইউনিয়নের গ্রাম।",
     "inLanguage": "bn",
@@ -1486,62 +1486,27 @@
 
     const bn = banglaDate(now);
     document.getElementById('djw-bn').textContent = toBn(bn.day) + ' ' + bn.month + ', ' + toBn(bn.year);
-    document.getElementById('djw-ritu').textContent = bn.ritu + 'কাল';
+    document.getElementById('djw-ritu').textContent = bn.ritu + ' কাল';
 
     document.getElementById('djw-en').textContent =
       toBn(now.getDate()) + ' ' + enMonthBn[now.getMonth()] + ', ' + toBn(now.getFullYear());
 
-    updateHijriDate(now);
-  }
-
-  // হিজরি তারিখ — লাইভ API থেকে (প্রকৃত ঘোষিত চাঁদ-নির্ভর তারিখ, স্থির/fixed সংখ্যা বিয়োগের বদলে)
-  // প্রতিদিন ব্রাউজারে ক্যাশ করা থাকবে (localStorage), যাতে বারবার নেটওয়ার্ক কল না লাগে এবং সাইট দ্রুত থাকে।
-  function updateHijriDate(now) {
-    const todayKey = now.getFullYear() + '-' + (now.getMonth()+1) + '-' + now.getDate();
-    let cached = null;
-    try { cached = JSON.parse(localStorage.getItem('djw-hijri-cache') || 'null'); } catch(e) {}
-
-    if (cached && cached.dateKey === todayKey && cached.text) {
-      document.getElementById('djw-ar').textContent = cached.text;
-      return;
-    }
-
-    const dd = String(now.getDate()).padStart(2,'0');
-    const mm = String(now.getMonth()+1).padStart(2,'0');
-    const yyyy = now.getFullYear();
-    // adjustment=-1 : বাংলাদেশের স্থানীয় চাঁদ দেখা কমিটির ঘোষণা সাধারণত আন্তর্জাতিক গাণিতিক হিসাবের চেয়ে ১ দিন পিছিয়ে থাকে,
-    // তাই API-র নিজস্ব সমন্বয় প্যারামিটার দিয়ে এটা ঠিক করা হচ্ছে (এলোমেলো সংখ্যা বিয়োগ না, এটা API-রই সমর্থিত ফিচার)
-    const apiUrl = 'https://api.aladhan.com/v1/gToH/' + dd + '-' + mm + '-' + yyyy + '?adjustment=-1';
-
-    fetch(apiUrl)
-      .then(function(res){ return res.json(); })
-      .then(function(data){
-        const h = data.data.hijri;
-        const hDay = parseInt(h.day, 10);
-        const hMonthIdx = parseInt(h.month.number, 10) - 1;
-        const hYear = parseInt(h.year, 10);
-        const text = toBn(hDay) + ' ' + arMonthBn[hMonthIdx] + ', ' + toBn(hYear);
-        document.getElementById('djw-ar').textContent = text;
-        try {
-          localStorage.setItem('djw-hijri-cache', JSON.stringify({dateKey: todayKey, text: text}));
-        } catch(e) {}
-      })
-      .catch(function(){
-        // API না পাওয়া গেলে (নেটওয়ার্ক সমস্যা), ব্রাউজারের নিজস্ব হিসাব ব্যাকআপ হিসেবে ব্যবহার হবে
-        try {
-          const parts = new Intl.DateTimeFormat('en-US-u-ca-islamic', { day: 'numeric', month: 'numeric', year: 'numeric' })
-            .formatToParts(now);
-          let hDay, hMonth, hYear;
-          parts.forEach(function(p){
-            if (p.type === 'day') hDay = parseInt(p.value, 10);
-            if (p.type === 'month') hMonth = parseInt(p.value, 10);
-            if (p.type === 'year') hYear = parseInt(p.value, 10);
-          });
-          document.getElementById('djw-ar').textContent = toBn(hDay) + ' ' + arMonthBn[hMonth - 1] + ', ' + toBn(hYear);
-        } catch(e2) {
-          document.getElementById('djw-ar').textContent = 'পাওয়া যায়নি';
-        }
+    try {
+      // নোট: ব্রাউজারের ডিফল্ট Islamic (tabular) ক্যালকুলেশন সাধারণত প্রকৃত চাঁদ দেখা তারিখের চেয়ে ১ দিন এগিয়ে দেখায়,
+      // তাই বাস্তব/স্থানীয়ভাবে ঘোষিত হিজরি তারিখের সাথে মিলাতে ১ দিন পিছিয়ে হিসাব করা হচ্ছে।
+      const adjustedForHijri = new Date(now.getTime() - 2 * 86400000);
+      const parts = new Intl.DateTimeFormat('en-US-u-ca-islamic', { day: 'numeric', month: 'numeric', year: 'numeric' })
+        .formatToParts(adjustedForHijri);
+      let hDay, hMonth, hYear;
+      parts.forEach(p => {
+        if (p.type === 'day') hDay = parseInt(p.value, 10);
+        if (p.type === 'month') hMonth = parseInt(p.value, 10);
+        if (p.type === 'year') hYear = parseInt(p.value, 10);
       });
+      document.getElementById('djw-ar').textContent = toBn(hDay) + ' ' + arMonthBn[hMonth - 1] + ', ' + toBn(hYear);
+    } catch (e) {
+      document.getElementById('djw-ar').textContent = 'পাওয়া যায়নি';
+    }
   }
 
   djwUpdate();
@@ -1885,7 +1850,7 @@
 <p>আমাদের গ্রামের ভৌগোলিক অবস্থান ও চারপাশের সীমানা নিচে তুলে ধরা হলো:</p>
 <ul style="margin:0 0 18px; padding-left:1.25rem; color:var(--ink-soft); font-size:1.06rem; line-height:1.85;">
 <li style="margin-bottom:10px;"><strong>চারপাশের প্রতিবেশী গ্রাম:</strong> আমাদের গ্রামের ঠিক পূর্বে রয়েছে <strong>মধুপুর</strong>, উত্তরে <strong>মনোহড়া</strong> এবং দক্ষিণে ফসলের মাঠ পেরোলেই <strong>বলদিপাড়া</strong> গ্রাম। পশ্চিমে দিগন্তজোড়া মাঠ আর শান্ত <strong>ফুলজার নদী</strong> পেরিয়ে রয়েছে <strong>রাজমান</strong> গ্রাম।</li>
-<li style="margin-bottom:10px;"><strong>কোণ ও দিক সীমানা:</strong> গ্রামের পূর্ব-দক্ষিণ কর্নারে <strong>মরিচা</strong>, পূর্ব-উত্তরে <strong>বালসাবাড়ী</strong>, উত্তর-পশ্চিমে <strong>পোড়াঘাটি</strong> (মনোহড়া ও রাজমান সংলগ্ন) এবং দক্ষিণ-পশ্চিম কর্নারে বেশ কিছুটা মাঠ পেরোলেই অবস্থান করছে <strong>ভৈরব</strong> গ্রাম।</li>
+<li style="margin-bottom:10px;"><strong>কোণ ও দিক সীমানা:</strong> গ্রামের পূর্ব-দক্ষিণ কর্নারে <strong>মরিচা</strong>, পূর্ব-উত্তরে <strong>বালসাড়ি</strong>, উত্তর-পশ্চিমে <strong>পোড়াঘাটি</strong> (মনোহড়া ও রাজমান সংলগ্ন) এবং দক্ষিণ-পশ্চিম কর্নারে বেশ কিছুটা মাঠ পেরোলেই অবস্থান করছে <strong>ভৈরব</strong> গ্রাম।</li>
 <li style="margin-bottom:10px;"><strong>গ্রামের অভ্যন্তরীণ রূপ:</strong> এই বিশাল প্রাকৃতিক সীমানার মাঝে আমাদের গ্রামটি প্রধানত কয়েকটা পাড়া নিয়ে গঠিত — তার মধ্যে <strong>যোগিনীবাড়ী মধ্যপাড়া</strong>, <strong>দক্ষিণপাড়া</strong> এবং <strong>পশ্চিমপাড়া</strong> ও <strong>দিয়ারপাড়া</strong> বেশি উল্লেখযোগ্য।</li>
 </ul>
 <p style="margin:28px 0 12px; font-family:'Baloo Da 2',sans-serif; font-size:1.25rem; color:var(--forest-deep); font-weight:700;">এক নজরে গ্রামের মূল বৈশিষ্ট্য</p>
@@ -1953,7 +1918,7 @@
 <div class="section-head">
 <span class="eyebrow">গ্রামজীবন</span>
 <h2>মাটির কাছাকাছি প্রতিদিনের জীবন</h2>
-<p>খেলার মাঠ, কালিবাড়ী বটতলা রাতের দোকানপাট, সম্মিলিত আয়োজন আর শিশুদের হাসি — আমাদের গ্রামের প্রাণের ছবি।</p>
+<p>খেলার মাঠ, রাতের বাজার, সম্মিলিত আয়োজন আর শিশুদের হাসি — আমাদের গ্রামের প্রাণের ছবি।</p>
 </div>
 <div class="life-grid">
 <div class="life-card">
@@ -1981,11 +1946,11 @@
 </div>
 </div>
 <div class="life-card">
-<div class="life-img"><img alt="গ্রামের ভিতরে আয়োজিত পুরস্কার বিতরণী অনুষ্ঠানের ছবি" src="img_007.jpg"/ decoding="async"></div>
+<div class="life-img"><img alt="গাছের নিচে পুরস্কার বিতরণী অনুষ্ঠানের ছবি" src="img_007.jpg"/ decoding="async"></div>
 <div class="life-body">
 <span class="life-tag">অনুষ্ঠান</span>
 <h3>পুরস্কার বিতরণী</h3>
-<p>গ্রামের ভিতরে আয়োজিত অনুষ্ঠানে বিজয়ীদের হাতে ট্রফি তুলে দেওয়া হচ্ছে — উৎসাহ আর আনন্দে মুখর পুরো গ্রাম।</p>
+<p>বটতলায় আয়োজিত অনুষ্ঠানে বিজয়ীদের হাতে ট্রফি তুলে দেওয়া হচ্ছে — উৎসাহ আর আনন্দে মুখর পুরো গ্রাম।</p>
 </div>
 </div>
 <div class="life-card">
@@ -1997,11 +1962,11 @@
 </div>
 </div>
 <div class="life-card">
-<div class="life-img"><img alt="রাতের বেলা কালিবাড়ী বটতলায় জমজমাট দোকানপাটের দৃশ্য" src="img_009.jpg"/ decoding="async"></div>
+<div class="life-img"><img alt="রাতের বেলা বটগাছের নিচে জমজমাট বটতলার বাজার" src="img_009.jpg"/ decoding="async"></div>
 <div class="life-body">
 <span class="life-tag">দৈনন্দিন</span>
-<h3>কালিবাড়ী বটতলা রাতের দোকানপাট</h3>
-<p>সন্ধ্যা নামলেই কালিবাড়ী বটতলায় জ্বলে ওঠে আলো, ছোট ছোট দোকানে চলে বেচাকেনা আর মানুষের আনাগোনা।</p>
+<h3>বটতলার রাতের বাজার</h3>
+<p>সন্ধ্যা নামলেই বটতলার বাজারে জ্বলে ওঠে আলো, ছোট ছোট দোকানে চলে বেচাকেনা আর মানুষের আনাগোনা।</p>
 </div>
 </div>
 <div class="life-card">
@@ -2053,11 +2018,11 @@
 </div>
 </div>
 <div class="life-card">
-<div class="life-img"><img alt="রাতে জালসায় আলোকসজ্জায় সাজানো আমাদের মসজিদ" src="img_016.jpg"/ decoding="async"></div>
+<div class="life-img"><img alt="রাতে আলোকসজ্জায় সাজানো আমাদের মসজিদ" src="img_016.jpg"/ decoding="async"></div>
 <div class="life-body">
 <span class="life-tag">উৎসব</span>
-<h3>মসজিদে জালসার রাত</h3>
-<p>জালসার রাতে আলোয় সেজে ওঠে আমাদের মসজিদ, উৎসবের আমেজ ছড়িয়ে পড়ে পুরো এলাকায়।</p>
+<h3>আমাদের মসজিদ · আলোকসজ্জার রাত</h3>
+<p>উৎসবের রাতে আলোয় সেজে ওঠে আমাদের মসজিদ, উৎসবের আমেজ ছড়িয়ে পড়ে পুরো এলাকায়।</p>
 </div>
 </div>
 </div>
